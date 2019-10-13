@@ -4,8 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="9.3 冒泡排序, Hexo">
+    <meta name="description" content="9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
+
+/* 对顺序表L作交换排序（冒泡排序初级版） */
+void BubbleSort0(SqList *L)
+{ 
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Hexo</title>
+    <title>9.3 冒泡排序 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -307,13 +312,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        9.3 冒泡排序
                     </div>
                 </div>
             </div>
@@ -423,12 +428,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/大话数据结构/">
+                                <span class="chip bg-color">大话数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/冒泡排序/">
+                                <span class="chip bg-color">冒泡排序</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                大话数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,15 +474,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="9-3-冒泡排序"><a href="#9-3-冒泡排序" class="headerlink" title="9.3 冒泡排序"></a>9.3 冒泡排序</h1><h2 id="9-3-1-什么是冒泡排序，最简单的冒泡排序"><a href="#9-3-1-什么是冒泡排序，最简单的冒泡排序" class="headerlink" title="9.3.1.什么是冒泡排序，最简单的冒泡排序"></a>9.3.1.什么是冒泡排序，最简单的冒泡排序</h2><p>其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序</p>
+<pre class=" language-c"><code class="language-c">
+<span class="token comment" spellcheck="true">/* 对顺序表L作交换排序（冒泡排序初级版） */</span>
+<span class="token keyword">void</span> <span class="token function">BubbleSort0</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 交换L->r[i]与L->r[j]的值 */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这个算法其实不是真正的冒泡，他是让每个关键字都和后面的每个比较，而且它只对排序的关键字有效，对未排序的没有帮助</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="9-3-2-冒泡排序算法"><a href="#9-3-2-冒泡排序算法" class="headerlink" title="9.3.2 冒泡排序算法"></a>9.3.2 冒泡排序算法</h2><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作冒泡排序 */</span>
+<span class="token keyword">void</span> <span class="token function">BubbleSort</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span>i<span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 注意j是从后往前循环 */</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若前者大于后者（注意这里与上一算法的差异）*/</span>
+            <span class="token punctuation">{</span>
+                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 交换L->r[j]与L->r[j+1]的值 */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>它对排序的关键字有效，对未排序的也有帮助</p>
+<h2 id="9-3-3-冒泡排序优化"><a href="#9-3-3-冒泡排序优化" class="headerlink" title="9.3.3 冒泡排序优化"></a>9.3.3 冒泡排序优化</h2><p>如果是已经有序了的话，就不用进行后面的循环继续，增加1个flag就行</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作改进冒泡算法 */</span>
+<span class="token keyword">void</span> <span class="token function">BubbleSort2</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    Status flag<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* flag用来作为标记 */</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若flag为true说明有过数据交换，否则停止循环 */</span>
+    <span class="token punctuation">{</span>
+        flag<span class="token operator">=</span>FALSE<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">/* 初始为False */</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span>i<span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 交换L->r[j]与L->r[j+1]的值 */</span>
+                 flag<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 如果有数据交换，则flag为true */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="9-3-4-冒泡排序复杂度是多少"><a href="#9-3-4-冒泡排序复杂度是多少" class="headerlink" title="9.3.4 冒泡排序复杂度是多少"></a>9.3.4 冒泡排序复杂度是多少</h2><p>其实就是O(n2)</p>
 
             </div>
             <hr/>
@@ -621,8 +688,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/11/hello-world/">
-                    《Hello World》
+            <a  href="/2019/10/11/9.3-mou-pao-pai-xu/">
+                    《9.3 冒泡排序》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -664,7 +731,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-11T20-25-34',
+        id: '2019-10-11T20-49-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -685,46 +752,57 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/11/ce-shi/">
+                <a href="/2019/10/11/9.3-mou-pao-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="你好，Hexo">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
                         
-                        <span class="card-title">你好，Hexo</span>
+                        <span class="card-title">9.3 冒泡排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试
+                            9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
+
+/* 对顺序表L作交换排序（冒泡排序初级版） */
+void BubbleSort0(SqList *L)
+{ 
+
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/test/" class="post-category">
-                                    test
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                    大话数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/测试/">
-                        <span class="chip bg-color">测试</span>
+                    <a href="/tags/大话数据结构/">
+                        <span class="chip bg-color">大话数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/冒泡排序/">
+                        <span class="chip bg-color">冒泡排序</span>
                     </a>
                     
                 </div>
@@ -735,22 +813,26 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/11/hello-world/">
+                <a href="/2019/10/11/9.2-pai-xu-de-ji-ben-gai-nian-he-fen-lei/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="9.2 排序的基本概念和分类">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">9.2 排序的基本概念和分类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            9.2 排序的基本概念和分类9.2.1 排序的稳定性怎么区分同分的时候，前后不变是稳定的，反之是不稳定的
+9.2.2 内排序和外排序什么是内排序呢
+其实就是所有记录都是放在内存中
+什么是外排序呢
+其实就是不能同时放在内存中，必须在内外存中多
                         
                     </div>
                     <div class="publish-info">
@@ -759,13 +841,28 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Xu Canyou
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                    大话数据结构
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/大话数据结构/">
+                        <span class="chip bg-color">大话数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/排序/">
+                        <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
