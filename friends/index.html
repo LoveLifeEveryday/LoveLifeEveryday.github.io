@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: 大话数据结构, Hexo">
-    <meta name="description" content="分类: 大话数据结构 | Hexo">
+    <meta name="keywords" content="friends, Hexo">
+    <meta name="description" content="friends | Hexo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>分类: 大话数据结构 | Hexo</title>
+    <title>friends | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -343,378 +343,326 @@
 
     </div>
 </div>
+<style>
+    .friends-container {
+        margin-top: -100px;
+        margin-bottom: 30px;
+    }
+
+    .friends-container .tag-title {
+        margin-bottom: 10px;
+        color: #3C4858;
+        font-size: 1.75rem;
+        font-weight: 400;
+    }
+
+    .frind-ship img {
+        border-radius: 50%;
+    }
+
+    /* 一下是按钮样式 */
+
+    .frind-ship {
+        padding: 10px 20px;
+    }
+
+    .frind-ship .title {
+        display: flex;
+        align-items: center;
+    }
+
+    .frind-ship .title div {
+        color: #fff;
+        padding-left: 10px;
+    }
+
+    .frind-ship .title img {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+    }
+
+    .frind-ship .title h1 {
+        line-height: 0.8rem;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #fff;
+        position: relative;
+        top:-15px;
+        left: 3px;
+    }
+
+    .friend-button {
+        display: flex;
+        justify-content: center;
+        margin-bottom: -27px;
+    }
+
+    .friend-button a {
+        border-radius: 40px;
+    }
+
+    .friend-all .tag-post {
+        margin-bottom: 30px;
+    }
+
+    .button-caution {
+        background-color: #FF4351;
+        border-color: #FF4351;
+        color: #FFF;
+    }
+
+    .button {
+        font-weight: 300;
+        font-size: 16px;
+        font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        padding: 0 40px;
+        margin: 0;
+        display: inline-block;
+        appearance: none;
+        cursor: pointer;
+        border: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: .3s;
+        transition-duration: .3s;
+    }
+
+    .title {
+        margin-bottom: 0rem !important;
+    }
+
+    .card {
+        margin: 3rem 0 1rem 0 !important;
+    }
+
+    .button-glow.button-caution {
+        -webkit-animation-name: glowing-caution;
+        animation-name: glowing-caution;
+    }
+
+    @-webkit-keyframes glowing-caution {
+        from {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+
+        50% {
+            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+        }
+
+        to {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+    }
+
+    @keyframes glowing-caution {
+        from {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+
+        50% {
+            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+        }
+
+        to {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+    }
+
+    .button-caution:hover {
+        background-color: #ff7680;
+        border-color: #ff7680;
+        color: #FFF;
+        text-decoration: none;
+    }
+
+    .frind-card1 {
+        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .frind-card2 {
+        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .frind-card3 {
+        background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    }
+
+    .frind-card4 {
+        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    }
+
+    .frind-card5 {
+        background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    }
+
+    .frind-card6 {
+        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+    }
+
+    .frind-card7 {
+        background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    }
+
+    .frind-card8 {
+        background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    }
+
+    .frind-card9 {
+        background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+    }
+
+    .frind-card10 {
+        background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    }
+    
+    article .card {
+        overflow: visible !important;
+    }
+</style>
 
 <main class="content">
-
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
+    <div class="container friends-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fas fa-address-book"></i>&nbsp;&nbsp;友情链接
+                </div>
+                <article id="friends-link">
+                    
+                    
+                    <div class="row tags-posts friend-all">
+                        
+                        
+                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
+                            <div class="card frind-card1">
+                                <div class="frind-ship">
+                                    <div class="title">
+                                        <img src="http://image.luokangyuan.com/1_qq_27922023.jpg" alt="img">
+                                        <div>
+                                            <h1 class="friend-name">码酱</h1>
+                                            <p style="position: relative;top: -35px;">我不是大佬，只是在追寻大佬的脚步</p>
+                                        </div>
+                                    </div>
+                                    <div class="friend-button">
+                                        <a href="http://luokangyuan.com/" target="_blank"
+                                            class="button button-glow button-rounded button-caution">
+                                            前去学习
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
+                            <div class="card frind-card2">
+                                <div class="frind-ship">
+                                    <div class="title">
+                                        <img src="http://image.luokangyuan.com/4027734.jpeg" alt="img">
+                                        <div>
+                                            <h1 class="friend-name">闪烁之狐</h1>
+                                            <p style="position: relative;top: -35px;">编程界大佬，技术牛，人还特别好，不懂的都可以请教大佬</p>
+                                        </div>
+                                    </div>
+                                    <div class="friend-button">
+                                        <a href="https://blinkfox.github.io/" target="_blank"
+                                            class="button button-glow button-rounded button-caution">
+                                            前去学习
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
+                            <div class="card frind-card3">
+                                <div class="frind-ship">
+                                    <div class="title">
+                                        <img src="http://image.luokangyuan.com/avatar.jpg" alt="img">
+                                        <div>
+                                            <h1 class="friend-name">ja_rome</h1>
+                                            <p style="position: relative;top: -35px;">平凡的脚步也可以走出伟大的行程</p>
+                                        </div>
+                                    </div>
+                                    <div class="friend-button">
+                                        <a href="ttps://me.csdn.net/jlh912008548" target="_blank"
+                                            class="button button-glow button-rounded button-caution">
+                                            前去学习
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </article>
             </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/大话数据结构/" title="大话数据结构: 18">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F9EBEA;">大话数据结构
-                        <span class="tag-length">18</span>
-                    </span>
-                </a>
-                
+        </div>
+        <div class="card">
+            <div class="card-content">
                 
             </div>
         </div>
-    </div>
+        <div class="card">
+
+            
+            <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
 </div>
 
-    
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '112e6084ab0d347bb611',
+        clientSecret: 'b8f70092496c20501812dccac798c13eac3bcc94',
+        repo: 'lovelifeeveryday.github.io',
+        owner: 'lovelifeeveryday',
+        admin: "lovelifeeveryday",
+        id: '2018-12-12T21-25-30',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
+    gitalk.render('gitalk-container');
+</script>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/13/5.6-po-su-de-mo-shi-pi-pei-suan-fa/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="5.6 朴素的模式匹配算法">
-                            
-                            <span class="card-title">5.6 朴素的模式匹配算法</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                什么是朴素的模式匹配算法
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/大话数据结构/">
-                            <span class="chip bg-color">大话数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/字符串/">
-                            <span class="chip bg-color">字符串</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="5.5 串的存储结构">
-                            
-                            <span class="card-title">5.5 串的存储结构</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                串的顺序存储与普通的顺序存储（数组）有什么区别
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/大话数据结构/">
-                            <span class="chip bg-color">大话数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/字符串/">
-                            <span class="chip bg-color">字符串</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/13/4.10-dui-lie-de-ding-yi/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="4.10 队列的定义">
-                            
-                            <span class="card-title">4.10 队列的定义</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                什么是队列呢
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/大话数据结构/">
-                            <span class="chip bg-color">大话数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/队列/">
-                            <span class="chip bg-color">队列</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/13/5.3-chuan-de-bi-jiao/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="5.3 串的比较">
-                            
-                            <span class="card-title">5.3 串的比较</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                怎么进行串的比较呢
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/大话数据结构/">
-                            <span class="chip bg-color">大话数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/字符串/">
-                            <span class="chip bg-color">字符串</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/11/9.3-mou-pao-pai-xu/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
-                            
-                            <span class="card-title">9.3 冒泡排序</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
 
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/大话数据结构/">
-                            <span class="chip bg-color">大话数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/冒泡排序/">
-                            <span class="chip bg-color">冒泡排序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/11/9.2-pai-xu-de-ji-ben-gai-nian-he-fen-lei/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="9.2 排序的基本概念和分类">
-                            
-                            <span class="card-title">9.2 排序的基本概念和分类</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                9.2 排序的基本概念和分类9.2.1 排序的稳定性怎么区分同分的时候，前后不变是稳定的，反之是不稳定的
-9.2.2 内排序和外排序什么是内排序呢
-其实就是所有记录都是放在内存中
-什么是外排序呢
-其实就是不能同时放在内存中，必须在内外存中多
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/大话数据结构/">
-                            <span class="chip bg-color">大话数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/排序/">
-                            <span class="chip bg-color">排序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
-    </article>
+    </div>
 </main>
 
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a href="/categories/大话数据结构/"
-               class="left btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">2 / 2</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a class="right btn-floating btn-large disabled">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
-
-
+<script>
+    $(function () {
+        $('#friends-link').masonry({
+            itemSelector: '.friend-div'
+        });
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
