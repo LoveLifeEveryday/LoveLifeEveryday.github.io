@@ -34,7 +34,7 @@ void BubbleSort0(SqList *L)
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -475,58 +475,58 @@ void BubbleSort0(SqList *L)
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="9-3-冒泡排序"><a href="#9-3-冒泡排序" class="headerlink" title="9.3 冒泡排序"></a>9.3 冒泡排序</h1><h2 id="9-3-1-什么是冒泡排序，最简单的冒泡排序"><a href="#9-3-1-什么是冒泡排序，最简单的冒泡排序" class="headerlink" title="9.3.1.什么是冒泡排序，最简单的冒泡排序"></a>9.3.1.什么是冒泡排序，最简单的冒泡排序</h2><p>其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序</p>
-<pre><code class="c">
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
-    int i,j;
-    for(i=1;i&lt;L-&gt;length;i++)
-    {
-        for(j=i+1;j&lt;=L-&gt;length;j++)
-        {
-            if(L-&gt;r[i]&gt;L-&gt;r[j])
-            {
-                 swap(L,i,j);/* 交换L-&gt;r[i]与L-&gt;r[j]的值 */
-            }
-        }
-    }
-}</code></pre>
+<pre class=" language-c"><code class="language-c">
+<span class="token comment" spellcheck="true">/* 对顺序表L作交换排序（冒泡排序初级版） */</span>
+<span class="token keyword">void</span> <span class="token function">BubbleSort0</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 交换L->r[i]与L->r[j]的值 */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>这个算法其实不是真正的冒泡，他是让每个关键字都和后面的每个比较，而且它只对排序的关键字有效，对未排序的没有帮助</p>
-<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="9-3-2-冒泡排序算法"><a href="#9-3-2-冒泡排序算法" class="headerlink" title="9.3.2 冒泡排序算法"></a>9.3.2 冒泡排序算法</h2><pre><code class="c">/* 对顺序表L作冒泡排序 */
-void BubbleSort(SqList *L)
-{ 
-    int i,j;
-    for(i=1;i&lt;L-&gt;length;i++)
-    {
-        for(j=L-&gt;length-1;j&gt;=i;j--)  /* 注意j是从后往前循环 */
-        {
-            if(L-&gt;r[j]&gt;L-&gt;r[j+1]) /* 若前者大于后者（注意这里与上一算法的差异）*/
-            {
-                 swap(L,j,j+1);/* 交换L-&gt;r[j]与L-&gt;r[j+1]的值 */
-            }
-        }
-    }
-}</code></pre>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="9-3-2-冒泡排序算法"><a href="#9-3-2-冒泡排序算法" class="headerlink" title="9.3.2 冒泡排序算法"></a>9.3.2 冒泡排序算法</h2><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作冒泡排序 */</span>
+<span class="token keyword">void</span> <span class="token function">BubbleSort</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span>i<span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 注意j是从后往前循环 */</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若前者大于后者（注意这里与上一算法的差异）*/</span>
+            <span class="token punctuation">{</span>
+                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 交换L->r[j]与L->r[j+1]的值 */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>它对排序的关键字有效，对未排序的也有帮助</p>
 <h2 id="9-3-3-冒泡排序优化"><a href="#9-3-3-冒泡排序优化" class="headerlink" title="9.3.3 冒泡排序优化"></a>9.3.3 冒泡排序优化</h2><p>如果是已经有序了的话，就不用进行后面的循环继续，增加1个flag就行</p>
-<pre><code class="c">/* 对顺序表L作改进冒泡算法 */
-void BubbleSort2(SqList *L)
-{ 
-    int i,j;
-    Status flag=TRUE;            /* flag用来作为标记 */
-    for(i=1;i&lt;L-&gt;length &amp;&amp; flag;i++) /* 若flag为true说明有过数据交换，否则停止循环 */
-    {
-        flag=FALSE;                /* 初始为False */
-        for(j=L-&gt;length-1;j&gt;=i;j--)
-        {
-            if(L-&gt;r[j]&gt;L-&gt;r[j+1])
-            {
-                 swap(L,j,j+1);    /* 交换L-&gt;r[j]与L-&gt;r[j+1]的值 */
-                 flag=TRUE;        /* 如果有数据交换，则flag为true */
-            }
-        }
-    }
-}</code></pre>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作改进冒泡算法 */</span>
+<span class="token keyword">void</span> <span class="token function">BubbleSort2</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    Status flag<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* flag用来作为标记 */</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若flag为true说明有过数据交换，否则停止循环 */</span>
+    <span class="token punctuation">{</span>
+        flag<span class="token operator">=</span>FALSE<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">/* 初始为False */</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span>i<span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 交换L->r[j]与L->r[j+1]的值 */</span>
+                 flag<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 如果有数据交换，则flag为true */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="9-3-4-冒泡排序复杂度是多少"><a href="#9-3-4-冒泡排序复杂度是多少" class="headerlink" title="9.3.4 冒泡排序复杂度是多少"></a>9.3.4 冒泡排序复杂度是多少</h2><p>其实就是O(n2)</p>
 
             </div>
@@ -752,35 +752,33 @@ void BubbleSort2(SqList *L)
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/11/9.3 冒泡排序/">
+                <a href="/2019/10/11/9.2 排序的基本概念和分类/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="9.2 排序的基本概念和分类">
                         
-                        <span class="card-title">9.3 冒泡排序</span>
+                        <span class="card-title">9.2 排序的基本概念和分类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
-
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
-
+                            9.2 排序的基本概念和分类9.2.1 排序的稳定性怎么区分同分的时候，前后不变是稳定的，反之是不稳定的
+9.2.2 内排序和外排序什么是内排序呢
+其实就是所有记录都是放在内存中
+什么是外排序呢
+其实就是不能同时放在内存中，必须在内外存中多
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -793,7 +791,6 @@ void BubbleSort0(SqList *L)
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -801,8 +798,8 @@ void BubbleSort0(SqList *L)
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/冒泡排序/">
-                        <span class="chip bg-color">冒泡排序</span>
+                    <a href="/tags/排序/">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
                 </div>
