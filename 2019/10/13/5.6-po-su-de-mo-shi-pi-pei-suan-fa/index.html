@@ -4,8 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="你好，Hexo, Hexo">
-    <meta name="description" content="你好，Hexo | Hexo">
+    <meta name="keywords" content="5.6 朴素的模式匹配算法, Hexo">
+    <meta name="description" content="5.6 朴素的模式匹配算法
+这个算法有什么用呢？
+比如你想查找字符串的位置，就需要用到这个算法
+
+1.什么是朴素的模式匹配算法简单来说就是对主串的每一个字符作为子串开头，与要匹配的字符串进行匹配。对主串做大循环，每个字符开头做T的长度的小循">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>你好，Hexo | Hexo</title>
+    <title>5.6 朴素的模式匹配算法 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,7 +317,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        你好，Hexo
+                        5.6 朴素的模式匹配算法
                     </div>
                 </div>
             </div>
@@ -423,12 +427,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/大话数据结构/">
+                                <span class="chip bg-color">大话数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/字符串/">
+                                <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                大话数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -436,7 +457,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-11
+                    2019-10-13
                 </div>
 
                 
@@ -452,7 +473,59 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="5-6-朴素的模式匹配算法"><a href="#5-6-朴素的模式匹配算法" class="headerlink" title="5.6 朴素的模式匹配算法"></a>5.6 朴素的模式匹配算法</h1><blockquote>
+<p>这个算法有什么用呢？</p>
+<p>比如你想查找字符串的位置，就需要用到这个算法</p>
+</blockquote>
+<h2 id="1-什么是朴素的模式匹配算法"><a href="#1-什么是朴素的模式匹配算法" class="headerlink" title="1.什么是朴素的模式匹配算法"></a>1.什么是朴素的模式匹配算法</h2><p>简单来说<strong>就是对主串的每一个字符作为子串开头，与要匹配的字符串进行匹配。对主串做大循环，每个字符开头做T的长度的小循环，直到匹配成功或全部遍历完成为止</strong>。</p>
+<p>还是用图来说明比较简单：</p>
+<p>现在，从下面的主串S=”goodgoogle”中，找到T=”google”这个子串的位置。我们通常需要下面的步骤：</p>
+<p>注意，其中竖直连线表示相等，闪电状弯折连线表示不等</p>
+<ol>
+<li><p>主串S第一位开始，S与T前三个字母都匹配成功，但S第四个字母是d而T的是g。第一位匹配失败。</p>
+<p><img src="https://i.loli.net/2019/10/13/3KMzpI6ctjwXESo.jpg" alt></p>
+</li>
+<li><p>主串S第二位开始，主串S首字母是o，要匹配的T首字母是g，匹配失败</p>
+<p><img src="https://i.loli.net/2019/10/13/GrlwjKY8SkNMFTi.jpg" alt></p>
+</li>
+<li><p>主串S第三位开始，主串S首字母是o，要匹配的T首字母是g，匹配失败，</p>
+<p><img src="https://i.loli.net/2019/10/13/28VIfAWbUvjnHXz.jpg" alt></p>
+</li>
+<li><p>主串S第四位开始，主串S首字母是d，要匹配的T首字母是g，匹配失败</p>
+<p><img src="https://i.loli.net/2019/10/13/FrLMTcJnPZap2j7.jpg" alt></p>
+</li>
+<li><p>主串S第五位开始，S与T，6个字母全匹配，匹配成功</p>
+<p><img src="https://i.loli.net/2019/10/13/1kKD5MP6BAeGTub.jpg" alt></p>
+</li>
+</ol>
+<h2 id="2-算法是怎么写的？"><a href="#2-算法是怎么写的？" class="headerlink" title="2.算法是怎么写的？"></a>2.算法是怎么写的？</h2><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 返回子串T在主串S中第pos个字符之后的起始位置。若不存在,则函数返回值为0。 */</span>
+<span class="token comment" spellcheck="true">/* 其中,T非空,1≤pos≤StrLength(S)。 */</span>
+<span class="token keyword">int</span> <span class="token function">Index</span><span class="token punctuation">(</span>String S<span class="token punctuation">,</span> String T<span class="token punctuation">,</span> <span class="token keyword">int</span> pos<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> pos<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* i用于主串S中当前位置下标值，若pos不为1，则从pos位置开始匹配 */</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">/* j用于子串T中当前位置下标值 */</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> S<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若i小于S的长度并且j小于T的长度时，循环继续 */</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>S<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* 两字母相等则继续 */</span>
+          <span class="token punctuation">{</span>
+            <span class="token operator">++</span>i<span class="token punctuation">;</span>
+             <span class="token operator">++</span>j<span class="token punctuation">;</span> 
+          <span class="token punctuation">}</span> 
+          <span class="token keyword">else</span>                 <span class="token comment" spellcheck="true">/* 指针后退重新开始匹配 */</span>
+          <span class="token punctuation">{</span>  
+             i <span class="token operator">=</span> i<span class="token operator">-</span>j<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* i退回到上次匹配首位的下一位 */</span>
+             j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>             <span class="token comment" spellcheck="true">/* j退回到子串T的首位 */</span>
+          <span class="token punctuation">}</span>      
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
+        <span class="token comment" spellcheck="true">//通过主串的位置-子串的长度，得到子串在主串中的起始位置</span>
+        <span class="token keyword">return</span> i<span class="token operator">-</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> 
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="3-有什么缺点呢？"><a href="#3-有什么缺点呢？" class="headerlink" title="3.有什么缺点呢？"></a>3.有什么缺点呢？</h2><p>就是每次不成功的匹配都发生在子串的最后一个字符的话，这样就会造成很大的性能浪费</p>
+<p>主串S=“00000000000000000001”，子串是“0001”</p>
+
             </div>
             <hr/>
 
@@ -612,8 +685,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/11/ni-hao-hexo/">
-                    《你好，Hexo》
+            <a  href="/2019/10/13/5.6-po-su-de-mo-shi-pi-pei-suan-fa/">
+                    《5.6 朴素的模式匹配算法》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -655,7 +728,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-11T20-49-59',
+        id: '2019-10-13T19-26-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -680,31 +753,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/11/ce-shi/">
+                <a href="/2019/10/13/5.7-kmp-mo-shi-pi-pei-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="你好，Hexo">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="5.7 KMP模式匹配算法">
                         
-                        <span class="card-title">你好，Hexo</span>
+                        <span class="card-title">5.7 KMP模式匹配算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试
+                            我们先假设一种情况，这种情况是子串**没有重复**的
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/test/" class="post-category">
-                                    test
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                    大话数据结构
                                 </a>
                             
                             
@@ -714,8 +787,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/测试/">
-                        <span class="chip bg-color">测试</span>
+                    <a href="/tags/大话数据结构/">
+                        <span class="chip bg-color">大话数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/字符串/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
@@ -729,29 +806,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/11/9.3-mou-pao-pai-xu/">
+                <a href="/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="5.5 串的存储结构">
                         
-                        <span class="card-title">9.3 冒泡排序</span>
+                        <span class="card-title">5.5 串的存储结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
-
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
-
+                            串的顺序存储与普通的顺序存储（数组）有什么区别
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
                             </span>
                         <span class="publish-author">
                             
@@ -772,8 +844,8 @@ void BubbleSort0(SqList *L)
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/冒泡排序/">
-                        <span class="chip bg-color">冒泡排序</span>
+                    <a href="/tags/字符串/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>

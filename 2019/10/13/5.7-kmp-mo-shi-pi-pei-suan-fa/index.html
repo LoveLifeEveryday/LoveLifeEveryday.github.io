@@ -4,8 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="你好，Hexo, Hexo">
-    <meta name="description" content="你好，Hexo | Hexo">
+    <meta name="keywords" content="5.7 KMP模式匹配算法, Hexo">
+    <meta name="description" content="5.7 KMP模式匹配算法
+什么是KMP模式匹配算法?
+其实就是1格模式匹配算法，大大避免重复遍历，简称KMP算法
+
+5.7.1 算法原理1.我们先假设一种情况，这种情况是子串没有重复的，主串S=”abcdefgab”，我们要匹配的T=”a">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>你好，Hexo | Hexo</title>
+    <title>5.7 KMP模式匹配算法 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -307,13 +311,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        你好，Hexo
+                        5.7 KMP模式匹配算法
                     </div>
                 </div>
             </div>
@@ -423,12 +427,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/大话数据结构/">
+                                <span class="chip bg-color">大话数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/字符串/">
+                                <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                大话数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -436,7 +457,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-11
+                    2019-10-13
                 </div>
 
                 
@@ -452,7 +473,187 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="5-7-KMP模式匹配算法"><a href="#5-7-KMP模式匹配算法" class="headerlink" title="5.7 KMP模式匹配算法"></a>5.7 KMP模式匹配算法</h1><blockquote>
+<p>什么是KMP模式匹配算法?</p>
+<p>其实就是1格模式匹配算法，<strong>大大避免重复遍历</strong>，简称<strong>KMP算法</strong></p>
+</blockquote>
+<h2 id="5-7-1-算法原理"><a href="#5-7-1-算法原理" class="headerlink" title="5.7.1 算法原理"></a>5.7.1 算法原理</h2><p>1.我们先假设一种情况，这种情况是子串<strong>没有重复</strong>的，主串<strong>S=”abcdefgab”</strong>，我们要匹配的<strong>T=”abcdex”</strong>，那么如果用前面的朴素算法的话，如图所示</p>
+<p><img src="https://i.loli.net/2019/10/13/O85ylgkjHvbaCRV.jpg" alt></p>
+<p>可仔细观察发现，子串T来说，”abcdex”首字母”a”与后面的串”bcdex”中任意一个字符都不相等，就是子串T没有重复的，</p>
+<p>那么对于图5-7-1的(1)来说，前五位字符分别相等，意味着子串T的首字符”a”不可能与S串的第2位到第5位的字符相等。在图5-7-1中，(2)(3)(4)(5)的判断都是多余。我们直接跳到6这一步</p>
+<p>2.我们再假设第2种情况，这种情况是子串<strong>有重复</strong>的，<strong>S=”abcabcabc”</strong>，<strong>T=”abcabx”</strong>,如图</p>
+<p><img src="https://i.loli.net/2019/10/13/LDkKFNjgnmT6Gox.jpg" alt></p>
+<p>由上面的经验，我们发现2，3步（<strong>重复出现之前</strong>的步骤）都是多余的，又因为第四位的”a”和第五位的”b”已经与主串S中的相应位置比较过了，是相等的，因此可以断定，T的首字符”a”、第二位的字符”b”与S的第四位字符和第五位字符也不需要比较了，肯定也是相等的，所以(4)(5)这两个比较得出字符相等的步骤也可以省略。</p>
+<p>简化后的图：</p>
+<p><img src="https://i.loli.net/2019/10/13/xeMEwg8vkf5GOVb.jpg" alt></p>
+<p>3.你明白什么是<strong>避免不必要的回溯</strong>了吗？</p>
+<p>上面的例子很好说明了<strong>避免不必要的回溯</strong>，但是我们思考下，主串的i（当前位置下标）会不会回头走的呢？</p>
+<p>很显然，不会，在第一个例子中，i一开始是1，一轮循环后，就到了6，类似于：“好马不吃回头草”</p>
+<p>子串的位标j会吃回头草吗？</p>
+<p><strong>通过观察也可发现，我们屡屡提到了T串的首字符与自身后面字符的比较，T串如果自身重复，发现如果有相等字符，j值的变化就会不相同</strong>，也就是说，这个<strong>j值的变化</strong>与主串其实没什么关系，关键就<strong>取决于T串的结构中是否有重复</strong>（<strong>相似度</strong>）的问题。</p>
+<p>我们把T串各个位置的j值的变化，定义为一个数组next，那么next的长度就是T串的长度（因为next是T串各个元素位置的变化）,<strong>next的意思就是T串，j位置每次回溯的位置</strong>（<strong>回头吃草的位置</strong>），这里我们暂时不深究next数组中每个元素的值，我们可以定义一个函数：</p>
+<h2 id="5-7-2-next数组推导"><a href="#5-7-2-next数组推导" class="headerlink" title="5.7.2 next数组推导"></a>5.7.2 next数组推导</h2><h3 id="先看例子："><a href="#先看例子：" class="headerlink" title="先看例子："></a>先看例子：</h3><h4 id="1-T-”abcdex”"><a href="#1-T-”abcdex”" class="headerlink" title="1.T=”abcdex”"></a>1.T=”abcdex”</h4><p>注意：我们观察的时候，看到j位置前面的字符就行了，比如说j=2，是看j=2之前的字符”a“</p>
+<p><img src="https://i.loli.net/2019/10/13/pUoN2gY5zWO8chl.jpg" alt></p>
+<ul>
+<li>1)当j=1时，next[1]=0;</li>
+<li>2)当j=2时，j由1到j-1（<strong>j的前一个字符</strong>）就只有字符”a”，属于其他情况next[2]=1;</li>
+<li>3)当j=3时，j由1到j-1串是”ab”，显然”a”与”b”<strong>不相等</strong>，属其他情况，next[3]=<strong>1;</strong></li>
+<li>4)以后同理，所以最终此T串的next[j]为011111。</li>
+</ul>
+<h3 id="2-T-”abcabx”"><a href="#2-T-”abcabx”" class="headerlink" title="2.T=”abcabx”"></a>2.T=”abcabx”</h3><p>注意：当我们看重复的时候，是看<strong>顺序重复</strong>，不是回文重复，例如：”abcab”（顺序重复）,这样重复的元素个数是2，”abcba”（回文重复）这样重复的元素只有:”a”</p>
+<p>当<strong>出现重复</strong>的时候，<strong>next[j]的值是重复的元素个数+1</strong></p>
+<p><img src="https://i.loli.net/2019/10/13/yWwtDC4xiLPAufM.jpg" alt></p>
+<ul>
+<li>1)当j=1时，next[1]=0;</li>
+<li>2)当j=2时，同上例说明，next[2]=1;</li>
+<li>3)当j=3时，同上，next[3]=1;</li>
+<li>4)当j=4时，同上，next[4]=1;</li>
+<li>5)当j=5时，此时j由1到j-1的串是”abca”，前缀字符”a”与后缀字符”a”相等，因此可推算出k值为2，因此next[5]=2;</li>
+<li>6)当j=6时，j由1到j-1的串是”abcab”，由于前缀字符”ab”与后缀”ab”相等，所以next[6]=3。</li>
+</ul>
+<h3 id="3-T-”ababaaaba”"><a href="#3-T-”ababaaaba”" class="headerlink" title="3.T=”ababaaaba”"></a>3.T=”ababaaaba”</h3><p>注意：重复要看在末尾位置的重复，中间位置没有接到末尾的重复不算，比如说，T=”ababaaaba”中，如果看，第1到第3位置的aba和第3到第5位置的aba重复，这样就是错的，因为第3到第5位置的aba不在末尾</p>
+<p><img src="https://i.loli.net/2019/10/13/ZNVKAWQzh7S3cPO.jpg" alt></p>
+<ul>
+<li>1)当j=1时，next[1]=0;</li>
+<li>2)当j=2时，同上next[2]=1;</li>
+<li>3)当j=3时，同上next[3]=1;</li>
+<li>4)当j=4时，j由1到j-1的串是”aba”，前缀字符”a”与后缀字符”a”相等，next[4]=2;</li>
+<li>5)当j=5时，j由1到j-1的串是”abab”，由于前缀字符”ab”与后缀”ab”相等，所以next[5]=3;</li>
+<li>6)当j=6时，j由1到j-1的串的”ababa”，由于前缀字符”aba”与后缀”aba”相等，所以next[6]=4;</li>
+<li>7)当j=7时，j由1到j-1的串是”ababaa”，由于前缀字符”ab”与后缀”aa”并不相等，只有”a”相等，所以next[7]=2;</li>
+<li>8)当j=8时，j由1到j-1的串是”ababaaa”，只有”a”相等，所以next[8]=2;</li>
+<li>9)当j=9时，j由1到j-1的串是”ababaaab”，由于前缀字符”ab”与后缀”ab”相等，所以next[9]=3</li>
+</ul>
+<h3 id="4-T-”aaaaaaaab”"><a href="#4-T-”aaaaaaaab”" class="headerlink" title="4.T=”aaaaaaaab”"></a>4.T=”aaaaaaaab”</h3><p>注意：比如看,aaaa的时候，重复的元素个数是多少呢？</p>
+<p>有的人说是4，你看它全是重复的，这样其实是不对的</p>
+<p>正确答案是3，有规定，<strong>重复元素不能是整个字符串的元素</strong>，所以这里只是3(“aaa”)</p>
+<p><img src="https://i.loli.net/2019/10/13/d4yZwgDnW6vqKPe.jpg" alt></p>
+<ul>
+<li>1)当j=1时，next[1]=0;</li>
+<li>2)当j=2时，同上next[2]=1;</li>
+<li>3)当j=3时，j由1到j-1的串是”aa”，前缀字符”a”与后缀字符”a”相等，next[3]=2;</li>
+<li>4)当j=4时，j由1到j-1的串是”aaa”，由于前缀字符”aa”与后缀”aa”相等，所以next[4]=3;</li>
+<li>5)……</li>
+<li>6)当j=9时，j由1到j-1的串是”aaaaaaaa”，由于前缀字符”aaaaaaa”与后缀”aaaaaaa”相等，所以next[9]=8。</li>
+</ul>
+<h2 id="5-7-3-算法实现"><a href="#5-7-3-算法实现" class="headerlink" title="5.7.3 算法实现"></a>5.7.3 算法实现</h2><blockquote>
+<p>看了这么多，其实这个算法最核心的部分就是next数组了，也就是每次j要回溯的位置（回头吃草的位置）</p>
+</blockquote>
+<h3 id="1-得到next数组的代码"><a href="#1-得到next数组的代码" class="headerlink" title="1.得到next数组的代码"></a>1.得到next数组的代码</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 通过计算返回子串T的next数组。 */</span>
+<span class="token keyword">void</span> <span class="token function">get_next</span><span class="token punctuation">(</span>String T<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>next<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+      i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+      j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 此处T[0]表示串T的长度 */</span>
+     <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* T[i]表示后缀的单个字符，T[j]表示前缀的单个字符 */</span>
+        <span class="token punctuation">{</span>
+              <span class="token operator">++</span>i<span class="token punctuation">;</span>  
+            <span class="token operator">++</span>j<span class="token punctuation">;</span>  
+            next<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> 
+        <span class="token keyword">else</span> 
+            j<span class="token operator">=</span> next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 若字符不相同，则j值回溯 */</span>
+      <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>主代码：</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 返回子串T在主串S中第pos个字符之后的位置。若不存在，则函数返回值为0。 */</span>
+<span class="token comment" spellcheck="true">/*  T非空，1≤pos≤StrLength(S)。 */</span>
+<span class="token keyword">int</span> <span class="token function">Index_KMP</span><span class="token punctuation">(</span>String S<span class="token punctuation">,</span> String T<span class="token punctuation">,</span> <span class="token keyword">int</span> pos<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> pos<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* i用于主串S中当前位置下标值，若pos不为1，则从pos位置开始匹配 */</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* j用于子串T中当前位置下标值 */</span>
+    <span class="token keyword">int</span> next<span class="token punctuation">[</span><span class="token number">255</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 定义一next数组 */</span>
+    <span class="token function">get_next</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 对串T作分析，得到next数组 */</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> S<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若i小于S的长度并且j小于T的长度时，循环继续 */</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* 两字母相等则继续，与朴素算法增加了j=0判断 */</span>
+          <span class="token punctuation">{</span>
+             <span class="token operator">++</span>i<span class="token punctuation">;</span>
+             <span class="token operator">++</span>j<span class="token punctuation">;</span> 
+          <span class="token punctuation">}</span> 
+          <span class="token keyword">else</span>             <span class="token comment" spellcheck="true">/* 指针后退重新开始匹配 */</span>
+               j <span class="token operator">=</span> next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* j退回合适的位置，i值不变 */</span>
+        <span class="token comment" spellcheck="true">/**前面的朴素的是：
+        i=i-j+2; //返回i下一个位置
+        j=1; //j回到头
+               **/</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
+        <span class="token keyword">return</span> i<span class="token operator">-</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> 
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>其实相对于朴素算法来说，就是增加了得到next数组，和在两字母相等的时候的判断增加j==0的条件，和回头的时候，只是变化j为next[j]，而i不变</p>
+<h2 id="5-7-4-KMP算法改进"><a href="#5-7-4-KMP算法改进" class="headerlink" title="5.7.4 KMP算法改进"></a>5.7.4 KMP算法改进</h2><h3 id="1-KMP算法还存在什么缺陷呢？"><a href="#1-KMP算法还存在什么缺陷呢？" class="headerlink" title="1.KMP算法还存在什么缺陷呢？"></a>1.KMP算法还存在什么缺陷呢？</h3><p>主要是当字符串出现重复的字符的时候，会出现重复回溯的情况</p>
+<p>例子：</p>
+<p>如果我们的主串S=”aaaabcde”，子串T=”aaaax”，其next数组值分别为012345，</p>
+<p><img src="https://i.loli.net/2019/10/13/dTDk63mKNGz1wUf.jpg" alt></p>
+<p>在开始时，当 i=5、j=5时，我们发现”b”与”a”不相等，如图5-7-6的①，因此j=next[5]=4，如图中的②，此时”b”与第4位置的”a”依然不等，j=next[4}=3。如图中的③，接着依次是④⑤，直到j=next[l]=0时，根据算法，此时i++、j++，得到i=6、j=l如图中的⑥。</p>
+<p>我们发现，当中的②③④⑤步骤，其实是多余的判断</p>
+<p><strong>怎么解决呢？</strong></p>
+<p>由于T串的第二、三、四、五位置的字符<strong>都与首位的 “a” 相等</strong>，那么可以用首位 next[l]的值去<strong>取代与它相等的字符</strong>后续next[j]的值，这是个很好的办法。因此我们对求next函数进行了改良，改良后的叫nextval。</p>
+<p>这就是nextval的由来了</p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h2 id="5-7-5-nextval数组值推导"><a href="#5-7-5-nextval数组值推导" class="headerlink" title="5.7.5 nextval数组值推导"></a>5.7.5 nextval数组值推导</h2><blockquote>
+<p>举例子来说明比较简单</p>
+</blockquote>
+<h3 id="1-T-”ababaaaba”"><a href="#1-T-”ababaaaba”" class="headerlink" title="1. T=”ababaaaba”"></a>1. T=”ababaaaba”</h3><p><img src="https://s2.ax1x.com/2019/10/13/uv6ddH.png" alt="uv6ddH.png"></p>
+<ul>
+<li>1)当j=1时。nextval[1]=0;</li>
+<li>2)当j=2时，因第二位字符”b”的next值是1，而第一位就是”a”，他们不相等，所以nextval[2]=next[2]=1，维持原值。</li>
+<li>3)当j=3时，因为第三位字符”a”的next值为1，所以与第一位的”a”比较得知它们相等，所以nextval[3]=nextval[1]=0；如图5-7-7所示。</li>
+</ul>
+<p><a href="https://imgchr.com/i/uvclnS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/10/13/uvclnS.png" alt="uvclnS.png"></a></p>
+<ul>
+<li><p>4)当j=4时，第四位的字符”b”，next值为2，所以与第二位的”b”相比较得到结果是相等，因此nextval[4]=nextval[2]=1；如图5-7-8所示。</p>
+</li>
+<li><p>5)当j=5时，next值为3，第五个字符”a”与第三个字符”a”相等，因此nextval[5]=nextval[3]=0;</p>
+</li>
+<li><p>6)当j=6时，next值为4，第六个字符”a”与第四个字符”b”不相等，因此nextval[6]=4;</p>
+</li>
+<li><p>7)当j=7时，next值为2，第七个字符”a”与第二个字符”b”不相等，因此nextval[7]=2;</p>
+</li>
+<li><p>8)当j=8时，next值为2，第八个字符”b”与第二个字符”b”相等，因此nextval[8]=nextval[2]=1;</p>
+</li>
+<li><p>9)当j=9时，next值为3，第九个字符”a”与第三个字符”a”相等，因此nextval[9]=nextval[3]=1。</p>
+</li>
+</ul>
+<h3 id="2-T-”aaaaaaaab”（如表5-7-6）"><a href="#2-T-”aaaaaaaab”（如表5-7-6）" class="headerlink" title="2.T=”aaaaaaaab”（如表5-7-6）"></a>2.T=”aaaaaaaab”（如表5-7-6）</h3><p><img src="https://s2.ax1x.com/2019/10/13/uvg4x0.png" alt="uvg4x0.png"></p>
+<ul>
+<li>1)当j=1时，nextval[1]=0;</li>
+<li>2)当j=2时，next值为1，第二个字符与第一个字符相等，所以nextval[2]=nextval[1]=0;</li>
+<li>3)同样的道理，其后都为0….;</li>
+<li>4)当j=9时，next值为8，第九个字符”b”与第八个字符”a”不相等，所以nextval[9]=8。</li>
+</ul>
+<h3 id="3-总结改进的kmp算法："><a href="#3-总结改进的kmp算法：" class="headerlink" title="3.总结改进的kmp算法："></a>3.总结改进的kmp算法：</h3><p>其实思路：</p>
+<p>就是比较j位置的字符和next[j]位置的字符是否相等，如果相等的话，就nextval [ j ] = nextval [ next [ j ] ];他们的nextval值也相等</p>
+<h3 id="4-nextval-算法揭秘"><a href="#4-nextval-算法揭秘" class="headerlink" title="4.nextval 算法揭秘"></a>4.nextval 算法揭秘</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 求模式串T的next函数修正值并存入数组nextval */</span>
+<span class="token keyword">void</span> <span class="token function">get_nextval</span><span class="token punctuation">(</span>String T<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>nextval<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+      <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+      i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+      j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      nextval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 此处T[0]表示串T的长度 */</span>
+     <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* T[i]表示后缀的单个字符，T[j]表示前缀的单个字符 */</span>
+        <span class="token punctuation">{</span>
+              <span class="token operator">++</span>i<span class="token punctuation">;</span>  
+            <span class="token operator">++</span>j<span class="token punctuation">;</span>  
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span>T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">/* 若当前字符与前缀字符不同*/</span>
+                nextval<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 则当前的j为nextval在i位置的值*/</span> 
+              <span class="token keyword">else</span> 
+                nextval<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nextval<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 如果与前缀字符相同，则将前缀字符的 */</span>
+                                            <span class="token comment" spellcheck="true">/* nextval值赋值给nextval在i位置的值 */</span>
+        <span class="token punctuation">}</span> 
+        <span class="token keyword">else</span> 
+            j<span class="token operator">=</span> nextval<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* 若字符不相同，则j值回溯 */</span>
+      <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>使用的时候，只需要将”get_next(T,next)”;改为”get_nextval(T,next);”即可</p>
+
             </div>
             <hr/>
 
@@ -612,8 +813,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/11/ni-hao-hexo/">
-                    《你好，Hexo》
+            <a  href="/2019/10/13/5.7-kmp-mo-shi-pi-pei-suan-fa/">
+                    《5.7 KMP模式匹配算法》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -655,7 +856,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-11T20-49-59',
+        id: '2019-10-13T19-27-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -676,46 +877,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/11/ce-shi/">
+                <a href="/2019/10/13/5.7-kmp-mo-shi-pi-pei-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="你好，Hexo">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="5.7 KMP模式匹配算法">
                         
-                        <span class="card-title">你好，Hexo</span>
+                        <span class="card-title">5.7 KMP模式匹配算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试
+                            我们先假设一种情况，这种情况是子串**没有重复**的
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/test/" class="post-category">
-                                    test
+                            <a href="/categories/大话数据结构/" class="post-category">
+                                    大话数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/测试/">
-                        <span class="chip bg-color">测试</span>
+                    <a href="/tags/大话数据结构/">
+                        <span class="chip bg-color">大话数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/字符串/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
@@ -729,29 +936,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/11/9.3-mou-pao-pai-xu/">
+                <a href="/2019/10/13/5.6-po-su-de-mo-shi-pi-pei-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="5.6 朴素的模式匹配算法">
                         
-                        <span class="card-title">9.3 冒泡排序</span>
+                        <span class="card-title">5.6 朴素的模式匹配算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
-
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
-
+                            什么是朴素的模式匹配算法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
                             </span>
                         <span class="publish-author">
                             
@@ -772,8 +974,8 @@ void BubbleSort0(SqList *L)
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/冒泡排序/">
-                        <span class="chip bg-color">冒泡排序</span>
+                    <a href="/tags/字符串/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
