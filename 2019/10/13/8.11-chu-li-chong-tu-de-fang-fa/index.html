@@ -4,12 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="4.8 栈的应用, Hexo">
-    <meta name="description" content="4.8 栈的应用
-栈的应用有哪些呢？1.是递归 2.是后缀表示法
-
-1.为什么栈和递归有关系呢？其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构
-2.后缀表示法定义1.什么是后缀表示法其实就是不要括号的表示法，逆">
+    <meta name="keywords" content="8.11 处理冲突的方法, Hexo">
+    <meta name="description" content="8.11 处理冲突的方法8.11.1 开放定址法1.什么是开放定址法呢一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。
+公式为：fi(key) = (f(key)+di) MOD m (di">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>4.8 栈的应用 | Hexo</title>
+    <title>8.11 处理冲突的方法 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,13 +308,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        4.8 栈的应用
+                        8.11 处理冲突的方法
                     </div>
                 </div>
             </div>
@@ -433,8 +430,8 @@
                                 <span class="chip bg-color">大话数据结构</span>
                             </a>
                         
-                            <a href="/tags/栈/">
-                                <span class="chip bg-color">栈</span>
+                            <a href="/tags/哈希表/">
+                                <span class="chip bg-color">哈希表</span>
                             </a>
                         
                     </div>
@@ -473,13 +470,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="4-8-栈的应用"><a href="#4-8-栈的应用" class="headerlink" title="4.8 栈的应用"></a>4.8 栈的应用</h1><blockquote>
-<p>栈的应用有哪些呢？1.是递归 2.是后缀表示法</p>
-</blockquote>
-<h2 id="1-为什么栈和递归有关系呢？"><a href="#1-为什么栈和递归有关系呢？" class="headerlink" title="1.为什么栈和递归有关系呢？"></a>1.为什么栈和递归有关系呢？</h2><p>其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构</p>
-<h2 id="2-后缀表示法定义"><a href="#2-后缀表示法定义" class="headerlink" title="2.后缀表示法定义"></a>2.后缀表示法定义</h2><h3 id="1-什么是后缀表示法"><a href="#1-什么是后缀表示法" class="headerlink" title="1.什么是后缀表示法"></a>1.什么是后缀表示法</h3><p>其实就是不要括号的表示法，逆波兰法，</p>
-<h3 id="2-后缀表达式的计算是怎样的呢"><a href="#2-后缀表达式的计算是怎样的呢" class="headerlink" title="2.后缀表达式的计算是怎样的呢"></a>2.后缀表达式的计算是怎样的呢</h3><p>从左到右遍历，遇到数字就出栈，遇到符合，就将栈顶两个数字出栈进行运算，运算结果进栈</p>
-<h3 id="3-中缀表达式怎么转后缀表达式呢"><a href="#3-中缀表达式怎么转后缀表达式呢" class="headerlink" title="3.中缀表达式怎么转后缀表达式呢"></a>3.中缀表达式怎么转后缀表达式呢</h3><p>如果是数字，直接出栈，如果是符号的话，和栈顶符号进行比较，如果优先级大于栈顶符号的话，就入栈，如果优先级小于栈顶符号或者是右括号的话，就依次出栈（右括号的话，出栈到左括号）</p>
+                <h1 id="8-11-处理冲突的方法"><a href="#8-11-处理冲突的方法" class="headerlink" title="8.11 处理冲突的方法"></a>8.11 处理冲突的方法</h1><h2 id="8-11-1-开放定址法"><a href="#8-11-1-开放定址法" class="headerlink" title="8.11.1 开放定址法"></a>8.11.1 开放定址法</h2><h3 id="1-什么是开放定址法呢"><a href="#1-什么是开放定址法呢" class="headerlink" title="1.什么是开放定址法呢"></a>1.什么是开放定址法呢</h3><p>一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p>
+<h3 id="公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1"><a href="#公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1" class="headerlink" title="公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)"></a>公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)</h3><h3 id="2-什么是线性探测法"><a href="#2-什么是线性探测法" class="headerlink" title="2.什么是线性探测法"></a>2.什么是线性探测法</h3><p>其实就是按顺序找下去地定址</p>
+<h3 id="3-什么是堆积"><a href="#3-什么是堆积" class="headerlink" title="3.什么是堆积"></a>3.什么是堆积</h3><p>其实就是冲突的连环出现，我原本a有冲突，a的冲突解决了，b又和a有冲突了，本来都不是同义词却需要争夺一个地址的叫做堆积</p>
+<h3 id="4-什么是二次探测法"><a href="#4-什么是二次探测法" class="headerlink" title="4.什么是二次探测法"></a>4.什么是二次探测法</h3><p>其实就是增加了平方和正负运算，</p>
+<p>fi(key) = (f(key)+di) MOD m (di = 1 2, -1 2, 2 2, -2 2,……, q 2, -q 2, q &lt;= m/2) 这里的是指平方</p>
+<h3 id="5-什么是随机探测法"><a href="#5-什么是随机探测法" class="headerlink" title="5.什么是随机探测法"></a>5.什么是随机探测法</h3><p>对于位移量 di 采用随机函数计算得到，我们称之为随机探测法。</p>
+<h3 id="6-什么是伪随机数"><a href="#6-什么是伪随机数" class="headerlink" title="6.什么是伪随机数"></a>6.什么是伪随机数</h3><p>其实就是由随机种子按照某种随机算法，生成的数，</p>
+<p>随机种子是以随机数作为对象的以真随机数（种子）为初始条件的随机数。一般以系统时间作为随机种子</p>
+<h2 id="8-11-2-再散列函数法"><a href="#8-11-2-再散列函数法" class="headerlink" title="8.11.2 再散列函数法"></a>8.11.2 再散列函数法</h2><p>其实就是随机调用不同的散列函数</p>
+<h2 id="8-11-3-链地址法"><a href="#8-11-3-链地址法" class="headerlink" title="8.11.3 链地址法"></a>8.11.3 链地址法</h2><p>就是在冲突的地址里面，生成1个链表，类似于HashMap</p>
+<h2 id="8-11-4-公共溢出区法"><a href="#8-11-4-公共溢出区法" class="headerlink" title="8.11.4 公共溢出区法"></a>8.11.4 公共溢出区法</h2><p>其实就是把所有冲突的关键词存到一个公共区，查找的时候，当在普通区查不到，就到公共溢出区查</p>
 
             </div>
             <hr/>
@@ -640,8 +641,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/4.8-zhan-de-ying-yong/">
-                    《4.8 栈的应用》
+            <a  href="/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/">
+                    《8.11 处理冲突的方法》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -683,7 +684,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T19-59-59',
+        id: '2019-10-13T20-08-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -708,19 +709,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/13/4.7-zhan-de-zuo-yong/">
+                <a href="/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="4.7 栈的作用">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="8.12 散列表查找实现">
                         
-                        <span class="card-title">4.7 栈的作用</span>
+                        <span class="card-title">8.12 散列表查找实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            为什么要用栈呢？
+                            散列表查找算法实现
                         
                     </div>
                     <div class="publish-info">
@@ -746,8 +747,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/栈/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/哈希表/">
+                        <span class="chip bg-color">哈希表</span>
                     </a>
                     
                 </div>
@@ -761,19 +762,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/">
+                <a href="/2019/10/13/8.10-san-lie-han-shu-de-gou-zao-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="4.6 栈的链式存储结构及实现">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="8.10 散列函数的构造方法">
                         
-                        <span class="card-title">4.6 栈的链式存储结构及实现</span>
+                        <span class="card-title">8.10 散列函数的构造方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是链栈呢
+                            什么才是好的散列函数呢？
                         
                     </div>
                     <div class="publish-info">
@@ -799,8 +800,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/栈/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/哈希表/">
+                        <span class="chip bg-color">哈希表</span>
                     </a>
                     
                 </div>
