@@ -4,12 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="5.3 串的比较, Hexo">
-    <meta name="description" content="5.3 串的比较1.怎么进行串的比较呢？举例子：
-
-“hap”&amp;lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大
-
-”hpaaa“&amp;lt;”hpb”,因为前2个字母均相同，但">
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="4.3 栈的顺序存储结构及实现1.栈的结构定义typedef int SElemType;
+typedef struct
+{
+    SElemType data[MAXSIZE];
+    int top;  /*用于栈顶指针*/
+}Sq">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>5.3 串的比较 | Hexo</title>
+    <title>Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,13 +312,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        5.3 串的比较
+                        
                     </div>
                 </div>
             </div>
@@ -427,29 +428,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/大话数据结构/">
-                                <span class="chip bg-color">大话数据结构</span>
-                            </a>
-                        
-                            <a href="/tags/字符串/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                大话数据结构
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -473,14 +457,33 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p>
-<ol>
-<li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p>
-</li>
-<li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p>
-<p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p>
-</li>
-</ol>
+                <h1 id="4-3-栈的顺序存储结构及实现"><a href="#4-3-栈的顺序存储结构及实现" class="headerlink" title="4.3 栈的顺序存储结构及实现"></a>4.3 栈的顺序存储结构及实现</h1><h2 id="1-栈的结构定义"><a href="#1-栈的结构定义" class="headerlink" title="1.栈的结构定义"></a>1.栈的结构定义</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">int</span> SElemType<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    SElemType data<span class="token punctuation">[</span>MAXSIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> top<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/*用于栈顶指针*/</span>
+<span class="token punctuation">}</span>SqStack<span class="token punctuation">;</span></code></pre>
+<h2 id="2-进栈操作"><a href="#2-进栈操作" class="headerlink" title="2.进栈操作"></a>2.进栈操作</h2><pre class=" language-c"><code class="language-c">Status <span class="token function">Push</span><span class="token punctuation">(</span>SqStack <span class="token operator">*</span>S <span class="token punctuation">,</span>SElemType e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top<span class="token operator">==</span>MAXSIZE<span class="token number">-1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//栈满</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+    S<span class="token operator">-></span>top<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//栈顶指针增加</span>
+    S<span class="token operator">-></span>data<span class="token punctuation">[</span>S<span class="token operator">-></span>top<span class="token punctuation">]</span><span class="token operator">=</span>e<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将新插入元素赋值给栈顶空间</span>
+    <span class="token keyword">return</span> Ok<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span></code></pre>
+<h2 id="3-出栈操作"><a href="#3-出栈操作" class="headerlink" title="3.出栈操作"></a>3.出栈操作</h2><pre class=" language-c"><code class="language-c">Status <span class="token function">Pop</span><span class="token punctuation">(</span>SqStack <span class="token operator">*</span>S<span class="token punctuation">,</span>SElemType <span class="token operator">*</span>e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> error<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">*</span>e<span class="token operator">=</span>S<span class="token operator">-></span>data<span class="token punctuation">[</span>S<span class="token operator">-></span>top<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+    S<span class="token operator">-></span>top<span class="token operator">--</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//栈顶指针减1 </span>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -641,8 +644,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/5.3-chuan-de-bi-jiao/">
-                    《5.3 串的比较》
+            <a  href="/2019/10/13/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/">
+                    《》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -684,7 +687,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T19-22-59',
+        id: '2019-10-13T19-52-21',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -709,19 +712,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/">
+                <a href="/2019/10/13/di-4-zhang-zhan-he-dui-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="5.5 串的存储结构">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="第4章 栈和队列 目录">
                         
-                        <span class="card-title">5.5 串的存储结构</span>
+                        <span class="card-title">第4章 栈和队列 目录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            串的顺序存储与普通的顺序存储（数组）有什么区别
+                            栈和队列
                         
                     </div>
                     <div class="publish-info">
@@ -747,8 +750,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/字符串/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/第4章-栈和队列/">
+                        <span class="chip bg-color">第4章 栈和队列</span>
                     </a>
                     
                 </div>
@@ -762,19 +765,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/13/4.10-dui-lie-de-ding-yi/">
+                <a href="/2019/10/13/5.7-kmp-mo-shi-pi-pei-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="4.10 队列的定义">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="5.7 KMP模式匹配算法">
                         
-                        <span class="card-title">4.10 队列的定义</span>
+                        <span class="card-title">5.7 KMP模式匹配算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是队列呢
+                            我们先假设一种情况，这种情况是子串**没有重复**的
                         
                     </div>
                     <div class="publish-info">
@@ -800,8 +803,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/队列/">
-                        <span class="chip bg-color">队列</span>
+                    <a href="/tags/字符串/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
