@@ -46,11 +46,11 @@
   </entry>
   
   <entry>
-    <title>8.12 散列表查找实现</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/</id>
+    <title>8.11 处理冲突的方法</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/</id>
     <published>2019-10-13T12:08:59.000Z</published>
-    <updated>2019-10-13T12:24:06.116Z</updated>
+    <updated>2019-10-13T12:23:46.177Z</updated>
     
     <summary type="html">
     
@@ -58,7 +58,7 @@
       
         
         
-          &lt;h1 id=&quot;8-12-散列表查找实现&quot;&gt;&lt;a href=&quot;#8-12-散列表查找实现&quot; class=&quot;headerlink&quot; title=&quot;8.12 散列表查找实现&quot;&gt;&lt;/a&gt;8.12 散列表查找实现&lt;/h1&gt;&lt;h2 id=&quot;8-12-1-散列表查找算法实现&quot;&gt;&lt;a
+          &lt;h1 id=&quot;8-11-处理冲突的方法&quot;&gt;&lt;a href=&quot;#8-11-处理冲突的方法&quot; class=&quot;headerlink&quot; title=&quot;8.11 处理冲突的方法&quot;&gt;&lt;/a&gt;8.11 处理冲突的方法&lt;/h1&gt;&lt;h2 id=&quot;8-11-1-开放定址法&quot;&gt;&lt;a
         
       
     
@@ -75,11 +75,11 @@
   </entry>
   
   <entry>
-    <title>8.11 处理冲突的方法</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/</id>
+    <title>8.12 散列表查找实现</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/</id>
     <published>2019-10-13T12:08:59.000Z</published>
-    <updated>2019-10-13T12:23:46.177Z</updated>
+    <updated>2019-10-13T12:24:06.116Z</updated>
     
     <summary type="html">
     
@@ -87,7 +87,7 @@
       
         
         
-          &lt;h1 id=&quot;8-11-处理冲突的方法&quot;&gt;&lt;a href=&quot;#8-11-处理冲突的方法&quot; class=&quot;headerlink&quot; title=&quot;8.11 处理冲突的方法&quot;&gt;&lt;/a&gt;8.11 处理冲突的方法&lt;/h1&gt;&lt;h2 id=&quot;8-11-1-开放定址法&quot;&gt;&lt;a
+          &lt;h1 id=&quot;8-12-散列表查找实现&quot;&gt;&lt;a href=&quot;#8-12-散列表查找实现&quot; class=&quot;headerlink&quot; title=&quot;8.12 散列表查找实现&quot;&gt;&lt;/a&gt;8.12 散列表查找实现&lt;/h1&gt;&lt;h2 id=&quot;8-12-1-散列表查找算法实现&quot;&gt;&lt;a
         
       
     
@@ -191,11 +191,11 @@
   </entry>
   
   <entry>
-    <title>4.7 栈的作用</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/</id>
+    <title>4.8 栈的应用</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/</id>
     <published>2019-10-13T11:59:59.000Z</published>
-    <updated>2019-10-13T11:59:28.271Z</updated>
+    <updated>2019-10-13T12:00:12.868Z</updated>
     
     <summary type="html">
     
@@ -203,7 +203,8 @@
       
         
         
-          &lt;h1 id=&quot;4-7-栈的作用&quot;&gt;&lt;a href=&quot;#4-7-栈的作用&quot; class=&quot;headerlink&quot; title=&quot;4.7 栈的作用&quot;&gt;&lt;/a&gt;4.7 栈的作用&lt;/h1&gt;&lt;h2 id=&quot;为什么要用栈呢？&quot;&gt;&lt;a href=&quot;#为什么要用栈呢？&quot;
+          &lt;h1 id=&quot;4-8-栈的应用&quot;&gt;&lt;a href=&quot;#4-8-栈的应用&quot; class=&quot;headerlink&quot; title=&quot;4.8 栈的应用&quot;&gt;&lt;/a&gt;4.8 栈的应用&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;栈的应用有哪些呢？1.是递归
         
       
     
@@ -220,11 +221,11 @@
   </entry>
   
   <entry>
-    <title>4.8 栈的应用</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/</id>
+    <title>4.7 栈的作用</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/</id>
     <published>2019-10-13T11:59:59.000Z</published>
-    <updated>2019-10-13T12:00:12.868Z</updated>
+    <updated>2019-10-13T11:59:28.271Z</updated>
     
     <summary type="html">
     
@@ -232,8 +233,7 @@
       
         
         
-          &lt;h1 id=&quot;4-8-栈的应用&quot;&gt;&lt;a href=&quot;#4-8-栈的应用&quot; class=&quot;headerlink&quot; title=&quot;4.8 栈的应用&quot;&gt;&lt;/a&gt;4.8 栈的应用&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;栈的应用有哪些呢？1.是递归
+          &lt;h1 id=&quot;4-7-栈的作用&quot;&gt;&lt;a href=&quot;#4-7-栈的作用&quot; class=&quot;headerlink&quot; title=&quot;4.7 栈的作用&quot;&gt;&lt;/a&gt;4.7 栈的作用&lt;/h1&gt;&lt;h2 id=&quot;为什么要用栈呢？&quot;&gt;&lt;a href=&quot;#为什么要用栈呢？&quot;
         
       
     
