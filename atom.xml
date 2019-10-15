@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2019-10-14T09:08:30.136Z</updated>
+  <updated>2019-10-15T08:32:58.382Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>6.4 树的存储结构</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</id>
+    <published>2019-10-15T08:32:59.000Z</published>
+    <updated>2019-10-15T08:32:58.382Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;6-4-树的存储结构&quot;&gt;&lt;a href=&quot;#6-4-树的存储结构&quot; class=&quot;headerlink&quot; title=&quot;6.4 树的存储结构&quot;&gt;&lt;/a&gt;6.4 树的存储结构&lt;/h1&gt;&lt;h2 id=&quot;6-4-1-双亲表示法&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>6.3 树的抽象数据类型</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</id>
+    <published>2019-10-15T08:32:59.000Z</published>
+    <updated>2019-10-15T08:32:55.840Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;6-3-树的抽象数据类型&quot;&gt;&lt;a href=&quot;#6-3-树的抽象数据类型&quot; class=&quot;headerlink&quot; title=&quot;6.3 树的抽象数据类型&quot;&gt;&lt;/a&gt;6.3 树的抽象数据类型&lt;/h1&gt;&lt;h2 id=&quot;如图所示&quot;&gt;&lt;a href=&quot;#如图所示&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>6.2 树的定义</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.2-shu-de-ding-yi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/15/6.2-shu-de-ding-yi/</id>
+    <published>2019-10-15T08:31:59.000Z</published>
+    <updated>2019-10-15T08:33:02.466Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;6-2-树的定义&quot;&gt;&lt;a href=&quot;#6-2-树的定义&quot; class=&quot;headerlink&quot; title=&quot;6.2 树的定义&quot;&gt;&lt;/a&gt;6.2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>4.3 栈的顺序存储结构及实现</title>
@@ -46,11 +133,11 @@
   </entry>
   
   <entry>
-    <title>8.11 处理冲突的方法</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/</id>
+    <title>8.12 散列表查找实现</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/</id>
     <published>2019-10-13T12:08:59.000Z</published>
-    <updated>2019-10-13T12:23:46.177Z</updated>
+    <updated>2019-10-13T12:24:06.116Z</updated>
     
     <summary type="html">
     
@@ -58,7 +145,7 @@
       
         
         
-          &lt;h1 id=&quot;8-11-处理冲突的方法&quot;&gt;&lt;a href=&quot;#8-11-处理冲突的方法&quot; class=&quot;headerlink&quot; title=&quot;8.11 处理冲突的方法&quot;&gt;&lt;/a&gt;8.11 处理冲突的方法&lt;/h1&gt;&lt;h2 id=&quot;8-11-1-开放定址法&quot;&gt;&lt;a
+          &lt;h1 id=&quot;8-12-散列表查找实现&quot;&gt;&lt;a href=&quot;#8-12-散列表查找实现&quot; class=&quot;headerlink&quot; title=&quot;8.12 散列表查找实现&quot;&gt;&lt;/a&gt;8.12 散列表查找实现&lt;/h1&gt;&lt;h2 id=&quot;8-12-1-散列表查找算法实现&quot;&gt;&lt;a
         
       
     
@@ -75,11 +162,11 @@
   </entry>
   
   <entry>
-    <title>8.12 散列表查找实现</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/</id>
+    <title>8.11 处理冲突的方法</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/</id>
     <published>2019-10-13T12:08:59.000Z</published>
-    <updated>2019-10-13T12:24:06.116Z</updated>
+    <updated>2019-10-13T12:23:46.177Z</updated>
     
     <summary type="html">
     
@@ -87,7 +174,7 @@
       
         
         
-          &lt;h1 id=&quot;8-12-散列表查找实现&quot;&gt;&lt;a href=&quot;#8-12-散列表查找实现&quot; class=&quot;headerlink&quot; title=&quot;8.12 散列表查找实现&quot;&gt;&lt;/a&gt;8.12 散列表查找实现&lt;/h1&gt;&lt;h2 id=&quot;8-12-1-散列表查找算法实现&quot;&gt;&lt;a
+          &lt;h1 id=&quot;8-11-处理冲突的方法&quot;&gt;&lt;a href=&quot;#8-11-处理冲突的方法&quot; class=&quot;headerlink&quot; title=&quot;8.11 处理冲突的方法&quot;&gt;&lt;/a&gt;8.11 处理冲突的方法&lt;/h1&gt;&lt;h2 id=&quot;8-11-1-开放定址法&quot;&gt;&lt;a
         
       
     
@@ -507,64 +594,6 @@
       <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="队列" scheme="https://lovelifeeveryday.github.io/tags/%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>9.2 排序的基本概念和分类</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/11/9.2-pai-xu-de-ji-ben-gai-nian-he-fen-lei/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/11/9.2-pai-xu-de-ji-ben-gai-nian-he-fen-lei/</id>
-    <published>2019-10-11T12:49:59.000Z</published>
-    <updated>2019-10-12T14:47:35.219Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;9-2-排序的基本概念和分类&quot;&gt;&lt;a href=&quot;#9-2-排序的基本概念和分类&quot; class=&quot;headerlink&quot; title=&quot;9.2 排序的基本概念和分类&quot;&gt;&lt;/a&gt;9.2 排序的基本概念和分类&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="排序" scheme="https://lovelifeeveryday.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>9.3 冒泡排序</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/11/9.3-mou-pao-pai-xu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/11/9.3-mou-pao-pai-xu/</id>
-    <published>2019-10-11T12:49:59.000Z</published>
-    <updated>2019-10-12T14:49:20.346Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;9-3-冒泡排序&quot;&gt;&lt;a href=&quot;#9-3-冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;9.3 冒泡排序&quot;&gt;&lt;/a&gt;9.3 冒泡排序&lt;/h1&gt;&lt;h2 id=&quot;9-3-1-什么是冒泡排序，最简单的冒泡排序&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="冒泡排序" scheme="https://lovelifeeveryday.github.io/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   

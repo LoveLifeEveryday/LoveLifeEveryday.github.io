@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>6.4 树的存储结构</title>
+      <link href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
+      <url>/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</url>
+      
+        <content type="html"><![CDATA[<h1 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h1><h2 id="6-4-1-双亲表示法"><a href="#6-4-1-双亲表示法" class="headerlink" title="6.4.1 双亲表示法"></a>6.4.1 双亲表示法</h2><blockquote><p>因为树一定有且仅有一个双亲。所以采用这种方法</p></blockquote><h3 id="1-容易找到双亲的方法"><a href="#1-容易找到双亲的方法" class="headerlink" title="1.容易找到双亲的方法"></a>1.容易找到双亲的方法</h3><h4 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h4><p>假设以一组连续空间存储树的结点，同时在每个结点中，附设一个位置指示其双亲结点到链表中的位置。</p><p><img src="https://i.loli.net/2019/10/13/vaocCM9NxWSphZu.jpg" alt></p><p>data存储数据，parent是指针域，存储双亲在数组中的下标</p><p>结构定义代码如下图：</p><p><img src="https://i.loli.net/2019/10/13/oBpdTj9gFhmEk5H.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/lTepUDu8MJjr7XO.jpg" alt></p><h4 id="2-树结构转化为表结构例子："><a href="#2-树结构转化为表结构例子：" class="headerlink" title="2.树结构转化为表结构例子："></a>2.树结构转化为表结构例子：</h4><p><img src="https://i.loli.net/2019/10/13/E2rKz7ODHl1sStU.jpg" alt></p><h4 id="3-缺点是什么"><a href="#3-缺点是什么" class="headerlink" title="3.缺点是什么"></a>3.缺点是什么</h4><p>就是如果想知道孩子是谁的话，就要遍历整个结构了</p><h3 id="2-容易找到孩子的方法"><a href="#2-容易找到孩子的方法" class="headerlink" title="2.容易找到孩子的方法"></a>2.容易找到孩子的方法</h3><blockquote><p>思路是增加1个长子域</p></blockquote><p>我们增加一个结点最左边孩子的域，不妨叫它长子域，这样就可以很容易得到结点的孩子。如果没有孩子的结点，这个长子域就设置为-1，如表6-4-3所示。</p><p><img src="https://i.loli.net/2019/10/13/cQ5uYq2sBzmULkW.jpg" alt></p><p>缺点是什么？</p><p>缺点是兄弟之间的关系难以确定</p><h3 id="3-容易区别兄弟之间的关系的方法"><a href="#3-容易区别兄弟之间的关系的方法" class="headerlink" title="3.容易区别兄弟之间的关系的方法"></a>3.容易区别兄弟之间的关系的方法</h3><p>可以增加一个右兄弟域来体现兄弟关系，也就是说，每一个结点如果它存在右兄弟，则记录下右兄弟的下标。同样的，如果右兄弟不存在，则赋值为-1，如表6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/qkBFrwnzp4PWOaA.jpg" alt></p><h3 id="4-要求同时关注双亲，孩子，兄弟怎么办？"><a href="#4-要求同时关注双亲，孩子，兄弟怎么办？" class="headerlink" title="4.要求同时关注双亲，孩子，兄弟怎么办？"></a>4.要求同时关注双亲，孩子，兄弟怎么办？</h3><p>还可以把次结构扩展为有双亲域、长子域、再有右兄弟域。</p><p><strong>存储结构的设计是一个非常灵活的过程。一个存储结构设计得是否合理，取决于基于该存储结构的运算是否适合，是否方便，时间复杂度好不好等</strong>。</p><h2 id="6-4-2-孩子表示法"><a href="#6-4-2-孩子表示法" class="headerlink" title="6.4.2 孩子表示法"></a>6.4.2 孩子表示法</h2><h3 id="1-当有多个孩子的时候怎么处理？"><a href="#1-当有多个孩子的时候怎么处理？" class="headerlink" title="1.当有多个孩子的时候怎么处理？"></a>1.当有多个孩子的时候怎么处理？</h3><p>考虑用多重链表，即<strong>每个结点有多个指针域</strong>，其中每个指针指向一棵子树的根结点，我们把这种方法叫做<strong>多重链表表示法</strong>。其实就是将他的孩子都用指针给指出来。</p><h3 id="2-方案1：以度数为指针域的个数（最大化处理）管够"><a href="#2-方案1：以度数为指针域的个数（最大化处理）管够" class="headerlink" title="2.方案1：以度数为指针域的个数（最大化处理）管够"></a>2.方案1：以度数为指针域的个数（最大化处理）管够</h3><p><img src="https://i.loli.net/2019/10/13/FNC9cw8eI4oHYbk.jpg" alt></p><p>缺点是：当度数相差很大的时候，浪费空间</p><h3 id="3-方案2：按需分配，省钱"><a href="#3-方案2：按需分配，省钱" class="headerlink" title="3.方案2：按需分配，省钱"></a>3.方案2：按需分配，省钱</h3><p>专门取一个位置来存储结点指针域的个数，如下图</p><p><img src="https://i.loli.net/2019/10/13/HJZ6vran4KcNido.jpg" alt></p><p>其中data为数据域，degree为度域，也就是存储该结点的孩子结点的个数，child1到childd为指针域，指向该结点的各个孩子的结点。</p><p><img src="https://i.loli.net/2019/10/13/OeYCjXUqdMIr7P9.jpg" alt></p><p>缺点：结构不统一，时间复杂度上升（相对方法1）</p><h3 id="4-孩子表示法"><a href="#4-孩子表示法" class="headerlink" title="4.孩子表示法"></a>4.孩子表示法</h3><blockquote><p>可以减少空指针的浪费和统一结构</p></blockquote><h4 id="1-孩子表示法是怎么样的？"><a href="#1-孩子表示法是怎么样的？" class="headerlink" title="1.孩子表示法是怎么样的？"></a>1.孩子表示法是怎么样的？</h4><p>其实是先将所有的结点都放在一个数组里面，然后再对每个结点的孩子建立一个单链表体现它们的关系</p><p>具体办法是：</p><p>把每个结点的<strong>孩子</strong>结点排列起来，以<strong>单链表</strong>作存储结构，则n个结点由n个孩子链表，如果是叶子结点则此单链表为空。然后<strong>n个头指针</strong>又<strong>组成</strong>一个<strong>线性表</strong>，采用顺序存储结构，存放进一个<strong>一维数组</strong>中，如图6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/cOhVGSHYCIi4zmT.jpg" alt></p><p>为此设计两种结构：</p><h4 id="2-孩子结点"><a href="#2-孩子结点" class="headerlink" title="2.孩子结点"></a>2.孩子结点</h4><p>其中child是数据域，用来存储某个结点在表头数组中的下标。next是指针域，用来存储指向某结点的下一个孩子结点的指针。</p><p><img src="https://i.loli.net/2019/10/13/ZF5ASGX6jP2lerh.jpg" alt></p><h4 id="3-表头结点："><a href="#3-表头结点：" class="headerlink" title="3.表头结点："></a>3.表头结点：</h4><p>其中data是数据域，存储某结点的数据信息。firstchild是头指针域，存储该结点的孩子链表的头指针。</p><p><img src="https://i.loli.net/2019/10/13/T8X7Vq2mdLBStne.jpg" alt></p><h4 id="4-结构定义代码是怎样？"><a href="#4-结构定义代码是怎样？" class="headerlink" title="4.结构定义代码是怎样？"></a>4.结构定义代码是怎样？</h4><p><img src="https://i.loli.net/2019/10/13/n81AjeyPLSHFZOJ.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/fbzy321usTEFK7j.jpg" alt></p><p>表头和孩子的结构都类似，都是数据域加上指针域</p><h4 id="5-可不可以和找到双亲呢？"><a href="#5-可不可以和找到双亲呢？" class="headerlink" title="5.可不可以和找到双亲呢？"></a>5.可不可以和找到双亲呢？</h4><p>其实就是在表头加上个双亲就行了</p><p><img src="https://i.loli.net/2019/10/13/KVEZJQpIFwWYL26.jpg" alt></p><h2 id="6-4-3-孩子兄弟表示法"><a href="#6-4-3-孩子兄弟表示法" class="headerlink" title="6.4.3 孩子兄弟表示法"></a>6.4.3 孩子兄弟表示法</h2><h3 id="1-什么是孩子兄弟表示法"><a href="#1-什么是孩子兄弟表示法" class="headerlink" title="1.什么是孩子兄弟表示法"></a>1.什么是孩子兄弟表示法</h3><p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。其实就是长子唯一，右兄弟也唯一。</p><p><img src="https://s2.ax1x.com/2019/10/13/ux5zGD.png" alt="ux5zGD.png"></p><p><img src="https://s2.ax1x.com/2019/10/13/uxIkZt.png" alt="uxIkZt.png"></p><h3 id="2-好处是什么？"><a href="#2-好处是什么？" class="headerlink" title="2.好处是什么？"></a>2.好处是什么？</h3><p>把复杂的树变成了二叉树</p><p><img src="https://s2.ax1x.com/2019/10/13/uxImRg.png" alt="uxImRg.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>6.3 树的抽象数据类型</title>
+      <link href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
+      <url>/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</url>
+      
+        <content type="html"><![CDATA[<h1 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h1><h2 id="如图所示"><a href="#如图所示" class="headerlink" title="如图所示"></a>如图所示</h2><p><img src="https://i.loli.net/2019/10/13/Sj47DBQyFYKublL.jpg" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>6.2 树的定义</title>
+      <link href="/2019/10/15/6.2-shu-de-ding-yi/"/>
+      <url>/2019/10/15/6.2-shu-de-ding-yi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="6-2-树的定义"><a href="#6-2-树的定义" class="headerlink" title="6.2 树的定义"></a>6.2 树的定义</h1><blockquote><p>树，个人觉得是一种从生活中抽象而成的数据结构，类似于我们现实生活中的树</p></blockquote><h2 id="树是什么？"><a href="#树是什么？" class="headerlink" title="树是什么？"></a>树是什么？</h2><h3 id="树（非空树），需要满足下面2个条件："><a href="#树（非空树），需要满足下面2个条件：" class="headerlink" title="树（非空树），需要满足下面2个条件："></a>树（非空树），需要满足下面2个条件：</h3><ol><li><strong>有且只有</strong>1个特点的节点的根结点</li><li>当n&gt;1时，其余结点可以分为m个<strong>互不相交</strong>的有限集，其中每个有限集本身又是树，成为子树</li></ol><p><img src="https://i.loli.net/2019/10/13/bLxwVNpzCcDsZhm.jpg" alt></p><h3 id="不是树的例子："><a href="#不是树的例子：" class="headerlink" title="不是树的例子："></a>不是树的例子：</h3><p><img src="https://i.loli.net/2019/10/13/Ui6tbdrL5MFJNKV.jpg" alt></p><h2 id="6-2-1-结点分类"><a href="#6-2-1-结点分类" class="headerlink" title="6.2.1 结点分类"></a>6.2.1 结点分类</h2><h3 id="1-什么是度"><a href="#1-什么是度" class="headerlink" title="1.什么是度"></a>1.什么是度</h3><p>结点拥有的子树数称为结点的度，度为0的结点称为叶结点，度不为0的结点称为非终端结点或分支结点</p><p>如图：</p><p><img src="https://i.loli.net/2019/10/13/H8nXLTfZOsewCAm.jpg" alt></p><h3 id="2-树的度是什么？"><a href="#2-树的度是什么？" class="headerlink" title="2.树的度是什么？"></a>2.树的度是什么？</h3><p>树内各结点的度的最大值,上图的度是3</p><h2 id="6-2-2-结点间关系"><a href="#6-2-2-结点间关系" class="headerlink" title="6.2.2 结点间关系"></a>6.2.2 结点间关系</h2><h3 id="1-什么是孩子，什么是双亲"><a href="#1-什么是孩子，什么是双亲" class="headerlink" title="1.什么是孩子，什么是双亲"></a>1.什么是孩子，什么是双亲</h3><p>A结点的<strong>子树的根结点</strong>B，是A的<strong>孩子</strong>，相应，A结点是B的<strong>双亲</strong>（为什么是双亲呢？因为对于结点来说，他的上面指向他自己的只有1个，双亲只有1个）</p><p>如图：</p><p><img src="https://i.loli.net/2019/10/13/xdh5MknpAriHlCb.jpg" alt></p><h3 id="2-什么是兄弟？什么是祖先？"><a href="#2-什么是兄弟？什么是祖先？" class="headerlink" title="2.什么是兄弟？什么是祖先？"></a>2.什么是兄弟？什么是祖先？</h3><p><strong>同一个双亲的孩子之间互称兄弟</strong>，<strong>结点的祖先是从根到该结点所经分支上的所有结点</strong>，简而言之就是，从上面来的指向它的结点的就是祖先</p><h2 id="6-2-3-树的其他相关概念"><a href="#6-2-3-树的其他相关概念" class="headerlink" title="6.2.3 树的其他相关概念"></a>6.2.3 树的其他相关概念</h2><h3 id="1-什么是树的层次？"><a href="#1-什么是树的层次？" class="headerlink" title="1.什么是树的层次？"></a>1.什么是树的层次？</h3><p>其实就是从根开始定义起，根为第一层，根的孩子为第二层。</p><p>如图：</p><p><img src="https://i.loli.net/2019/10/13/anqojCTQ1If5dg6.jpg" alt></p><h3 id="2-什么是树的深度？"><a href="#2-什么是树的深度？" class="headerlink" title="2.什么是树的深度？"></a>2.什么是树的深度？</h3><p><strong>树中结点的最大层次</strong></p><h3 id="3-什么是堂兄弟？"><a href="#3-什么是堂兄弟？" class="headerlink" title="3.什么是堂兄弟？"></a>3.什么是堂兄弟？</h3><p>就是双亲同层的结点，显然图6-2-6中的D、E、F是堂兄弟，</p><h3 id="4-什么是有序树"><a href="#4-什么是有序树" class="headerlink" title="4.什么是有序树"></a>4.什么是有序树</h3><p>如果将树中结点的各子树看成<strong>从左到右是有次序</strong>的，不能互换的，则称该树为有序树，否则称为无序树。</p><h3 id="5-什么是森林？"><a href="#5-什么是森林？" class="headerlink" title="5.什么是森林？"></a>5.什么是森林？</h3><p>是m(m&gt;=0)棵<strong>互不相交</strong>的<strong>树的集合</strong></p><h3 id="6-线性表和树的结构有什么不同？"><a href="#6-线性表和树的结构有什么不同？" class="headerlink" title="6.线性表和树的结构有什么不同？"></a>6.线性表和树的结构有什么不同？</h3><p><img src="https://i.loli.net/2019/10/13/ZRiJVHukgAo7K9Y.jpg" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.3 栈的顺序存储结构及实现</title>
+      <link href="/2019/10/14/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/"/>
+      <url>/2019/10/14/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-3-栈的顺序存储结构及实现"><a href="#4-3-栈的顺序存储结构及实现" class="headerlink" title="4.3 栈的顺序存储结构及实现"></a>4.3 栈的顺序存储结构及实现</h1><h2 id="1-栈的结构定义"><a href="#1-栈的结构定义" class="headerlink" title="1.栈的结构定义"></a>1.栈的结构定义</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">int</span> SElemType<span class="token punctuation">;</span><span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>    SElemType data<span class="token punctuation">[</span>MAXSIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">int</span> top<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/*用于栈顶指针*/</span><span class="token punctuation">}</span>SqStack<span class="token punctuation">;</span></code></pre><h2 id="2-进栈操作"><a href="#2-进栈操作" class="headerlink" title="2.进栈操作"></a>2.进栈操作</h2><pre class=" language-c"><code class="language-c">Status <span class="token function">Push</span><span class="token punctuation">(</span>SqStack <span class="token operator">*</span>S <span class="token punctuation">,</span>SElemType e<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top<span class="token operator">==</span>MAXSIZE<span class="token number">-1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//栈满</span>    <span class="token punctuation">{</span>        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    S<span class="token operator">-></span>top<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//栈顶指针增加</span>    S<span class="token operator">-></span>data<span class="token punctuation">[</span>S<span class="token operator">-></span>top<span class="token punctuation">]</span><span class="token operator">=</span>e<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将新插入元素赋值给栈顶空间</span>    <span class="token keyword">return</span> Ok<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="3-出栈操作"><a href="#3-出栈操作" class="headerlink" title="3.出栈操作"></a>3.出栈操作</h2><pre class=" language-c"><code class="language-c">Status <span class="token function">Pop</span><span class="token punctuation">(</span>SqStack <span class="token operator">*</span>S<span class="token punctuation">,</span>SElemType <span class="token operator">*</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span>    <span class="token keyword">return</span> error<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token operator">*</span>e<span class="token operator">=</span>S<span class="token operator">-></span>data<span class="token punctuation">[</span>S<span class="token operator">-></span>top<span class="token punctuation">]</span><span class="token punctuation">;</span>     S<span class="token operator">-></span>top<span class="token operator">--</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//栈顶指针减1 </span><span class="token punctuation">}</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>8.12 散列表查找实现</title>
+      <link href="/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/"/>
+      <url>/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="8-12-散列表查找实现"><a href="#8-12-散列表查找实现" class="headerlink" title="8.12 散列表查找实现"></a>8.12 散列表查找实现</h1><h2 id="8-12-1-散列表查找算法实现"><a href="#8-12-1-散列表查找算法实现" class="headerlink" title="8.12.1 散列表查找算法实现"></a>8.12.1 散列表查找算法实现</h2><h3 id="1-定义结构"><a href="#1-定义结构" class="headerlink" title="1.定义结构"></a>1.定义结构</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> OK 1</span><span class="token macro property">#<span class="token directive keyword">define</span> ERROR 0</span><span class="token macro property">#<span class="token directive keyword">define</span> TRUE 1</span><span class="token macro property">#<span class="token directive keyword">define</span> FALSE 0</span><span class="token macro property">#<span class="token directive keyword">define</span> MAXSIZE 100 </span><span class="token comment" spellcheck="true">/* 存储空间初始分配量 */</span><span class="token macro property">#<span class="token directive keyword">define</span> SUCCESS 1</span><span class="token macro property">#<span class="token directive keyword">define</span> UNSUCCESS 0</span><span class="token macro property">#<span class="token directive keyword">define</span> HASHSIZE 12 </span><span class="token comment" spellcheck="true">/* 定义散列表长为数组的长度 */</span><span class="token macro property">#<span class="token directive keyword">define</span> NULLKEY -32768 </span><span class="token keyword">typedef</span> <span class="token keyword">int</span> Status<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* Status是函数的类型,其值是函数结果状态代码，如OK等 */</span> <span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>   <span class="token keyword">int</span> <span class="token operator">*</span>elem<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 数据元素存储基址，动态分配数组 */</span>   <span class="token keyword">int</span> count<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  当前数据元素个数 */</span><span class="token punctuation">}</span>HashTable<span class="token punctuation">;</span></code></pre><h3 id="2-初始化"><a href="#2-初始化" class="headerlink" title="2.初始化"></a>2.初始化</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 初始化散列表 */</span>Status <span class="token function">InitHashTable</span><span class="token punctuation">(</span>HashTable <span class="token operator">*</span>H<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">int</span> i<span class="token punctuation">;</span>    m<span class="token operator">=</span>HASHSIZE<span class="token punctuation">;</span>    H<span class="token operator">-></span>count<span class="token operator">=</span>m<span class="token punctuation">;</span>    H<span class="token operator">-></span>elem<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>m<span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>m<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>        H<span class="token operator">-></span>elem<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>NULLKEY<span class="token punctuation">;</span>     <span class="token keyword">return</span> OK<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h3 id="3-散列函数"><a href="#3-散列函数" class="headerlink" title="3.散列函数"></a>3.散列函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 散列函数 */</span><span class="token keyword">int</span> <span class="token function">Hash</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">return</span> key <span class="token operator">%</span> m<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 除留余数法 */</span><span class="token punctuation">}</span></code></pre><h3 id="4-插入关键字进散列表"><a href="#4-插入关键字进散列表" class="headerlink" title="4./* 插入关键字进散列表 */"></a>4./* 插入关键字进散列表 */</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 插入关键字进散列表 */</span><span class="token keyword">void</span> <span class="token function">InsertHash</span><span class="token punctuation">(</span>HashTable <span class="token operator">*</span>H<span class="token punctuation">,</span><span class="token keyword">int</span> key<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">int</span> addr <span class="token operator">=</span> <span class="token function">Hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 求散列地址 */</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span>H<span class="token operator">-></span>elem<span class="token punctuation">[</span>addr<span class="token punctuation">]</span> <span class="token operator">!=</span> NULLKEY<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 如果不为空，则冲突 */</span>    <span class="token punctuation">{</span>        addr <span class="token operator">=</span> <span class="token punctuation">(</span>addr<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 开放定址法的线性探测 */</span>    <span class="token punctuation">}</span>    H<span class="token operator">-></span>elem<span class="token punctuation">[</span>addr<span class="token punctuation">]</span> <span class="token operator">=</span> key<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 直到有空位后插入关键字 */</span><span class="token punctuation">}</span></code></pre><h3 id="5-散列表查找关键字"><a href="#5-散列表查找关键字" class="headerlink" title="5.散列表查找关键字"></a>5.散列表查找关键字</h3><pre class=" language-c"><code class="language-c">Status <span class="token function">SearchHash</span><span class="token punctuation">(</span>HashTable H<span class="token punctuation">,</span><span class="token keyword">int</span> key<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">*</span>addr<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token operator">*</span>addr <span class="token operator">=</span> <span class="token function">Hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 求散列地址 */</span>    <span class="token keyword">while</span><span class="token punctuation">(</span>H<span class="token punctuation">.</span>elem<span class="token punctuation">[</span><span class="token operator">*</span>addr<span class="token punctuation">]</span> <span class="token operator">!=</span> key<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//当不是关键词,冲突了 </span>    <span class="token punctuation">{</span>        <span class="token operator">*</span>addr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>addr<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 开放定址法的线性探测 */</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>H<span class="token punctuation">.</span>elem<span class="token punctuation">[</span><span class="token operator">*</span>addr<span class="token punctuation">]</span> <span class="token operator">==</span> NULLKEY <span class="token operator">||</span> <span class="token operator">*</span>addr <span class="token operator">==</span> <span class="token function">Hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//当散列查找的话，查找的是空的话，说明没有了，因为是空的都不存 </span><span class="token comment" spellcheck="true">/* 如果循环回到原点 */</span>            <span class="token keyword">return</span> UNSUCCESS<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 则说明关键字不存在 */</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> SUCCESS<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>查找相对于插入，就多了个空和回头的判断</p><h2 id="8-12-2-散列表查找性能分析"><a href="#8-12-2-散列表查找性能分析" class="headerlink" title="8.12.2 散列表查找性能分析"></a>8.12.2 散列表查找性能分析</h2><h3 id="1-时间复杂度是多少"><a href="#1-时间复杂度是多少" class="headerlink" title="1.时间复杂度是多少"></a>1.时间复杂度是多少</h3><p>O（1）</p><h3 id="2-取决于什么因素？"><a href="#2-取决于什么因素？" class="headerlink" title="2.取决于什么因素？"></a>2.取决于什么因素？</h3><ul><li>是否均匀</li><li>处理冲突的方法</li><li>装填因子</li></ul><h3 id="3-什么是装填因子"><a href="#3-什么是装填因子" class="headerlink" title="3.什么是装填因子"></a>3.什么是装填因子</h3><p>就是用来衡量散列表的装满的程度的数字，记录个数/长度=装填因子</p><p>装填因子越大，表明产生冲突的可能性越大</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>8.11 处理冲突的方法</title>
+      <link href="/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/"/>
+      <url>/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="8-11-处理冲突的方法"><a href="#8-11-处理冲突的方法" class="headerlink" title="8.11 处理冲突的方法"></a>8.11 处理冲突的方法</h1><h2 id="8-11-1-开放定址法"><a href="#8-11-1-开放定址法" class="headerlink" title="8.11.1 开放定址法"></a>8.11.1 开放定址法</h2><h3 id="1-什么是开放定址法呢"><a href="#1-什么是开放定址法呢" class="headerlink" title="1.什么是开放定址法呢"></a>1.什么是开放定址法呢</h3><p>一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p><h3 id="公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1"><a href="#公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1" class="headerlink" title="公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)"></a>公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)</h3><h3 id="2-什么是线性探测法"><a href="#2-什么是线性探测法" class="headerlink" title="2.什么是线性探测法"></a>2.什么是线性探测法</h3><p>其实就是按顺序找下去地定址</p><h3 id="3-什么是堆积"><a href="#3-什么是堆积" class="headerlink" title="3.什么是堆积"></a>3.什么是堆积</h3><p>其实就是冲突的连环出现，我原本a有冲突，a的冲突解决了，b又和a有冲突了，本来都不是同义词却需要争夺一个地址的叫做堆积</p><h3 id="4-什么是二次探测法"><a href="#4-什么是二次探测法" class="headerlink" title="4.什么是二次探测法"></a>4.什么是二次探测法</h3><p>其实就是增加了平方和正负运算，</p><p>fi(key) = (f(key)+di) MOD m (di = 1 2, -1 2, 2 2, -2 2,……, q 2, -q 2, q &lt;= m/2) 这里的是指平方</p><h3 id="5-什么是随机探测法"><a href="#5-什么是随机探测法" class="headerlink" title="5.什么是随机探测法"></a>5.什么是随机探测法</h3><p>对于位移量 di 采用随机函数计算得到，我们称之为随机探测法。</p><h3 id="6-什么是伪随机数"><a href="#6-什么是伪随机数" class="headerlink" title="6.什么是伪随机数"></a>6.什么是伪随机数</h3><p>其实就是由随机种子按照某种随机算法，生成的数，</p><p>随机种子是以随机数作为对象的以真随机数（种子）为初始条件的随机数。一般以系统时间作为随机种子</p><h2 id="8-11-2-再散列函数法"><a href="#8-11-2-再散列函数法" class="headerlink" title="8.11.2 再散列函数法"></a>8.11.2 再散列函数法</h2><p>其实就是随机调用不同的散列函数</p><h2 id="8-11-3-链地址法"><a href="#8-11-3-链地址法" class="headerlink" title="8.11.3 链地址法"></a>8.11.3 链地址法</h2><p>就是在冲突的地址里面，生成1个链表，类似于HashMap</p><h2 id="8-11-4-公共溢出区法"><a href="#8-11-4-公共溢出区法" class="headerlink" title="8.11.4 公共溢出区法"></a>8.11.4 公共溢出区法</h2><p>其实就是把所有冲突的关键词存到一个公共区，查找的时候，当在普通区查不到，就到公共溢出区查</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>8.10 散列函数的构造方法</title>
+      <link href="/2019/10/13/8.10-san-lie-han-shu-de-gou-zao-fang-fa/"/>
+      <url>/2019/10/13/8.10-san-lie-han-shu-de-gou-zao-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="8-10-散列函数的构造方法"><a href="#8-10-散列函数的构造方法" class="headerlink" title="8.10 散列函数的构造方法"></a>8.10 散列函数的构造方法</h1><blockquote><p>什么才是好的散列函数呢？</p><ul><li>计算简单</li><li>地址分布均匀</li></ul></blockquote><h2 id="8-10-1-直接定址法"><a href="#8-10-1-直接定址法" class="headerlink" title="8.10.1.直接定址法"></a>8.10.1.直接定址法</h2><p>就是通过关键字的某个线性函数值来作为散列地址</p><p>例如：</p><p>f(key)=a*key+b</p><h3 id="1-优点是："><a href="#1-优点是：" class="headerlink" title="1.优点是："></a>1.优点是：</h3><p>简单，均匀，不会产生冲突</p><h3 id="2-缺点是："><a href="#2-缺点是：" class="headerlink" title="2.缺点是："></a>2.缺点是：</h3><p>需要事先知道关键字分布情况，</p><h3 id="3-适合什么？"><a href="#3-适合什么？" class="headerlink" title="3.适合什么？"></a>3.适合什么？</h3><p>查找数据量少且连续的，知道分布</p><h2 id><a href="#" class="headerlink" title></a></h2><h2 id="8-10-2-数字分析法"><a href="#8-10-2-数字分析法" class="headerlink" title="8.10.2 数字分析法"></a>8.10.2 数字分析法</h2><h3 id="1-什么是数字分析法呢"><a href="#1-什么是数字分析法呢" class="headerlink" title="1.什么是数字分析法呢"></a>1.什么是数字分析法呢</h3><p>其实就是找到数字分布的规律，然后抽取其中的不容易重复的一部分作为地址，例如手机号码的后4位</p><h3 id="2-适用什么？"><a href="#2-适用什么？" class="headerlink" title="2.适用什么？"></a>2.适用什么？</h3><p>位数大，知道分布</p><h2 id="8-10-3-平方取中法"><a href="#8-10-3-平方取中法" class="headerlink" title="8.10.3 平方取中法"></a>8.10.3 平方取中法</h2><h3 id="1-是什么意思呢"><a href="#1-是什么意思呢" class="headerlink" title="1.是什么意思呢"></a>1.是什么意思呢</h3><p>其实就是将数字平方后，取中间的3位数字，</p><h3 id="2-适用什么？-1"><a href="#2-适用什么？-1" class="headerlink" title="2.适用什么？"></a>2.适用什么？</h3><p>位数小，不知道分布</p><h2 id="8-10-4-折叠法"><a href="#8-10-4-折叠法" class="headerlink" title="8.10.4 折叠法"></a>8.10.4 折叠法</h2><h3 id="1-什么是折叠法"><a href="#1-什么是折叠法" class="headerlink" title="1.什么是折叠法"></a>1.什么是折叠法</h3><p>其实就是将关键字分割成位数相等的几部分，然后再叠加求和，取后3位为散列地址（散列表表长是3），有时候，可以一端向另一端折叠</p><p>例如：9876543210，变成：987+456+321=1566取后3位</p><h3 id="2-适用什么"><a href="#2-适用什么" class="headerlink" title="2.适用什么"></a>2.适用什么</h3><p>位数大，不知道分布</p><h2 id="8-10-5-除留余数法"><a href="#8-10-5-除留余数法" class="headerlink" title="8.10.5 除留余数法"></a>8.10.5 除留余数法</h2><h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1.是什么？"></a>1.是什么？</h3><p>其实就是除某个数取余，通常取小于或者等于表长的最大质数</p><p>例如:某散列表的长度为100，散列函数H(k)=k%P,则P通常情况下最好选择哪个呢？</p><p>A、91 B、93 C、97 D、99</p><p>选97</p><h2 id="8-10-6-随机数法"><a href="#8-10-6-随机数法" class="headerlink" title="8.10.6 随机数法"></a>8.10.6 随机数法</h2><h3 id="1-是什么"><a href="#1-是什么" class="headerlink" title="1.是什么"></a>1.是什么</h3><p>其实就是取随机数</p><p>random(key)</p><h3 id="2-适用范围"><a href="#2-适用范围" class="headerlink" title="2.适用范围"></a>2.适用范围</h3><p>其实就是关键字的长度不等的时候</p><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>怎么选择呢</p><p>其实考虑因素有几个</p><ul><li>计算地址的时间</li><li>关键字的长度</li><li>散列表的大小</li><li>分布情况</li><li>查找的概率</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>8.9 散列表查找（哈希表）概述</title>
+      <link href="/2019/10/13/8.9-san-lie-biao-cha-zhao-ha-xi-biao-gai-shu/"/>
+      <url>/2019/10/13/8.9-san-lie-biao-cha-zhao-ha-xi-biao-gai-shu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="8-9-散列表查找（哈希表）概述"><a href="#8-9-散列表查找（哈希表）概述" class="headerlink" title="8.9 散列表查找（哈希表）概述"></a>8.9 散列表查找（哈希表）概述</h1><h2 id="8-9-1-散列查找定义"><a href="#8-9-1-散列查找定义" class="headerlink" title="8.9.1 散列查找定义"></a>8.9.1 散列查找定义</h2><h3 id="1-什么是散列技术"><a href="#1-什么是散列技术" class="headerlink" title="1.什么是散列技术"></a>1.什么是散列技术</h3><p>散列技术其实是存储位置和关键字的对应关系，一个关键字对应1个存储位置</p><h3 id="2-什么是哈希表"><a href="#2-什么是哈希表" class="headerlink" title="2.什么是哈希表"></a>2.什么是哈希表</h3><p>采用散列技术将记录存储在一块连续的内存空间里面，这个连续的内存空间就是哈希表</p><h2 id="8-9-2-散列表查找步骤"><a href="#8-9-2-散列表查找步骤" class="headerlink" title="8.9.2 散列表查找步骤"></a>8.9.2 散列表查找步骤</h2><ul><li>存储的时候，首先用散列技术计算出地址，然后在计算出来的地址里面存数据</li><li>查找的时候，首先用散列技术计算关键字的地址，然后在地址里面取数据</li></ul><h3 id="2-适用范围是什么"><a href="#2-适用范围是什么" class="headerlink" title="2.适用范围是什么"></a>2.适用范围是什么</h3><p>不适合范围查找，例如18-35岁，最大岁</p><p>不适合一个关键词对应很多一样类别的查找，例如：男生，女生</p><h3 id="3-什么是冲突"><a href="#3-什么是冲突" class="headerlink" title="3.什么是冲突"></a>3.什么是冲突</h3><p>其实就是不同的关键字，但是他们的地址相同，就是冲突</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.12 循环队列</title>
+      <link href="/2019/10/13/4.12-xun-huan-dui-lie/"/>
+      <url>/2019/10/13/4.12-xun-huan-dui-lie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-12-循环队列"><a href="#4-12-循环队列" class="headerlink" title="4.12 循环队列"></a>4.12 循环队列</h1><h2 id="1-队列顺序存储的不足"><a href="#1-队列顺序存储的不足" class="headerlink" title="1.队列顺序存储的不足"></a>1.队列顺序存储的不足</h2><p>如果队头有个人走了的话，就需要所有元素向前移动，这样效率太低了</p><p>但是如果，队头有人走了的话，就把下一个人当作队头的话，原来的队头的位置又会空着，这样也不好</p><h2 id="2-什么是假溢出"><a href="#2-什么是假溢出" class="headerlink" title="2.什么是假溢出"></a>2.什么是假溢出</h2><p>其实就是队头没坐满，但是队尾已经没有位置了</p><h2 id="3-循环队列的定义是什么"><a href="#3-循环队列的定义是什么" class="headerlink" title="3.循环队列的定义是什么"></a>3.循环队列的定义是什么</h2><p>头尾相接的队列</p><h2 id="4-什么时候队列满了呢"><a href="#4-什么时候队列满了呢" class="headerlink" title="4.什么时候队列满了呢"></a>4.什么时候队列满了呢</h2><ol><li>设置一个标志flag,当front==rear，且flag=0时，队列为空，当front==rear,且flag=1的时候为满</li><li>不允许全满的情况出现，当队列满的时候，存在一个空闲单元</li><li>(rear+1)%QueneSize==front;这样的话，就可以综合rear&gt;front的情况了</li></ol><h2 id="5-计算队列的长度的方法"><a href="#5-计算队列的长度的方法" class="headerlink" title="5.计算队列的长度的方法"></a>5.计算队列的长度的方法</h2><p>(rear-front+QueueSize)%QueueSIze </p><h2 id="6-入队的代码是怎样的"><a href="#6-入队的代码是怎样的" class="headerlink" title="6.入队的代码是怎样的"></a>6.入队的代码是怎样的</h2><pre class=" language-c"><code class="language-c">Status <span class="token function">EnQuene</span><span class="token punctuation">(</span>SqQueue <span class="token operator">*</span>Q，QElemType e<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Q<span class="token operator">-></span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>MAXSIZE<span class="token operator">==</span>Q<span class="token operator">-></span>front<span class="token punctuation">)</span>        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//队列满了</span>    Q<span class="token operator">-></span>data<span class="token punctuation">[</span>Q<span class="token operator">-></span>rear<span class="token punctuation">]</span><span class="token operator">=</span>e<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将元素e赋值给队尾</span>    Q<span class="token operator">-></span>rear<span class="token operator">=</span><span class="token punctuation">(</span>Q<span class="token operator">-></span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>MAXSIZE<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将指针后移一位</span>    <span class="token keyword">return</span> Ok<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="7-出队的代码是怎样的"><a href="#7-出队的代码是怎样的" class="headerlink" title="7.出队的代码是怎样的"></a>7.出队的代码是怎样的</h2><pre class=" language-c"><code class="language-c">Status <span class="token function">EnQuene</span><span class="token punctuation">(</span>SqQueue <span class="token operator">*</span>Q，QElemType e<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Q<span class="token operator">-></span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>MAXSIZE<span class="token operator">==</span>Q<span class="token operator">-></span>front<span class="token punctuation">)</span>        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//队列满了</span>  <span class="token operator">*</span>e<span class="token operator">=</span>Q<span class="token operator">-></span>data<span class="token punctuation">[</span>Q<span class="token operator">-></span>front<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将队头元素赋值给e</span>    Q<span class="token operator">-></span>front<span class="token operator">=</span><span class="token punctuation">(</span>Q<span class="token operator">-></span>front<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>MAXSIZE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将front指针向后移动1位，如果到最后则到最前面</span><span class="token punctuation">}</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.8 栈的应用</title>
+      <link href="/2019/10/13/4.8-zhan-de-ying-yong/"/>
+      <url>/2019/10/13/4.8-zhan-de-ying-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-8-栈的应用"><a href="#4-8-栈的应用" class="headerlink" title="4.8 栈的应用"></a>4.8 栈的应用</h1><blockquote><p>栈的应用有哪些呢？1.是递归 2.是后缀表示法</p></blockquote><h2 id="1-为什么栈和递归有关系呢？"><a href="#1-为什么栈和递归有关系呢？" class="headerlink" title="1.为什么栈和递归有关系呢？"></a>1.为什么栈和递归有关系呢？</h2><p>其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构</p><h2 id="2-后缀表示法定义"><a href="#2-后缀表示法定义" class="headerlink" title="2.后缀表示法定义"></a>2.后缀表示法定义</h2><h3 id="1-什么是后缀表示法"><a href="#1-什么是后缀表示法" class="headerlink" title="1.什么是后缀表示法"></a>1.什么是后缀表示法</h3><p>其实就是不要括号的表示法，逆波兰法，</p><h3 id="2-后缀表达式的计算是怎样的呢"><a href="#2-后缀表达式的计算是怎样的呢" class="headerlink" title="2.后缀表达式的计算是怎样的呢"></a>2.后缀表达式的计算是怎样的呢</h3><p>从左到右遍历，遇到数字就出栈，遇到符合，就将栈顶两个数字出栈进行运算，运算结果进栈</p><h3 id="3-中缀表达式怎么转后缀表达式呢"><a href="#3-中缀表达式怎么转后缀表达式呢" class="headerlink" title="3.中缀表达式怎么转后缀表达式呢"></a>3.中缀表达式怎么转后缀表达式呢</h3><p>如果是数字，直接出栈，如果是符号的话，和栈顶符号进行比较，如果优先级大于栈顶符号的话，就入栈，如果优先级小于栈顶符号或者是右括号的话，就依次出栈（右括号的话，出栈到左括号）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.7 栈的作用</title>
+      <link href="/2019/10/13/4.7-zhan-de-zuo-yong/"/>
+      <url>/2019/10/13/4.7-zhan-de-zuo-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-7-栈的作用"><a href="#4-7-栈的作用" class="headerlink" title="4.7 栈的作用"></a>4.7 栈的作用</h1><h2 id="为什么要用栈呢？"><a href="#为什么要用栈呢？" class="headerlink" title="为什么要用栈呢？"></a>为什么要用栈呢？</h2><p>其实栈，简化了程序设计的问题，划分的了不同关注层次，使思考范围聚集于问题核心</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.6 栈的链式存储结构及实现</title>
+      <link href="/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/"/>
+      <url>/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-6-栈的链式存储结构及实现"><a href="#4-6-栈的链式存储结构及实现" class="headerlink" title="4.6 栈的链式存储结构及实现"></a>4.6 栈的链式存储结构及实现</h1><h2 id="1-什么是链栈呢"><a href="#1-什么是链栈呢" class="headerlink" title="1.什么是链栈呢"></a>1.什么是链栈呢</h2><p>其实很像链表，不过那个栈顶指针和头指针基本一样，所以对于链栈来说，不需要头指针，但是他其实方式是和链表的头插法是一样的，就是先来的在链表尾部，最后来的在链表头</p><h2 id="2-链栈的结构代码是怎样？"><a href="#2-链栈的结构代码是怎样？" class="headerlink" title="2.链栈的结构代码是怎样？"></a>2.链栈的结构代码是怎样？</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> StackNode<span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//这个是链表</span>    SElemType data<span class="token punctuation">;</span>    <span class="token keyword">struct</span> StackNode <span class="token operator">*</span>next<span class="token punctuation">;</span><span class="token punctuation">}</span>StackNode<span class="token punctuation">,</span><span class="token operator">*</span>LinkStackPtr<span class="token punctuation">;</span><span class="token keyword">typedef</span> <span class="token keyword">struct</span> LinkStack<span class="token punctuation">{</span>    LinkStackPtr top<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//栈顶指针</span>    <span class="token keyword">int</span> count<span class="token punctuation">;</span><span class="token punctuation">}</span>LinkStack<span class="token punctuation">;</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.5 两栈共享空间</title>
+      <link href="/2019/10/13/4.5-liang-zhan-gong-xiang-kong-jian/"/>
+      <url>/2019/10/13/4.5-liang-zhan-gong-xiang-kong-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-5-两栈共享空间"><a href="#4-5-两栈共享空间" class="headerlink" title="4.5 两栈共享空间"></a>4.5 两栈共享空间</h1><h2 id="1-栈的缺点"><a href="#1-栈的缺点" class="headerlink" title="1.栈的缺点"></a>1.栈的缺点</h2><p>就是必须事先确定存储空间的大小，</p><h2 id="2-解决上面的缺点怎么办？"><a href="#2-解决上面的缺点怎么办？" class="headerlink" title="2.解决上面的缺点怎么办？"></a>2.解决上面的缺点怎么办？</h2><p>用两栈共享空间来解决，就是用1个数组来存储两个栈，要求是2个栈的类型相同</p><p>一个栈底是数组的开端，另一个栈的栈底是数组的结尾，</p><h2 id="3-什么时候会满呢"><a href="#3-什么时候会满呢" class="headerlink" title="3.什么时候会满呢"></a>3.什么时候会满呢</h2><p>就是两个栈顶见面的时候，就是S-&gt;top+1==S-&gt;top2</p><h2 id="4-两栈共享空间的结构是什么呢？"><a href="#4-两栈共享空间的结构是什么呢？" class="headerlink" title="4.两栈共享空间的结构是什么呢？"></a>4.两栈共享空间的结构是什么呢？</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>    <span class="token keyword">int</span> data<span class="token punctuation">[</span>Max<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">int</span> top1<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//栈顶1</span>    <span class="token keyword">int</span> top2<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//栈顶2 </span><span class="token punctuation">}</span></code></pre><p>插入方法</p><pre class=" language-c"><code class="language-c">Status <span class="token function">Push</span><span class="token punctuation">(</span>SqDoubleStack <span class="token operator">*</span>S<span class="token punctuation">,</span>SElemType e<span class="token punctuation">,</span><span class="token keyword">int</span> number<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top1<span class="token operator">+</span><span class="token number">1</span><span class="token operator">==</span>S<span class="token operator">-></span>top2<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//栈满</span><span class="token keyword">if</span><span class="token punctuation">(</span>stackNumber<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//栈1中有元素进栈</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top1<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//空栈，溢出</span>    <span class="token punctuation">}</span>    S<span class="token operator">-></span>data<span class="token punctuation">[</span><span class="token operator">++</span>S<span class="token operator">-></span>top1<span class="token punctuation">]</span><span class="token operator">=</span>e<span class="token punctuation">;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>number<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//栈2中有元素进栈</span><span class="token punctuation">{</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>S<span class="token operator">-></span>top2<span class="token operator">==</span>MAX<span class="token punctuation">)</span>        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//空栈</span>       S<span class="token operator">-></span>data<span class="token punctuation">[</span><span class="token operator">--</span>S<span class="token operator">-></span>top2<span class="token punctuation">]</span><span class="token operator">=</span>e<span class="token punctuation">;</span><span class="token punctuation">}</span>     <span class="token punctuation">}</span></code></pre><p>出栈是</p><p>*e=S-&gt;data[S-&gt;top2++];</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.2 栈的定义</title>
+      <link href="/2019/10/13/4.2-zhan-de-ding-yi/"/>
+      <url>/2019/10/13/4.2-zhan-de-ding-yi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-2-栈的定义"><a href="#4-2-栈的定义" class="headerlink" title="4.2 栈的定义"></a>4.2 栈的定义</h1><h2 id="1-什么是栈呢"><a href="#1-什么是栈呢" class="headerlink" title="1.什么是栈呢"></a>1.什么是栈呢</h2><p>栈是限定只能在表尾进行操作的线性表</p><p>后进先出</p><h2 id="2-出栈的顺序只有1种吗？"><a href="#2-出栈的顺序只有1种吗？" class="headerlink" title="2.出栈的顺序只有1种吗？"></a>2.出栈的顺序只有1种吗？</h2><p>不是，有很多</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第4章 栈和队列 目录</title>
+      <link href="/2019/10/13/di-4-zhang-zhan-he-dui-lie/"/>
+      <url>/2019/10/13/di-4-zhang-zhan-he-dui-lie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第4章-栈和队列"><a href="#第4章-栈和队列" class="headerlink" title="第4章 栈和队列"></a>第4章 栈和队列</h1><h2 id="1-栈的定义"><a href="#1-栈的定义" class="headerlink" title="1.栈的定义"></a>1.栈的定义</h2><h2 id="2-抽象数据类型"><a href="#2-抽象数据类型" class="headerlink" title="2.抽象数据类型"></a>2.抽象数据类型</h2><h2 id="3-顺序存储结构及其实现"><a href="#3-顺序存储结构及其实现" class="headerlink" title="3.顺序存储结构及其实现"></a>3.顺序存储结构及其实现</h2><h2 id="4-两栈共享空间"><a href="#4-两栈共享空间" class="headerlink" title="4.两栈共享空间"></a>4.两栈共享空间</h2><h2 id="5-栈的链式存储结构及实现"><a href="#5-栈的链式存储结构及实现" class="headerlink" title="5.栈的链式存储结构及实现"></a>5.栈的链式存储结构及实现</h2><h2 id="6-栈的作用"><a href="#6-栈的作用" class="headerlink" title="6.栈的作用"></a>6.栈的作用</h2><h2 id="7-递归"><a href="#7-递归" class="headerlink" title="7.递归"></a>7.递归</h2><h2 id="8-四则运算表达式求值"><a href="#8-四则运算表达式求值" class="headerlink" title="8.四则运算表达式求值"></a>8.四则运算表达式求值</h2><h2 id="9-队列定义"><a href="#9-队列定义" class="headerlink" title="9.队列定义"></a>9.队列定义</h2><h2 id="10-队列抽象数据类型"><a href="#10-队列抽象数据类型" class="headerlink" title="10.队列抽象数据类型"></a>10.队列抽象数据类型</h2><h2 id="11-循环队列"><a href="#11-循环队列" class="headerlink" title="11.循环队列"></a>11.循环队列</h2><h2 id="12-链式存储结构及其实现"><a href="#12-链式存储结构及其实现" class="headerlink" title="12.链式存储结构及其实现"></a>12.链式存储结构及其实现</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 第4章 栈和队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.7 KMP模式匹配算法</title>
+      <link href="/2019/10/13/5.7-kmp-mo-shi-pi-pei-suan-fa/"/>
+      <url>/2019/10/13/5.7-kmp-mo-shi-pi-pei-suan-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-7-KMP模式匹配算法"><a href="#5-7-KMP模式匹配算法" class="headerlink" title="5.7 KMP模式匹配算法"></a>5.7 KMP模式匹配算法</h1><blockquote><p>什么是KMP模式匹配算法?</p><p>其实就是1个模式匹配算法，<strong>大大避免重复遍历</strong>，简称<strong>KMP算法</strong></p></blockquote><h2 id="5-7-1-算法原理"><a href="#5-7-1-算法原理" class="headerlink" title="5.7.1 算法原理"></a>5.7.1 算法原理</h2><p>1.我们先假设一种情况，这种情况是子串<strong>没有重复</strong>的，主串<strong>S=”abcdefgab”</strong>，我们要匹配的<strong>T=”abcdex”</strong>，那么如果用前面的朴素算法的话，如图所示</p><p><img src="https://i.loli.net/2019/10/13/O85ylgkjHvbaCRV.jpg" alt></p><p>可仔细观察发现，子串T来说，”abcdex”首字母”a”与后面的串”bcdex”中任意一个字符都不相等，就是子串T没有重复的，</p><p>那么对于图5-7-1的(1)来说，前五位字符分别相等，意味着子串T的首字符”a”不可能与S串的第2位到第5位的字符相等。在图5-7-1中，(2)(3)(4)(5)的判断都是多余。我们直接跳到6这一步</p><p>2.我们再假设第2种情况，这种情况是子串<strong>有重复</strong>的，<strong>S=”abcabcabc”</strong>，<strong>T=”abcabx”</strong>,如图</p><p><img src="https://i.loli.net/2019/10/13/LDkKFNjgnmT6Gox.jpg" alt></p><p>由上面的经验，我们发现2，3步（<strong>重复出现之前</strong>的步骤）都是多余的，又因为第四位的”a”和第五位的”b”已经与主串S中的相应位置比较过了，是相等的，因此可以断定，T的首字符”a”、第二位的字符”b”与S的第四位字符和第五位字符也不需要比较了，肯定也是相等的，所以(4)(5)这两个比较得出字符相等的步骤也可以省略。</p><p>简化后的图：</p><p><img src="https://i.loli.net/2019/10/13/xeMEwg8vkf5GOVb.jpg" alt></p><p>3.你明白什么是<strong>避免不必要的回溯</strong>了吗？</p><p>上面的例子很好说明了<strong>避免不必要的回溯</strong>，但是我们思考下，主串的i（当前位置下标）会不会回头走的呢？</p><p>很显然，不会，在第一个例子中，i一开始是1，一轮循环后，就到了6，类似于：“好马不吃回头草”</p><p>子串的位标j会吃回头草吗？</p><p><strong>通过观察也可发现，我们屡屡提到了T串的首字符与自身后面字符的比较，T串如果自身重复，发现如果有相等字符，j值的变化就会不相同</strong>，也就是说，这个<strong>j值的变化</strong>与主串其实没什么关系，关键就<strong>取决于T串的结构中是否有重复</strong>（<strong>相似度</strong>）的问题。</p><p>我们把T串各个位置的j值的变化，定义为一个数组next，那么next的长度就是T串的长度（因为next是T串各个元素位置的变化）,<strong>next的意思就是T串，j位置每次回溯的位置</strong>（<strong>回头吃草的位置</strong>），这里我们暂时不深究next数组中每个元素的值，我们可以定义一个函数：</p><h2 id="5-7-2-next数组推导"><a href="#5-7-2-next数组推导" class="headerlink" title="5.7.2 next数组推导"></a>5.7.2 next数组推导</h2><h3 id="先看例子："><a href="#先看例子：" class="headerlink" title="先看例子："></a>先看例子：</h3><h4 id="1-T-”abcdex”"><a href="#1-T-”abcdex”" class="headerlink" title="1.T=”abcdex”"></a>1.T=”abcdex”</h4><p>注意：我们观察的时候，看到j位置前面的字符就行了，比如说j=2，是看j=2之前的字符”a“</p><p><img src="https://i.loli.net/2019/10/13/pUoN2gY5zWO8chl.jpg" alt></p><ul><li>1)当j=1时，next[1]=0;</li><li>2)当j=2时，j由1到j-1（<strong>j的前一个字符</strong>）就只有字符”a”，属于其他情况next[2]=1;</li><li>3)当j=3时，j由1到j-1串是”ab”，显然”a”与”b”<strong>不相等</strong>，属其他情况，next[3]=<strong>1;</strong></li><li>4)以后同理，所以最终此T串的next[j]为011111。</li></ul><h3 id="2-T-”abcabx”"><a href="#2-T-”abcabx”" class="headerlink" title="2.T=”abcabx”"></a>2.T=”abcabx”</h3><p>注意：当我们看重复的时候，是看<strong>顺序重复</strong>，不是回文重复，例如：”abcab”（顺序重复）,这样重复的元素个数是2，”abcba”（回文重复）这样重复的元素只有:”a”</p><p>当<strong>出现重复</strong>的时候，<strong>next[j]的值是重复的元素个数+1</strong></p><p><img src="https://i.loli.net/2019/10/13/yWwtDC4xiLPAufM.jpg" alt></p><ul><li>1)当j=1时，next[1]=0;</li><li>2)当j=2时，同上例说明，next[2]=1;</li><li>3)当j=3时，同上，next[3]=1;</li><li>4)当j=4时，同上，next[4]=1;</li><li>5)当j=5时，此时j由1到j-1的串是”abca”，前缀字符”a”与后缀字符”a”相等，因此可推算出k值为2，因此next[5]=2;</li><li>6)当j=6时，j由1到j-1的串是”abcab”，由于前缀字符”ab”与后缀”ab”相等，所以next[6]=3。</li></ul><h3 id="3-T-”ababaaaba”"><a href="#3-T-”ababaaaba”" class="headerlink" title="3.T=”ababaaaba”"></a>3.T=”ababaaaba”</h3><p>注意：重复要看在末尾位置的重复，中间位置没有接到末尾的重复不算，比如说，T=”ababaaaba”中，如果看，第1到第3位置的aba和第3到第5位置的aba重复，这样就是错的，因为第3到第5位置的aba不在末尾</p><p><img src="https://i.loli.net/2019/10/13/ZNVKAWQzh7S3cPO.jpg" alt></p><ul><li>1)当j=1时，next[1]=0;</li><li>2)当j=2时，同上next[2]=1;</li><li>3)当j=3时，同上next[3]=1;</li><li>4)当j=4时，j由1到j-1的串是”aba”，前缀字符”a”与后缀字符”a”相等，next[4]=2;</li><li>5)当j=5时，j由1到j-1的串是”abab”，由于前缀字符”ab”与后缀”ab”相等，所以next[5]=3;</li><li>6)当j=6时，j由1到j-1的串的”ababa”，由于前缀字符”aba”与后缀”aba”相等，所以next[6]=4;</li><li>7)当j=7时，j由1到j-1的串是”ababaa”，由于前缀字符”ab”与后缀”aa”并不相等，只有”a”相等，所以next[7]=2;</li><li>8)当j=8时，j由1到j-1的串是”ababaaa”，只有”a”相等，所以next[8]=2;</li><li>9)当j=9时，j由1到j-1的串是”ababaaab”，由于前缀字符”ab”与后缀”ab”相等，所以next[9]=3</li></ul><h3 id="4-T-”aaaaaaaab”"><a href="#4-T-”aaaaaaaab”" class="headerlink" title="4.T=”aaaaaaaab”"></a>4.T=”aaaaaaaab”</h3><p>注意：比如看,aaaa的时候，重复的元素个数是多少呢？</p><p>有的人说是4，你看它全是重复的，这样其实是不对的</p><p>正确答案是3，有规定，<strong>重复元素不能是整个字符串的元素</strong>，所以这里只是3(“aaa”)</p><p><img src="https://i.loli.net/2019/10/13/d4yZwgDnW6vqKPe.jpg" alt></p><ul><li>1)当j=1时，next[1]=0;</li><li>2)当j=2时，同上next[2]=1;</li><li>3)当j=3时，j由1到j-1的串是”aa”，前缀字符”a”与后缀字符”a”相等，next[3]=2;</li><li>4)当j=4时，j由1到j-1的串是”aaa”，由于前缀字符”aa”与后缀”aa”相等，所以next[4]=3;</li><li>5)……</li><li>6)当j=9时，j由1到j-1的串是”aaaaaaaa”，由于前缀字符”aaaaaaa”与后缀”aaaaaaa”相等，所以next[9]=8。</li></ul><h2 id="5-7-3-算法实现"><a href="#5-7-3-算法实现" class="headerlink" title="5.7.3 算法实现"></a>5.7.3 算法实现</h2><blockquote><p>看了这么多，其实这个算法最核心的部分就是next数组了，也就是每次j要回溯的位置（回头吃草的位置）</p></blockquote><h3 id="1-得到next数组的代码"><a href="#1-得到next数组的代码" class="headerlink" title="1.得到next数组的代码"></a>1.得到next数组的代码</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 通过计算返回子串T的next数组。 */</span><span class="token keyword">void</span> <span class="token function">get_next</span><span class="token punctuation">(</span>String T<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>      i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>      j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>      next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>      <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 此处T[0]表示串T的长度 */</span>     <span class="token punctuation">{</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* T[i]表示后缀的单个字符，T[j]表示前缀的单个字符 */</span>        <span class="token punctuation">{</span>              <span class="token operator">++</span>i<span class="token punctuation">;</span>              <span class="token operator">++</span>j<span class="token punctuation">;</span>              next<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>        <span class="token punctuation">}</span>         <span class="token keyword">else</span>             j<span class="token operator">=</span> next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 若字符不相同，则j值回溯 */</span>      <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>主代码：</p><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 返回子串T在主串S中第pos个字符之后的位置。若不存在，则函数返回值为0。 */</span><span class="token comment" spellcheck="true">/*  T非空，1≤pos≤StrLength(S)。 */</span><span class="token keyword">int</span> <span class="token function">Index_KMP</span><span class="token punctuation">(</span>String S<span class="token punctuation">,</span> String T<span class="token punctuation">,</span> <span class="token keyword">int</span> pos<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> i <span class="token operator">=</span> pos<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* i用于主串S中当前位置下标值，若pos不为1，则从pos位置开始匹配 */</span>    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* j用于子串T中当前位置下标值 */</span>    <span class="token keyword">int</span> next<span class="token punctuation">[</span><span class="token number">255</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 定义一next数组 */</span>    <span class="token function">get_next</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 对串T作分析，得到next数组 */</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> S<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若i小于S的长度并且j小于T的长度时，循环继续 */</span>    <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* 两字母相等则继续，与朴素算法增加了j=0判断 */</span>          <span class="token punctuation">{</span>             <span class="token operator">++</span>i<span class="token punctuation">;</span>             <span class="token operator">++</span>j<span class="token punctuation">;</span>           <span class="token punctuation">}</span>           <span class="token keyword">else</span>             <span class="token comment" spellcheck="true">/* 指针后退重新开始匹配 */</span>               j <span class="token operator">=</span> next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* j退回合适的位置，i值不变 */</span>        <span class="token comment" spellcheck="true">/**前面的朴素的是：        i=i-j+2; //返回i下一个位置        j=1; //j回到头               **/</span>    <span class="token punctuation">}</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>         <span class="token keyword">return</span> i<span class="token operator">-</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">else</span>         <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>其实相对于朴素算法来说，就是增加了得到next数组，和在两字母相等的时候的判断增加j==0的条件，和回头的时候，只是变化j为next[j]，而i不变</p><h2 id="5-7-4-KMP算法改进"><a href="#5-7-4-KMP算法改进" class="headerlink" title="5.7.4 KMP算法改进"></a>5.7.4 KMP算法改进</h2><h3 id="1-KMP算法还存在什么缺陷呢？"><a href="#1-KMP算法还存在什么缺陷呢？" class="headerlink" title="1.KMP算法还存在什么缺陷呢？"></a>1.KMP算法还存在什么缺陷呢？</h3><p>主要是当字符串出现重复的字符的时候，会出现重复回溯的情况</p><p>例子：</p><p>如果我们的主串S=”aaaabcde”，子串T=”aaaax”，其next数组值分别为012345，</p><p><img src="https://i.loli.net/2019/10/13/dTDk63mKNGz1wUf.jpg" alt></p><p>在开始时，当 i=5、j=5时，我们发现”b”与”a”不相等，如图5-7-6的①，因此j=next[5]=4，如图中的②，此时”b”与第4位置的”a”依然不等，j=next[4}=3。如图中的③，接着依次是④⑤，直到j=next[i]=0时，根据算法，此时i++、j++，得到i=6、j=l如图中的⑥。</p><p>我们发现，当中的②③④⑤步骤，其实是多余的判断</p><p><strong>怎么解决呢？</strong></p><p>由于T串的第二、三、四、五位置的字符<strong>都与首位的 “a” 相等</strong>，那么可以用首位 next[l]的值去<strong>取代与它相等的字符</strong>后续next[j]的值，这是个很好的办法。因此我们对求next函数进行了改良，改良后的叫nextval。</p><p>这就是nextval的由来了</p><h3 id><a href="#" class="headerlink" title></a></h3><h2 id="5-7-5-nextval数组值推导"><a href="#5-7-5-nextval数组值推导" class="headerlink" title="5.7.5 nextval数组值推导"></a>5.7.5 nextval数组值推导</h2><blockquote><p>举例子来说明比较简单</p></blockquote><h3 id="1-T-”ababaaaba”"><a href="#1-T-”ababaaaba”" class="headerlink" title="1. T=”ababaaaba”"></a>1. T=”ababaaaba”</h3><p><img src="https://s2.ax1x.com/2019/10/13/uv6ddH.png" alt="uv6ddH.png"></p><ul><li>1)当j=1时。nextval[1]=0;</li><li>2)当j=2时，因第二位字符”b”的next值是1，而第一位就是”a”，他们不相等，所以nextval[2]=next[2]=1，维持原值。</li><li>3)当j=3时，因为第三位字符”a”的next值为1，所以与第一位的”a”比较得知它们相等，所以nextval[3]=nextval[1]=0；如图5-7-7所示。</li></ul><p><a href="https://imgchr.com/i/uvclnS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/10/13/uvclnS.png" alt="uvclnS.png"></a></p><ul><li><p>4)当j=4时，第四位的字符”b”，next值为2，所以与第二位的”b”相比较得到结果是相等，因此nextval[4]=nextval[2]=1；如图5-7-8所示。</p></li><li><p>5)当j=5时，next值为3，第五个字符”a”与第三个字符”a”相等，因此nextval[5]=nextval[3]=0;</p></li><li><p>6)当j=6时，next值为4，第六个字符”a”与第四个字符”b”不相等，因此nextval[6]=4;</p></li><li><p>7)当j=7时，next值为2，第七个字符”a”与第二个字符”b”不相等，因此nextval[7]=2;</p></li><li><p>8)当j=8时，next值为2，第八个字符”b”与第二个字符”b”相等，因此nextval[8]=nextval[2]=1;</p></li><li><p>9)当j=9时，next值为3，第九个字符”a”与第三个字符”a”相等，因此nextval[9]=nextval[3]=1。</p></li></ul><h3 id="2-T-”aaaaaaaab”（如表5-7-6）"><a href="#2-T-”aaaaaaaab”（如表5-7-6）" class="headerlink" title="2.T=”aaaaaaaab”（如表5-7-6）"></a>2.T=”aaaaaaaab”（如表5-7-6）</h3><p><img src="https://s2.ax1x.com/2019/10/13/uvg4x0.png" alt="uvg4x0.png"></p><ul><li>1)当j=1时，nextval[1]=0;</li><li>2)当j=2时，next值为1，第二个字符与第一个字符相等，所以nextval[2]=nextval[1]=0;</li><li>3)同样的道理，其后都为0….;</li><li>4)当j=9时，next值为8，第九个字符”b”与第八个字符”a”不相等，所以nextval[9]=8。</li></ul><h3 id="3-总结改进的kmp算法："><a href="#3-总结改进的kmp算法：" class="headerlink" title="3.总结改进的kmp算法："></a>3.总结改进的kmp算法：</h3><p>其实思路：</p><p>就是比较j位置的字符和next[j]位置的字符是否相等，如果相等的话，就nextval [ j ] = nextval [ next [ j ] ];他们的nextval值也相等</p><h3 id="4-nextval-算法揭秘"><a href="#4-nextval-算法揭秘" class="headerlink" title="4.nextval 算法揭秘"></a>4.nextval 算法揭秘</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 求模式串T的next函数修正值并存入数组nextval */</span><span class="token keyword">void</span> <span class="token function">get_nextval</span><span class="token punctuation">(</span>String T<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>nextval<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>      i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>      j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>      nextval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>      <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 此处T[0]表示串T的长度 */</span>     <span class="token punctuation">{</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* T[i]表示后缀的单个字符，T[j]表示前缀的单个字符 */</span>        <span class="token punctuation">{</span>              <span class="token operator">++</span>i<span class="token punctuation">;</span>              <span class="token operator">++</span>j<span class="token punctuation">;</span>              <span class="token keyword">if</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span>T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">/* 若当前字符与前缀字符不同*/</span>                nextval<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 则当前的j为nextval在i位置的值*/</span>               <span class="token keyword">else</span>                 nextval<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nextval<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 如果与前缀字符相同，则将前缀字符的 */</span>                                            <span class="token comment" spellcheck="true">/* nextval值赋值给nextval在i位置的值 */</span>        <span class="token punctuation">}</span>         <span class="token keyword">else</span>             j<span class="token operator">=</span> nextval<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* 若字符不相同，则j值回溯 */</span>      <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>使用的时候，只需要将”get_next(T,next)”;改为”get_nextval(T,next);”即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.6 朴素的模式匹配算法</title>
+      <link href="/2019/10/13/5.6-po-su-de-mo-shi-pi-pei-suan-fa/"/>
+      <url>/2019/10/13/5.6-po-su-de-mo-shi-pi-pei-suan-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-6-朴素的模式匹配算法"><a href="#5-6-朴素的模式匹配算法" class="headerlink" title="5.6 朴素的模式匹配算法"></a>5.6 朴素的模式匹配算法</h1><blockquote><p>这个算法有什么用呢？</p><p>比如你想查找字符串的位置，就需要用到这个算法</p></blockquote><h2 id="1-什么是朴素的模式匹配算法"><a href="#1-什么是朴素的模式匹配算法" class="headerlink" title="1.什么是朴素的模式匹配算法"></a>1.什么是朴素的模式匹配算法</h2><p>简单来说<strong>就是对主串的每一个字符作为子串开头，与要匹配的字符串进行匹配。对主串做大循环，每个字符开头做T的长度的小循环，直到匹配成功或全部遍历完成为止</strong>。</p><p>还是用图来说明比较简单：</p><p>现在，从下面的主串S=”goodgoogle”中，找到T=”google”这个子串的位置。我们通常需要下面的步骤：</p><p>注意，其中竖直连线表示相等，闪电状弯折连线表示不等</p><ol><li><p>主串S第一位开始，S与T前三个字母都匹配成功，但S第四个字母是d而T的是g。第一位匹配失败。</p><p><img src="https://i.loli.net/2019/10/13/3KMzpI6ctjwXESo.jpg" alt></p></li><li><p>主串S第二位开始，主串S首字母是o，要匹配的T首字母是g，匹配失败</p><p><img src="https://i.loli.net/2019/10/13/GrlwjKY8SkNMFTi.jpg" alt></p></li><li><p>主串S第三位开始，主串S首字母是o，要匹配的T首字母是g，匹配失败，</p><p><img src="https://i.loli.net/2019/10/13/28VIfAWbUvjnHXz.jpg" alt></p></li><li><p>主串S第四位开始，主串S首字母是d，要匹配的T首字母是g，匹配失败</p><p><img src="https://i.loli.net/2019/10/13/FrLMTcJnPZap2j7.jpg" alt></p></li><li><p>主串S第五位开始，S与T，6个字母全匹配，匹配成功</p><p><img src="https://i.loli.net/2019/10/13/1kKD5MP6BAeGTub.jpg" alt></p></li></ol><h2 id="2-算法是怎么写的？"><a href="#2-算法是怎么写的？" class="headerlink" title="2.算法是怎么写的？"></a>2.算法是怎么写的？</h2><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 返回子串T在主串S中第pos个字符之后的起始位置。若不存在,则函数返回值为0。 */</span><span class="token comment" spellcheck="true">/* 其中,T非空,1≤pos≤StrLength(S)。 */</span><span class="token keyword">int</span> <span class="token function">Index</span><span class="token punctuation">(</span>String S<span class="token punctuation">,</span> String T<span class="token punctuation">,</span> <span class="token keyword">int</span> pos<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> i <span class="token operator">=</span> pos<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* i用于主串S中当前位置下标值，若pos不为1，则从pos位置开始匹配 */</span>    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">/* j用于子串T中当前位置下标值 */</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> S<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若i小于S的长度并且j小于T的长度时，循环继续 */</span>    <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>S<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">/* 两字母相等则继续 */</span>          <span class="token punctuation">{</span>            <span class="token operator">++</span>i<span class="token punctuation">;</span>             <span class="token operator">++</span>j<span class="token punctuation">;</span>           <span class="token punctuation">}</span>           <span class="token keyword">else</span>                 <span class="token comment" spellcheck="true">/* 指针后退重新开始匹配 */</span>          <span class="token punctuation">{</span>               i <span class="token operator">=</span> i<span class="token operator">-</span>j<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* i退回到上次匹配首位的下一位 */</span>             j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>             <span class="token comment" spellcheck="true">/* j退回到子串T的首位 */</span>          <span class="token punctuation">}</span>          <span class="token punctuation">}</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true">//通过主串的位置-子串的长度，得到子串在主串中的起始位置</span>        <span class="token keyword">return</span> i<span class="token operator">-</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">else</span>         <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="3-有什么缺点呢？"><a href="#3-有什么缺点呢？" class="headerlink" title="3.有什么缺点呢？"></a>3.有什么缺点呢？</h2><p>就是每次不成功的匹配都发生在子串的最后一个字符的话，这样就会造成很大的性能浪费</p><p>主串S=“00000000000000000001”，子串是“0001”</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.5 串的存储结构</title>
+      <link href="/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/"/>
+      <url>/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-5-串的存储结构"><a href="#5-5-串的存储结构" class="headerlink" title="5.5 串的存储结构"></a>5.5 串的存储结构</h1><h2 id="5-5-1-顺序存储"><a href="#5-5-1-顺序存储" class="headerlink" title="5.5.1 顺序存储"></a>5.5.1 顺序存储</h2><h3 id="1-串的顺序存储与普通的顺序存储（数组）有什么区别？"><a href="#1-串的顺序存储与普通的顺序存储（数组）有什么区别？" class="headerlink" title="1.串的顺序存储与普通的顺序存储（数组）有什么区别？"></a>1.串的顺序存储与普通的顺序存储（数组）有什么区别？</h3><p>由于串需要一些特殊的操作：比如说replace，有可能新的长度超过了原来的长度，所以他的存储空间可以由程序执行过程中动态分配而得到，不是一直固定的。</p><h2 id="5-5-2-串的链式存储"><a href="#5-5-2-串的链式存储" class="headerlink" title="5.5.2 串的链式存储"></a>5.5.2 串的链式存储</h2><h3 id="1-串的链式存储与链表有什么不同？"><a href="#1-串的链式存储与链表有什么不同？" class="headerlink" title="1.串的链式存储与链表有什么不同？"></a>1.串的链式存储与链表有什么不同？</h3><p>串的链式存储，一个结点可以存放1个字符，或者多个字符，如果最后一个结点没有放满的话，就用＃或者其他非串值字符补全，</p><h3 id="2-为啥这样呢？"><a href="#2-为啥这样呢？" class="headerlink" title="2.为啥这样呢？"></a>2.为啥这样呢？</h3><p>节省空间</p><h3 id="3-怎么决定一个结点放多少个字符呢？"><a href="#3-怎么决定一个结点放多少个字符呢？" class="headerlink" title="3.怎么决定一个结点放多少个字符呢？"></a>3.怎么决定一个结点放多少个字符呢？</h3><p>根据实际情况决定</p><h3 id="4-它和顺序存储哪个比较优秀呢？"><a href="#4-它和顺序存储哪个比较优秀呢？" class="headerlink" title="4.它和顺序存储哪个比较优秀呢？"></a>4.它和顺序存储哪个比较优秀呢？</h3><p>链式存储的优点：连接串和串的操作方便</p><p>缺点：灵活性不及顺序存储，性能不及顺序存储</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.3 串的比较</title>
+      <link href="/2019/10/13/5.3-chuan-de-bi-jiao/"/>
+      <url>/2019/10/13/5.3-chuan-de-bi-jiao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p><ol><li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p></li><li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p><p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.10 队列的定义</title>
+      <link href="/2019/10/13/4.10-dui-lie-de-ding-yi/"/>
+      <url>/2019/10/13/4.10-dui-lie-de-ding-yi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-10-队列的定义"><a href="#4-10-队列的定义" class="headerlink" title="4.10 队列的定义"></a>4.10 队列的定义</h1><h2 id="1-什么是队列呢"><a href="#1-什么是队列呢" class="headerlink" title="1.什么是队列呢"></a>1.什么是队列呢</h2><p>队列是只允许在一端进行插入的操作，在另一端删除的线性表</p><h2 id="2-什么是队头，什么是队尾呢"><a href="#2-什么是队头，什么是队尾呢" class="headerlink" title="2.什么是队头，什么是队尾呢"></a>2.什么是队头，什么是队尾呢</h2><p>队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来</p><h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>9.3 冒泡排序</title>
+      <link href="/2019/10/11/9.3-mou-pao-pai-xu/"/>
+      <url>/2019/10/11/9.3-mou-pao-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="9-3-冒泡排序"><a href="#9-3-冒泡排序" class="headerlink" title="9.3 冒泡排序"></a>9.3 冒泡排序</h1><h2 id="9-3-1-什么是冒泡排序，最简单的冒泡排序"><a href="#9-3-1-什么是冒泡排序，最简单的冒泡排序" class="headerlink" title="9.3.1.什么是冒泡排序，最简单的冒泡排序"></a>9.3.1.什么是冒泡排序，最简单的冒泡排序</h2><p>其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序</p><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作交换排序（冒泡排序初级版） */</span><span class="token keyword">void</span> <span class="token function">BubbleSort0</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span><span class="token punctuation">{</span>     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span>        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>        <span class="token punctuation">{</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>            <span class="token punctuation">{</span>                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 交换L->r[i]与L->r[j]的值 */</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>这个算法其实不是真正的冒泡，他是让每个关键字都和后面的每个比较，而且它只对排序的关键字有效，对未排序的没有帮助</p><h2 id><a href="#" class="headerlink" title></a></h2><h2 id="9-3-2-冒泡排序算法"><a href="#9-3-2-冒泡排序算法" class="headerlink" title="9.3.2 冒泡排序算法"></a>9.3.2 冒泡排序算法</h2><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作冒泡排序 */</span><span class="token keyword">void</span> <span class="token function">BubbleSort</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span><span class="token punctuation">{</span>     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span>        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span>i<span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 注意j是从后往前循环 */</span>        <span class="token punctuation">{</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若前者大于后者（注意这里与上一算法的差异）*/</span>            <span class="token punctuation">{</span>                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 交换L->r[j]与L->r[j+1]的值 */</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>它对排序的关键字有效，对未排序的也有帮助</p><h2 id="9-3-3-冒泡排序优化"><a href="#9-3-3-冒泡排序优化" class="headerlink" title="9.3.3 冒泡排序优化"></a>9.3.3 冒泡排序优化</h2><p>如果是已经有序了的话，就不用进行后面的循环继续，增加1个flag就行</p><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作改进冒泡算法 */</span><span class="token keyword">void</span> <span class="token function">BubbleSort2</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span><span class="token punctuation">{</span>     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>    Status flag<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">/* flag用来作为标记 */</span>    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>L<span class="token operator">-></span>length <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 若flag为true说明有过数据交换，否则停止循环 */</span>    <span class="token punctuation">{</span>        flag<span class="token operator">=</span>FALSE<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">/* 初始为False */</span>        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span>i<span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span>        <span class="token punctuation">{</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>L<span class="token operator">-></span>r<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>            <span class="token punctuation">{</span>                 <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 交换L->r[j]与L->r[j+1]的值 */</span>                 flag<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 如果有数据交换，则flag为true */</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="9-3-4-冒泡排序复杂度是多少"><a href="#9-3-4-冒泡排序复杂度是多少" class="headerlink" title="9.3.4 冒泡排序复杂度是多少"></a>9.3.4 冒泡排序复杂度是多少</h2><p>其实就是O(n2)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 冒泡排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>9.2 排序的基本概念和分类</title>
+      <link href="/2019/10/11/9.2-pai-xu-de-ji-ben-gai-nian-he-fen-lei/"/>
+      <url>/2019/10/11/9.2-pai-xu-de-ji-ben-gai-nian-he-fen-lei/</url>
+      
+        <content type="html"><![CDATA[<h1 id="9-2-排序的基本概念和分类"><a href="#9-2-排序的基本概念和分类" class="headerlink" title="9.2 排序的基本概念和分类"></a>9.2 排序的基本概念和分类</h1><h2 id="9-2-1-排序的稳定性怎么区分"><a href="#9-2-1-排序的稳定性怎么区分" class="headerlink" title="9.2.1 排序的稳定性怎么区分"></a>9.2.1 排序的稳定性怎么区分</h2><p>同分的时候，前后不变是稳定的，反之是不稳定的</p><h2 id="9-2-2-内排序和外排序"><a href="#9-2-2-内排序和外排序" class="headerlink" title="9.2.2 内排序和外排序"></a>9.2.2 内排序和外排序</h2><p>什么是内排序呢</p><p>其实就是所有记录都是放在内存中</p><p>什么是外排序呢</p><p>其实就是不能同时放在内存中，必须在内外存中多次交换数据</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
