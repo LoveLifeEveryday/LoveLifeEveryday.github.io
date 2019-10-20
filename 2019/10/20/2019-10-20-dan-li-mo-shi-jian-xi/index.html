@@ -4,13 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="6.2 树的定义, Hexo">
-    <meta name="description" content="6.2 树的定义
-树，个人觉得是一种从生活中抽象而成的数据结构，类似于我们现实生活中的树
+    <meta name="keywords" content="单例模式简析, Hexo">
+    <meta name="description" content="单例模式简析1.什么是单例模式（Singleton Pattern）单例，其实就是整个程序中只有1个实例
+2.有什么好处呢？优点：
 
-树是什么？树（非空树），需要满足下面2个条件：
-有且只有1个特点的节点的根结点
-当n&amp;gt;1时，其余结点可以分为m个互不相交的有限集，其中每个有限">
+内存中只有1个实例，减少内存的开销
+避免对资源的多重占用（比如说写文件操作）
+
+3.有什么缺点呢？
+没有接">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>6.2 树的定义 | Hexo</title>
+    <title>单例模式简析 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,13 +314,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        6.2 树的定义
+                        单例模式简析
                     </div>
                 </div>
             </div>
@@ -430,12 +432,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/大话数据结构/">
-                                <span class="chip bg-color">大话数据结构</span>
+                            <a href="/tags/单例模式/">
+                                <span class="chip bg-color">单例模式</span>
                             </a>
                         
-                            <a href="/tags/树/">
-                                <span class="chip bg-color">树</span>
+                            <a href="/tags/java设计模式/">
+                                <span class="chip bg-color">java设计模式</span>
                             </a>
                         
                     </div>
@@ -446,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                大话数据结构
+                            <a href="/categories/java设计模式/" class="post-category">
+                                java设计模式
                             </a>
                         
                     </div>
@@ -458,7 +460,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-15
+                    2019-10-20
                 </div>
 
                 
@@ -474,31 +476,81 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="6-2-树的定义"><a href="#6-2-树的定义" class="headerlink" title="6.2 树的定义"></a>6.2 树的定义</h1><blockquote>
-<p>树，个人觉得是一种从生活中抽象而成的数据结构，类似于我们现实生活中的树</p>
-</blockquote>
-<h2 id="树是什么？"><a href="#树是什么？" class="headerlink" title="树是什么？"></a>树是什么？</h2><h3 id="树（非空树），需要满足下面2个条件："><a href="#树（非空树），需要满足下面2个条件：" class="headerlink" title="树（非空树），需要满足下面2个条件："></a>树（非空树），需要满足下面2个条件：</h3><ol>
-<li><strong>有且只有</strong>1个特点的节点的根结点</li>
-<li>当n&gt;1时，其余结点可以分为m个<strong>互不相交</strong>的有限集，其中每个有限集本身又是树，成为子树</li>
+                <h1 id="单例模式简析"><a href="#单例模式简析" class="headerlink" title="单例模式简析"></a>单例模式简析</h1><h2 id="1-什么是单例模式（Singleton-Pattern）"><a href="#1-什么是单例模式（Singleton-Pattern）" class="headerlink" title="1.什么是单例模式（Singleton Pattern）"></a>1.什么是单例模式（Singleton Pattern）</h2><p>单例，其实就是整个程序中只有1个实例</p>
+<h2 id="2-有什么好处呢？"><a href="#2-有什么好处呢？" class="headerlink" title="2.有什么好处呢？"></a>2.有什么好处呢？</h2><p>优点：</p>
+<ul>
+<li>内存中只有1个实例，减少内存的开销</li>
+<li>避免对资源的多重占用（比如说写文件操作）</li>
+</ul>
+<h2 id="3-有什么缺点呢？"><a href="#3-有什么缺点呢？" class="headerlink" title="3.有什么缺点呢？"></a>3.有什么缺点呢？</h2><ul>
+<li>没有接口，不能继承</li>
+<li>与单一职责原则冲突（一个类只应该关心内部逻辑，而不关心外面怎么来实例化）</li>
+</ul>
+<h2 id="4-适用场景"><a href="#4-适用场景" class="headerlink" title="4.适用场景"></a>4.适用场景</h2><p>下面举例子</p>
+<ul>
+<li>用于数据库连接池的设计，因为数据库连接池在打开或者关闭数据库连接的时候所引起的效率的损耗很大，用单例模式可以减少</li>
+<li>线程池</li>
+</ul>
+<h2 id="5-单例模式的套路"><a href="#5-单例模式的套路" class="headerlink" title="5.单例模式的套路"></a>5.单例模式的套路</h2><ul>
+<li>构造器私有</li>
+<li>提供private的静态属性–&gt;存储对象的地址</li>
+<li>提供公共的静态方法–&gt;获取属性</li>
+</ul>
+<h2 id="6-单例模式分为哪几类呢？"><a href="#6-单例模式分为哪几类呢？" class="headerlink" title="6.单例模式分为哪几类呢？"></a>6.单例模式分为哪几类呢？</h2><h3 id="1-懒汉式"><a href="#1-懒汉式" class="headerlink" title="1.懒汉式"></a>1.懒汉式</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Singleton instance<span class="token punctuation">;</span>  
+    <span class="token keyword">private</span> <span class="token function">Singleton</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Singleton <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword">return</span> instance<span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span></code></pre>
+<p>线程不安全，延迟初始化，严格上不是单例模式</p>
+<h3 id="2-饿汉式"><a href="#2-饿汉式" class="headerlink" title="2.饿汉式"></a>2.饿汉式</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Singleton instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">private</span> <span class="token function">Singleton</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Singleton <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">return</span> instance<span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span></code></pre>
+<p>线程安全，但是容易产生垃圾对象</p>
+<h3 id="3-双重锁模式"><a href="#3-双重锁模式" class="headerlink" title="3.双重锁模式"></a>3.<strong>双重锁模式</strong></h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>  
+    <span class="token comment" spellcheck="true">//注意这里用volatile修饰，避免重排序</span>
+    <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">static</span> Singleton singleton<span class="token punctuation">;</span>  
+    <span class="token keyword">private</span> <span class="token function">Singleton</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Singleton <span class="token function">getSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>Singleton<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        <span class="token punctuation">}</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span></code></pre>
+<p>第一次是判断是为了避免不必要的同步，因为已经存在对象，第二次判断是为了进行同步，避免多线程问题</p>
+<p>由于 singleton = new Singleton();  可能存在重排序的问题，什么是重排序，请往下看</p>
+<h4 id="1-对象新建的过程是什么？"><a href="#1-对象新建的过程是什么？" class="headerlink" title="1.对象新建的过程是什么？"></a>1.对象新建的过程是什么？</h4><ol>
+<li>开辟空间</li>
+<li>初始化对象信息</li>
+<li>返回对象的地址给引用</li>
 </ol>
-<p><img src="https://i.loli.net/2019/10/13/bLxwVNpzCcDsZhm.jpg" alt></p>
-<h3 id="不是树的例子："><a href="#不是树的例子：" class="headerlink" title="不是树的例子："></a>不是树的例子：</h3><p><img src="https://i.loli.net/2019/10/13/Ui6tbdrL5MFJNKV.jpg" alt></p>
-<h2 id="6-2-1-结点分类"><a href="#6-2-1-结点分类" class="headerlink" title="6.2.1 结点分类"></a>6.2.1 结点分类</h2><h3 id="1-什么是度"><a href="#1-什么是度" class="headerlink" title="1.什么是度"></a>1.什么是度</h3><p>结点拥有的子树数称为结点的度，度为0的结点称为叶结点，度不为0的结点称为非终端结点或分支结点</p>
-<p>如图：</p>
-<p><img src="https://i.loli.net/2019/10/13/H8nXLTfZOsewCAm.jpg" alt></p>
-<h3 id="2-树的度是什么？"><a href="#2-树的度是什么？" class="headerlink" title="2.树的度是什么？"></a>2.树的度是什么？</h3><p>树内各结点的度的最大值,上图的度是3</p>
-<h2 id="6-2-2-结点间关系"><a href="#6-2-2-结点间关系" class="headerlink" title="6.2.2 结点间关系"></a>6.2.2 结点间关系</h2><h3 id="1-什么是孩子，什么是双亲"><a href="#1-什么是孩子，什么是双亲" class="headerlink" title="1.什么是孩子，什么是双亲"></a>1.什么是孩子，什么是双亲</h3><p>A结点的<strong>子树的根结点</strong>B，是A的<strong>孩子</strong>，相应，A结点是B的<strong>双亲</strong>（为什么是双亲呢？因为对于结点来说，他的上面指向他自己的只有1个，双亲只有1个）</p>
-<p>如图：</p>
-<p><img src="https://i.loli.net/2019/10/13/xdh5MknpAriHlCb.jpg" alt></p>
-<h3 id="2-什么是兄弟？什么是祖先？"><a href="#2-什么是兄弟？什么是祖先？" class="headerlink" title="2.什么是兄弟？什么是祖先？"></a>2.什么是兄弟？什么是祖先？</h3><p><strong>同一个双亲的孩子之间互称兄弟</strong>，<strong>结点的祖先是从根到该结点所经分支上的所有结点</strong>，简而言之就是，从上面来的指向它的结点的就是祖先</p>
-<h2 id="6-2-3-树的其他相关概念"><a href="#6-2-3-树的其他相关概念" class="headerlink" title="6.2.3 树的其他相关概念"></a>6.2.3 树的其他相关概念</h2><h3 id="1-什么是树的层次？"><a href="#1-什么是树的层次？" class="headerlink" title="1.什么是树的层次？"></a>1.什么是树的层次？</h3><p>其实就是从根开始定义起，根为第一层，根的孩子为第二层。</p>
-<p>如图：</p>
-<p><img src="https://i.loli.net/2019/10/13/anqojCTQ1If5dg6.jpg" alt></p>
-<h3 id="2-什么是树的深度？"><a href="#2-什么是树的深度？" class="headerlink" title="2.什么是树的深度？"></a>2.什么是树的深度？</h3><p><strong>树中结点的最大层次</strong></p>
-<h3 id="3-什么是堂兄弟？"><a href="#3-什么是堂兄弟？" class="headerlink" title="3.什么是堂兄弟？"></a>3.什么是堂兄弟？</h3><p>就是双亲同层的结点，显然图6-2-6中的D、E、F是堂兄弟，</p>
-<h3 id="4-什么是有序树"><a href="#4-什么是有序树" class="headerlink" title="4.什么是有序树"></a>4.什么是有序树</h3><p>如果将树中结点的各子树看成<strong>从左到右是有次序</strong>的，不能互换的，则称该树为有序树，否则称为无序树。</p>
-<h3 id="5-什么是森林？"><a href="#5-什么是森林？" class="headerlink" title="5.什么是森林？"></a>5.什么是森林？</h3><p>是m(m&gt;=0)棵<strong>互不相交</strong>的<strong>树的集合</strong></p>
-<h3 id="6-线性表和树的结构有什么不同？"><a href="#6-线性表和树的结构有什么不同？" class="headerlink" title="6.线性表和树的结构有什么不同？"></a>6.线性表和树的结构有什么不同？</h3><p><img src="https://i.loli.net/2019/10/13/ZRiJVHukgAo7K9Y.jpg" alt></p>
+<h4 id="2-什么情况下会出现重排序呢？"><a href="#2-什么情况下会出现重排序呢？" class="headerlink" title="2.什么情况下会出现重排序呢？"></a>2.什么情况下会出现重排序呢？</h4><p>就是上述的第二步还没完成的时候，已经完成了第三步，这个时候就会获取到对象的空的引用</p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="4-静态内部类单例模式"><a href="#4-静态内部类单例模式" class="headerlink" title="4.静态内部类单例模式"></a>4.静态内部类单例模式</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">private</span> <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+      <span class="token keyword">public</span> <span class="token keyword">static</span> Singleton <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> Inner<span class="token punctuation">.</span>instance<span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Inner</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Singleton instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span> 
+</code></pre>
+<p>这样既可以懒加载，因为只有一个线程可以获得对象的初始化锁，又适用于多线程，书写难度也不是很大，较为推荐</p>
 
             </div>
             <hr/>
@@ -659,8 +711,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/15/6.2-shu-de-ding-yi/">
-                    《6.2 树的定义》
+            <a  href="/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/">
+                    《单例模式简析》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -702,7 +754,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-15T16-31-59',
+        id: '2019-10-20T14-29-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -723,29 +775,84 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/">
+                <a href="/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="6.4 树的存储结构">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="单例模式简析">
                         
-                        <span class="card-title">6.4 树的存储结构</span>
+                        <span class="card-title">单例模式简析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            因为树一定有且仅有一个双亲。所以采用这种方法
+                            什么是单例模式
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java设计模式/" class="post-category">
+                                    java设计模式
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/单例模式/">
+                        <span class="chip bg-color">单例模式</span>
+                    </a>
+                    
+                    <a href="/tags/java设计模式/">
+                        <span class="chip bg-color">java设计模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="6.3 树的抽象数据类型">
+                        
+                        <span class="card-title">6.3 树的抽象数据类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            树，个人觉得是一种从生活中抽象而成的数据结构，类似于我们现实生活中的树
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -767,59 +874,6 @@
                     
                     <a href="/tags/树/">
                         <span class="chip bg-color">树</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/14/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="4.3 栈的顺序存储结构及实现">
-                        
-                        <span class="card-title">4.3 栈的顺序存储结构及实现</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            栈的结构定义
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/栈/">
-                        <span class="chip bg-color">栈</span>
                     </a>
                     
                 </div>
