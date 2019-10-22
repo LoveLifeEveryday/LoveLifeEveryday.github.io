@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="4.10 队列的定义, Hexo">
-    <meta name="description" content="4.10 队列的定义1.什么是队列呢队列是只允许在一端进行插入的操作，在另一端删除的线性表
-2.什么是队头，什么是队尾呢队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来
-">
+    <meta name="keywords" content="9.8 归并排序, Hexo">
+    <meta name="description" content="9.8 归并排序
+什么是归并排序呢？
+
+
+9.8.1 归并排序算法1.什么是归并排序（2路归并）？其实简单说就是，把一个数字序列，按数字一个一个分开来，然后相邻的数字两两归并，如上图
+2.归并排序代码是怎样的？/* 对顺序表L作归并排序 *">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>4.10 队列的定义 | Hexo</title>
+    <title>9.8 归并排序 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,13 +312,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        4.10 队列的定义
+                        9.8 归并排序
                     </div>
                 </div>
             </div>
@@ -431,8 +434,8 @@
                                 <span class="chip bg-color">大话数据结构</span>
                             </a>
                         
-                            <a href="/tags/队列/">
-                                <span class="chip bg-color">队列</span>
+                            <a href="/tags/排序/">
+                                <span class="chip bg-color">排序</span>
                             </a>
                         
                     </div>
@@ -455,7 +458,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-10-22
                 </div>
 
                 
@@ -471,9 +474,120 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="4-10-队列的定义"><a href="#4-10-队列的定义" class="headerlink" title="4.10 队列的定义"></a>4.10 队列的定义</h1><h2 id="1-什么是队列呢"><a href="#1-什么是队列呢" class="headerlink" title="1.什么是队列呢"></a>1.什么是队列呢</h2><p>队列是只允许在一端进行插入的操作，在另一端删除的线性表</p>
-<h2 id="2-什么是队头，什么是队尾呢"><a href="#2-什么是队头，什么是队尾呢" class="headerlink" title="2.什么是队头，什么是队尾呢"></a>2.什么是队头，什么是队尾呢</h2><p>队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来</p>
-<h2 id><a href="#" class="headerlink" title></a></h2>
+                <h1 id="9-8-归并排序"><a href="#9-8-归并排序" class="headerlink" title="9.8 归并排序"></a>9.8 归并排序</h1><blockquote>
+<p>什么是归并排序呢？</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/10/22/GTd3q5UmOg6rBoS.jpg" alt></p>
+<h2 id="9-8-1-归并排序算法"><a href="#9-8-1-归并排序算法" class="headerlink" title="9.8.1 归并排序算法"></a>9.8.1 归并排序算法</h2><h3 id="1-什么是归并排序（2路归并）？"><a href="#1-什么是归并排序（2路归并）？" class="headerlink" title="1.什么是归并排序（2路归并）？"></a>1.什么是归并排序（2路归并）？</h3><p>其实简单说就是，把一个数字序列，按数字一个一个分开来，然后相邻的数字两两归并，如上图</p>
+<h3 id="2-归并排序代码是怎样的？"><a href="#2-归并排序代码是怎样的？" class="headerlink" title="2.归并排序代码是怎样的？"></a>2.归并排序代码是怎样的？</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作归并排序 */</span>
+<span class="token keyword">void</span> <span class="token function">MergeSort</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+  <span class="token function">MSort</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">,</span>L<span class="token operator">-></span>r<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>L<span class="token operator">-></span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 将SR[s..t]归并排序为TR1[s..t] */</span>
+<span class="token keyword">void</span> <span class="token function">MSort</span><span class="token punctuation">(</span><span class="token keyword">int</span> SR<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> TR1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token keyword">int</span> m<span class="token punctuation">;</span>
+ <span class="token keyword">int</span> TR2<span class="token punctuation">[</span>MAXSIZE<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token operator">==</span>t<span class="token punctuation">)</span>
+  TR1<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token operator">=</span>SR<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//当细分为1个数字的时候，递归结束</span>
+ <span class="token keyword">else</span>
+ <span class="token punctuation">{</span>
+      m<span class="token operator">=</span><span class="token punctuation">(</span>s<span class="token operator">+</span>t<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 将SR[s..t]平分为SR[s..m]和SR[m+1..t] */</span>
+      <span class="token function">MSort</span><span class="token punctuation">(</span>SR<span class="token punctuation">,</span>TR2<span class="token punctuation">,</span>s<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 递归地将SR[s..m]归并为有序的TR2[s..m] */</span> <span class="token comment" spellcheck="true">//将前半部分归并</span>
+      <span class="token function">MSort</span><span class="token punctuation">(</span>SR<span class="token punctuation">,</span>TR2<span class="token punctuation">,</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 递归地将SR[m+1..t]归并为有序TR2[m+1..t] */</span> <span class="token comment" spellcheck="true">//将后半部分归并</span>
+      <span class="token function">Merge</span><span class="token punctuation">(</span>TR2<span class="token punctuation">,</span>TR1<span class="token punctuation">,</span>s<span class="token punctuation">,</span>m<span class="token punctuation">,</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 将TR2[s..m]和TR2[m+1..t]归并到TR1[s..t] */</span> 
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>其实思路就是，先把一串数字，分为单个数字，然后对相邻的单个数字进行递归排序</p>
+<p>总的数字是：</p>
+<p><img src="https://i.loli.net/2019/10/22/UWvQHiG8otAkujL.jpg" alt></p>
+<p>现在我们来分析重点代码：</p>
+<pre class=" language-c"><code class="language-c"> <span class="token function">MSort</span><span class="token punctuation">(</span>SR<span class="token punctuation">,</span>TR2<span class="token punctuation">,</span>s<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//其实是将前半部分分开</span>
+<span class="token comment" spellcheck="true">//每次递归返回后都会执行当前递归函数的Merge(TR2,TR1,s,m,t);，将TR2归并到TR1中。如图9-8-4的右图。最终使得当前序列有序。</span></code></pre>
+<p><img src="https://i.loli.net/2019/10/22/c9jqwiXvhbLAx7P.jpg" alt></p>
+<p>同理：</p>
+<pre class=" language-c"><code class="language-c">  <span class="token function">MSort</span><span class="token punctuation">(</span>SR<span class="token punctuation">,</span>TR2<span class="token punctuation">,</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 递归地将SR[m+1..t]归并为有序TR2[m+1..t] */</span> <span class="token comment" spellcheck="true">//将后半部分归并</span></code></pre>
+<p><img src="https://i.loli.net/2019/10/22/zPkSiVbcUmN8v5t.jpg" alt></p>
+<p>其实两部分结合，总体就是：</p>
+<p><img src="https://i.loli.net/2019/10/22/wKd1bVck9NCYJF6.jpg" alt></p>
+<h3 id="3-Merge函数的代码是怎样的？"><a href="#3-Merge函数的代码是怎样的？" class="headerlink" title="3.Merge函数的代码是怎样的？"></a>3.Merge函数的代码是怎样的？</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 将有序的SR[i..m]和SR[m+1..n]归并为有序的TR[i..n] */</span>
+<span class="token keyword">void</span> <span class="token function">Merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> SR<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> TR<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">,</span><span class="token keyword">int</span> m<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token keyword">int</span> j<span class="token punctuation">,</span>k<span class="token punctuation">,</span>l<span class="token punctuation">;</span>
+ <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>k<span class="token operator">=</span>i<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>m <span class="token operator">&amp;&amp;</span> j<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/* 将SR中记录由小到大归并入TR */</span>
+ <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>SR<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span>SR<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+   TR<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span>SR<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span>
+   TR<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span>SR<span class="token punctuation">[</span>j<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//如果前半部分有剩余</span>
+ <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;=</span>m<span class="token punctuation">)</span>
+ <span class="token punctuation">{</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>l<span class="token operator">&lt;=</span>m<span class="token operator">-</span>i<span class="token punctuation">;</span>l<span class="token operator">++</span><span class="token punctuation">)</span>
+   TR<span class="token punctuation">[</span>k<span class="token operator">+</span>l<span class="token punctuation">]</span><span class="token operator">=</span>SR<span class="token punctuation">[</span>i<span class="token operator">+</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将剩余的SR[i..m]复制到TR */</span>
+ <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//如果后半部分有剩余</span>
+ <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">&lt;=</span>n<span class="token punctuation">)</span>
+ <span class="token punctuation">{</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>l<span class="token operator">&lt;=</span>n<span class="token operator">-</span>j<span class="token punctuation">;</span>l<span class="token operator">++</span><span class="token punctuation">)</span>
+   TR<span class="token punctuation">[</span>k<span class="token operator">+</span>l<span class="token punctuation">]</span><span class="token operator">=</span>SR<span class="token punctuation">[</span>j<span class="token operator">+</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将剩余的SR[j..n]复制到TR */</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>代码不是很难：直接看图可以明白</p>
+<p><img src="https://i.loli.net/2019/10/22/K2WvDbgVCQado4m.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/22/J7X964hPg1nDKur.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/22/XwObf2jZY97xJ3S.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/22/BLufKq3vN69igQ7.jpg" alt></p>
+<h2 id="9-8-2-归并排序的复杂度是多少？"><a href="#9-8-2-归并排序的复杂度是多少？" class="headerlink" title="9.8.2 归并排序的复杂度是多少？"></a>9.8.2 归并排序的复杂度是多少？</h2><ul>
+<li>时间复杂度是：O（nlogn）</li>
+<li>空间复杂度是：O（n+logn）</li>
+</ul>
+<h2 id="9-8-3-非递归实现归并排序"><a href="#9-8-3-非递归实现归并排序" class="headerlink" title="9.8.3  非递归实现归并排序"></a>9.8.3  非递归实现归并排序</h2><h3 id="1-思想是什么？"><a href="#1-思想是什么？" class="headerlink" title="1.思想是什么？"></a>1.思想是什么？</h3><p>其实就是用迭代的方式，代替递归的方式，思想主要是，用迭代的方式找单个数字，而不是用递归分为单个数字再返回</p>
+<h3 id="2-代码是怎样的？"><a href="#2-代码是怎样的？" class="headerlink" title="2.代码是怎样的？"></a>2.代码是怎样的？</h3><p>注意：这里的TR的临时空间，相当于中转站的作用，最后的排序的结构还是要放在原来的空间中</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L作归并非递归排序 */</span>
+<span class="token keyword">void</span> <span class="token function">MergeSort2</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token keyword">int</span><span class="token operator">*</span> TR<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>L<span class="token operator">-></span>length <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 申请额外空间 */</span>
+ <span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+ <span class="token keyword">while</span><span class="token punctuation">(</span>k<span class="token operator">&lt;</span>L<span class="token operator">-></span>length<span class="token punctuation">)</span>
+ <span class="token punctuation">{</span>
+  <span class="token function">MergePass</span><span class="token punctuation">(</span>L<span class="token operator">-></span>r<span class="token punctuation">,</span>TR<span class="token punctuation">,</span>k<span class="token punctuation">,</span>L<span class="token operator">-></span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//先归并放到TR中</span>
+  k<span class="token operator">=</span><span class="token number">2</span><span class="token operator">*</span>k<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 子序列长度加倍 */</span>
+  <span class="token function">MergePass</span><span class="token punctuation">(</span>TR<span class="token punctuation">,</span>L<span class="token operator">-></span>r<span class="token punctuation">,</span>k<span class="token punctuation">,</span>L<span class="token operator">-></span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//再归并放回原来的空间</span>
+  k<span class="token operator">=</span><span class="token number">2</span><span class="token operator">*</span>k<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 子序列长度加倍 */</span> 
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>MergePass的代码：</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 将SR[]中相邻长度为s的子序列两两归并到TR[] */</span>
+<span class="token keyword">void</span> <span class="token function">MergePass</span><span class="token punctuation">(</span><span class="token keyword">int</span> SR<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> TR<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> s<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+ <span class="token keyword">int</span> j<span class="token punctuation">;</span>
+ <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> n<span class="token number">-2</span><span class="token operator">*</span>s<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> 
+ <span class="token punctuation">{</span> 
+  <span class="token function">Merge</span><span class="token punctuation">(</span>SR<span class="token punctuation">,</span>TR<span class="token punctuation">,</span>i<span class="token punctuation">,</span>i<span class="token operator">+</span>s<span class="token number">-1</span><span class="token punctuation">,</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>s<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 两两归并 */</span>
+  i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>s<span class="token punctuation">;</span>        
+ <span class="token punctuation">}</span>
+ <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>n<span class="token operator">-</span>s<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true">/* 归并最后两个序列 */</span>  <span class="token comment" spellcheck="true">//最后一步</span>
+  <span class="token function">Merge</span><span class="token punctuation">(</span>SR<span class="token punctuation">,</span>TR<span class="token punctuation">,</span>i<span class="token punctuation">,</span>i<span class="token operator">+</span>s<span class="token number">-1</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//将单个的数字归并进序列</span>
+ <span class="token keyword">else</span>   <span class="token comment" spellcheck="true">/* 若最后只剩下单个子序列 */</span>  
+  <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span>i<span class="token punctuation">;</span>j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+   TR<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> SR<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将单个的数字放在最后</span>
+<span class="token punctuation">}</span></code></pre>
+<p>一轮MergePass，这里的20是直接排在队尾的</p>
+<p><img src="https://i.loli.net/2019/10/22/ZHJCEt9rpnl7iXY.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/22/RZQGTjJLnkhAVHt.jpg" alt></p>
+<p>二轮MergePass，这里的20也是直接排在队尾的</p>
+<p><img src="https://i.loli.net/2019/10/22/X4Dqeuih6ycnAN7.jpg" alt></p>
+<p>三轮MergePass</p>
+<p>这里的20是按顺序放入的</p>
+<h3 id="3-相对递归的方式有什么优点呢？"><a href="#3-相对递归的方式有什么优点呢？" class="headerlink" title="3.相对递归的方式有什么优点呢？"></a>3.相对递归的方式有什么优点呢？</h3><ul>
+<li>时间复杂度提升了</li>
+<li>空间复杂度为O（n）,递归的空间复杂度是O（n+logn）</li>
+</ul>
+
             </div>
             <hr/>
 
@@ -633,8 +747,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/4.10-dui-lie-de-ding-yi/">
-                    《4.10 队列的定义》
+            <a  href="/2019/10/22/9.8-gui-bing-pai-xu/">
+                    《9.8 归并排序》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -676,7 +790,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T19-22-59',
+        id: '2019-10-22T23-24-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -697,86 +811,34 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/13/5.3-chuan-de-bi-jiao/">
+                <a href="/2019/10/22/9.8-gui-bing-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="5.3 串的比较">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="9.8 归并排序">
                         
-                        <span class="card-title">5.3 串的比较</span>
+                        <span class="card-title">9.8 归并排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            怎么进行串的比较呢
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/字符串/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/11/9.3-mou-pao-pai-xu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
-                        
-                        <span class="card-title">9.3 冒泡排序</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
+                            9.8 归并排序
+什么是归并排序呢？
 
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
 
+9.8.1 归并排序算法1.什么是归并排序（2路归并）？其实简单说就是，把一个数字序列，按数字一个一个分开来，然后相邻的数字两两归并，如上图
+2.归并排序代码是怎样的？/* 对顺序表L作归并排序 *
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-22
                             </span>
                         <span class="publish-author">
                             
@@ -790,6 +852,7 @@ void BubbleSort0(SqList *L)
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -799,6 +862,59 @@ void BubbleSort0(SqList *L)
                     
                     <a href="/tags/排序/">
                         <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="单例模式简析">
+                        
+                        <span class="card-title">单例模式简析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            什么是单例模式
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java设计模式/" class="post-category">
+                                    java设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/单例模式/">
+                        <span class="chip bg-color">单例模式</span>
+                    </a>
+                    
+                    <a href="/tags/java设计模式/">
+                        <span class="chip bg-color">java设计模式</span>
                     </a>
                     
                 </div>
