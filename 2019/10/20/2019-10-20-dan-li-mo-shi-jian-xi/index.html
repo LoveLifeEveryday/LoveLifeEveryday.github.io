@@ -513,7 +513,7 @@
     <span class="token keyword">private</span> <span class="token function">Singleton</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  
     <span class="token keyword">public</span> <span class="token keyword">static</span> Singleton <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
     <span class="token keyword">return</span> instance<span class="token punctuation">;</span>  
-    <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>    
 <span class="token punctuation">}</span></code></pre>
 <p>线程安全，但是容易产生垃圾对象</p>
 <h3 id="3-双重锁模式"><a href="#3-双重锁模式" class="headerlink" title="3.双重锁模式"></a>3.<strong>双重锁模式</strong></h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>  
@@ -837,19 +837,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/">
+                <a href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="6.3 树的抽象数据类型">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="6.4 树的存储结构">
                         
-                        <span class="card-title">6.3 树的抽象数据类型</span>
+                        <span class="card-title">6.4 树的存储结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            树，个人觉得是一种从生活中抽象而成的数据结构，类似于我们现实生活中的树
+                            因为树一定有且仅有一个双亲。所以采用这种方法
                         
                     </div>
                     <div class="publish-info">
