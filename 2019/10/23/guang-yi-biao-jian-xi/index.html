@@ -4,12 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="5.3 串的比较, Hexo">
-    <meta name="description" content="5.3 串的比较1.怎么进行串的比较呢？举例子：
+    <meta name="keywords" content="广义表简析, Hexo">
+    <meta name="description" content="广义表简析
+什么是广义表呢？你知道文件系统吗
 
-“hap”&amp;lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大
-
-”hpaaa“&amp;lt;”hpb”,因为前2个字母均相同，但">
+1.什么是广义表呢？其实就是一个可以表中有表的，允许表的嵌套的结构
+例如:文件系统，文件夹下面可能是文件夹，也可能是文件，这就是广义表
+2.广义表有什么属性呢？
+表头，表尾
+表头是第一个元素，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>5.3 串的比较 | Hexo</title>
+    <title>广义表简析 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,13 +314,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        5.3 串的比较
+                        广义表简析
                     </div>
                 </div>
             </div>
@@ -429,12 +432,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/大话数据结构/">
-                                <span class="chip bg-color">大话数据结构</span>
+                            <a href="/tags/广义表/">
+                                <span class="chip bg-color">广义表</span>
                             </a>
                         
-                            <a href="/tags/字符串/">
-                                <span class="chip bg-color">字符串</span>
+                            <a href="/tags/数据结构/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
                     </div>
@@ -445,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                大话数据结构
+                            <a href="/categories/数据结构/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -457,7 +460,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-10-23
                 </div>
 
                 
@@ -473,14 +476,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p>
-<ol>
-<li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p>
+                <h1 id="广义表简析"><a href="#广义表简析" class="headerlink" title="广义表简析"></a>广义表简析</h1><blockquote>
+<p>什么是广义表呢？你知道文件系统吗</p>
+</blockquote>
+<h2 id="1-什么是广义表呢？"><a href="#1-什么是广义表呢？" class="headerlink" title="1.什么是广义表呢？"></a>1.什么是广义表呢？</h2><p>其实就是一个可以表中有表的，允许表的嵌套的结构</p>
+<p>例如:文件系统，文件夹下面可能是文件夹，也可能是文件，这就是广义表</p>
+<h2 id="2-广义表有什么属性呢？"><a href="#2-广义表有什么属性呢？" class="headerlink" title="2.广义表有什么属性呢？"></a>2.广义表有什么属性呢？</h2><ul>
+<li><p>表头，表尾</p>
+<p>表头是第一个元素，表尾是除表头以外的元素</p>
 </li>
-<li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p>
-<p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p>
+<li><p>长度</p>
+<p>广义表的元素个数</p>
+</li>
+<li><p>深度</p>
+<p>广义表的嵌套层数，需要注意，<strong>空表</strong>的深度是1，<strong>原子</strong>的深度是0</p>
+</li>
+</ul>
+<h2 id="3-存储结构"><a href="#3-存储结构" class="headerlink" title="3.存储结构"></a>3.存储结构</h2><h3 id="1-是链式还是顺序表式"><a href="#1-是链式还是顺序表式" class="headerlink" title="1.是链式还是顺序表式"></a>1.是链式还是顺序表式</h3><p>链式，便于存储空间的扩容</p>
+<h3 id="2-结点的分类："><a href="#2-结点的分类：" class="headerlink" title="2.结点的分类："></a>2.结点的分类：</h3><ol>
+<li><p>原子结点（ATOM==0）</p>
+</li>
+<li><p>表结点（LIST==1）</p>
+<p>表结点用来表示一个广义表</p>
 </li>
 </ol>
+<p><img src="https://i.loli.net/2019/10/23/Z1dzhrqCw6ypnxO.jpg" alt></p>
+<h2 id="4-广义表的分解方式"><a href="#4-广义表的分解方式" class="headerlink" title="4.广义表的分解方式"></a>4.广义表的分解方式</h2><h3 id="1-分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现"><a href="#1-分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现" class="headerlink" title="1.分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现"></a>1.分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现</h3><p><img src="https://i.loli.net/2019/10/23/Bhi4Sp8ZlJLow5q.jpg" alt></p>
+<h3 id="2-每个元素依次分解"><a href="#2-每个元素依次分解" class="headerlink" title="2.每个元素依次分解"></a>2.每个元素依次分解</h3><p><img src="https://i.loli.net/2019/10/23/j3rRJdYagkwvIGx.jpg" alt></p>
+<p>由此可见，方式2比方式1分解层数少</p>
+<h2 id="5-广义表常用操作实现"><a href="#5-广义表常用操作实现" class="headerlink" title="5.广义表常用操作实现"></a>5.广义表常用操作实现</h2><h3 id="1-求深度的算法"><a href="#1-求深度的算法" class="headerlink" title="1.求深度的算法"></a>1.求深度的算法</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">GListDepth</span><span class="token punctuation">(</span>GList L<span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token keyword">int</span> h1<span class="token punctuation">,</span>h2<span class="token punctuation">;</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token operator">==</span>L<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//空表</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span>ATOM<span class="token operator">==</span>L<span class="token operator">-></span>tag<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//原子</span>
+     h1<span class="token operator">=</span><span class="token function">GListDepth</span><span class="token punctuation">(</span>L<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>hp<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表头深度+1</span>
+     h2<span class="token operator">=</span><span class="token function">GListDepth</span><span class="token punctuation">(</span>L<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表尾的深度和原表相同</span>
+     <span class="token keyword">return</span> h1<span class="token operator">>=</span>h2<span class="token operator">?</span> h1<span class="token punctuation">:</span>h2<span class="token punctuation">;</span> 
+ <span class="token punctuation">}</span></code></pre>
+<h3 id="2-在表尾添加元素"><a href="#2-在表尾添加元素" class="headerlink" title="2.在表尾添加元素"></a>2.在表尾添加元素</h3><pre class=" language-c"><code class="language-c">bool <span class="token function">Append</span><span class="token punctuation">(</span>GList <span class="token operator">&amp;</span>L<span class="token punctuation">,</span>GLNode <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//在广义表末尾添加新的表结点，将参数p赋予表头指针hp</span>
+    GLNode <span class="token operator">*</span>pp<span class="token punctuation">;</span>
+    GList tail<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//新建表尾结点</span>
+    tail<span class="token operator">=</span><span class="token punctuation">(</span>GList<span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>GLNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token operator">==</span>tail<span class="token punctuation">)</span> <span class="token keyword">return</span> OVERFLOW<span class="token punctuation">;</span>
+    tail<span class="token operator">-></span>tag<span class="token operator">=</span>LIST<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//添加数据</span>
+    tail<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>hp<span class="token operator">=</span>p<span class="token punctuation">;</span>
+    tail<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token operator">=</span><span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token operator">==</span>L<span class="token punctuation">)</span> L<span class="token operator">=</span>tail<span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>pp<span class="token operator">=</span>L<span class="token punctuation">;</span>pp<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token operator">!=</span><span class="token constant">NULL</span><span class="token punctuation">;</span>pp<span class="token operator">=</span>pp<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//定位到最后一个结点</span>
+        pp<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token operator">=</span>tail<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> </code></pre>
 
             </div>
             <hr/>
@@ -641,8 +690,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/5.3-chuan-de-bi-jiao/">
-                    《5.3 串的比较》
+            <a  href="/2019/10/23/guang-yi-biao-jian-xi/">
+                    《广义表简析》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -684,7 +733,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T19-22-59',
+        id: '2019-10-23T14-50-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -705,50 +754,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/">
+                <a href="/2019/10/23/guang-yi-biao-jian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="5.5 串的存储结构">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="广义表简析">
                         
-                        <span class="card-title">5.5 串的存储结构</span>
+                        <span class="card-title">广义表简析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            串的顺序存储与普通的顺序存储（数组）有什么区别
+                            什么是广义表呢？你知道文件系统吗
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
+                            <a href="/categories/数据结构/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
+                    <a href="/tags/广义表/">
+                        <span class="chip bg-color">广义表</span>
                     </a>
                     
-                    <a href="/tags/字符串/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/数据结构/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
@@ -762,24 +813,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/13/4.10-dui-lie-de-ding-yi/">
+                <a href="/2019/10/23/6.9-er-cha-shu-de-jian-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="4.10 队列的定义">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="6.9 二叉树的建立">
                         
-                        <span class="card-title">4.10 队列的定义</span>
+                        <span class="card-title">6.9 二叉树的建立</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是队列呢
+                            什么是拓展二叉树
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-23
                             </span>
                         <span class="publish-author">
                             
@@ -800,8 +851,12 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/队列/">
-                        <span class="chip bg-color">队列</span>
+                    <a href="/tags/树/">
+                        <span class="chip bg-color">树</span>
+                    </a>
+                    
+                    <a href="/tags/二叉树/">
+                        <span class="chip bg-color">二叉树</span>
                     </a>
                     
                 </div>

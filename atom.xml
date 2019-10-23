@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2019-10-23T05:28:49.475Z</updated>
+  <updated>2019-10-23T06:50:38.514Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>广义表简析</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/23/guang-yi-biao-jian-xi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/23/guang-yi-biao-jian-xi/</id>
+    <published>2019-10-23T06:50:59.000Z</published>
+    <updated>2019-10-23T06:50:38.514Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;广义表简析&quot;&gt;&lt;a href=&quot;#广义表简析&quot; class=&quot;headerlink&quot; title=&quot;广义表简析&quot;&gt;&lt;/a&gt;广义表简析&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;什么是广义表呢？你知道文件系统吗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="广义表" scheme="https://lovelifeeveryday.github.io/tags/%E5%B9%BF%E4%B9%89%E8%A1%A8/"/>
+    
+      <category term="数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>6.9 二叉树的建立</title>
@@ -492,35 +524,6 @@
   </entry>
   
   <entry>
-    <title>4.7 栈的作用</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/</id>
-    <published>2019-10-13T11:59:59.000Z</published>
-    <updated>2019-10-13T11:59:28.271Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;4-7-栈的作用&quot;&gt;&lt;a href=&quot;#4-7-栈的作用&quot; class=&quot;headerlink&quot; title=&quot;4.7 栈的作用&quot;&gt;&lt;/a&gt;4.7 栈的作用&lt;/h1&gt;&lt;h2 id=&quot;为什么要用栈呢？&quot;&gt;&lt;a href=&quot;#为什么要用栈呢？&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="栈" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
     <title>4.8 栈的应用</title>
     <link href="https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/"/>
     <id>https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/</id>
@@ -551,11 +554,11 @@
   </entry>
   
   <entry>
-    <title>4.6 栈的链式存储结构及实现</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/</id>
-    <published>2019-10-13T11:58:59.000Z</published>
-    <updated>2019-10-13T11:58:54.107Z</updated>
+    <title>4.7 栈的作用</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/</id>
+    <published>2019-10-13T11:59:59.000Z</published>
+    <updated>2019-10-13T11:59:28.271Z</updated>
     
     <summary type="html">
     
@@ -563,7 +566,7 @@
       
         
         
-          &lt;h1 id=&quot;4-6-栈的链式存储结构及实现&quot;&gt;&lt;a href=&quot;#4-6-栈的链式存储结构及实现&quot; class=&quot;headerlink&quot; title=&quot;4.6 栈的链式存储结构及实现&quot;&gt;&lt;/a&gt;4.6 栈的链式存储结构及实现&lt;/h1&gt;&lt;h2 id=&quot;1-什么是链栈呢&quot;&gt;&lt;a
+          &lt;h1 id=&quot;4-7-栈的作用&quot;&gt;&lt;a href=&quot;#4-7-栈的作用&quot; class=&quot;headerlink&quot; title=&quot;4.7 栈的作用&quot;&gt;&lt;/a&gt;4.7 栈的作用&lt;/h1&gt;&lt;h2 id=&quot;为什么要用栈呢？&quot;&gt;&lt;a href=&quot;#为什么要用栈呢？&quot;
         
       
     
@@ -580,11 +583,11 @@
   </entry>
   
   <entry>
-    <title>4.5 两栈共享空间</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.5-liang-zhan-gong-xiang-kong-jian/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.5-liang-zhan-gong-xiang-kong-jian/</id>
-    <published>2019-10-13T11:57:59.000Z</published>
-    <updated>2019-10-13T11:58:10.143Z</updated>
+    <title>4.6 栈的链式存储结构及实现</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/</id>
+    <published>2019-10-13T11:58:59.000Z</published>
+    <updated>2019-10-13T11:58:54.107Z</updated>
     
     <summary type="html">
     
@@ -592,7 +595,7 @@
       
         
         
-          &lt;h1 id=&quot;4-5-两栈共享空间&quot;&gt;&lt;a href=&quot;#4-5-两栈共享空间&quot; class=&quot;headerlink&quot; title=&quot;4.5 两栈共享空间&quot;&gt;&lt;/a&gt;4.5 两栈共享空间&lt;/h1&gt;&lt;h2 id=&quot;1-栈的缺点&quot;&gt;&lt;a href=&quot;#1-栈的缺点&quot;
+          &lt;h1 id=&quot;4-6-栈的链式存储结构及实现&quot;&gt;&lt;a href=&quot;#4-6-栈的链式存储结构及实现&quot; class=&quot;headerlink&quot; title=&quot;4.6 栈的链式存储结构及实现&quot;&gt;&lt;/a&gt;4.6 栈的链式存储结构及实现&lt;/h1&gt;&lt;h2 id=&quot;1-什么是链栈呢&quot;&gt;&lt;a
         
       
     

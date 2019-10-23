@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>广义表简析</title>
+      <link href="/2019/10/23/guang-yi-biao-jian-xi/"/>
+      <url>/2019/10/23/guang-yi-biao-jian-xi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="广义表简析"><a href="#广义表简析" class="headerlink" title="广义表简析"></a>广义表简析</h1><blockquote><p>什么是广义表呢？你知道文件系统吗</p></blockquote><h2 id="1-什么是广义表呢？"><a href="#1-什么是广义表呢？" class="headerlink" title="1.什么是广义表呢？"></a>1.什么是广义表呢？</h2><p>其实就是一个可以表中有表的，允许表的嵌套的结构</p><p>例如:文件系统，文件夹下面可能是文件夹，也可能是文件，这就是广义表</p><h2 id="2-广义表有什么属性呢？"><a href="#2-广义表有什么属性呢？" class="headerlink" title="2.广义表有什么属性呢？"></a>2.广义表有什么属性呢？</h2><ul><li><p>表头，表尾</p><p>表头是第一个元素，表尾是除表头以外的元素</p></li><li><p>长度</p><p>广义表的元素个数</p></li><li><p>深度</p><p>广义表的嵌套层数，需要注意，<strong>空表</strong>的深度是1，<strong>原子</strong>的深度是0</p></li></ul><h2 id="3-存储结构"><a href="#3-存储结构" class="headerlink" title="3.存储结构"></a>3.存储结构</h2><h3 id="1-是链式还是顺序表式"><a href="#1-是链式还是顺序表式" class="headerlink" title="1.是链式还是顺序表式"></a>1.是链式还是顺序表式</h3><p>链式，便于存储空间的扩容</p><h3 id="2-结点的分类："><a href="#2-结点的分类：" class="headerlink" title="2.结点的分类："></a>2.结点的分类：</h3><ol><li><p>原子结点（ATOM==0）</p></li><li><p>表结点（LIST==1）</p><p>表结点用来表示一个广义表</p></li></ol><p><img src="https://i.loli.net/2019/10/23/Z1dzhrqCw6ypnxO.jpg" alt></p><h2 id="4-广义表的分解方式"><a href="#4-广义表的分解方式" class="headerlink" title="4.广义表的分解方式"></a>4.广义表的分解方式</h2><h3 id="1-分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现"><a href="#1-分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现" class="headerlink" title="1.分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现"></a>1.分解为表头和表尾，2个子集，分别递归求解，直至空表或者原子出现</h3><p><img src="https://i.loli.net/2019/10/23/Bhi4Sp8ZlJLow5q.jpg" alt></p><h3 id="2-每个元素依次分解"><a href="#2-每个元素依次分解" class="headerlink" title="2.每个元素依次分解"></a>2.每个元素依次分解</h3><p><img src="https://i.loli.net/2019/10/23/j3rRJdYagkwvIGx.jpg" alt></p><p>由此可见，方式2比方式1分解层数少</p><h2 id="5-广义表常用操作实现"><a href="#5-广义表常用操作实现" class="headerlink" title="5.广义表常用操作实现"></a>5.广义表常用操作实现</h2><h3 id="1-求深度的算法"><a href="#1-求深度的算法" class="headerlink" title="1.求深度的算法"></a>1.求深度的算法</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">GListDepth</span><span class="token punctuation">(</span>GList L<span class="token punctuation">)</span><span class="token punctuation">{</span>     <span class="token keyword">int</span> h1<span class="token punctuation">,</span>h2<span class="token punctuation">;</span>     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token operator">==</span>L<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//空表</span>     <span class="token keyword">if</span><span class="token punctuation">(</span>ATOM<span class="token operator">==</span>L<span class="token operator">-></span>tag<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//原子</span>     h1<span class="token operator">=</span><span class="token function">GListDepth</span><span class="token punctuation">(</span>L<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>hp<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表头深度+1</span>     h2<span class="token operator">=</span><span class="token function">GListDepth</span><span class="token punctuation">(</span>L<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表尾的深度和原表相同</span>     <span class="token keyword">return</span> h1<span class="token operator">>=</span>h2<span class="token operator">?</span> h1<span class="token punctuation">:</span>h2<span class="token punctuation">;</span>  <span class="token punctuation">}</span></code></pre><h3 id="2-在表尾添加元素"><a href="#2-在表尾添加元素" class="headerlink" title="2.在表尾添加元素"></a>2.在表尾添加元素</h3><pre class=" language-c"><code class="language-c">bool <span class="token function">Append</span><span class="token punctuation">(</span>GList <span class="token operator">&amp;</span>L<span class="token punctuation">,</span>GLNode <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//在广义表末尾添加新的表结点，将参数p赋予表头指针hp</span>    GLNode <span class="token operator">*</span>pp<span class="token punctuation">;</span>    GList tail<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//新建表尾结点</span>    tail<span class="token operator">=</span><span class="token punctuation">(</span>GList<span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>GLNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token operator">==</span>tail<span class="token punctuation">)</span> <span class="token keyword">return</span> OVERFLOW<span class="token punctuation">;</span>    tail<span class="token operator">-></span>tag<span class="token operator">=</span>LIST<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//添加数据</span>    tail<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>hp<span class="token operator">=</span>p<span class="token punctuation">;</span>    tail<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token operator">=</span><span class="token constant">NULL</span><span class="token punctuation">;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token operator">==</span>L<span class="token punctuation">)</span> L<span class="token operator">=</span>tail<span class="token punctuation">;</span>    <span class="token keyword">else</span><span class="token punctuation">{</span>        <span class="token keyword">for</span><span class="token punctuation">(</span>pp<span class="token operator">=</span>L<span class="token punctuation">;</span>pp<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token operator">!=</span><span class="token constant">NULL</span><span class="token punctuation">;</span>pp<span class="token operator">=</span>pp<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//定位到最后一个结点</span>        pp<span class="token operator">-></span>un<span class="token punctuation">.</span>ptr<span class="token punctuation">.</span>tp<span class="token operator">=</span>tail<span class="token punctuation">;</span>     <span class="token punctuation">}</span>    <span class="token keyword">return</span> OK<span class="token punctuation">;</span><span class="token punctuation">}</span> </code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 广义表 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>6.9 二叉树的建立</title>
       <link href="/2019/10/23/6.9-er-cha-shu-de-jian-li/"/>
       <url>/2019/10/23/6.9-er-cha-shu-de-jian-li/</url>
@@ -446,11 +473,11 @@
     
     
     <entry>
-      <title>4.7 栈的作用</title>
-      <link href="/2019/10/13/4.7-zhan-de-zuo-yong/"/>
-      <url>/2019/10/13/4.7-zhan-de-zuo-yong/</url>
+      <title>4.8 栈的应用</title>
+      <link href="/2019/10/13/4.8-zhan-de-ying-yong/"/>
+      <url>/2019/10/13/4.8-zhan-de-ying-yong/</url>
       
-        <content type="html"><![CDATA[<h1 id="4-7-栈的作用"><a href="#4-7-栈的作用" class="headerlink" title="4.7 栈的作用"></a>4.7 栈的作用</h1><h2 id="为什么要用栈呢？"><a href="#为什么要用栈呢？" class="headerlink" title="为什么要用栈呢？"></a>为什么要用栈呢？</h2><p>其实栈，简化了程序设计的问题，划分的了不同关注层次，使思考范围聚集于问题核心</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="4-8-栈的应用"><a href="#4-8-栈的应用" class="headerlink" title="4.8 栈的应用"></a>4.8 栈的应用</h1><blockquote><p>栈的应用有哪些呢？1.是递归 2.是后缀表示法</p></blockquote><h2 id="1-为什么栈和递归有关系呢？"><a href="#1-为什么栈和递归有关系呢？" class="headerlink" title="1.为什么栈和递归有关系呢？"></a>1.为什么栈和递归有关系呢？</h2><p>其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构</p><h2 id="2-后缀表示法定义"><a href="#2-后缀表示法定义" class="headerlink" title="2.后缀表示法定义"></a>2.后缀表示法定义</h2><h3 id="1-什么是后缀表示法"><a href="#1-什么是后缀表示法" class="headerlink" title="1.什么是后缀表示法"></a>1.什么是后缀表示法</h3><p>其实就是不要括号的表示法，逆波兰法，</p><h3 id="2-后缀表达式的计算是怎样的呢"><a href="#2-后缀表达式的计算是怎样的呢" class="headerlink" title="2.后缀表达式的计算是怎样的呢"></a>2.后缀表达式的计算是怎样的呢</h3><p>从左到右遍历，遇到数字就出栈，遇到符合，就将栈顶两个数字出栈进行运算，运算结果进栈</p><h3 id="3-中缀表达式怎么转后缀表达式呢"><a href="#3-中缀表达式怎么转后缀表达式呢" class="headerlink" title="3.中缀表达式怎么转后缀表达式呢"></a>3.中缀表达式怎么转后缀表达式呢</h3><p>如果是数字，直接出栈，如果是符号的话，和栈顶符号进行比较，如果优先级大于栈顶符号的话，就入栈，如果优先级小于栈顶符号或者是右括号的话，就依次出栈（右括号的话，出栈到左括号）</p>]]></content>
       
       
       <categories>
@@ -473,11 +500,11 @@
     
     
     <entry>
-      <title>4.8 栈的应用</title>
-      <link href="/2019/10/13/4.8-zhan-de-ying-yong/"/>
-      <url>/2019/10/13/4.8-zhan-de-ying-yong/</url>
+      <title>4.7 栈的作用</title>
+      <link href="/2019/10/13/4.7-zhan-de-zuo-yong/"/>
+      <url>/2019/10/13/4.7-zhan-de-zuo-yong/</url>
       
-        <content type="html"><![CDATA[<h1 id="4-8-栈的应用"><a href="#4-8-栈的应用" class="headerlink" title="4.8 栈的应用"></a>4.8 栈的应用</h1><blockquote><p>栈的应用有哪些呢？1.是递归 2.是后缀表示法</p></blockquote><h2 id="1-为什么栈和递归有关系呢？"><a href="#1-为什么栈和递归有关系呢？" class="headerlink" title="1.为什么栈和递归有关系呢？"></a>1.为什么栈和递归有关系呢？</h2><p>其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构</p><h2 id="2-后缀表示法定义"><a href="#2-后缀表示法定义" class="headerlink" title="2.后缀表示法定义"></a>2.后缀表示法定义</h2><h3 id="1-什么是后缀表示法"><a href="#1-什么是后缀表示法" class="headerlink" title="1.什么是后缀表示法"></a>1.什么是后缀表示法</h3><p>其实就是不要括号的表示法，逆波兰法，</p><h3 id="2-后缀表达式的计算是怎样的呢"><a href="#2-后缀表达式的计算是怎样的呢" class="headerlink" title="2.后缀表达式的计算是怎样的呢"></a>2.后缀表达式的计算是怎样的呢</h3><p>从左到右遍历，遇到数字就出栈，遇到符合，就将栈顶两个数字出栈进行运算，运算结果进栈</p><h3 id="3-中缀表达式怎么转后缀表达式呢"><a href="#3-中缀表达式怎么转后缀表达式呢" class="headerlink" title="3.中缀表达式怎么转后缀表达式呢"></a>3.中缀表达式怎么转后缀表达式呢</h3><p>如果是数字，直接出栈，如果是符号的话，和栈顶符号进行比较，如果优先级大于栈顶符号的话，就入栈，如果优先级小于栈顶符号或者是右括号的话，就依次出栈（右括号的话，出栈到左括号）</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="4-7-栈的作用"><a href="#4-7-栈的作用" class="headerlink" title="4.7 栈的作用"></a>4.7 栈的作用</h1><h2 id="为什么要用栈呢？"><a href="#为什么要用栈呢？" class="headerlink" title="为什么要用栈呢？"></a>为什么要用栈呢？</h2><p>其实栈，简化了程序设计的问题，划分的了不同关注层次，使思考范围聚集于问题核心</p>]]></content>
       
       
       <categories>
@@ -689,33 +716,6 @@
     
     
     <entry>
-      <title>4.10 队列的定义</title>
-      <link href="/2019/10/13/4.10-dui-lie-de-ding-yi/"/>
-      <url>/2019/10/13/4.10-dui-lie-de-ding-yi/</url>
-      
-        <content type="html"><![CDATA[<h1 id="4-10-队列的定义"><a href="#4-10-队列的定义" class="headerlink" title="4.10 队列的定义"></a>4.10 队列的定义</h1><h2 id="1-什么是队列呢"><a href="#1-什么是队列呢" class="headerlink" title="1.什么是队列呢"></a>1.什么是队列呢</h2><p>队列是只允许在一端进行插入的操作，在另一端删除的线性表</p><h2 id="2-什么是队头，什么是队尾呢"><a href="#2-什么是队头，什么是队尾呢" class="headerlink" title="2.什么是队头，什么是队尾呢"></a>2.什么是队头，什么是队尾呢</h2><p>队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来</p><h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 大话数据结构 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 大话数据结构 </tag>
-            
-            <tag> 队列 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>5.3 串的比较</title>
       <link href="/2019/10/13/5.3-chuan-de-bi-jiao/"/>
       <url>/2019/10/13/5.3-chuan-de-bi-jiao/</url>
@@ -735,6 +735,33 @@
             <tag> 大话数据结构 </tag>
             
             <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.10 队列的定义</title>
+      <link href="/2019/10/13/4.10-dui-lie-de-ding-yi/"/>
+      <url>/2019/10/13/4.10-dui-lie-de-ding-yi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-10-队列的定义"><a href="#4-10-队列的定义" class="headerlink" title="4.10 队列的定义"></a>4.10 队列的定义</h1><h2 id="1-什么是队列呢"><a href="#1-什么是队列呢" class="headerlink" title="1.什么是队列呢"></a>1.什么是队列呢</h2><p>队列是只允许在一端进行插入的操作，在另一端删除的线性表</p><h2 id="2-什么是队头，什么是队尾呢"><a href="#2-什么是队头，什么是队尾呢" class="headerlink" title="2.什么是队头，什么是队尾呢"></a>2.什么是队头，什么是队尾呢</h2><p>队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来</p><h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 队列 </tag>
             
         </tags>
       
