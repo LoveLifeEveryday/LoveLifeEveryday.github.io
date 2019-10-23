@@ -4,10 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="4.10 队列的定义, Hexo">
-    <meta name="description" content="4.10 队列的定义1.什么是队列呢队列是只允许在一端进行插入的操作，在另一端删除的线性表
-2.什么是队头，什么是队尾呢队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来
-">
+    <meta name="keywords" content="接口和接口回调, Hexo">
+    <meta name="description" content="接口和接口回调1.什么是接口·一种规范，一种规则，比如说，如果你是鸟，你就一定会飞，这里，鸟其实可以简单看成1个接口，会飞，可以看成接口里面的一个方法
+public interface Bird {
+    void fly();
+    ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>4.10 队列的定义 | Hexo</title>
+    <title>接口和接口回调 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,13 +310,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        4.10 队列的定义
+                        接口和接口回调
                     </div>
                 </div>
             </div>
@@ -427,12 +428,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/大话数据结构/">
-                                <span class="chip bg-color">大话数据结构</span>
+                            <a href="/tags/安卓基础知识/">
+                                <span class="chip bg-color">安卓基础知识</span>
                             </a>
                         
-                            <a href="/tags/队列/">
-                                <span class="chip bg-color">队列</span>
+                            <a href="/tags/java基础知识/">
+                                <span class="chip bg-color">java基础知识</span>
+                            </a>
+                        
+                            <a href="/tags/接口回调/">
+                                <span class="chip bg-color">接口回调</span>
                             </a>
                         
                     </div>
@@ -443,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                大话数据结构
+                            <a href="/categories/安卓基础知识/" class="post-category">
+                                安卓基础知识
                             </a>
                         
                     </div>
@@ -455,7 +460,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-10-23
                 </div>
 
                 
@@ -471,9 +476,145 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="4-10-队列的定义"><a href="#4-10-队列的定义" class="headerlink" title="4.10 队列的定义"></a>4.10 队列的定义</h1><h2 id="1-什么是队列呢"><a href="#1-什么是队列呢" class="headerlink" title="1.什么是队列呢"></a>1.什么是队列呢</h2><p>队列是只允许在一端进行插入的操作，在另一端删除的线性表</p>
-<h2 id="2-什么是队头，什么是队尾呢"><a href="#2-什么是队头，什么是队尾呢" class="headerlink" title="2.什么是队头，什么是队尾呢"></a>2.什么是队头，什么是队尾呢</h2><p>队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来</p>
-<h2 id><a href="#" class="headerlink" title></a></h2>
+                <h1 id="接口和接口回调"><a href="#接口和接口回调" class="headerlink" title="接口和接口回调"></a>接口和接口回调</h1><h2 id="1-什么是接口·"><a href="#1-什么是接口·" class="headerlink" title="1.什么是接口·"></a>1.什么是接口·</h2><p>一种规范，一种规则，比如说，如果你是鸟，你就一定会飞，这里，鸟其实可以简单看成1个接口，会飞，可以看成接口里面的一个方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Bird</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//有两条腿</span>
+    <span class="token keyword">void</span> <span class="token function">haveTwoLegs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java">
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Swallow</span> <span class="token keyword">implements</span> <span class="token class-name">Bird</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是燕子我会飞"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">haveTwoLegs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是燕子我有2条腿"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="2-接口的作用"><a href="#2-接口的作用" class="headerlink" title="2.接口的作用"></a>2.接口的作用</h2><ul>
+<li><p>实现了高内聚</p>
+<p>其实就是通过接口，把使用细节封装起来，向外展示的是一个方法而已，类似于说明书的作用</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Chat</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//这样就声明这个聊天的功能有2个，让别人一看就知道</span>
+    <span class="token comment" spellcheck="true">//发消息</span>
+    <span class="token keyword">void</span> <span class="token function">sendMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//收消息</span>
+    <span class="token keyword">void</span> <span class="token function">getMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> Class <span class="token class-name">GroupChat</span> <span class="token keyword">implements</span> <span class="token class-name">Chat</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">void</span> <span class="token function">sendMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>很多行代码
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">getMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>很多行代码
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>低耦合</p>
+<p>我也不是很明白</p>
+<p>百度说的</p>
+<p>其次是接口的松耦合是我们可以编写可复性高的代码。比如Server层本来引用使用Dao层mysql数据库的实现类，现在遇到mysql解决不了的业务，需要orcale实现，难道你要为了这一个或几个的功能，把所有的引用mysql的全删掉重写？只要再写一个dao层的实现类去引用这个接口，遇到需要orcale方法使用哪个接口变量就好了，别人写的代码也无需去删改。抽象类可以再写一个子类，但子类却不受父类过多约束，随意添加方法，对于项目的协同工作不利。抽象类做不到==对修改封闭，对扩展开放==的原则。<br>————————————————<br>版权声明：本文为CSDN博主「云等风来」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_33667439/article/details/78666979" target="_blank" rel="noopener">https://blog.csdn.net/qq_33667439/article/details/78666979</a></p>
+<h2 id="3-接口的应用之一–接口回调"><a href="#3-接口的应用之一–接口回调" class="headerlink" title="3.接口的应用之一–接口回调"></a>3.接口的应用之一–接口回调</h2><h3 id="1-什么是接口回调呢"><a href="#1-什么是接口回调呢" class="headerlink" title="1.什么是接口回调呢"></a>1.什么是接口回调呢</h3><p>​    其实就是，A调用B，B再回去调用A的另一个方法，是不是很晕，晕就对了</p>
+<p>打个比方：就是A去打车，问B多少钱，B说100块，然后A给了B 100元</p>
+<p>再打个比方：小明问小花数学题，小花说我先学完java，学完后就打回给你，之后半小时，小花打电话回去给小明了</p>
+</li>
+</ul>
+<h3 id="2-为什么要回调呢"><a href="#2-为什么要回调呢" class="headerlink" title="2.为什么要回调呢"></a>2.为什么要回调呢</h3><p>有人想说，直接A调用A的另一个方法就行了鸭，但是事情往往不是那么简单的，有一些事情必须要问别人，等待别人的回答，才能调用A的另一个方法，类比，总不能A自问自答吧</p>
+<h3 id="3-简单的回调示例"><a href="#3-简单的回调示例" class="headerlink" title="3.简单的回调示例"></a>3.简单的回调示例</h3><p>实现功能，小明打电话给小花，小花接到电话后，完成数学作业后，再打电话给小明</p>
+<p>//接口</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> net<span class="token punctuation">.</span>qiujuer<span class="token punctuation">.</span>web<span class="token punctuation">.</span>italker<span class="token punctuation">.</span>push<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CallBack</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">callBackToXiaoMing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>//小明</p>
+<pre class=" language-java"><code class="language-java">
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XiaoMing</span> <span class="token keyword">implements</span> <span class="token class-name">CallBack</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">askToXiaoHua</span><span class="token punctuation">(</span>XiaoHua xiaoHua<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"小明打电话给小花"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaoHua<span class="token punctuation">.</span><span class="token function">answer</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里为什么传入this,因为他实现了CallBack，本来是应该传入callBack的，但是因为当前类实现了CallBack，所以callBack有的东西当前的类也有，自然就可以传入this了</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">callBackToXiaoMing</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"小明收到回电"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>//小花</p>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XiaoHua</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">answer</span><span class="token punctuation">(</span>CallBack callBack<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"小花接到了小明的电话"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token comment" spellcheck="true">//这里写的是小花花费了半个小时写作业</span>
+            <span class="token comment" spellcheck="true">//半小时后，打电话回去</span>
+        callBack<span class="token punctuation">.</span><span class="token function">callBackToXiaoMing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>main方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> net<span class="token punctuation">.</span>qiujuer<span class="token punctuation">.</span>web<span class="token punctuation">.</span>italker<span class="token punctuation">.</span>push<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestCallBack</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        XiaoHua xiaoHua <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XiaoHua</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        XiaoMing xiaoMing <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XiaoMing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaoMing<span class="token punctuation">.</span><span class="token function">askToXiaoHua</span><span class="token punctuation">(</span>xiaoHua<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="4-安卓中的接口回调是怎样的？"><a href="#4-安卓中的接口回调是怎样的？" class="headerlink" title="4.安卓中的接口回调是怎样的？"></a>4.安卓中的接口回调是怎样的？</h2><blockquote>
+<p>其实接口回调经常见到</p>
+</blockquote>
+<h3 id="1-点击事件就是接口回调"><a href="#1-点击事件就是接口回调" class="headerlink" title="1.点击事件就是接口回调"></a>1.点击事件就是接口回调</h3><pre class=" language-java"><code class="language-java">mIvMe<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//这里面写了点击后的处理，调用了点击事件的接口，注意：点击事件的接口的设计相对于上面所说的司机的角色</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">startActivity</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>BaseActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span>MeActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="2-接口回调怎么写？"><a href="#2-接口回调怎么写？" class="headerlink" title="2.接口回调怎么写？"></a>2.接口回调怎么写？</h3><h4 id="1-在需要传递数据的地方定义一个接口，例如可以直接接收点击事件的地方（RecyclerView的adapter）"><a href="#1-在需要传递数据的地方定义一个接口，例如可以直接接收点击事件的地方（RecyclerView的adapter）" class="headerlink" title="1.在需要传递数据的地方定义一个接口，例如可以直接接收点击事件的地方（RecyclerView的adapter）"></a>1.在需要传递数据的地方定义一个接口，例如可以直接接收点击事件的地方（RecyclerView的adapter）</h4><pre class=" language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/**
+ * 定义一个接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span>  <span class="token class-name">onListener</span><span class="token punctuation">{</span>
+  <span class="token keyword">void</span> <span class="token function">OnListener</span><span class="token punctuation">(</span>String code<span class="token punctuation">,</span>String msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="2-在需要传递数据的地方定义一个的接口类型的变量存储数据。"><a href="#2-在需要传递数据的地方定义一个的接口类型的变量存储数据。" class="headerlink" title="2.在需要传递数据的地方定义一个的接口类型的变量存储数据。"></a>2.在需要传递数据的地方<strong>定义一个的接口类型的变量存储数据。</strong></h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ *定义一个变量储存数据
+ */</span>
+<span class="token keyword">private</span> onListener listener<span class="token punctuation">;</span> </code></pre>
+<h4 id="3-在需要传递数据的地方定义一个公共的方法，让外部去调用，并且传递接口类型的参数，给其定义的接口类型的数据初始化"><a href="#3-在需要传递数据的地方定义一个公共的方法，让外部去调用，并且传递接口类型的参数，给其定义的接口类型的数据初始化" class="headerlink" title="3.在需要传递数据的地方定义一个公共的方法，让外部去调用，并且传递接口类型的参数，给其定义的接口类型的数据初始化"></a>3.在需要传递数据的地方<strong>定义一个公共的方法，让外部去调用，并且传递接口类型的参数，给其定义的接口类型的数据初始化</strong></h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ *提供公共的方法,并且初始化接口类型的数据
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setListener</span><span class="token punctuation">(</span> onListener listener<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>listener <span class="token operator">=</span> listener<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="4-在需要传递数据的地方，合适的位置调用接口里面的方法，传递数据。（比如点击事件的地方）"><a href="#4-在需要传递数据的地方，合适的位置调用接口里面的方法，传递数据。（比如点击事件的地方）" class="headerlink" title="4.在需要传递数据的地方，合适的位置调用接口里面的方法，传递数据。（比如点击事件的地方）"></a>4.在需要传递数据的地方，<strong>合适的位置调用接口里面的方法，传递数据。（比如点击事件的地方）</strong></h4><pre class=" language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/**
+ * 在合适的位置给其调用接口，给其赋值
+ */</span>
+ @Override
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>listener<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token comment" spellcheck="true">//这个判断不可少</span>
+          listener<span class="token punctuation">.</span><span class="token function">OnListener</span><span class="token punctuation">(</span>rtncode<span class="token punctuation">,</span>rtnmsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="5-在需要获取数据的地方，创建对象调方法。"><a href="#5-在需要获取数据的地方，创建对象调方法。" class="headerlink" title="5.在需要获取数据的地方，创建对象调方法。"></a>5.<strong>在需要获取数据的地方，创建对象调方法。</strong></h4><pre class=" language-java"><code class="language-java">allPersonAdapter<span class="token punctuation">.</span><span class="token function">setItemOnClickInterface</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">AllPersonAdapter<span class="token punctuation">.</span>ItemOnClickInterface</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//在这里获取数据进行处理</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
             </div>
             <hr/>
 
@@ -633,8 +774,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/4.10-dui-lie-de-ding-yi/">
-                    《4.10 队列的定义》
+            <a  href="/2019/10/23/jie-kou-he-jie-kou-hui-diao/">
+                    《接口和接口回调》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -676,7 +817,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T19-22-59',
+        id: '2019-10-23T20-52-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -697,50 +838,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/13/5.3-chuan-de-bi-jiao/">
+                <a href="/2019/10/23/jie-kou-he-jie-kou-hui-diao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="5.3 串的比较">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="接口和接口回调">
                         
-                        <span class="card-title">5.3 串的比较</span>
+                        <span class="card-title">接口和接口回调</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            怎么进行串的比较呢
+                            什么是接口
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
+                            <a href="/categories/安卓基础知识/" class="post-category">
+                                    安卓基础知识
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
+                    <a href="/tags/安卓基础知识/">
+                        <span class="chip bg-color">安卓基础知识</span>
                     </a>
                     
-                    <a href="/tags/字符串/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/java基础知识/">
+                        <span class="chip bg-color">java基础知识</span>
+                    </a>
+                    
+                    <a href="/tags/接口回调/">
+                        <span class="chip bg-color">接口回调</span>
                     </a>
                     
                 </div>
@@ -754,36 +901,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/11/9.3-mou-pao-pai-xu/">
+                <a href="/2019/10/23/guang-yi-biao-jian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="9.3 冒泡排序">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="广义表简析">
                         
-                        <span class="card-title">9.3 冒泡排序</span>
+                        <span class="card-title">广义表简析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            9.3 冒泡排序9.3.1.什么是冒泡排序，最简单的冒泡排序其实就是两两比较相邻记录的关键字，如果反序就交换，直到没有反序
-
-/* 对顺序表L作交换排序（冒泡排序初级版） */
-void BubbleSort0(SqList *L)
-{ 
-
+                            什么是广义表呢？你知道文件系统吗
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
+                            <a href="/categories/数据结构/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -793,12 +935,12 @@ void BubbleSort0(SqList *L)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
+                    <a href="/tags/广义表/">
+                        <span class="chip bg-color">广义表</span>
                     </a>
                     
-                    <a href="/tags/排序/">
-                        <span class="chip bg-color">排序</span>
+                    <a href="/tags/数据结构/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>

@@ -539,7 +539,7 @@
 <li>返回对象的地址给引用</li>
 </ol>
 <h4 id="2-什么情况下会出现重排序呢？"><a href="#2-什么情况下会出现重排序呢？" class="headerlink" title="2.什么情况下会出现重排序呢？"></a>2.什么情况下会出现重排序呢？</h4><p>就是上述的第二步还没完成的时候，已经完成了第三步，这个时候就会获取到对象的空的引用</p>
-<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="4-静态内部类单例模式"><a href="#4-静态内部类单例模式" class="headerlink" title="4.静态内部类单例模式"></a>4.静态内部类单例模式</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span> 
+<h3 id="4-静态内部类单例模式"><a href="#4-静态内部类单例模式" class="headerlink" title="4.静态内部类单例模式"></a>4.静态内部类单例模式</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span> 
     <span class="token keyword">private</span> <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token punctuation">}</span>
       <span class="token keyword">public</span> <span class="token keyword">static</span> Singleton <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  
@@ -837,19 +837,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/">
+                <a href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="6.3 树的抽象数据类型">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="6.4 树的存储结构">
                         
-                        <span class="card-title">6.3 树的抽象数据类型</span>
+                        <span class="card-title">6.4 树的存储结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            树，个人觉得是一种从生活中抽象而成的数据结构，类似于我们现实生活中的树
+                            因为树一定有且仅有一个双亲。所以采用这种方法
                         
                     </div>
                     <div class="publish-info">

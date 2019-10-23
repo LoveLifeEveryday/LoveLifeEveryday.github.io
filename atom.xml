@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2019-10-23T06:50:38.514Z</updated>
+  <updated>2019-10-23T12:53:10.751Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>接口和接口回调</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/23/jie-kou-he-jie-kou-hui-diao/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/23/jie-kou-he-jie-kou-hui-diao/</id>
+    <published>2019-10-23T12:52:59.000Z</published>
+    <updated>2019-10-23T12:53:10.751Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;接口和接口回调&quot;&gt;&lt;a href=&quot;#接口和接口回调&quot; class=&quot;headerlink&quot; title=&quot;接口和接口回调&quot;&gt;&lt;/a&gt;接口和接口回调&lt;/h1&gt;&lt;h2 id=&quot;1-什么是接口·&quot;&gt;&lt;a href=&quot;#1-什么是接口·&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓基础知识" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="安卓基础知识" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="java基础知识" scheme="https://lovelifeeveryday.github.io/tags/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="接口回调" scheme="https://lovelifeeveryday.github.io/tags/%E6%8E%A5%E5%8F%A3%E5%9B%9E%E8%B0%83/"/>
+    
+  </entry>
   
   <entry>
     <title>广义表简析</title>
@@ -238,7 +269,7 @@
     <link href="https://lovelifeeveryday.github.io/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/"/>
     <id>https://lovelifeeveryday.github.io/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/</id>
     <published>2019-10-20T06:29:59.000Z</published>
-    <updated>2019-10-23T02:43:12.401Z</updated>
+    <updated>2019-10-23T07:54:55.538Z</updated>
     
     <summary type="html">
     
@@ -263,11 +294,11 @@
   </entry>
   
   <entry>
-    <title>6.3 树的抽象数据类型</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</id>
+    <title>6.4 树的存储结构</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</id>
     <published>2019-10-15T08:32:59.000Z</published>
-    <updated>2019-10-15T08:32:55.840Z</updated>
+    <updated>2019-10-15T08:32:58.382Z</updated>
     
     <summary type="html">
     
@@ -275,7 +306,7 @@
       
         
         
-          &lt;h1 id=&quot;6-3-树的抽象数据类型&quot;&gt;&lt;a href=&quot;#6-3-树的抽象数据类型&quot; class=&quot;headerlink&quot; title=&quot;6.3 树的抽象数据类型&quot;&gt;&lt;/a&gt;6.3 树的抽象数据类型&lt;/h1&gt;&lt;h2 id=&quot;如图所示&quot;&gt;&lt;a href=&quot;#如图所示&quot;
+          &lt;h1 id=&quot;6-4-树的存储结构&quot;&gt;&lt;a href=&quot;#6-4-树的存储结构&quot; class=&quot;headerlink&quot; title=&quot;6.4 树的存储结构&quot;&gt;&lt;/a&gt;6.4 树的存储结构&lt;/h1&gt;&lt;h2 id=&quot;6-4-1-双亲表示法&quot;&gt;&lt;a
         
       
     
@@ -292,11 +323,11 @@
   </entry>
   
   <entry>
-    <title>6.4 树的存储结构</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</id>
+    <title>6.3 树的抽象数据类型</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</id>
     <published>2019-10-15T08:32:59.000Z</published>
-    <updated>2019-10-15T08:32:58.382Z</updated>
+    <updated>2019-10-15T08:32:55.840Z</updated>
     
     <summary type="html">
     
@@ -304,7 +335,7 @@
       
         
         
-          &lt;h1 id=&quot;6-4-树的存储结构&quot;&gt;&lt;a href=&quot;#6-4-树的存储结构&quot; class=&quot;headerlink&quot; title=&quot;6.4 树的存储结构&quot;&gt;&lt;/a&gt;6.4 树的存储结构&lt;/h1&gt;&lt;h2 id=&quot;6-4-1-双亲表示法&quot;&gt;&lt;a
+          &lt;h1 id=&quot;6-3-树的抽象数据类型&quot;&gt;&lt;a href=&quot;#6-3-树的抽象数据类型&quot; class=&quot;headerlink&quot; title=&quot;6.3 树的抽象数据类型&quot;&gt;&lt;/a&gt;6.3 树的抽象数据类型&lt;/h1&gt;&lt;h2 id=&quot;如图所示&quot;&gt;&lt;a href=&quot;#如图所示&quot;
         
       
     
@@ -524,36 +555,6 @@
   </entry>
   
   <entry>
-    <title>4.8 栈的应用</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/</id>
-    <published>2019-10-13T11:59:59.000Z</published>
-    <updated>2019-10-13T12:00:12.868Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;4-8-栈的应用&quot;&gt;&lt;a href=&quot;#4-8-栈的应用&quot; class=&quot;headerlink&quot; title=&quot;4.8 栈的应用&quot;&gt;&lt;/a&gt;4.8 栈的应用&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;栈的应用有哪些呢？1.是递归
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="栈" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
     <title>4.7 栈的作用</title>
     <link href="https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/"/>
     <id>https://lovelifeeveryday.github.io/2019/10/13/4.7-zhan-de-zuo-yong/</id>
@@ -583,11 +584,11 @@
   </entry>
   
   <entry>
-    <title>4.6 栈的链式存储结构及实现</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/13/4.6-zhan-de-lian-shi-cun-chu-jie-gou-ji-shi-xian/</id>
-    <published>2019-10-13T11:58:59.000Z</published>
-    <updated>2019-10-13T11:58:54.107Z</updated>
+    <title>4.8 栈的应用</title>
+    <link href="https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/"/>
+    <id>https://lovelifeeveryday.github.io/2019/10/13/4.8-zhan-de-ying-yong/</id>
+    <published>2019-10-13T11:59:59.000Z</published>
+    <updated>2019-10-13T12:00:12.868Z</updated>
     
     <summary type="html">
     
@@ -595,7 +596,8 @@
       
         
         
-          &lt;h1 id=&quot;4-6-栈的链式存储结构及实现&quot;&gt;&lt;a href=&quot;#4-6-栈的链式存储结构及实现&quot; class=&quot;headerlink&quot; title=&quot;4.6 栈的链式存储结构及实现&quot;&gt;&lt;/a&gt;4.6 栈的链式存储结构及实现&lt;/h1&gt;&lt;h2 id=&quot;1-什么是链栈呢&quot;&gt;&lt;a
+          &lt;h1 id=&quot;4-8-栈的应用&quot;&gt;&lt;a href=&quot;#4-8-栈的应用&quot; class=&quot;headerlink&quot; title=&quot;4.8 栈的应用&quot;&gt;&lt;/a&gt;4.8 栈的应用&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;栈的应用有哪些呢？1.是递归
         
       
     
