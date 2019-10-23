@@ -203,11 +203,11 @@
     
     
     <entry>
-      <title>6.4 树的存储结构</title>
-      <link href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
-      <url>/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</url>
+      <title>6.3 树的抽象数据类型</title>
+      <link href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
+      <url>/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</url>
       
-        <content type="html"><![CDATA[<h1 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h1><h2 id="6-4-1-双亲表示法"><a href="#6-4-1-双亲表示法" class="headerlink" title="6.4.1 双亲表示法"></a>6.4.1 双亲表示法</h2><blockquote><p>因为树一定有且仅有一个双亲。所以采用这种方法</p></blockquote><h3 id="1-容易找到双亲的方法"><a href="#1-容易找到双亲的方法" class="headerlink" title="1.容易找到双亲的方法"></a>1.容易找到双亲的方法</h3><h4 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h4><p>假设以一组连续空间存储树的结点，同时在每个结点中，附设一个位置指示其双亲结点到链表中的位置。</p><p><img src="https://i.loli.net/2019/10/13/vaocCM9NxWSphZu.jpg" alt></p><p>data存储数据，parent是指针域，存储双亲在数组中的下标</p><p>结构定义代码如下图：</p><p><img src="https://i.loli.net/2019/10/13/oBpdTj9gFhmEk5H.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/lTepUDu8MJjr7XO.jpg" alt></p><h4 id="2-树结构转化为表结构例子："><a href="#2-树结构转化为表结构例子：" class="headerlink" title="2.树结构转化为表结构例子："></a>2.树结构转化为表结构例子：</h4><p><img src="https://i.loli.net/2019/10/13/E2rKz7ODHl1sStU.jpg" alt></p><h4 id="3-缺点是什么"><a href="#3-缺点是什么" class="headerlink" title="3.缺点是什么"></a>3.缺点是什么</h4><p>就是如果想知道孩子是谁的话，就要遍历整个结构了</p><h3 id="2-容易找到孩子的方法"><a href="#2-容易找到孩子的方法" class="headerlink" title="2.容易找到孩子的方法"></a>2.容易找到孩子的方法</h3><blockquote><p>思路是增加1个长子域</p></blockquote><p>我们增加一个结点最左边孩子的域，不妨叫它长子域，这样就可以很容易得到结点的孩子。如果没有孩子的结点，这个长子域就设置为-1，如表6-4-3所示。</p><p><img src="https://i.loli.net/2019/10/13/cQ5uYq2sBzmULkW.jpg" alt></p><p>缺点是什么？</p><p>缺点是兄弟之间的关系难以确定</p><h3 id="3-容易区别兄弟之间的关系的方法"><a href="#3-容易区别兄弟之间的关系的方法" class="headerlink" title="3.容易区别兄弟之间的关系的方法"></a>3.容易区别兄弟之间的关系的方法</h3><p>可以增加一个右兄弟域来体现兄弟关系，也就是说，每一个结点如果它存在右兄弟，则记录下右兄弟的下标。同样的，如果右兄弟不存在，则赋值为-1，如表6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/qkBFrwnzp4PWOaA.jpg" alt></p><h3 id="4-要求同时关注双亲，孩子，兄弟怎么办？"><a href="#4-要求同时关注双亲，孩子，兄弟怎么办？" class="headerlink" title="4.要求同时关注双亲，孩子，兄弟怎么办？"></a>4.要求同时关注双亲，孩子，兄弟怎么办？</h3><p>还可以把次结构扩展为有双亲域、长子域、再有右兄弟域。</p><p><strong>存储结构的设计是一个非常灵活的过程。一个存储结构设计得是否合理，取决于基于该存储结构的运算是否适合，是否方便，时间复杂度好不好等</strong>。</p><h2 id="6-4-2-孩子表示法"><a href="#6-4-2-孩子表示法" class="headerlink" title="6.4.2 孩子表示法"></a>6.4.2 孩子表示法</h2><h3 id="1-当有多个孩子的时候怎么处理？"><a href="#1-当有多个孩子的时候怎么处理？" class="headerlink" title="1.当有多个孩子的时候怎么处理？"></a>1.当有多个孩子的时候怎么处理？</h3><p>考虑用多重链表，即<strong>每个结点有多个指针域</strong>，其中每个指针指向一棵子树的根结点，我们把这种方法叫做<strong>多重链表表示法</strong>。其实就是将他的孩子都用指针给指出来。</p><h3 id="2-方案1：以度数为指针域的个数（最大化处理）管够"><a href="#2-方案1：以度数为指针域的个数（最大化处理）管够" class="headerlink" title="2.方案1：以度数为指针域的个数（最大化处理）管够"></a>2.方案1：以度数为指针域的个数（最大化处理）管够</h3><p><img src="https://i.loli.net/2019/10/13/FNC9cw8eI4oHYbk.jpg" alt></p><p>缺点是：当度数相差很大的时候，浪费空间</p><h3 id="3-方案2：按需分配，省钱"><a href="#3-方案2：按需分配，省钱" class="headerlink" title="3.方案2：按需分配，省钱"></a>3.方案2：按需分配，省钱</h3><p>专门取一个位置来存储结点指针域的个数，如下图</p><p><img src="https://i.loli.net/2019/10/13/HJZ6vran4KcNido.jpg" alt></p><p>其中data为数据域，degree为度域，也就是存储该结点的孩子结点的个数，child1到childd为指针域，指向该结点的各个孩子的结点。</p><p><img src="https://i.loli.net/2019/10/13/OeYCjXUqdMIr7P9.jpg" alt></p><p>缺点：结构不统一，时间复杂度上升（相对方法1）</p><h3 id="4-孩子表示法"><a href="#4-孩子表示法" class="headerlink" title="4.孩子表示法"></a>4.孩子表示法</h3><blockquote><p>可以减少空指针的浪费和统一结构</p></blockquote><h4 id="1-孩子表示法是怎么样的？"><a href="#1-孩子表示法是怎么样的？" class="headerlink" title="1.孩子表示法是怎么样的？"></a>1.孩子表示法是怎么样的？</h4><p>其实是先将所有的结点都放在一个数组里面，然后再对每个结点的孩子建立一个单链表体现它们的关系</p><p>具体办法是：</p><p>把每个结点的<strong>孩子</strong>结点排列起来，以<strong>单链表</strong>作存储结构，则n个结点由n个孩子链表，如果是叶子结点则此单链表为空。然后<strong>n个头指针</strong>又<strong>组成</strong>一个<strong>线性表</strong>，采用顺序存储结构，存放进一个<strong>一维数组</strong>中，如图6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/cOhVGSHYCIi4zmT.jpg" alt></p><p>为此设计两种结构：</p><h4 id="2-孩子结点"><a href="#2-孩子结点" class="headerlink" title="2.孩子结点"></a>2.孩子结点</h4><p>其中child是数据域，用来存储某个结点在表头数组中的下标。next是指针域，用来存储指向某结点的下一个孩子结点的指针。</p><p><img src="https://i.loli.net/2019/10/13/ZF5ASGX6jP2lerh.jpg" alt></p><h4 id="3-表头结点："><a href="#3-表头结点：" class="headerlink" title="3.表头结点："></a>3.表头结点：</h4><p>其中data是数据域，存储某结点的数据信息。firstchild是头指针域，存储该结点的孩子链表的头指针。</p><p><img src="https://i.loli.net/2019/10/13/T8X7Vq2mdLBStne.jpg" alt></p><h4 id="4-结构定义代码是怎样？"><a href="#4-结构定义代码是怎样？" class="headerlink" title="4.结构定义代码是怎样？"></a>4.结构定义代码是怎样？</h4><p><img src="https://i.loli.net/2019/10/13/n81AjeyPLSHFZOJ.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/fbzy321usTEFK7j.jpg" alt></p><p>表头和孩子的结构都类似，都是数据域加上指针域</p><h4 id="5-可不可以和找到双亲呢？"><a href="#5-可不可以和找到双亲呢？" class="headerlink" title="5.可不可以和找到双亲呢？"></a>5.可不可以和找到双亲呢？</h4><p>其实就是在表头加上个双亲就行了</p><p><img src="https://i.loli.net/2019/10/13/KVEZJQpIFwWYL26.jpg" alt></p><h2 id="6-4-3-孩子兄弟表示法"><a href="#6-4-3-孩子兄弟表示法" class="headerlink" title="6.4.3 孩子兄弟表示法"></a>6.4.3 孩子兄弟表示法</h2><h3 id="1-什么是孩子兄弟表示法"><a href="#1-什么是孩子兄弟表示法" class="headerlink" title="1.什么是孩子兄弟表示法"></a>1.什么是孩子兄弟表示法</h3><p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。其实就是长子唯一，右兄弟也唯一。</p><p><img src="https://s2.ax1x.com/2019/10/13/ux5zGD.png" alt="ux5zGD.png"></p><p><img src="https://s2.ax1x.com/2019/10/13/uxIkZt.png" alt="uxIkZt.png"></p><h3 id="2-好处是什么？"><a href="#2-好处是什么？" class="headerlink" title="2.好处是什么？"></a>2.好处是什么？</h3><p>把复杂的树变成了二叉树</p><p><img src="https://s2.ax1x.com/2019/10/13/uxImRg.png" alt="uxImRg.png"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h1><h2 id="如图所示"><a href="#如图所示" class="headerlink" title="如图所示"></a>如图所示</h2><p><img src="https://i.loli.net/2019/10/13/Sj47DBQyFYKublL.jpg" alt></p>]]></content>
       
       
       <categories>
@@ -230,11 +230,11 @@
     
     
     <entry>
-      <title>6.3 树的抽象数据类型</title>
-      <link href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
-      <url>/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</url>
+      <title>6.4 树的存储结构</title>
+      <link href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
+      <url>/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</url>
       
-        <content type="html"><![CDATA[<h1 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h1><h2 id="如图所示"><a href="#如图所示" class="headerlink" title="如图所示"></a>如图所示</h2><p><img src="https://i.loli.net/2019/10/13/Sj47DBQyFYKublL.jpg" alt></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h1><h2 id="6-4-1-双亲表示法"><a href="#6-4-1-双亲表示法" class="headerlink" title="6.4.1 双亲表示法"></a>6.4.1 双亲表示法</h2><blockquote><p>因为树一定有且仅有一个双亲。所以采用这种方法</p></blockquote><h3 id="1-容易找到双亲的方法"><a href="#1-容易找到双亲的方法" class="headerlink" title="1.容易找到双亲的方法"></a>1.容易找到双亲的方法</h3><h4 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h4><p>假设以一组连续空间存储树的结点，同时在每个结点中，附设一个位置指示其双亲结点到链表中的位置。</p><p><img src="https://i.loli.net/2019/10/13/vaocCM9NxWSphZu.jpg" alt></p><p>data存储数据，parent是指针域，存储双亲在数组中的下标</p><p>结构定义代码如下图：</p><p><img src="https://i.loli.net/2019/10/13/oBpdTj9gFhmEk5H.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/lTepUDu8MJjr7XO.jpg" alt></p><h4 id="2-树结构转化为表结构例子："><a href="#2-树结构转化为表结构例子：" class="headerlink" title="2.树结构转化为表结构例子："></a>2.树结构转化为表结构例子：</h4><p><img src="https://i.loli.net/2019/10/13/E2rKz7ODHl1sStU.jpg" alt></p><h4 id="3-缺点是什么"><a href="#3-缺点是什么" class="headerlink" title="3.缺点是什么"></a>3.缺点是什么</h4><p>就是如果想知道孩子是谁的话，就要遍历整个结构了</p><h3 id="2-容易找到孩子的方法"><a href="#2-容易找到孩子的方法" class="headerlink" title="2.容易找到孩子的方法"></a>2.容易找到孩子的方法</h3><blockquote><p>思路是增加1个长子域</p></blockquote><p>我们增加一个结点最左边孩子的域，不妨叫它长子域，这样就可以很容易得到结点的孩子。如果没有孩子的结点，这个长子域就设置为-1，如表6-4-3所示。</p><p><img src="https://i.loli.net/2019/10/13/cQ5uYq2sBzmULkW.jpg" alt></p><p>缺点是什么？</p><p>缺点是兄弟之间的关系难以确定</p><h3 id="3-容易区别兄弟之间的关系的方法"><a href="#3-容易区别兄弟之间的关系的方法" class="headerlink" title="3.容易区别兄弟之间的关系的方法"></a>3.容易区别兄弟之间的关系的方法</h3><p>可以增加一个右兄弟域来体现兄弟关系，也就是说，每一个结点如果它存在右兄弟，则记录下右兄弟的下标。同样的，如果右兄弟不存在，则赋值为-1，如表6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/qkBFrwnzp4PWOaA.jpg" alt></p><h3 id="4-要求同时关注双亲，孩子，兄弟怎么办？"><a href="#4-要求同时关注双亲，孩子，兄弟怎么办？" class="headerlink" title="4.要求同时关注双亲，孩子，兄弟怎么办？"></a>4.要求同时关注双亲，孩子，兄弟怎么办？</h3><p>还可以把次结构扩展为有双亲域、长子域、再有右兄弟域。</p><p><strong>存储结构的设计是一个非常灵活的过程。一个存储结构设计得是否合理，取决于基于该存储结构的运算是否适合，是否方便，时间复杂度好不好等</strong>。</p><h2 id="6-4-2-孩子表示法"><a href="#6-4-2-孩子表示法" class="headerlink" title="6.4.2 孩子表示法"></a>6.4.2 孩子表示法</h2><h3 id="1-当有多个孩子的时候怎么处理？"><a href="#1-当有多个孩子的时候怎么处理？" class="headerlink" title="1.当有多个孩子的时候怎么处理？"></a>1.当有多个孩子的时候怎么处理？</h3><p>考虑用多重链表，即<strong>每个结点有多个指针域</strong>，其中每个指针指向一棵子树的根结点，我们把这种方法叫做<strong>多重链表表示法</strong>。其实就是将他的孩子都用指针给指出来。</p><h3 id="2-方案1：以度数为指针域的个数（最大化处理）管够"><a href="#2-方案1：以度数为指针域的个数（最大化处理）管够" class="headerlink" title="2.方案1：以度数为指针域的个数（最大化处理）管够"></a>2.方案1：以度数为指针域的个数（最大化处理）管够</h3><p><img src="https://i.loli.net/2019/10/13/FNC9cw8eI4oHYbk.jpg" alt></p><p>缺点是：当度数相差很大的时候，浪费空间</p><h3 id="3-方案2：按需分配，省钱"><a href="#3-方案2：按需分配，省钱" class="headerlink" title="3.方案2：按需分配，省钱"></a>3.方案2：按需分配，省钱</h3><p>专门取一个位置来存储结点指针域的个数，如下图</p><p><img src="https://i.loli.net/2019/10/13/HJZ6vran4KcNido.jpg" alt></p><p>其中data为数据域，degree为度域，也就是存储该结点的孩子结点的个数，child1到childd为指针域，指向该结点的各个孩子的结点。</p><p><img src="https://i.loli.net/2019/10/13/OeYCjXUqdMIr7P9.jpg" alt></p><p>缺点：结构不统一，时间复杂度上升（相对方法1）</p><h3 id="4-孩子表示法"><a href="#4-孩子表示法" class="headerlink" title="4.孩子表示法"></a>4.孩子表示法</h3><blockquote><p>可以减少空指针的浪费和统一结构</p></blockquote><h4 id="1-孩子表示法是怎么样的？"><a href="#1-孩子表示法是怎么样的？" class="headerlink" title="1.孩子表示法是怎么样的？"></a>1.孩子表示法是怎么样的？</h4><p>其实是先将所有的结点都放在一个数组里面，然后再对每个结点的孩子建立一个单链表体现它们的关系</p><p>具体办法是：</p><p>把每个结点的<strong>孩子</strong>结点排列起来，以<strong>单链表</strong>作存储结构，则n个结点由n个孩子链表，如果是叶子结点则此单链表为空。然后<strong>n个头指针</strong>又<strong>组成</strong>一个<strong>线性表</strong>，采用顺序存储结构，存放进一个<strong>一维数组</strong>中，如图6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/cOhVGSHYCIi4zmT.jpg" alt></p><p>为此设计两种结构：</p><h4 id="2-孩子结点"><a href="#2-孩子结点" class="headerlink" title="2.孩子结点"></a>2.孩子结点</h4><p>其中child是数据域，用来存储某个结点在表头数组中的下标。next是指针域，用来存储指向某结点的下一个孩子结点的指针。</p><p><img src="https://i.loli.net/2019/10/13/ZF5ASGX6jP2lerh.jpg" alt></p><h4 id="3-表头结点："><a href="#3-表头结点：" class="headerlink" title="3.表头结点："></a>3.表头结点：</h4><p>其中data是数据域，存储某结点的数据信息。firstchild是头指针域，存储该结点的孩子链表的头指针。</p><p><img src="https://i.loli.net/2019/10/13/T8X7Vq2mdLBStne.jpg" alt></p><h4 id="4-结构定义代码是怎样？"><a href="#4-结构定义代码是怎样？" class="headerlink" title="4.结构定义代码是怎样？"></a>4.结构定义代码是怎样？</h4><p><img src="https://i.loli.net/2019/10/13/n81AjeyPLSHFZOJ.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/fbzy321usTEFK7j.jpg" alt></p><p>表头和孩子的结构都类似，都是数据域加上指针域</p><h4 id="5-可不可以和找到双亲呢？"><a href="#5-可不可以和找到双亲呢？" class="headerlink" title="5.可不可以和找到双亲呢？"></a>5.可不可以和找到双亲呢？</h4><p>其实就是在表头加上个双亲就行了</p><p><img src="https://i.loli.net/2019/10/13/KVEZJQpIFwWYL26.jpg" alt></p><h2 id="6-4-3-孩子兄弟表示法"><a href="#6-4-3-孩子兄弟表示法" class="headerlink" title="6.4.3 孩子兄弟表示法"></a>6.4.3 孩子兄弟表示法</h2><h3 id="1-什么是孩子兄弟表示法"><a href="#1-什么是孩子兄弟表示法" class="headerlink" title="1.什么是孩子兄弟表示法"></a>1.什么是孩子兄弟表示法</h3><p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。其实就是长子唯一，右兄弟也唯一。</p><p><img src="https://s2.ax1x.com/2019/10/13/ux5zGD.png" alt="ux5zGD.png"></p><p><img src="https://s2.ax1x.com/2019/10/13/uxIkZt.png" alt="uxIkZt.png"></p><h3 id="2-好处是什么？"><a href="#2-好处是什么？" class="headerlink" title="2.好处是什么？"></a>2.好处是什么？</h3><p>把复杂的树变成了二叉树</p><p><img src="https://s2.ax1x.com/2019/10/13/uxImRg.png" alt="uxImRg.png"></p>]]></content>
       
       
       <categories>
@@ -689,33 +689,6 @@
     
     
     <entry>
-      <title>5.3 串的比较</title>
-      <link href="/2019/10/13/5.3-chuan-de-bi-jiao/"/>
-      <url>/2019/10/13/5.3-chuan-de-bi-jiao/</url>
-      
-        <content type="html"><![CDATA[<h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p><ol><li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p></li><li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p><p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 大话数据结构 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 大话数据结构 </tag>
-            
-            <tag> 字符串 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>4.10 队列的定义</title>
       <link href="/2019/10/13/4.10-dui-lie-de-ding-yi/"/>
       <url>/2019/10/13/4.10-dui-lie-de-ding-yi/</url>
@@ -735,6 +708,33 @@
             <tag> 大话数据结构 </tag>
             
             <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.3 串的比较</title>
+      <link href="/2019/10/13/5.3-chuan-de-bi-jiao/"/>
+      <url>/2019/10/13/5.3-chuan-de-bi-jiao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p><ol><li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p></li><li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p><p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
