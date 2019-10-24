@@ -4,9 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="8.11 处理冲突的方法, Hexo">
-    <meta name="description" content="8.11 处理冲突的方法8.11.1 开放定址法1.什么是开放定址法呢一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。
-公式为：fi(key) = (f(key)+di) MOD m (di">
+    <meta name="keywords" content="6.10 线索二叉树, Hexo">
+    <meta name="description" content="6.10 线索二叉树6.10.1  线索二叉树的原理1.普通的二叉树存在什么浪费空间的地方吗？对于有n个结点的二叉树，空链域却有n+1个
+2.怎么利用那些浪费的空间呢?因此，提出了一种方法，利用原来的空链域存放指针，指向树中其他结点。我们把">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>8.11 处理冲突的方法 | Hexo</title>
+    <title>6.10 线索二叉树 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,13 +308,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        8.11 处理冲突的方法
+                        6.10 线索二叉树
                     </div>
                 </div>
             </div>
@@ -430,8 +430,12 @@
                                 <span class="chip bg-color">大话数据结构</span>
                             </a>
                         
-                            <a href="/tags/哈希表/">
-                                <span class="chip bg-color">哈希表</span>
+                            <a href="/tags/树/">
+                                <span class="chip bg-color">树</span>
+                            </a>
+                        
+                            <a href="/tags/二叉树/">
+                                <span class="chip bg-color">二叉树</span>
                             </a>
                         
                     </div>
@@ -454,7 +458,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-10-24
                 </div>
 
                 
@@ -470,17 +474,80 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="8-11-处理冲突的方法"><a href="#8-11-处理冲突的方法" class="headerlink" title="8.11 处理冲突的方法"></a>8.11 处理冲突的方法</h1><h2 id="8-11-1-开放定址法"><a href="#8-11-1-开放定址法" class="headerlink" title="8.11.1 开放定址法"></a>8.11.1 开放定址法</h2><h3 id="1-什么是开放定址法呢"><a href="#1-什么是开放定址法呢" class="headerlink" title="1.什么是开放定址法呢"></a>1.什么是开放定址法呢</h3><p>一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p>
-<h3 id="公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1"><a href="#公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1" class="headerlink" title="公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)"></a>公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)</h3><h3 id="2-什么是线性探测法"><a href="#2-什么是线性探测法" class="headerlink" title="2.什么是线性探测法"></a>2.什么是线性探测法</h3><p>其实就是按顺序找下去地定址</p>
-<h3 id="3-什么是堆积"><a href="#3-什么是堆积" class="headerlink" title="3.什么是堆积"></a>3.什么是堆积</h3><p>其实就是冲突的连环出现，我原本a有冲突，a的冲突解决了，b又和a有冲突了，本来都不是同义词却需要争夺一个地址的叫做堆积</p>
-<h3 id="4-什么是二次探测法"><a href="#4-什么是二次探测法" class="headerlink" title="4.什么是二次探测法"></a>4.什么是二次探测法</h3><p>其实就是增加了平方和正负运算，</p>
-<p>fi(key) = (f(key)+di) MOD m (di = 1 2, -1 2, 2 2, -2 2,……, q 2, -q 2, q &lt;= m/2) 这里的是指平方</p>
-<h3 id="5-什么是随机探测法"><a href="#5-什么是随机探测法" class="headerlink" title="5.什么是随机探测法"></a>5.什么是随机探测法</h3><p>对于位移量 di 采用随机函数计算得到，我们称之为随机探测法。</p>
-<h3 id="6-什么是伪随机数"><a href="#6-什么是伪随机数" class="headerlink" title="6.什么是伪随机数"></a>6.什么是伪随机数</h3><p>其实就是由随机种子按照某种随机算法，生成的数，</p>
-<p>随机种子是以随机数作为对象的以真随机数（种子）为初始条件的随机数。一般以系统时间作为随机种子</p>
-<h2 id="8-11-2-再散列函数法"><a href="#8-11-2-再散列函数法" class="headerlink" title="8.11.2 再散列函数法"></a>8.11.2 再散列函数法</h2><p>其实就是随机调用不同的散列函数</p>
-<h2 id="8-11-3-链地址法"><a href="#8-11-3-链地址法" class="headerlink" title="8.11.3 链地址法"></a>8.11.3 链地址法</h2><p>就是在冲突的地址里面，生成1个链表，类似于HashMap</p>
-<h2 id="8-11-4-公共溢出区法"><a href="#8-11-4-公共溢出区法" class="headerlink" title="8.11.4 公共溢出区法"></a>8.11.4 公共溢出区法</h2><p>其实就是把所有冲突的关键词存到一个公共区，查找的时候，当在普通区查不到，就到公共溢出区查</p>
+                <h1 id="6-10-线索二叉树"><a href="#6-10-线索二叉树" class="headerlink" title="6.10 线索二叉树"></a>6.10 线索二叉树</h1><h2 id="6-10-1-线索二叉树的原理"><a href="#6-10-1-线索二叉树的原理" class="headerlink" title="6.10.1  线索二叉树的原理"></a>6.10.1  线索二叉树的原理</h2><h3 id="1-普通的二叉树存在什么浪费空间的地方吗？"><a href="#1-普通的二叉树存在什么浪费空间的地方吗？" class="headerlink" title="1.普通的二叉树存在什么浪费空间的地方吗？"></a>1.普通的二叉树存在什么浪费空间的地方吗？</h3><p>对于有n个结点的二叉树，空链域却有n+1个</p>
+<h3 id="2-怎么利用那些浪费的空间呢"><a href="#2-怎么利用那些浪费的空间呢" class="headerlink" title="2.怎么利用那些浪费的空间呢?"></a>2.怎么利用那些浪费的空间呢?</h3><p>因此，提出了一种方法，利用原来的<strong>空链域存放指针</strong>，指向树中其他结点。我们把指向前驱后继的这种指针称为线索。</p>
+<p>相应的二叉树就是线索二叉树</p>
+<h3 id="3-怎么知道某一个结点的lchild是指向左孩子还是前驱呢？"><a href="#3-怎么知道某一个结点的lchild是指向左孩子还是前驱呢？" class="headerlink" title="3.怎么知道某一个结点的lchild是指向左孩子还是前驱呢？"></a>3.怎么知道某一个结点的lchild是指向左孩子还是前驱呢？</h3><p>其实思路很简单，<strong>加个标记</strong>就行，0表示孩子，1表示前驱或者后继</p>
+<p><img src="https://i.loli.net/2019/10/24/9DdJ51EHlzPi4aV.jpg" alt></p>
+<p>修改后的二叉树是怎样的？</p>
+<p><img src="https://i.loli.net/2019/10/24/i4QtNHmd5pqErVw.jpg" alt></p>
+<h2 id="6-10-2-线索二叉树结构实现"><a href="#6-10-2-线索二叉树结构实现" class="headerlink" title="6.10.2 线索二叉树结构实现"></a>6.10.2 线索二叉树结构实现</h2><h3 id="1-线索二叉树存储结构是怎样的？"><a href="#1-线索二叉树存储结构是怎样的？" class="headerlink" title="1.线索二叉树存储结构是怎样的？"></a>1.线索二叉树存储结构是怎样的？</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 二叉树的二叉线索存储结构定义*/</span>
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span><span class="token punctuation">{</span>Link<span class="token punctuation">,</span> Thread<span class="token punctuation">}</span>PointerTag<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//Link = 0表示指向左右孩子指针；Thread = 1表示指向前驱或后继的线索</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> BitNode
+<span class="token punctuation">{</span>
+       <span class="token keyword">char</span> data<span class="token punctuation">;</span>                                      <span class="token comment" spellcheck="true">//结点数据</span>
+       <span class="token keyword">struct</span> BitNode <span class="token operator">*</span>lchild<span class="token punctuation">,</span> <span class="token operator">*</span>rchild<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//左右孩子指针</span>
+       PointerTag  Ltag<span class="token punctuation">;</span>                               <span class="token comment" spellcheck="true">//左右标志</span>
+       PointerTag  rtal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>BitNode<span class="token punctuation">,</span> <span class="token operator">*</span>BiTree<span class="token punctuation">;</span></code></pre>
+<h3 id="2-怎么将普通二叉树转换为线索二叉树呢？"><a href="#2-怎么将普通二叉树转换为线索二叉树呢？" class="headerlink" title="2.怎么将普通二叉树转换为线索二叉树呢？"></a>2.怎么将普通二叉树转换为线索二叉树呢？</h3><p>其实<strong>线索化的实质</strong>是将二叉链表中的<strong>空指针改为指向前驱或后继</strong>的线索。</p>
+<p><strong>中序遍历线索化</strong>的代码：</p>
+<pre class=" language-c"><code class="language-c">BiTree pre<span class="token punctuation">;</span>                 <span class="token comment" spellcheck="true">//全局变量，始终指向刚刚访问过的结点</span>
+<span class="token comment" spellcheck="true">//中序遍历进行中序线索化</span>
+<span class="token keyword">void</span> <span class="token function">InThreading</span><span class="token punctuation">(</span>BiTree p<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">InThreading</span><span class="token punctuation">(</span>p<span class="token operator">-></span>lchild<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//递归左子树线索化</span>
+
+        <span class="token comment" spellcheck="true">//  中序遍历的是printf("%c",T->data);//显示结点数据</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>p<span class="token operator">-></span>lchild<span class="token punctuation">)</span>           <span class="token comment" spellcheck="true">//当前结点没有左孩子</span>
+        <span class="token punctuation">{</span>
+            p<span class="token operator">-></span>ltag <span class="token operator">=</span> Thread<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//前驱线索</span>
+            p<span class="token operator">-></span>lchild <span class="token operator">=</span> pre<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//左孩子指针指向前驱</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>pre<span class="token operator">-></span>rchild<span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">//前驱结点没有右孩子</span>
+        <span class="token punctuation">{</span>
+            pre<span class="token operator">-></span>rtag <span class="token operator">=</span> Thread<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//后继线索</span>
+            pre<span class="token operator">-></span>rchild <span class="token operator">=</span> p<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//前驱右孩子指针指向后继(当前结点p)</span>
+        <span class="token punctuation">}</span>
+        pre <span class="token operator">=</span> p<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//往上走</span>
+
+        <span class="token function">InThreading</span><span class="token punctuation">(</span>p<span class="token operator">-></span>rchild<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//递归右子树线索化</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="1-为什么后继的遍历要用前驱结点没有右孩子来判断呢？"><a href="#1-为什么后继的遍历要用前驱结点没有右孩子来判断呢？" class="headerlink" title="1.为什么后继的遍历要用前驱结点没有右孩子来判断呢？"></a>1.为什么后继的遍历要用前驱结点没有右孩子来判断呢？</h4><p>因为当前结点的后继还没有访问到，所以用前驱结点的后继来实现</p>
+<h4 id="2-这里中序遍历线索化的代码和中序遍历有什么相同点呢？"><a href="#2-这里中序遍历线索化的代码和中序遍历有什么相同点呢？" class="headerlink" title="2.这里中序遍历线索化的代码和中序遍历有什么相同点呢？"></a>2.这里中序遍历线索化的代码和中序遍历有什么相同点呢？</h4><p>其实这里只是用改变空指针的代码代替了中序遍历中打印结点的代码</p>
+<h3 id="3-怎么遍历线索二叉树呢？"><a href="#3-怎么遍历线索二叉树呢？" class="headerlink" title="3.怎么遍历线索二叉树呢？"></a>3.怎么遍历线索二叉树呢？</h3><p>类似遍历双向链表的方法，加个头指针</p>
+<p><img src="https://i.loli.net/2019/10/24/hMZevPtKx1LRX48.jpg" alt></p>
+<p>代码是怎样的？</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//t指向头结点，头结点左链lchild指向根结点，头结点右链rchild指向中序遍历的最后一个结点。</span>
+<span class="token comment" spellcheck="true">//中序遍历二叉线索树表示二叉树t</span>
+<span class="token keyword">int</span> <span class="token function">InOrderThraverse_Thr</span><span class="token punctuation">(</span>BiTree t<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    BiTree p<span class="token punctuation">;</span>
+    p <span class="token operator">=</span> t<span class="token operator">-></span>lchild<span class="token punctuation">;</span>                               <span class="token comment" spellcheck="true">//p指向根结点</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>p <span class="token operator">!=</span> t<span class="token punctuation">)</span>                               <span class="token comment" spellcheck="true">//空树或遍历结束时p == t</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token operator">-></span>ltag <span class="token operator">==</span> Link<span class="token punctuation">)</span>                       <span class="token comment" spellcheck="true">//当ltag = 0时循环到中序序列的第一个结点，到达最底部结点</span>
+        <span class="token punctuation">{</span>
+            p <span class="token operator">=</span> p<span class="token operator">-></span>lchild<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> p<span class="token operator">-></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment" spellcheck="true">//显示结点数据，可以更改为其他对结点的操作</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token operator">-></span>rtag <span class="token operator">==</span> Thread <span class="token operator">&amp;&amp;</span> p<span class="token operator">-></span>rchild <span class="token operator">!=</span> t<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//当右指针指向后继的时候，循环打印</span>
+        <span class="token punctuation">{</span>
+            p <span class="token operator">=</span> p<span class="token operator">-></span>rchild<span class="token punctuation">;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> p<span class="token operator">-></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        p <span class="token operator">=</span> p<span class="token operator">-></span>rchild<span class="token punctuation">;</span>                         <span class="token comment" spellcheck="true">//p进入其右子树</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>什么时候使用线索二叉树呢？</p>
+<p>当需要经常遍历或者查找结点的时候，可以用线索二叉树</p>
 
             </div>
             <hr/>
@@ -641,8 +708,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/">
-                    《8.11 处理冲突的方法》
+            <a  href="/2019/10/24/6.10-xian-suo-er-cha-shu/">
+                    《6.10 线索二叉树》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -684,7 +751,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T20-08-59',
+        id: '2019-10-24T13-59-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -705,81 +772,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/14/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/">
+                <a href="/2019/10/24/6.10-xian-suo-er-cha-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="4.3 栈的顺序存储结构及实现">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="6.10 线索二叉树">
                         
-                        <span class="card-title">4.3 栈的顺序存储结构及实现</span>
+                        <span class="card-title">6.10 线索二叉树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            栈的结构定义
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/栈/">
-                        <span class="chip bg-color">栈</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="8.12 散列表查找实现">
-                        
-                        <span class="card-title">8.12 散列表查找实现</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            散列表查找算法实现
+                            普通的二叉树存在什么浪费空间的地方吗？
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-24
                             </span>
                         <span class="publish-author">
                             
@@ -793,6 +808,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -800,8 +816,69 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/哈希表/">
-                        <span class="chip bg-color">哈希表</span>
+                    <a href="/tags/树/">
+                        <span class="chip bg-color">树</span>
+                    </a>
+                    
+                    <a href="/tags/二叉树/">
+                        <span class="chip bg-color">二叉树</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/23/jie-kou-he-jie-kou-hui-diao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="接口和接口回调">
+                        
+                        <span class="card-title">接口和接口回调</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            什么是接口
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/安卓基础知识/" class="post-category">
+                                    安卓基础知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/安卓基础知识/">
+                        <span class="chip bg-color">安卓基础知识</span>
+                    </a>
+                    
+                    <a href="/tags/java基础知识/">
+                        <span class="chip bg-color">java基础知识</span>
+                    </a>
+                    
+                    <a href="/tags/接口回调/">
+                        <span class="chip bg-color">接口回调</span>
                     </a>
                     
                 </div>
