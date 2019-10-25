@@ -4,11 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="7.4 图的存储结构, Hexo">
-    <meta name="description" content="7.4 图的存储结构7.4.1 邻接矩阵1.什么是邻接矩阵图的邻接矩阵存储方式是用两个数组来标示图。一个一维数组存储图顶点的信息，一个二维数组（称为邻接矩阵）存储图中边或者弧的信息。
-1.无向图的邻接矩阵：
-2.有向图的邻接矩阵：
-可以很容">
+    <meta name="keywords" content="7.5 图的遍历, Hexo">
+    <meta name="description" content="7.5 图的遍历7.5.1 深度优先遍历1.什么是深度优先遍历呢?深度优先遍历（Depth_First_Search)，也称为深度优先搜索，简称DFS
+从图中某个顶点v出发，访问此顶点，然后从v的未被访问的邻接点出发深度优先遍历图，直至图中">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>7.4 图的存储结构 | Hexo</title>
+    <title>7.5 图的遍历 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,13 +308,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        7.4 图的存储结构
+                        7.5 图的遍历
                     </div>
                 </div>
             </div>
@@ -472,58 +470,134 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="7-4-图的存储结构"><a href="#7-4-图的存储结构" class="headerlink" title="7.4 图的存储结构"></a>7.4 图的存储结构</h1><h2 id="7-4-1-邻接矩阵"><a href="#7-4-1-邻接矩阵" class="headerlink" title="7.4.1 邻接矩阵"></a>7.4.1 邻接矩阵</h2><h3 id="1-什么是邻接矩阵"><a href="#1-什么是邻接矩阵" class="headerlink" title="1.什么是邻接矩阵"></a>1.什么是邻接矩阵</h3><p>图的邻接矩阵存储方式是用两个数组来标示图。一个<strong>一维数组</strong>存储图<strong>顶点</strong>的信息，一个<strong>二维数组</strong>（称为邻接矩阵）存储图中<strong>边或者弧</strong>的信息。</p>
-<h4 id="1-无向图的邻接矩阵："><a href="#1-无向图的邻接矩阵：" class="headerlink" title="1.无向图的邻接矩阵："></a>1.无向图的邻接矩阵：</h4><p><img src="https://i.loli.net/2019/10/25/81XwrqsD7CuzT3o.jpg" alt></p>
-<h4 id="2-有向图的邻接矩阵："><a href="#2-有向图的邻接矩阵：" class="headerlink" title="2.有向图的邻接矩阵："></a>2.有向图的邻接矩阵：</h4><p><img src="https://i.loli.net/2019/10/25/XTVAmFcyEovWSMJ.jpg" alt></p>
-<p>可以很容易看出，入度是多少（看列），出度是多少（看行）</p>
-<h4 id="3-网图的邻接矩阵："><a href="#3-网图的邻接矩阵：" class="headerlink" title="3.网图的邻接矩阵："></a>3.网图的邻接矩阵：</h4><p>当2个点到达不了的，用无穷表示距离，当自己到自己的，用0表示距离</p>
-<p><img src="https://i.loli.net/2019/10/25/nqPfX9szxOT63Lw.jpg" alt></p>
-<h3 id="2-邻接矩阵的存储结构："><a href="#2-邻接矩阵的存储结构：" class="headerlink" title="2.邻接矩阵的存储结构："></a>2.邻接矩阵的存储结构：</h3><p><img src="https://i.loli.net/2019/10/25/QJplD6WanVSydCX.jpg" alt></p>
-<h3 id="3-无向网图的创建："><a href="#3-无向网图的创建：" class="headerlink" title="3.无向网图的创建："></a>3.无向网图的创建：</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">CreateMGraph</span><span class="token punctuation">(</span>MGraph <span class="token operator">*</span>G<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>k<span class="token punctuation">,</span>w<span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入顶点数和边数：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">,</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>numEdges<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输入顶点数和边数</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//初始化顶点表 </span>
-        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>vex<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> 
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>inj<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>INFINITY<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//邻接矩阵初始化</span>
-
-        <span class="token punctuation">}</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>k<span class="token operator">&lt;</span>G<span class="token operator">-></span>numEdges<span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入边(vi,vj)的下标i，j和权w：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d,%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>i<span class="token punctuation">,</span><span class="token operator">&amp;</span>j<span class="token punctuation">,</span><span class="token operator">&amp;</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输入边(vi,vj)的下标i，j和权w：</span>
-            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>w<span class="token punctuation">;</span>
-            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//因为是无向图，矩阵对称 </span>
+                <h1 id="7-5-图的遍历"><a href="#7-5-图的遍历" class="headerlink" title="7.5 图的遍历"></a>7.5 图的遍历</h1><h2 id="7-5-1-深度优先遍历"><a href="#7-5-1-深度优先遍历" class="headerlink" title="7.5.1 深度优先遍历"></a>7.5.1 深度优先遍历</h2><h3 id="1-什么是深度优先遍历呢"><a href="#1-什么是深度优先遍历呢" class="headerlink" title="1.什么是深度优先遍历呢?"></a>1.什么是深度优先遍历呢?</h3><p>深度优先遍历（Depth_First_Search)，也称为深度优先搜索，简称DFS</p>
+<p>从图中某个顶点<code>v</code>出发，访问此顶点，然后从<code>v</code>的未被访问的邻接点出发深度优先遍历图，直至图中所有和<code>v</code>有路径想通的顶点都被访问到。若图中尚有顶点未被访问到，则另选图中一个未曾被访问的顶点作起始点，重复上述过程，直至图中所有顶点都被访问到为止。显然，深度优先遍历是一个 <strong>递归</strong>的过程，类似于树的前序遍历</p>
+<p>打个比方，就是一个房间无死角地找，找完再去下一个房间</p>
+<p><img src="https://i.loli.net/2019/10/25/4bxnUeEVWDO9dcm.jpg" alt></p>
+<ul>
+<li>顶点A出发，访问A， 假设没有碰到重复顶点的情况下，始终向右手边走</li>
+<li>访问A的邻接点B， B的邻接点C， C的邻接点D， D的邻接点E， E的邻接点F</li>
+<li>在顶点F处，右手边为顶点A，但已被访问过，故访问顶点G</li>
+<li>在顶点G处，右手边为顶点B，下一个为D， 都已被访问，故访问顶点H</li>
+<li>在顶点H处，由于邻接点G、D和E都被访问，故回退到G，同理，一直回退到D处，访问I</li>
+</ul>
+<h3 id="2-邻接矩阵的方式深度遍历的算法是怎样的？"><a href="#2-邻接矩阵的方式深度遍历的算法是怎样的？" class="headerlink" title="2.邻接矩阵的方式深度遍历的算法是怎样的？"></a>2.邻接矩阵的方式深度遍历的算法是怎样的？</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">int</span> Boolean<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* Boolean 是布尔类型， 其值是 TRUE 或 FALSE */</span>
+Boolean visited<span class="token punctuation">[</span>MAX<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 访问标志的数组 */</span>
+<span class="token comment" spellcheck="true">/* 邻接矩阵的深度优先递归算法 */</span>
+<span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%C "</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>vexs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 打印顶点，也可以是其他操作 */</span>
+    visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>visited<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 对未访问的邻接顶点递归调用 */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/* 邻接矩阵的深度遍历操作 */</span>
+<span class="token keyword">void</span> <span class="token function">DFSTraverse</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 初始所有顶点状态都是未访问过状态 */</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 对未访问过的顶点调用 DFS， 若是连通图，只会执行一次 */</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>注意，void DFSTraverse(MGraph G)中的第二个循环，主要是为了遍历非连通图的情况</p>
+<h3 id="3-邻接表的深度遍历的算法是怎样的？"><a href="#3-邻接表的深度遍历的算法是怎样的？" class="headerlink" title="3.邻接表的深度遍历的算法是怎样的？"></a>3.邻接表的深度遍历的算法是怎样的？</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 邻接表的深度优先递归算法 */</span>
+<span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+    EdgeNode <span class="token operator">*</span>p <span class="token operator">=</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstedge<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">visited</span><span class="token punctuation">(</span>p<span class="token operator">-></span>adjvex<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>GL<span class="token punctuation">,</span> p<span class="token operator">-></span>adjvex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/* 邻接表的深度遍历操作 */</span>
+<span class="token keyword">void</span> <span class="token function">DFSTraverse</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>GL<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="4-邻接表和邻接矩阵二者哪个好"><a href="#4-邻接表和邻接矩阵二者哪个好" class="headerlink" title="4.邻接表和邻接矩阵二者哪个好"></a>4.邻接表和邻接矩阵二者哪个好</h3><p>如果是点多边少的话，用邻接表比较好</p>
+<h2 id="7-5-2-广度优先遍历"><a href="#7-5-2-广度优先遍历" class="headerlink" title="7.5.2 广度优先遍历"></a>7.5.2 广度优先遍历</h2><h3 id="1-什么是广度优先遍历"><a href="#1-什么是广度优先遍历" class="headerlink" title="1.什么是广度优先遍历"></a>1.什么是<strong>广度优先遍历</strong></h3><p><strong>广度优先遍历(Breadth First Search)</strong>，又称为 <strong>广度优先搜索</strong>， 简称 <strong>BFS</strong>。</p>
+<p>思想：</p>
+<p>从图中某个顶点<code>v</code>出发，在访问了顶点<code>v</code>后，依次访问顶点<code>v</code>的所有未被访问过的邻接点，然后分别从这些邻接点依次访问他们的邻接点，并使得<code>先被访问过的顶点的邻接点先于后被访问的顶点的邻接点被访问</code>， 直至图中所有已被访问的顶点的邻接点都被访问到。</p>
+<p>类似于层序遍历</p>
+<h3 id="2-图解"><a href="#2-图解" class="headerlink" title="2.图解"></a>2.图解</h3><p><img src="https://i.loli.net/2019/10/25/NpQqzhHudERPUSA.jpg" alt></p>
+<p>核心思想是：出队一个，要把与它直接相连的都进队</p>
+<p>比如说：第2步出队一个A，进队与他直接相连的B F</p>
+<h3 id="3-代码："><a href="#3-代码：" class="headerlink" title="3.代码："></a>3.代码：</h3><h4 id="1-无向图的邻接矩阵"><a href="#1-无向图的邻接矩阵" class="headerlink" title="1.无向图的邻接矩阵"></a>1.无向图的邻接矩阵</h4><pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">BFSTraverse</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    SqQueue Q<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 初始化辅助用的队列 */</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 对每一个顶点做循环 */</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 若是未访问过就处理 */</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将此队列入队 */</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>vexs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 打印顶点，也可以是其他操作 */</span>
+            visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置当前顶点访问过 */</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">QueueEmpty</span><span class="token punctuation">(</span>Q<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 若当前队列不为空 */</span>
+            <span class="token punctuation">{</span>
+                <span class="token function">DeQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将队列中元素出队列，赋值给 i */</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">/* 判断其他顶点若与当前顶点存在边且未被访问过 */</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>visited<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>  
+                    <span class="token punctuation">{</span>
+                        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>vexs<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 打印顶点 */</span>
+                        visited<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将找到的此顶点标记为已访问 */</span>
+                        <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将找到的此顶点入队 */</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>   
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span> </code></pre>
-<h2 id="7-4-2-邻接表"><a href="#7-4-2-邻接表" class="headerlink" title="7.4.2 邻接表"></a>7.4.2 邻接表</h2><h3 id="1-什么是邻接表？"><a href="#1-什么是邻接表？" class="headerlink" title="1.什么是邻接表？"></a>1.什么是邻接表？</h3><p>用<strong>数组和链表结合</strong>的存储方式来标示图的方法称为<strong>邻接表</strong>。类似于树中的孩子表示法</p>
-<h3 id="2-邻接表的处理思路"><a href="#2-邻接表的处理思路" class="headerlink" title="2.邻接表的处理思路"></a>2.邻接表的处理思路</h3><ol>
-<li><strong>顶点用一维数组</strong>存储</li>
-<li>每个顶点的<strong>邻接点用链表</strong>存储，这个表在<strong>有向图</strong>中叫做弧尾的<strong>出边表</strong>，在<strong>无向图</strong>中叫<strong>边表</strong></li>
-</ol>
-<p><img src="https://i.loli.net/2019/10/25/CoyZhOaBTIfmr84.jpg" alt></p>
-<h3 id="3-邻接表结构分析"><a href="#3-邻接表结构分析" class="headerlink" title="3.邻接表结构分析"></a>3.邻接表结构分析</h3><p><strong>data</strong>是存储<strong>顶点的信息</strong>，<strong>firstedge</strong>是<strong>指针域</strong>，<strong>adjvex</strong>是<strong>邻接点域</strong>，<strong>next</strong>存储边表<strong>下一个结点的地址</strong></p>
-<h3 id="4-带权重的网图是怎样的？"><a href="#4-带权重的网图是怎样的？" class="headerlink" title="4.带权重的网图是怎样的？"></a>4.带权重的网图是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/UtC1jmIGQEqporL.jpg" alt></p>
-<p><img src="https://i.loli.net/2019/10/25/nlSpAICoqc3Fr2d.jpg" alt></p>
-<h3 id="5-存储结构定义："><a href="#5-存储结构定义：" class="headerlink" title="5.存储结构定义："></a>5.存储结构定义：</h3><p><img src="https://i.loli.net/2019/10/25/jyEYkXLFcPe6tW9.jpg" alt></p>
-<h3 id="6-无向图邻接表的创建代码："><a href="#6-无向图邻接表的创建代码：" class="headerlink" title="6.无向图邻接表的创建代码："></a>6.无向图邻接表的创建代码：</h3><p><img src="https://i.loli.net/2019/10/25/jMaQtV8RBcuKmk9.jpg" alt></p>
-<p><img src="https://i.loli.net/2019/10/25/4QPOBge6WCywHbk.jpg" alt></p>
-<p>因为一条边对应了2个顶点，所以一次循环插入2条边</p>
-<h2 id="7-4-3-十字链表"><a href="#7-4-3-十字链表" class="headerlink" title="7.4.3 十字链表"></a>7.4.3 十字链表</h2><h3 id="1-什么是十字链表"><a href="#1-什么是十字链表" class="headerlink" title="1.什么是十字链表"></a>1.什么是十字链表</h3><p>十字链表把邻接表与逆邻接表结合起来</p>
-<h3 id="2-十字链表的结构是怎样的？"><a href="#2-十字链表的结构是怎样的？" class="headerlink" title="2.十字链表的结构是怎样的？"></a>2.十字链表的结构是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/l3NMa6KIcWnOeQV.jpg" alt></p>
-<p><img src="https://i.loli.net/2019/10/25/zrt8YwxTEG7h5HW.jpg" alt></p>
-<p>注意的是：headlink是指向终点相同的下一条边，taillink是指向起点相同的下一条边</p>
-<h3 id="3-有什么好处？"><a href="#3-有什么好处？" class="headerlink" title="3.有什么好处？"></a>3.有什么好处？</h3><p>便于求出度和入度</p>
-<h2 id="7-4-4-邻接多重表"><a href="#7-4-4-邻接多重表" class="headerlink" title="7.4.4 邻接多重表"></a>7.4.4 邻接多重表</h2><h3 id="1-为什么要设计邻接多重表呢？"><a href="#1-为什么要设计邻接多重表呢？" class="headerlink" title="1.为什么要设计邻接多重表呢？"></a>1.为什么要设计邻接多重表呢？</h3><p>其实是为了便于边的操作，一条边对应一个结点</p>
-<h3 id="2-邻接多重表的结构是怎样的？"><a href="#2-邻接多重表的结构是怎样的？" class="headerlink" title="2.邻接多重表的结构是怎样的？"></a>2.邻接多重表的结构是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/v2D3gjczXla5IOP.jpg" alt></p>
-<p>注意的是：ilink与jvex相连，jlink与ivex相连</p>
-<p><img src="https://i.loli.net/2019/10/25/irCVB1XcYu5fvqx.jpg" alt></p>
-<p>如果想要去掉（v0,v2）这条边，只需要把6和9的连接改为null就行</p>
-<h2 id="7-4-5-边集数组"><a href="#7-4-5-边集数组" class="headerlink" title="7.4.5 边集数组"></a>7.4.5 边集数组</h2><h3 id="1-边集数组的结构是怎样的？"><a href="#1-边集数组的结构是怎样的？" class="headerlink" title="1.边集数组的结构是怎样的？"></a>1.边集数组的结构是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/jnCNfa5JkvoZQmh.jpg" alt></p>
-<p><img src="https://i.loli.net/2019/10/25/dChOJexVnzFvof3.jpg" alt></p>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="2-无向图的邻接表"><a href="#2-无向图的邻接表" class="headerlink" title="2.无向图的邻接表"></a>2.无向图的邻接表</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 邻接表的广度遍历算法 */</span>
+<span class="token keyword">void</span> <span class="token function">BFS</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    SqQueue Q<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>
+    <span class="token function">InitQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 打印顶点，也可以是其他操作 */</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">QueueEmpty</span><span class="token punctuation">(</span>Q<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token function">DeQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                NodeEdge <span class="token operator">*</span>p <span class="token operator">=</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstedge<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 找到当前顶点边表链表头指针 */</span>
+                <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>p<span class="token operator">-></span>adjvex<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 若此顶点未被访问 */</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c "</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>p<span class="token operator">-></span>adjvex<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> p<span class="token operator">-></span>adjvex<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将此顶点入队 */</span>
+                        visited<span class="token punctuation">[</span>p<span class="token operator">-></span>adjvex<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 指针指向下一个邻接点 */</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="DFS和BFS哪个更好呢？"><a href="#DFS和BFS哪个更好呢？" class="headerlink" title="DFS和BFS哪个更好呢？"></a>DFS和BFS哪个更好呢？</h2><p>DFS适合目标更明确</p>
+<p>BFS适合不断扩大范围找到相对最优解</p>
 
             </div>
             <hr/>
@@ -684,8 +758,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/25/7.4-tu-de-cun-chu-jie-gou/">
-                    《7.4 图的存储结构》
+            <a  href="/2019/10/25/7.5-tu-de-bian-li/">
+                    《7.5 图的遍历》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -727,7 +801,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-25T14-11-59',
+        id: '2019-10-25T15-34-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -748,9 +822,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/10/25/7.5-tu-de-bian-li/">
                     <div class="card-image">
@@ -768,9 +843,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -783,6 +858,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -805,24 +881,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/24/6.12-he-fu-man-shu-ji-qi-ying-yong/">
+                <a href="/2019/10/25/7.4-tu-de-cun-chu-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="6.12 赫夫曼树及其应用">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="7.4 图的存储结构">
                         
-                        <span class="card-title">6.12 赫夫曼树及其应用</span>
+                        <span class="card-title">7.4 图的存储结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            用来干什么呢？其实就是最基本的压缩算法
+                            什么是邻接矩阵
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-25
                             </span>
                         <span class="publish-author">
                             
@@ -843,8 +919,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/树/">
-                        <span class="chip bg-color">树</span>
+                    <a href="/tags/图/">
+                        <span class="chip bg-color">图</span>
                     </a>
                     
                 </div>
