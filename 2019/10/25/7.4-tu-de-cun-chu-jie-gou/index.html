@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="8.11 处理冲突的方法, Hexo">
-    <meta name="description" content="8.11 处理冲突的方法8.11.1 开放定址法1.什么是开放定址法呢一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。
-公式为：fi(key) = (f(key)+di) MOD m (di">
+    <meta name="keywords" content="7.4 图的存储结构, Hexo">
+    <meta name="description" content="7.4 图的存储结构7.4.1 邻接矩阵1.什么是邻接矩阵图的邻接矩阵存储方式是用两个数组来标示图。一个一维数组存储图顶点的信息，一个二维数组（称为邻接矩阵）存储图中边或者弧的信息。
+1.无向图的邻接矩阵：
+2.有向图的邻接矩阵：
+可以很容">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>8.11 处理冲突的方法 | Hexo</title>
+    <title>7.4 图的存储结构 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,13 +310,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        8.11 处理冲突的方法
+                        7.4 图的存储结构
                     </div>
                 </div>
             </div>
@@ -430,8 +432,8 @@
                                 <span class="chip bg-color">大话数据结构</span>
                             </a>
                         
-                            <a href="/tags/哈希表/">
-                                <span class="chip bg-color">哈希表</span>
+                            <a href="/tags/图/">
+                                <span class="chip bg-color">图</span>
                             </a>
                         
                     </div>
@@ -454,7 +456,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-10-25
                 </div>
 
                 
@@ -470,17 +472,58 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="8-11-处理冲突的方法"><a href="#8-11-处理冲突的方法" class="headerlink" title="8.11 处理冲突的方法"></a>8.11 处理冲突的方法</h1><h2 id="8-11-1-开放定址法"><a href="#8-11-1-开放定址法" class="headerlink" title="8.11.1 开放定址法"></a>8.11.1 开放定址法</h2><h3 id="1-什么是开放定址法呢"><a href="#1-什么是开放定址法呢" class="headerlink" title="1.什么是开放定址法呢"></a>1.什么是开放定址法呢</h3><p>一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p>
-<h3 id="公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1"><a href="#公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1" class="headerlink" title="公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)"></a>公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)</h3><h3 id="2-什么是线性探测法"><a href="#2-什么是线性探测法" class="headerlink" title="2.什么是线性探测法"></a>2.什么是线性探测法</h3><p>其实就是按顺序找下去地定址</p>
-<h3 id="3-什么是堆积"><a href="#3-什么是堆积" class="headerlink" title="3.什么是堆积"></a>3.什么是堆积</h3><p>其实就是冲突的连环出现，我原本a有冲突，a的冲突解决了，b又和a有冲突了，本来都不是同义词却需要争夺一个地址的叫做堆积</p>
-<h3 id="4-什么是二次探测法"><a href="#4-什么是二次探测法" class="headerlink" title="4.什么是二次探测法"></a>4.什么是二次探测法</h3><p>其实就是增加了平方和正负运算，</p>
-<p>fi(key) = (f(key)+di) MOD m (di = 1 2, -1 2, 2 2, -2 2,……, q 2, -q 2, q &lt;= m/2) 这里的是指平方</p>
-<h3 id="5-什么是随机探测法"><a href="#5-什么是随机探测法" class="headerlink" title="5.什么是随机探测法"></a>5.什么是随机探测法</h3><p>对于位移量 di 采用随机函数计算得到，我们称之为随机探测法。</p>
-<h3 id="6-什么是伪随机数"><a href="#6-什么是伪随机数" class="headerlink" title="6.什么是伪随机数"></a>6.什么是伪随机数</h3><p>其实就是由随机种子按照某种随机算法，生成的数，</p>
-<p>随机种子是以随机数作为对象的以真随机数（种子）为初始条件的随机数。一般以系统时间作为随机种子</p>
-<h2 id="8-11-2-再散列函数法"><a href="#8-11-2-再散列函数法" class="headerlink" title="8.11.2 再散列函数法"></a>8.11.2 再散列函数法</h2><p>其实就是随机调用不同的散列函数</p>
-<h2 id="8-11-3-链地址法"><a href="#8-11-3-链地址法" class="headerlink" title="8.11.3 链地址法"></a>8.11.3 链地址法</h2><p>就是在冲突的地址里面，生成1个链表，类似于HashMap</p>
-<h2 id="8-11-4-公共溢出区法"><a href="#8-11-4-公共溢出区法" class="headerlink" title="8.11.4 公共溢出区法"></a>8.11.4 公共溢出区法</h2><p>其实就是把所有冲突的关键词存到一个公共区，查找的时候，当在普通区查不到，就到公共溢出区查</p>
+                <h1 id="7-4-图的存储结构"><a href="#7-4-图的存储结构" class="headerlink" title="7.4 图的存储结构"></a>7.4 图的存储结构</h1><h2 id="7-4-1-邻接矩阵"><a href="#7-4-1-邻接矩阵" class="headerlink" title="7.4.1 邻接矩阵"></a>7.4.1 邻接矩阵</h2><h3 id="1-什么是邻接矩阵"><a href="#1-什么是邻接矩阵" class="headerlink" title="1.什么是邻接矩阵"></a>1.什么是邻接矩阵</h3><p>图的邻接矩阵存储方式是用两个数组来标示图。一个<strong>一维数组</strong>存储图<strong>顶点</strong>的信息，一个<strong>二维数组</strong>（称为邻接矩阵）存储图中<strong>边或者弧</strong>的信息。</p>
+<h4 id="1-无向图的邻接矩阵："><a href="#1-无向图的邻接矩阵：" class="headerlink" title="1.无向图的邻接矩阵："></a>1.无向图的邻接矩阵：</h4><p><img src="https://i.loli.net/2019/10/25/81XwrqsD7CuzT3o.jpg" alt></p>
+<h4 id="2-有向图的邻接矩阵："><a href="#2-有向图的邻接矩阵：" class="headerlink" title="2.有向图的邻接矩阵："></a>2.有向图的邻接矩阵：</h4><p><img src="https://i.loli.net/2019/10/25/XTVAmFcyEovWSMJ.jpg" alt></p>
+<p>可以很容易看出，入度是多少（看列），出度是多少（看行）</p>
+<h4 id="3-网图的邻接矩阵："><a href="#3-网图的邻接矩阵：" class="headerlink" title="3.网图的邻接矩阵："></a>3.网图的邻接矩阵：</h4><p>当2个点到达不了的，用无穷表示距离，当自己到自己的，用0表示距离</p>
+<p><img src="https://i.loli.net/2019/10/25/nqPfX9szxOT63Lw.jpg" alt></p>
+<h3 id="2-邻接矩阵的存储结构："><a href="#2-邻接矩阵的存储结构：" class="headerlink" title="2.邻接矩阵的存储结构："></a>2.邻接矩阵的存储结构：</h3><p><img src="https://i.loli.net/2019/10/25/QJplD6WanVSydCX.jpg" alt></p>
+<h3 id="3-无向网图的创建："><a href="#3-无向网图的创建：" class="headerlink" title="3.无向网图的创建："></a>3.无向网图的创建：</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">CreateMGraph</span><span class="token punctuation">(</span>MGraph <span class="token operator">*</span>G<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>k<span class="token punctuation">,</span>w<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入顶点数和边数：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">,</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>numEdges<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输入顶点数和边数</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//初始化顶点表 </span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>vex<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> 
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>inj<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>G<span class="token operator">-></span>numVertexes<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>INFINITY<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//邻接矩阵初始化</span>
+
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>k<span class="token operator">&lt;</span>G<span class="token operator">-></span>numEdges<span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入边(vi,vj)的下标i，j和权w：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d,%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>i<span class="token punctuation">,</span><span class="token operator">&amp;</span>j<span class="token punctuation">,</span><span class="token operator">&amp;</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输入边(vi,vj)的下标i，j和权w：</span>
+            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>w<span class="token punctuation">;</span>
+            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//因为是无向图，矩阵对称 </span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> </code></pre>
+<h2 id="7-4-2-邻接表"><a href="#7-4-2-邻接表" class="headerlink" title="7.4.2 邻接表"></a>7.4.2 邻接表</h2><h3 id="1-什么是邻接表？"><a href="#1-什么是邻接表？" class="headerlink" title="1.什么是邻接表？"></a>1.什么是邻接表？</h3><p>用<strong>数组和链表结合</strong>的存储方式来标示图的方法称为<strong>邻接表</strong>。类似于树中的孩子表示法</p>
+<h3 id="2-邻接表的处理思路"><a href="#2-邻接表的处理思路" class="headerlink" title="2.邻接表的处理思路"></a>2.邻接表的处理思路</h3><ol>
+<li><strong>顶点用一维数组</strong>存储</li>
+<li>每个顶点的<strong>邻接点用链表</strong>存储，这个表在<strong>有向图</strong>中叫做弧尾的<strong>出边表</strong>，在<strong>无向图</strong>中叫<strong>边表</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/25/CoyZhOaBTIfmr84.jpg" alt></p>
+<h3 id="3-邻接表结构分析"><a href="#3-邻接表结构分析" class="headerlink" title="3.邻接表结构分析"></a>3.邻接表结构分析</h3><p><strong>data</strong>是存储<strong>顶点的信息</strong>，<strong>firstedge</strong>是<strong>指针域</strong>，<strong>adjvex</strong>是<strong>邻接点域</strong>，<strong>next</strong>存储边表<strong>下一个结点的地址</strong></p>
+<h3 id="4-带权重的网图是怎样的？"><a href="#4-带权重的网图是怎样的？" class="headerlink" title="4.带权重的网图是怎样的？"></a>4.带权重的网图是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/UtC1jmIGQEqporL.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/25/nlSpAICoqc3Fr2d.jpg" alt></p>
+<h3 id="5-存储结构定义："><a href="#5-存储结构定义：" class="headerlink" title="5.存储结构定义："></a>5.存储结构定义：</h3><p><img src="https://i.loli.net/2019/10/25/jyEYkXLFcPe6tW9.jpg" alt></p>
+<h3 id="6-无向图邻接表的创建代码："><a href="#6-无向图邻接表的创建代码：" class="headerlink" title="6.无向图邻接表的创建代码："></a>6.无向图邻接表的创建代码：</h3><p><img src="https://i.loli.net/2019/10/25/jMaQtV8RBcuKmk9.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/25/4QPOBge6WCywHbk.jpg" alt></p>
+<p>因为一条边对应了2个顶点，所以一次循环插入2条边</p>
+<h2 id="7-4-3-十字链表"><a href="#7-4-3-十字链表" class="headerlink" title="7.4.3 十字链表"></a>7.4.3 十字链表</h2><h3 id="1-什么是十字链表"><a href="#1-什么是十字链表" class="headerlink" title="1.什么是十字链表"></a>1.什么是十字链表</h3><p>十字链表把邻接表与逆邻接表结合起来</p>
+<h3 id="2-十字链表的结构是怎样的？"><a href="#2-十字链表的结构是怎样的？" class="headerlink" title="2.十字链表的结构是怎样的？"></a>2.十字链表的结构是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/l3NMa6KIcWnOeQV.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/25/zrt8YwxTEG7h5HW.jpg" alt></p>
+<p>注意的是：headlink是指向终点相同的下一条边，taillink是指向起点相同的下一条边</p>
+<h3 id="3-有什么好处？"><a href="#3-有什么好处？" class="headerlink" title="3.有什么好处？"></a>3.有什么好处？</h3><p>便于求出度和入度</p>
+<h2 id="7-4-4-邻接多重表"><a href="#7-4-4-邻接多重表" class="headerlink" title="7.4.4 邻接多重表"></a>7.4.4 邻接多重表</h2><h3 id="1-为什么要设计邻接多重表呢？"><a href="#1-为什么要设计邻接多重表呢？" class="headerlink" title="1.为什么要设计邻接多重表呢？"></a>1.为什么要设计邻接多重表呢？</h3><p>其实是为了便于边的操作，一条边对应一个结点</p>
+<h3 id="2-邻接多重表的结构是怎样的？"><a href="#2-邻接多重表的结构是怎样的？" class="headerlink" title="2.邻接多重表的结构是怎样的？"></a>2.邻接多重表的结构是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/v2D3gjczXla5IOP.jpg" alt></p>
+<p>注意的是：ilink与jvex相连，jlink与ivex相连</p>
+<p><img src="https://i.loli.net/2019/10/25/irCVB1XcYu5fvqx.jpg" alt></p>
+<p>如果想要去掉（v0,v2）这条边，只需要把6和9的连接改为null就行</p>
+<h2 id="7-4-5-边集数组"><a href="#7-4-5-边集数组" class="headerlink" title="7.4.5 边集数组"></a>7.4.5 边集数组</h2><h3 id="1-边集数组的结构是怎样的？"><a href="#1-边集数组的结构是怎样的？" class="headerlink" title="1.边集数组的结构是怎样的？"></a>1.边集数组的结构是怎样的？</h3><p><img src="https://i.loli.net/2019/10/25/jnCNfa5JkvoZQmh.jpg" alt></p>
+<p><img src="https://i.loli.net/2019/10/25/dChOJexVnzFvof3.jpg" alt></p>
 
             </div>
             <hr/>
@@ -641,8 +684,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/">
-                    《8.11 处理冲突的方法》
+            <a  href="/2019/10/25/7.4-tu-de-cun-chu-jie-gou/">
+                    《7.4 图的存储结构》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -684,7 +727,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T20-08-59',
+        id: '2019-10-25T14-11-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -705,29 +748,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/14/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/">
+                <a href="/2019/10/25/7.4-tu-de-cun-chu-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="4.3 栈的顺序存储结构及实现">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="7.4 图的存储结构">
                         
-                        <span class="card-title">4.3 栈的顺序存储结构及实现</span>
+                        <span class="card-title">7.4 图的存储结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            栈的结构定义
+                            什么是邻接矩阵
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -740,6 +784,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -747,8 +792,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/栈/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/图/">
+                        <span class="chip bg-color">图</span>
                     </a>
                     
                 </div>
@@ -762,24 +807,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/">
+                <a href="/2019/10/24/6.12-he-fu-man-shu-ji-qi-ying-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="8.12 散列表查找实现">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="6.12 赫夫曼树及其应用">
                         
-                        <span class="card-title">8.12 散列表查找实现</span>
+                        <span class="card-title">6.12 赫夫曼树及其应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            散列表查找算法实现
+                            用来干什么呢？其实就是最基本的压缩算法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-24
                             </span>
                         <span class="publish-author">
                             
@@ -800,8 +845,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/哈希表/">
-                        <span class="chip bg-color">哈希表</span>
+                    <a href="/tags/树/">
+                        <span class="chip bg-color">树</span>
                     </a>
                     
                 </div>
