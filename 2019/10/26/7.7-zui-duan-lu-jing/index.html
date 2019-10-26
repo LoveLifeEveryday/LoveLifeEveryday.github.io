@@ -4,14 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="7.6 最小生成树, Hexo">
-    <meta name="description" content="7.6 最小生成树
-什么是最小生成树呢？
+    <meta name="keywords" content="7.7 最短路径, Hexo">
+    <meta name="description" content="7.7 最短路径
+上节我们探讨了最小生成树的生成方法，分别是prim算法和Kruskal算法,这节课我们来探讨下求最短路径的算法
+上上节我们探讨了广度优先和深度优先，其实这与本节有一定的关系
 
-什么是最小生成树呢？即构造连通图的最小代价生成树，就是能够到达每个点，花费最少的路径
-7.6.1 Prim算法
-1.代码：邻接矩阵结构：#define MAXVER 10
-typedef char">
+7.7.1 Dijkstra算法1.什么是Di">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@ typedef char">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>7.6 最小生成树 | Hexo</title>
+    <title>7.7 最短路径 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,13 +311,13 @@ typedef char">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        7.6 最小生成树
+                        7.7 最短路径
                     </div>
                 </div>
             </div>
@@ -459,7 +457,7 @@ typedef char">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-25
+                    2019-10-26
                 </div>
 
                 
@@ -475,131 +473,121 @@ typedef char">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="7-6-最小生成树"><a href="#7-6-最小生成树" class="headerlink" title="7.6 最小生成树"></a>7.6 最小生成树</h1><blockquote>
-<p>什么是最小生成树呢？</p>
+                <h1 id="7-7-最短路径"><a href="#7-7-最短路径" class="headerlink" title="7.7 最短路径"></a>7.7 最短路径</h1><blockquote>
+<p>上节我们探讨了最小生成树的生成方法，分别是prim算法和Kruskal算法,这节课我们来探讨下求最短路径的算法</p>
+<p>上上节我们探讨了广度优先和深度优先，其实这与本节有一定的关系</p>
 </blockquote>
-<h2 id="什么是最小生成树呢？"><a href="#什么是最小生成树呢？" class="headerlink" title="什么是最小生成树呢？"></a>什么是最小生成树呢？</h2><p>即构造连通图的最小代价生成树，就是能够到达每个点，花费最少的路径</p>
-<h2 id="7-6-1-Prim算法"><a href="#7-6-1-Prim算法" class="headerlink" title="7.6.1 Prim算法"></a>7.6.1 Prim算法</h2><p><img src="https://s2.ax1x.com/2019/10/25/Kw73hd.jpg" alt="Kw73hd.jpg"></p>
-<h3 id="1-代码："><a href="#1-代码：" class="headerlink" title="1.代码："></a>1.代码：</h3><h3 id="邻接矩阵结构："><a href="#邻接矩阵结构：" class="headerlink" title="邻接矩阵结构："></a>邻接矩阵结构：</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> MAXVER 10</span>
-<span class="token keyword">typedef</span> <span class="token keyword">char</span> VertexType<span class="token punctuation">;</span>
-
-<span class="token keyword">typedef</span> <span class="token keyword">struct</span> 
+<h2 id="7-7-1-Dijkstra算法"><a href="#7-7-1-Dijkstra算法" class="headerlink" title="7.7.1 Dijkstra算法"></a>7.7.1 Dijkstra算法</h2><h3 id="1-什么是Dijkstra算法？"><a href="#1-什么是Dijkstra算法？" class="headerlink" title="1.什么是Dijkstra算法？"></a>1.什么是Dijkstra算法？</h3><p>用于计算一个结点到其他结点的最短路径</p>
+<p>算法的<strong>主要特点</strong>是以起始点为中心向外层层扩展(<strong>广度优先搜索</strong>思想)， 直到扩展到终点为止，不断地找最小值的点中的连线</p>
+<h3 id="2-图解"><a href="#2-图解" class="headerlink" title="2.图解"></a>2.图解</h3><p><img src="https://s2.ax1x.com/2019/10/26/KBYanO.png" alt="KBYanO.png"></p>
+<p>其实就是不断找最短的距离，要和之前的比较</p>
+<h3 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h3><p><code>final</code>数组为<strong>已求</strong>得<strong>最短路径</strong>的顶点<strong>集合</strong>，<code>D</code>数组为起点到各顶点的最短路径的<strong>权值和</strong>， <code>P</code>数组为最短路径的<strong>路径的顶点</strong></p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* Dijkstra算法， 求有向网 G 的 v0 顶点到其余顶点 v 最短路径 P[v] 及带权长度 D[v], P[v] 的值为前驱顶点下标,
+ * D[v] 表示 v0 到 v 的最短路径长度和 */</span>
+<span class="token keyword">void</span> <span class="token function">ShortestPath_Dijkstra</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span> <span class="token keyword">int</span> v0<span class="token punctuation">,</span> ShortPathTable <span class="token operator">*</span>D<span class="token punctuation">,</span> Patharc <span class="token operator">*</span>P<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    VertexType vexs<span class="token punctuation">[</span>MAXVER<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> arc<span class="token punctuation">[</span>MAXVER<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVER<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> min<span class="token punctuation">,</span> k<span class="token punctuation">,</span> final<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* final[w] = 1 表示求得顶点 v0 至 vw 的最短路径 */</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 初始化数据 */</span>
+    <span class="token punctuation">{</span>
+        final<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">/* 全部顶点初始化为未知最短路径状态 */</span>
+        <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>v0<span class="token punctuation">]</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 将与 v0 顶点有连线的顶点加上权值 */</span>
+        <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">/* 初始化路径数组 P 为 0 */</span>
+    <span class="token punctuation">}</span>
+    final<span class="token punctuation">[</span>v0<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* v0 至 v0 不需要求路径 */</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v0<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* v0 至 v0 路径为 0 */</span>
+
+    <span class="token comment" spellcheck="true">/* 开始主循环, 每次求得 v0 到某个 v 顶点的最短路径 */</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> v <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        min <span class="token operator">=</span> INF<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 当前所知离 v0 顶点的最近距离 */</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">/* 寻找离 v0 最近的顶点 */</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>final<span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                min <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* w 顶点离 v0 顶点更近 */</span>
+                k <span class="token operator">=</span> w<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        final<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 将目前找到的最近的顶点置为 1 */</span>
+        <span class="token comment" spellcheck="true">//这里是更新最短路径长度</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">/* 更新当前最短路径及距离 */</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* 如果经过 v 顶点的路径比现在这条路径的长度短的话 */</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>final<span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>min <span class="token operator">+</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">/* 说明找到了更短的路径, 修改 D[w] 和 P[w] */</span>
+                <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> min <span class="token operator">+</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 修改当前路径长度 */</span>
+                <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="4-如果还想知道v3到v5这样任意顶点开始的最短路径怎么办？"><a href="#4-如果还想知道v3到v5这样任意顶点开始的最短路径怎么办？" class="headerlink" title="4.如果还想知道v3到v5这样任意顶点开始的最短路径怎么办？"></a>4.如果还想知道v3到v5这样任意顶点开始的最短路径怎么办？</h3><p>对每个顶点作为源点运行一次上述算法</p>
+<p>时间复杂度是O(n3)</p>
+<h2 id="7-7-2-Floyd算法"><a href="#7-7-2-Floyd算法" class="headerlink" title="7.7.2 Floyd算法"></a>7.7.2 Floyd算法</h2><h3 id="1-什么是Floyd算法"><a href="#1-什么是Floyd算法" class="headerlink" title="1.什么是Floyd算法"></a>1.什么是<code>Floyd</code>算法</h3><p>在给定的加权图中求最短路径的算法，其实就是不断尝试借助中间结点，而不是之间一步到位的结点，来求最短路径</p>
+<h3 id="2-核心是什么？"><a href="#2-核心是什么？" class="headerlink" title="2.核心是什么？"></a>2.核心是什么？</h3><p><img src="https://s2.ax1x.com/2019/10/26/KBU3NQ.jpg" alt="KBU3NQ.jpg"></p>
+<h3 id="3-步骤是什么？"><a href="#3-步骤是什么？" class="headerlink" title="3.步骤是什么？"></a>3.步骤是什么？</h3><ol>
+<li>首先明确定义，定义两个二维数组<code>D[MAXVEX][MAXVEX]</code>和<code>P[MAXVEX][MAXVEX]</code>，<strong>D</strong>数组代表顶点到顶点的<strong>最短路径权值和</strong>矩阵， <code>P</code>代表对应顶点的<strong>最小路径前驱矩阵</strong>。</li>
+<li>初始的时候，将矩阵<code>D</code>中顶点<code>D[v][w]</code>设置为顶点<code>v</code>到顶点<code>w</code>的<strong>权值</strong>，若两顶点<strong>不相连</strong>，则<code>D[v][w] = INF</code>。</li>
+<li>接下来对矩阵<code>D</code>更新， <strong>如果D[v][w] &gt; D[v][k] + D[k][w]</strong><code>，</code>k<code>表示</code>v、w`两顶点通过中转顶点，该表达式表示通过中转顶点的权值和较小时，<strong>更新v、w权值和</strong>。</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/10/26/KBa3qK.png" alt="KBa3qK.png"></p>
+<h3 id="4-算法是什么？"><a href="#4-算法是什么？" class="headerlink" title="4.算法是什么？"></a>4.算法是什么？</h3><p>结构</p>
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> MAXVEX 9</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> INF 65535</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> Patharc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> ShortPathTable<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> vexs<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> numVertexes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>MGraph<span class="token punctuation">;</span></code></pre>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* Prim 算法生成最小生成树 */</span>
-<span class="token keyword">void</span> <span class="token function">MiniSpanTree_Prim</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> min<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// min 为当前权值最小值</span>
-    <span class="token keyword">int</span> lowcost<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 保存顶点间边的权值 */</span>
-    <span class="token keyword">int</span> adjvex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 保存相关顶点的下标，即下标与其值所连边为当前最小权值边 */</span>
-    lowcost<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 选取第一个顶点为起始点， 即 v0 加入树， lowcost的值为0，在这里就是此下标的顶点已经加入生成树 */</span>
-    adjvex<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 初始化第一个顶点下标为0 */</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 循环除下标为 0 外的全部顶点 */</span>
-    <span class="token punctuation">{</span>
-        lowcost<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将与 v0 顶点有边的权值存入数组 */</span>
-        adjvex<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将其他所有顶点的值初始化为 v0 的下标 */</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        min <span class="token operator">=</span> INF<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 初始化最小权值为 无穷大 */</span>
-        j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 循环全部顶点，寻找当前最小生成树顶点集合中最小权值的边 */</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 如果权值不为 0(即不在树中), 且权值小于 min */</span>
-            <span class="token punctuation">{</span>
-                min <span class="token operator">=</span> lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 则让当前权值成为最小值 */</span>
-                k <span class="token operator">=</span> j<span class="token punctuation">;</span>             <span class="token comment" spellcheck="true">/* 将当前最小值的下标存入k */</span>
-            <span class="token punctuation">}</span>
-            j<span class="token operator">++</span><span class="token punctuation">;</span>
+<p>算法：</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* Floyd 算法， 求网图 G 中各顶点 v 到其余顶点 w 的最短路径 P[v][w] 及带权长度 D[v][w] */</span>
+<span class="token keyword">void</span> <span class="token function">ShortestPath_Floyd</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span> Patharc <span class="token operator">*</span>P<span class="token punctuation">,</span> ShortPathTable <span class="token operator">*</span>D<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/* 初始化 D 与 P */</span>
+    <span class="token comment" spellcheck="true">//双重循环初始化</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* D[v][w] 值即为对应顶点间的权值 */</span>
+            <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 初始化 P */</span>
         <span class="token punctuation">}</span>
-        lowcost<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将当前顶点的权值设置为0, 表示此顶点已加入树的顶点集合 */</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"(%d, %d)"</span><span class="token punctuation">,</span> adjvex<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 打印当前顶点边中权值最小的边 */</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 循环所有顶点 */</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">/* 如果下标为 k 的顶点边集中权值小于已存在的权值, 比如 (v0, v6)权值为INF, 而(v1, v6)权值为 16， 更新*/</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将较小的权值存入 lowcost 相应位置 */</span>
-                adjvex<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 将下标为 k 的顶点存入 adjvex */</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//三重循环更新最短路径</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//k是中间的结点</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">/* 如果经过下标为 k 的顶点路径比原两点间路径更短 */</span>
+                    <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将当前两点间权值设为更小的一个 */</span>
+                    <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 路径设置为经过下标为 k 的顶点 */</span>
+                <span class="token punctuation">}</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>lowcost其实存着最小的权,当lowcost==0的时候，说明该结点已经放入最小生成树中了</p>
-<p>adjvex其实存在点，</p>
-<h3 id="2-复杂度"><a href="#2-复杂度" class="headerlink" title="2.复杂度"></a>2.复杂度</h3><p>时间复杂度是O（n2）</p>
-<h2 id="7-6-2-Kruskal算法"><a href="#7-6-2-Kruskal算法" class="headerlink" title="7.6.2 Kruskal算法"></a>7.6.2 Kruskal算法</h2><h3 id="1-什么是克鲁斯卡尔算法"><a href="#1-什么是克鲁斯卡尔算法" class="headerlink" title="1.什么是克鲁斯卡尔算法"></a>1.什么是克鲁斯卡尔算法</h3><p>按照<strong>权值从小到大</strong>的顺序选择<code>n - 1</code>条边，并保证这<code>n - 1</code>条边<strong>不构成回路</strong></p>
-<h3 id="2-思路是怎样的？"><a href="#2-思路是怎样的？" class="headerlink" title="2.思路是怎样的？"></a>2.思路是怎样的？</h3><ol>
-<li>将邻接矩阵转化为边集数组</li>
-<li>构造一个只含<code>n</code>个顶点的森林，</li>
-<li>然后<strong>依权值从小到大</strong>从连通网中选择边加入到森林中，并使森林<strong>不产生回路</strong>，直至森林变成过一棵树为止</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/10/25/KwbbTO.jpg" alt="KwbbTO.jpg"></p>
-<h3 id="3-具体算法"><a href="#3-具体算法" class="headerlink" title="3.具体算法"></a>3.具体算法</h3><p>边集数组结构</p>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<p>打印各节点间的最短路径</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 打印各顶点间的最短路径 */</span>
+<span class="token keyword">void</span> <span class="token function">ShowShortestPath</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span> Patharc <span class="token operator">*</span>P<span class="token punctuation">,</span> ShortPathTable <span class="token operator">*</span>D<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> begin<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> end<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> weight<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>Edge<span class="token punctuation">;</span></code></pre>
-<p>算法</p>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 生成最小生成树 */</span>
-<span class="token keyword">void</span> <span class="token function">MiniSpanTree_Kruskal</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> parent<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 定义一数组用来判断边与边是否形成环路 */</span>
-    Edge edges<span class="token punctuation">[</span>MAXEDGE<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 定义边集数组,edge的结构为begin,end,weight,均为整型 */</span>
-
-    <span class="token comment" spellcheck="true">/* 用来构建边集数组并排序********************* */</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>v<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> w <span class="token operator">=</span> v <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> <span class="token operator">++</span>w<span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> INF<span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"v%d-v%d weight: %d "</span><span class="token punctuation">,</span>v<span class="token punctuation">,</span>w<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 获得第一个路径顶点下标 */</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" path: %d"</span><span class="token punctuation">,</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 打印源点 */</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">!=</span> w<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 如果路径顶点下标不是终点 */</span>
             <span class="token punctuation">{</span>
-                edges<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>begin <span class="token operator">=</span> i<span class="token punctuation">;</span>
-                edges<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>end <span class="token operator">=</span> j<span class="token punctuation">;</span>
-                edges<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>weight <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                k<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" -> %d"</span><span class="token punctuation">,</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 打印路径顶点 */</span>
+                k <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 获得下一个路径顶点下标 */</span>
             <span class="token punctuation">}</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" -> %d\n"</span><span class="token punctuation">,</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 打印终点 */</span>
         <span class="token punctuation">}</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token function">sort</span><span class="token punctuation">(</span>edges<span class="token punctuation">,</span> <span class="token operator">&amp;</span>G<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* ******************************************* */</span>
-
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"打印最小生成树：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVertexes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-        parent<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 初始化数组值为0 */</span>
-
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numEdges<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 循环每一条边 */</span>
-    <span class="token punctuation">{</span>
-        n <span class="token operator">=</span> <span class="token function">Find</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>begin<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        m <span class="token operator">=</span> <span class="token function">Find</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">!=</span> m<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">/* 假如n与m不等，说明此边没有与现有的生成树形成环路 */</span>
-        <span class="token punctuation">{</span>
-            parent<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> m<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 将此边的结尾顶点放入下标为起点的parent中。 表示此顶点已经在生成树集合中*/</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"(%d, %d) %d\n"</span><span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>begin<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>weight<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
 <span class="token punctuation">}</span></code></pre>
-<pre class=" language-c"><code class="language-c">
-<span class="token comment" spellcheck="true">//Kruskal（克鲁斯卡尔算法）生成最小生成树</span>
-<span class="token keyword">int</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>parent<span class="token punctuation">,</span> <span class="token keyword">int</span> f<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-   <span class="token keyword">while</span><span class="token punctuation">(</span>parent<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span>
-   <span class="token punctuation">{</span>
-       f <span class="token operator">=</span> parent<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">return</span> f<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>其中，如果已经加入的话，parent[5]=8表示(5,8)在边集合里面</p>
 
             </div>
             <hr/>
@@ -760,8 +748,8 @@ typedef char">
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/25/7.6-zui-xiao-sheng-cheng-shu/">
-                    《7.6 最小生成树》
+            <a  href="/2019/10/26/7.7-zui-duan-lu-jing/">
+                    《7.7 最短路径》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -803,7 +791,7 @@ typedef char">
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-25T22-47-59',
+        id: '2019-10-26T16-23-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -824,9 +812,10 @@ typedef char">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/10/26/7.7-zui-duan-lu-jing/">
                     <div class="card-image">
@@ -844,9 +833,9 @@ typedef char">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -859,6 +848,7 @@ typedef char">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -881,19 +871,19 @@ typedef char">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/25/7.5-tu-de-bian-li/">
+                <a href="/2019/10/25/7.6-zui-xiao-sheng-cheng-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="7.5 图的遍历">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="7.6 最小生成树">
                         
-                        <span class="card-title">7.5 图的遍历</span>
+                        <span class="card-title">7.6 最小生成树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是深度优先遍历呢
+                            什么是最小生成树呢？
                         
                     </div>
                     <div class="publish-info">
