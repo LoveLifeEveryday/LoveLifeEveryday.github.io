@@ -4,10 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="4.10 队列的定义, Hexo">
-    <meta name="description" content="4.10 队列的定义1.什么是队列呢队列是只允许在一端进行插入的操作，在另一端删除的线性表
-2.什么是队头，什么是队尾呢队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来
-">
+    <meta name="keywords" content="9.7 堆排序, Hexo">
+    <meta name="description" content="9.7 堆排序
+我们前面学过简单选择排序，那么这里的堆排序和简单选择排序有什么关系呢？
+
+堆是什么？堆是具有下列性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆（例如图9-7-2左图）；或者每个结点的值都小于或等于其">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>4.10 队列的定义 | Hexo</title>
+    <title>9.7 堆排序 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,13 +310,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        4.10 队列的定义
+                        9.7 堆排序
                     </div>
                 </div>
             </div>
@@ -431,8 +432,12 @@
                                 <span class="chip bg-color">大话数据结构</span>
                             </a>
                         
-                            <a href="/tags/队列/">
-                                <span class="chip bg-color">队列</span>
+                            <a href="/tags/排序/">
+                                <span class="chip bg-color">排序</span>
+                            </a>
+                        
+                            <a href="/tags/堆/">
+                                <span class="chip bg-color">堆</span>
                             </a>
                         
                     </div>
@@ -455,7 +460,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-10-29
                 </div>
 
                 
@@ -471,9 +476,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="4-10-队列的定义"><a href="#4-10-队列的定义" class="headerlink" title="4.10 队列的定义"></a>4.10 队列的定义</h1><h2 id="1-什么是队列呢"><a href="#1-什么是队列呢" class="headerlink" title="1.什么是队列呢"></a>1.什么是队列呢</h2><p>队列是只允许在一端进行插入的操作，在另一端删除的线性表</p>
-<h2 id="2-什么是队头，什么是队尾呢"><a href="#2-什么是队头，什么是队尾呢" class="headerlink" title="2.什么是队头，什么是队尾呢"></a>2.什么是队头，什么是队尾呢</h2><p>队尾就是允许插入的一端，队头就是允许删除的一端，类似于排队，排队要从后面排起来</p>
-<h2 id><a href="#" class="headerlink" title></a></h2>
+                <h1 id="9-7-堆排序"><a href="#9-7-堆排序" class="headerlink" title="9.7 堆排序"></a>9.7 堆排序</h1><blockquote>
+<p>我们前面学过简单选择排序，那么这里的堆排序和简单选择排序有什么关系呢？</p>
+</blockquote>
+<h2 id="堆是什么？"><a href="#堆是什么？" class="headerlink" title="堆是什么？"></a>堆是什么？</h2><p>堆是具有下列性质的<strong>完全二叉树</strong>：每个<strong>结点</strong>的值都<strong>大于或等于其左右孩子</strong>结点的值，称为<strong>大顶堆</strong>（例如图9-7-2左图）；或者每个结点的值都<strong>小于或等于其左右孩子</strong>结点的值，称为<strong>小顶堆</strong>（例如图9-7-2右图）</p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-02.jpg" alt="img"></p>
+<h2 id="简单选择排序的缺点是什么？"><a href="#简单选择排序的缺点是什么？" class="headerlink" title="简单选择排序的缺点是什么？"></a>简单选择排序的缺点是什么？</h2><p>简单选择排序没有将每一趟比较结果保存下来，以至于在后面的比较中有与前面的重复的比较的现象。</p>
+<h2 id="9-7-1-堆排序算法"><a href="#9-7-1-堆排序算法" class="headerlink" title="9.7.1 堆排序算法"></a>9.7.1 堆排序算法</h2><h3 id="1-堆排序是什么"><a href="#1-堆排序是什么" class="headerlink" title="1.堆排序是什么"></a>1.堆排序是什么</h3><p>堆排序（Heap Sort）就是利用堆（假设利用<strong>大顶堆</strong>）进行<strong>排序</strong>的方法</p>
+<p>核心思想是：先将待排序的序列构造成一个<strong>大顶堆</strong>，然后将<strong>根节点移走</strong>，接着将<strong>剩余的n-1个序列</strong>重新构造成<strong>大顶堆</strong>，如此<strong>反复执行</strong>，便能得到一个有序序列了。</p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-04.jpg" alt="img"></p>
+<h3 id="2-堆排序的代码："><a href="#2-堆排序的代码：" class="headerlink" title="2.堆排序的代码："></a>2.堆排序的代码：</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L进行堆排序 */</span>
+<span class="token keyword">void</span> <span class="token function">HeapSort</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+ <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">/* 把L中的r构建成一个大顶堆 */</span>
+   <span class="token function">HeapAdjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>L<span class="token operator">-></span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
+ <span class="token punctuation">{</span> 
+   <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">/*将堆顶记录和当前未经排序子序列的最后一个记录交换*/</span>
+   <span class="token function">HeapAdjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">/* 将L->r[1..i-1]重新调整为大顶堆 */</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在构建大顶堆的时候，为什么是<strong>i=L-&gt;length/2？</strong></p>
+<p>因为<strong>i</strong>这时候是<strong>有孩子</strong>的结点</p>
+<h3 id="3-HeapAdjust（堆调整）的代码是怎样的？"><a href="#3-HeapAdjust（堆调整）的代码是怎样的？" class="headerlink" title="3.HeapAdjust（堆调整）的代码是怎样的？"></a>3.HeapAdjust（堆调整）的代码是怎样的？</h3><pre class=" language-C"><code class="language-C">/* 已知L->r[s..m]中记录的关键字除L->r[s]之外均满足堆的定义， */
+
+/* 本函数调整L->r[s]的关键字,使L->r[s..m]成为一个大顶堆 */  //这里s是当前结点序号，m是长度
+void HeapAdjust(SqList *L,int s,int m)
+{ 
+ int temp,j;
+ temp=L->r[s];
+ for(j=2*s;j<=m;j*=2)  /* 沿关键字较大的孩子结点向下筛选 */
+ {
+  if(j<m && L->r[j]<L->r[j+1])
+   ++j;   /* j为关键字中较大的记录的下标 */
+  if(temp>=L->r[j])
+   break;   /* rc应插入在位置s上 */
+  L->r[s]=L->r[j];
+  s=j;
+ }
+ L->r[s]=temp;   /* 插入 */
+}</code></pre>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-07.jpg" alt="img"></p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-08.jpg" alt="img"></p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-09.jpg" alt="img"></p>
+<h3 id="4-堆调整后，怎么办？"><a href="#4-堆调整后，怎么办？" class="headerlink" title="4.堆调整后，怎么办？"></a>4.堆调整后，怎么办？</h3><pre class=" language-c"><code class="language-c"> <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
+ <span class="token punctuation">{</span> 
+   <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 将堆顶记录和当前未经排序子序列的最后一个记录交换 */</span>
+   <span class="token function">HeapAdjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 将L->r[1..i-1]重新调整为大顶堆 */</span>
+ <span class="token punctuation">}</span></code></pre>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-10.jpg" alt="img"></p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-11.jpg" alt="img"></p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-12.jpg" alt="img"></p>
+<p>堆排序的<strong>核心思想</strong>就是：<strong>从下往上找大的，大的放在前面</strong></p>
+<h2 id="9-7-2-堆排序复杂度分析"><a href="#9-7-2-堆排序复杂度分析" class="headerlink" title="9.7.2 堆排序复杂度分析"></a>9.7.2 堆排序复杂度分析</h2><p>时间复杂度为O（nlogn）</p>
+<p>不稳定的，不适合个数较少的情况</p>
+
             </div>
             <hr/>
 
@@ -633,8 +691,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/4.10-dui-lie-de-ding-yi/">
-                    《4.10 队列的定义》
+            <a  href="/2019/10/29/9.7-dui-pai-xu/">
+                    《9.7 堆排序》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -676,7 +734,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T19-22-59',
+        id: '2019-10-29T20-49-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -697,81 +755,32 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/13/5.5-chuan-de-cun-chu-jie-gou/">
+                <a href="/2019/10/29/9.7-dui-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="5.5 串的存储结构">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="9.7 堆排序">
                         
-                        <span class="card-title">5.5 串的存储结构</span>
+                        <span class="card-title">9.7 堆排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            串的顺序存储与普通的顺序存储（数组）有什么区别
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/字符串/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/13/5.3-chuan-de-bi-jiao/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="5.3 串的比较">
-                        
-                        <span class="card-title">5.3 串的比较</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            怎么进行串的比较呢
+                            9.7 堆排序
+我们前面学过简单选择排序，那么这里的堆排序和简单选择排序有什么关系呢？
+
+堆是什么？堆是具有下列性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆（例如图9-7-2左图）；或者每个结点的值都小于或等于其
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-29
                             </span>
                         <span class="publish-author">
                             
@@ -785,6 +794,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -792,10 +802,54 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/字符串/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/排序/">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
+                    <a href="/tags/堆/">
+                        <span class="chip bg-color">堆</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/26/jin-jie-zhi-guang-1.1-an-zhuo-5.0-xin-te-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1.1 安卓5.0新特性1.1.1 Android 5.0 主要新特性1. 全新的 Material Design 新风格
+2. 支持多种设备
+3. 全新的通知中心设计
+4. 支持 64 位 ART 虚拟机（ART:Android runt
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Xu Canyou
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>

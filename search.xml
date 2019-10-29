@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>9.7 堆排序</title>
+      <link href="/2019/10/29/9.7-dui-pai-xu/"/>
+      <url>/2019/10/29/9.7-dui-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="9-7-堆排序"><a href="#9-7-堆排序" class="headerlink" title="9.7 堆排序"></a>9.7 堆排序</h1><blockquote><p>我们前面学过简单选择排序，那么这里的堆排序和简单选择排序有什么关系呢？</p></blockquote><h2 id="堆是什么？"><a href="#堆是什么？" class="headerlink" title="堆是什么？"></a>堆是什么？</h2><p>堆是具有下列性质的<strong>完全二叉树</strong>：每个<strong>结点</strong>的值都<strong>大于或等于其左右孩子</strong>结点的值，称为<strong>大顶堆</strong>（例如图9-7-2左图）；或者每个结点的值都<strong>小于或等于其左右孩子</strong>结点的值，称为<strong>小顶堆</strong>（例如图9-7-2右图）</p><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-02.jpg" alt="img"></p><h2 id="简单选择排序的缺点是什么？"><a href="#简单选择排序的缺点是什么？" class="headerlink" title="简单选择排序的缺点是什么？"></a>简单选择排序的缺点是什么？</h2><p>简单选择排序没有将每一趟比较结果保存下来，以至于在后面的比较中有与前面的重复的比较的现象。</p><h2 id="9-7-1-堆排序算法"><a href="#9-7-1-堆排序算法" class="headerlink" title="9.7.1 堆排序算法"></a>9.7.1 堆排序算法</h2><h3 id="1-堆排序是什么"><a href="#1-堆排序是什么" class="headerlink" title="1.堆排序是什么"></a>1.堆排序是什么</h3><p>堆排序（Heap Sort）就是利用堆（假设利用<strong>大顶堆</strong>）进行<strong>排序</strong>的方法</p><p>核心思想是：先将待排序的序列构造成一个<strong>大顶堆</strong>，然后将<strong>根节点移走</strong>，接着将<strong>剩余的n-1个序列</strong>重新构造成<strong>大顶堆</strong>，如此<strong>反复执行</strong>，便能得到一个有序序列了。</p><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-04.jpg" alt="img"></p><h3 id="2-堆排序的代码："><a href="#2-堆排序的代码：" class="headerlink" title="2.堆排序的代码："></a>2.堆排序的代码：</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 对顺序表L进行堆排序 */</span><span class="token keyword">void</span> <span class="token function">HeapSort</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span> <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">/* 把L中的r构建成一个大顶堆 */</span>   <span class="token function">HeapAdjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>L<span class="token operator">-></span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">/*将堆顶记录和当前未经排序子序列的最后一个记录交换*/</span>   <span class="token function">HeapAdjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">/* 将L->r[1..i-1]重新调整为大顶堆 */</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>在构建大顶堆的时候，为什么是<strong>i=L-&gt;length/2？</strong></p><p>因为<strong>i</strong>这时候是<strong>有孩子</strong>的结点</p><h3 id="3-HeapAdjust（堆调整）的代码是怎样的？"><a href="#3-HeapAdjust（堆调整）的代码是怎样的？" class="headerlink" title="3.HeapAdjust（堆调整）的代码是怎样的？"></a>3.HeapAdjust（堆调整）的代码是怎样的？</h3><pre class=" language-C"><code class="language-C">/* 已知L->r[s..m]中记录的关键字除L->r[s]之外均满足堆的定义， *//* 本函数调整L->r[s]的关键字,使L->r[s..m]成为一个大顶堆 */  //这里s是当前结点序号，m是长度void HeapAdjust(SqList *L,int s,int m){  int temp,j; temp=L->r[s]; for(j=2*s;j<=m;j*=2)  /* 沿关键字较大的孩子结点向下筛选 */ {  if(j<m && L->r[j]<L->r[j+1])   ++j;   /* j为关键字中较大的记录的下标 */  if(temp>=L->r[j])   break;   /* rc应插入在位置s上 */  L->r[s]=L->r[j];  s=j; } L->r[s]=temp;   /* 插入 */}</code></pre><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-07.jpg" alt="img"></p><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-08.jpg" alt="img"></p><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-09.jpg" alt="img"></p><h3 id="4-堆调整后，怎么办？"><a href="#4-堆调整后，怎么办？" class="headerlink" title="4.堆调整后，怎么办？"></a>4.堆调整后，怎么办？</h3><pre class=" language-c"><code class="language-c"> <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>L<span class="token operator">-></span>length<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token function">swap</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 将堆顶记录和当前未经排序子序列的最后一个记录交换 */</span>   <span class="token function">HeapAdjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 将L->r[1..i-1]重新调整为大顶堆 */</span> <span class="token punctuation">}</span></code></pre><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-10.jpg" alt="img"></p><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-11.jpg" alt="img"></p><p><img src="https://images.cnblogs.com/cnblogs_com/cj723/dasu/9-7-12.jpg" alt="img"></p><p>堆排序的<strong>核心思想</strong>就是：<strong>从下往上找大的，大的放在前面</strong></p><h2 id="9-7-2-堆排序复杂度分析"><a href="#9-7-2-堆排序复杂度分析" class="headerlink" title="9.7.2 堆排序复杂度分析"></a>9.7.2 堆排序复杂度分析</h2><p>时间复杂度为O（nlogn）</p><p>不稳定的，不适合个数较少的情况</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 堆 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/2019/10/26/jin-jie-zhi-guang-1.1-an-zhuo-5.0-xin-te-xing/"/>
       <url>/2019/10/26/jin-jie-zhi-guang-1.1-an-zhuo-5.0-xin-te-xing/</url>
@@ -463,11 +492,11 @@
     
     
     <entry>
-      <title>6.3 树的抽象数据类型</title>
-      <link href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
-      <url>/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</url>
+      <title>6.4 树的存储结构</title>
+      <link href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
+      <url>/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</url>
       
-        <content type="html"><![CDATA[<h1 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h1><h2 id="如图所示"><a href="#如图所示" class="headerlink" title="如图所示"></a>如图所示</h2><p><img src="https://i.loli.net/2019/10/13/Sj47DBQyFYKublL.jpg" alt></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h1><h2 id="6-4-1-双亲表示法"><a href="#6-4-1-双亲表示法" class="headerlink" title="6.4.1 双亲表示法"></a>6.4.1 双亲表示法</h2><blockquote><p>因为树一定有且仅有一个双亲。所以采用这种方法</p></blockquote><h3 id="1-容易找到双亲的方法"><a href="#1-容易找到双亲的方法" class="headerlink" title="1.容易找到双亲的方法"></a>1.容易找到双亲的方法</h3><h4 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h4><p>假设以一组连续空间存储树的结点，同时在每个结点中，附设一个位置指示其双亲结点到链表中的位置。</p><p><img src="https://i.loli.net/2019/10/13/vaocCM9NxWSphZu.jpg" alt></p><p>data存储数据，parent是指针域，存储双亲在数组中的下标</p><p>结构定义代码如下图：</p><p><img src="https://i.loli.net/2019/10/13/oBpdTj9gFhmEk5H.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/lTepUDu8MJjr7XO.jpg" alt></p><h4 id="2-树结构转化为表结构例子："><a href="#2-树结构转化为表结构例子：" class="headerlink" title="2.树结构转化为表结构例子："></a>2.树结构转化为表结构例子：</h4><p><img src="https://i.loli.net/2019/10/13/E2rKz7ODHl1sStU.jpg" alt></p><h4 id="3-缺点是什么"><a href="#3-缺点是什么" class="headerlink" title="3.缺点是什么"></a>3.缺点是什么</h4><p>就是如果想知道孩子是谁的话，就要遍历整个结构了</p><h3 id="2-容易找到孩子的方法"><a href="#2-容易找到孩子的方法" class="headerlink" title="2.容易找到孩子的方法"></a>2.容易找到孩子的方法</h3><blockquote><p>思路是增加1个长子域</p></blockquote><p>我们增加一个结点最左边孩子的域，不妨叫它长子域，这样就可以很容易得到结点的孩子。如果没有孩子的结点，这个长子域就设置为-1，如表6-4-3所示。</p><p><img src="https://i.loli.net/2019/10/13/cQ5uYq2sBzmULkW.jpg" alt></p><p>缺点是什么？</p><p>缺点是兄弟之间的关系难以确定</p><h3 id="3-容易区别兄弟之间的关系的方法"><a href="#3-容易区别兄弟之间的关系的方法" class="headerlink" title="3.容易区别兄弟之间的关系的方法"></a>3.容易区别兄弟之间的关系的方法</h3><p>可以增加一个右兄弟域来体现兄弟关系，也就是说，每一个结点如果它存在右兄弟，则记录下右兄弟的下标。同样的，如果右兄弟不存在，则赋值为-1，如表6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/qkBFrwnzp4PWOaA.jpg" alt></p><h3 id="4-要求同时关注双亲，孩子，兄弟怎么办？"><a href="#4-要求同时关注双亲，孩子，兄弟怎么办？" class="headerlink" title="4.要求同时关注双亲，孩子，兄弟怎么办？"></a>4.要求同时关注双亲，孩子，兄弟怎么办？</h3><p>还可以把次结构扩展为有双亲域、长子域、再有右兄弟域。</p><p><strong>存储结构的设计是一个非常灵活的过程。一个存储结构设计得是否合理，取决于基于该存储结构的运算是否适合，是否方便，时间复杂度好不好等</strong>。</p><h2 id="6-4-2-孩子表示法"><a href="#6-4-2-孩子表示法" class="headerlink" title="6.4.2 孩子表示法"></a>6.4.2 孩子表示法</h2><h3 id="1-当有多个孩子的时候怎么处理？"><a href="#1-当有多个孩子的时候怎么处理？" class="headerlink" title="1.当有多个孩子的时候怎么处理？"></a>1.当有多个孩子的时候怎么处理？</h3><p>考虑用多重链表，即<strong>每个结点有多个指针域</strong>，其中每个指针指向一棵子树的根结点，我们把这种方法叫做<strong>多重链表表示法</strong>。其实就是将他的孩子都用指针给指出来。</p><h3 id="2-方案1：以度数为指针域的个数（最大化处理）管够"><a href="#2-方案1：以度数为指针域的个数（最大化处理）管够" class="headerlink" title="2.方案1：以度数为指针域的个数（最大化处理）管够"></a>2.方案1：以度数为指针域的个数（最大化处理）管够</h3><p><img src="https://i.loli.net/2019/10/13/FNC9cw8eI4oHYbk.jpg" alt></p><p>缺点是：当度数相差很大的时候，浪费空间</p><h3 id="3-方案2：按需分配，省钱"><a href="#3-方案2：按需分配，省钱" class="headerlink" title="3.方案2：按需分配，省钱"></a>3.方案2：按需分配，省钱</h3><p>专门取一个位置来存储结点指针域的个数，如下图</p><p><img src="https://i.loli.net/2019/10/13/HJZ6vran4KcNido.jpg" alt></p><p>其中data为数据域，degree为度域，也就是存储该结点的孩子结点的个数，child1到childd为指针域，指向该结点的各个孩子的结点。</p><p><img src="https://i.loli.net/2019/10/13/OeYCjXUqdMIr7P9.jpg" alt></p><p>缺点：结构不统一，时间复杂度上升（相对方法1）</p><h3 id="4-孩子表示法"><a href="#4-孩子表示法" class="headerlink" title="4.孩子表示法"></a>4.孩子表示法</h3><blockquote><p>可以减少空指针的浪费和统一结构</p></blockquote><h4 id="1-孩子表示法是怎么样的？"><a href="#1-孩子表示法是怎么样的？" class="headerlink" title="1.孩子表示法是怎么样的？"></a>1.孩子表示法是怎么样的？</h4><p>其实是先将所有的结点都放在一个数组里面，然后再对每个结点的孩子建立一个单链表体现它们的关系</p><p>具体办法是：</p><p>把每个结点的<strong>孩子</strong>结点排列起来，以<strong>单链表</strong>作存储结构，则n个结点由n个孩子链表，如果是叶子结点则此单链表为空。然后<strong>n个头指针</strong>又<strong>组成</strong>一个<strong>线性表</strong>，采用顺序存储结构，存放进一个<strong>一维数组</strong>中，如图6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/cOhVGSHYCIi4zmT.jpg" alt></p><p>为此设计两种结构：</p><h4 id="2-孩子结点"><a href="#2-孩子结点" class="headerlink" title="2.孩子结点"></a>2.孩子结点</h4><p>其中child是数据域，用来存储某个结点在表头数组中的下标。next是指针域，用来存储指向某结点的下一个孩子结点的指针。</p><p><img src="https://i.loli.net/2019/10/13/ZF5ASGX6jP2lerh.jpg" alt></p><h4 id="3-表头结点："><a href="#3-表头结点：" class="headerlink" title="3.表头结点："></a>3.表头结点：</h4><p>其中data是数据域，存储某结点的数据信息。firstchild是头指针域，存储该结点的孩子链表的头指针。</p><p><img src="https://i.loli.net/2019/10/13/T8X7Vq2mdLBStne.jpg" alt></p><h4 id="4-结构定义代码是怎样？"><a href="#4-结构定义代码是怎样？" class="headerlink" title="4.结构定义代码是怎样？"></a>4.结构定义代码是怎样？</h4><p><img src="https://i.loli.net/2019/10/13/n81AjeyPLSHFZOJ.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/fbzy321usTEFK7j.jpg" alt></p><p>表头和孩子的结构都类似，都是数据域加上指针域</p><h4 id="5-可不可以和找到双亲呢？"><a href="#5-可不可以和找到双亲呢？" class="headerlink" title="5.可不可以和找到双亲呢？"></a>5.可不可以和找到双亲呢？</h4><p>其实就是在表头加上个双亲就行了</p><p><img src="https://i.loli.net/2019/10/13/KVEZJQpIFwWYL26.jpg" alt></p><h2 id="6-4-3-孩子兄弟表示法"><a href="#6-4-3-孩子兄弟表示法" class="headerlink" title="6.4.3 孩子兄弟表示法"></a>6.4.3 孩子兄弟表示法</h2><h3 id="1-什么是孩子兄弟表示法"><a href="#1-什么是孩子兄弟表示法" class="headerlink" title="1.什么是孩子兄弟表示法"></a>1.什么是孩子兄弟表示法</h3><p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。其实就是长子唯一，右兄弟也唯一。</p><p><img src="https://s2.ax1x.com/2019/10/13/ux5zGD.png" alt="ux5zGD.png"></p><p><img src="https://s2.ax1x.com/2019/10/13/uxIkZt.png" alt="uxIkZt.png"></p><h3 id="2-好处是什么？"><a href="#2-好处是什么？" class="headerlink" title="2.好处是什么？"></a>2.好处是什么？</h3><p>把复杂的树变成了二叉树</p><p><img src="https://s2.ax1x.com/2019/10/13/uxImRg.png" alt="uxImRg.png"></p>]]></content>
       
       
       <categories>
@@ -490,11 +519,11 @@
     
     
     <entry>
-      <title>6.4 树的存储结构</title>
-      <link href="/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
-      <url>/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</url>
+      <title>6.3 树的抽象数据类型</title>
+      <link href="/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/"/>
+      <url>/2019/10/15/6.3-shu-de-chou-xiang-shu-ju-lei-xing/</url>
       
-        <content type="html"><![CDATA[<h1 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h1><h2 id="6-4-1-双亲表示法"><a href="#6-4-1-双亲表示法" class="headerlink" title="6.4.1 双亲表示法"></a>6.4.1 双亲表示法</h2><blockquote><p>因为树一定有且仅有一个双亲。所以采用这种方法</p></blockquote><h3 id="1-容易找到双亲的方法"><a href="#1-容易找到双亲的方法" class="headerlink" title="1.容易找到双亲的方法"></a>1.容易找到双亲的方法</h3><h4 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h4><p>假设以一组连续空间存储树的结点，同时在每个结点中，附设一个位置指示其双亲结点到链表中的位置。</p><p><img src="https://i.loli.net/2019/10/13/vaocCM9NxWSphZu.jpg" alt></p><p>data存储数据，parent是指针域，存储双亲在数组中的下标</p><p>结构定义代码如下图：</p><p><img src="https://i.loli.net/2019/10/13/oBpdTj9gFhmEk5H.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/lTepUDu8MJjr7XO.jpg" alt></p><h4 id="2-树结构转化为表结构例子："><a href="#2-树结构转化为表结构例子：" class="headerlink" title="2.树结构转化为表结构例子："></a>2.树结构转化为表结构例子：</h4><p><img src="https://i.loli.net/2019/10/13/E2rKz7ODHl1sStU.jpg" alt></p><h4 id="3-缺点是什么"><a href="#3-缺点是什么" class="headerlink" title="3.缺点是什么"></a>3.缺点是什么</h4><p>就是如果想知道孩子是谁的话，就要遍历整个结构了</p><h3 id="2-容易找到孩子的方法"><a href="#2-容易找到孩子的方法" class="headerlink" title="2.容易找到孩子的方法"></a>2.容易找到孩子的方法</h3><blockquote><p>思路是增加1个长子域</p></blockquote><p>我们增加一个结点最左边孩子的域，不妨叫它长子域，这样就可以很容易得到结点的孩子。如果没有孩子的结点，这个长子域就设置为-1，如表6-4-3所示。</p><p><img src="https://i.loli.net/2019/10/13/cQ5uYq2sBzmULkW.jpg" alt></p><p>缺点是什么？</p><p>缺点是兄弟之间的关系难以确定</p><h3 id="3-容易区别兄弟之间的关系的方法"><a href="#3-容易区别兄弟之间的关系的方法" class="headerlink" title="3.容易区别兄弟之间的关系的方法"></a>3.容易区别兄弟之间的关系的方法</h3><p>可以增加一个右兄弟域来体现兄弟关系，也就是说，每一个结点如果它存在右兄弟，则记录下右兄弟的下标。同样的，如果右兄弟不存在，则赋值为-1，如表6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/qkBFrwnzp4PWOaA.jpg" alt></p><h3 id="4-要求同时关注双亲，孩子，兄弟怎么办？"><a href="#4-要求同时关注双亲，孩子，兄弟怎么办？" class="headerlink" title="4.要求同时关注双亲，孩子，兄弟怎么办？"></a>4.要求同时关注双亲，孩子，兄弟怎么办？</h3><p>还可以把次结构扩展为有双亲域、长子域、再有右兄弟域。</p><p><strong>存储结构的设计是一个非常灵活的过程。一个存储结构设计得是否合理，取决于基于该存储结构的运算是否适合，是否方便，时间复杂度好不好等</strong>。</p><h2 id="6-4-2-孩子表示法"><a href="#6-4-2-孩子表示法" class="headerlink" title="6.4.2 孩子表示法"></a>6.4.2 孩子表示法</h2><h3 id="1-当有多个孩子的时候怎么处理？"><a href="#1-当有多个孩子的时候怎么处理？" class="headerlink" title="1.当有多个孩子的时候怎么处理？"></a>1.当有多个孩子的时候怎么处理？</h3><p>考虑用多重链表，即<strong>每个结点有多个指针域</strong>，其中每个指针指向一棵子树的根结点，我们把这种方法叫做<strong>多重链表表示法</strong>。其实就是将他的孩子都用指针给指出来。</p><h3 id="2-方案1：以度数为指针域的个数（最大化处理）管够"><a href="#2-方案1：以度数为指针域的个数（最大化处理）管够" class="headerlink" title="2.方案1：以度数为指针域的个数（最大化处理）管够"></a>2.方案1：以度数为指针域的个数（最大化处理）管够</h3><p><img src="https://i.loli.net/2019/10/13/FNC9cw8eI4oHYbk.jpg" alt></p><p>缺点是：当度数相差很大的时候，浪费空间</p><h3 id="3-方案2：按需分配，省钱"><a href="#3-方案2：按需分配，省钱" class="headerlink" title="3.方案2：按需分配，省钱"></a>3.方案2：按需分配，省钱</h3><p>专门取一个位置来存储结点指针域的个数，如下图</p><p><img src="https://i.loli.net/2019/10/13/HJZ6vran4KcNido.jpg" alt></p><p>其中data为数据域，degree为度域，也就是存储该结点的孩子结点的个数，child1到childd为指针域，指向该结点的各个孩子的结点。</p><p><img src="https://i.loli.net/2019/10/13/OeYCjXUqdMIr7P9.jpg" alt></p><p>缺点：结构不统一，时间复杂度上升（相对方法1）</p><h3 id="4-孩子表示法"><a href="#4-孩子表示法" class="headerlink" title="4.孩子表示法"></a>4.孩子表示法</h3><blockquote><p>可以减少空指针的浪费和统一结构</p></blockquote><h4 id="1-孩子表示法是怎么样的？"><a href="#1-孩子表示法是怎么样的？" class="headerlink" title="1.孩子表示法是怎么样的？"></a>1.孩子表示法是怎么样的？</h4><p>其实是先将所有的结点都放在一个数组里面，然后再对每个结点的孩子建立一个单链表体现它们的关系</p><p>具体办法是：</p><p>把每个结点的<strong>孩子</strong>结点排列起来，以<strong>单链表</strong>作存储结构，则n个结点由n个孩子链表，如果是叶子结点则此单链表为空。然后<strong>n个头指针</strong>又<strong>组成</strong>一个<strong>线性表</strong>，采用顺序存储结构，存放进一个<strong>一维数组</strong>中，如图6-4-4所示。</p><p><img src="https://i.loli.net/2019/10/13/cOhVGSHYCIi4zmT.jpg" alt></p><p>为此设计两种结构：</p><h4 id="2-孩子结点"><a href="#2-孩子结点" class="headerlink" title="2.孩子结点"></a>2.孩子结点</h4><p>其中child是数据域，用来存储某个结点在表头数组中的下标。next是指针域，用来存储指向某结点的下一个孩子结点的指针。</p><p><img src="https://i.loli.net/2019/10/13/ZF5ASGX6jP2lerh.jpg" alt></p><h4 id="3-表头结点："><a href="#3-表头结点：" class="headerlink" title="3.表头结点："></a>3.表头结点：</h4><p>其中data是数据域，存储某结点的数据信息。firstchild是头指针域，存储该结点的孩子链表的头指针。</p><p><img src="https://i.loli.net/2019/10/13/T8X7Vq2mdLBStne.jpg" alt></p><h4 id="4-结构定义代码是怎样？"><a href="#4-结构定义代码是怎样？" class="headerlink" title="4.结构定义代码是怎样？"></a>4.结构定义代码是怎样？</h4><p><img src="https://i.loli.net/2019/10/13/n81AjeyPLSHFZOJ.jpg" alt></p><p><img src="https://i.loli.net/2019/10/13/fbzy321usTEFK7j.jpg" alt></p><p>表头和孩子的结构都类似，都是数据域加上指针域</p><h4 id="5-可不可以和找到双亲呢？"><a href="#5-可不可以和找到双亲呢？" class="headerlink" title="5.可不可以和找到双亲呢？"></a>5.可不可以和找到双亲呢？</h4><p>其实就是在表头加上个双亲就行了</p><p><img src="https://i.loli.net/2019/10/13/KVEZJQpIFwWYL26.jpg" alt></p><h2 id="6-4-3-孩子兄弟表示法"><a href="#6-4-3-孩子兄弟表示法" class="headerlink" title="6.4.3 孩子兄弟表示法"></a>6.4.3 孩子兄弟表示法</h2><h3 id="1-什么是孩子兄弟表示法"><a href="#1-什么是孩子兄弟表示法" class="headerlink" title="1.什么是孩子兄弟表示法"></a>1.什么是孩子兄弟表示法</h3><p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。其实就是长子唯一，右兄弟也唯一。</p><p><img src="https://s2.ax1x.com/2019/10/13/ux5zGD.png" alt="ux5zGD.png"></p><p><img src="https://s2.ax1x.com/2019/10/13/uxIkZt.png" alt="uxIkZt.png"></p><h3 id="2-好处是什么？"><a href="#2-好处是什么？" class="headerlink" title="2.好处是什么？"></a>2.好处是什么？</h3><p>把复杂的树变成了二叉树</p><p><img src="https://s2.ax1x.com/2019/10/13/uxImRg.png" alt="uxImRg.png"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h1><h2 id="如图所示"><a href="#如图所示" class="headerlink" title="如图所示"></a>如图所示</h2><p><img src="https://i.loli.net/2019/10/13/Sj47DBQyFYKublL.jpg" alt></p>]]></content>
       
       
       <categories>
@@ -706,11 +735,11 @@
     
     
     <entry>
-      <title>4.7 栈的作用</title>
-      <link href="/2019/10/13/4.7-zhan-de-zuo-yong/"/>
-      <url>/2019/10/13/4.7-zhan-de-zuo-yong/</url>
+      <title>4.8 栈的应用</title>
+      <link href="/2019/10/13/4.8-zhan-de-ying-yong/"/>
+      <url>/2019/10/13/4.8-zhan-de-ying-yong/</url>
       
-        <content type="html"><![CDATA[<h1 id="4-7-栈的作用"><a href="#4-7-栈的作用" class="headerlink" title="4.7 栈的作用"></a>4.7 栈的作用</h1><h2 id="为什么要用栈呢？"><a href="#为什么要用栈呢？" class="headerlink" title="为什么要用栈呢？"></a>为什么要用栈呢？</h2><p>其实栈，简化了程序设计的问题，划分的了不同关注层次，使思考范围聚集于问题核心</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="4-8-栈的应用"><a href="#4-8-栈的应用" class="headerlink" title="4.8 栈的应用"></a>4.8 栈的应用</h1><blockquote><p>栈的应用有哪些呢？1.是递归 2.是后缀表示法</p></blockquote><h2 id="1-为什么栈和递归有关系呢？"><a href="#1-为什么栈和递归有关系呢？" class="headerlink" title="1.为什么栈和递归有关系呢？"></a>1.为什么栈和递归有关系呢？</h2><p>其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构</p><h2 id="2-后缀表示法定义"><a href="#2-后缀表示法定义" class="headerlink" title="2.后缀表示法定义"></a>2.后缀表示法定义</h2><h3 id="1-什么是后缀表示法"><a href="#1-什么是后缀表示法" class="headerlink" title="1.什么是后缀表示法"></a>1.什么是后缀表示法</h3><p>其实就是不要括号的表示法，逆波兰法，</p><h3 id="2-后缀表达式的计算是怎样的呢"><a href="#2-后缀表达式的计算是怎样的呢" class="headerlink" title="2.后缀表达式的计算是怎样的呢"></a>2.后缀表达式的计算是怎样的呢</h3><p>从左到右遍历，遇到数字就出栈，遇到符合，就将栈顶两个数字出栈进行运算，运算结果进栈</p><h3 id="3-中缀表达式怎么转后缀表达式呢"><a href="#3-中缀表达式怎么转后缀表达式呢" class="headerlink" title="3.中缀表达式怎么转后缀表达式呢"></a>3.中缀表达式怎么转后缀表达式呢</h3><p>如果是数字，直接出栈，如果是符号的话，和栈顶符号进行比较，如果优先级大于栈顶符号的话，就入栈，如果优先级小于栈顶符号或者是右括号的话，就依次出栈（右括号的话，出栈到左括号）</p>]]></content>
       
       
       <categories>
@@ -733,11 +762,11 @@
     
     
     <entry>
-      <title>4.8 栈的应用</title>
-      <link href="/2019/10/13/4.8-zhan-de-ying-yong/"/>
-      <url>/2019/10/13/4.8-zhan-de-ying-yong/</url>
+      <title>4.7 栈的作用</title>
+      <link href="/2019/10/13/4.7-zhan-de-zuo-yong/"/>
+      <url>/2019/10/13/4.7-zhan-de-zuo-yong/</url>
       
-        <content type="html"><![CDATA[<h1 id="4-8-栈的应用"><a href="#4-8-栈的应用" class="headerlink" title="4.8 栈的应用"></a>4.8 栈的应用</h1><blockquote><p>栈的应用有哪些呢？1.是递归 2.是后缀表示法</p></blockquote><h2 id="1-为什么栈和递归有关系呢？"><a href="#1-为什么栈和递归有关系呢？" class="headerlink" title="1.为什么栈和递归有关系呢？"></a>1.为什么栈和递归有关系呢？</h2><p>其实递归是存储某些数据，后面又以存储的逆序恢复这些数据，显然符合栈的数据结构</p><h2 id="2-后缀表示法定义"><a href="#2-后缀表示法定义" class="headerlink" title="2.后缀表示法定义"></a>2.后缀表示法定义</h2><h3 id="1-什么是后缀表示法"><a href="#1-什么是后缀表示法" class="headerlink" title="1.什么是后缀表示法"></a>1.什么是后缀表示法</h3><p>其实就是不要括号的表示法，逆波兰法，</p><h3 id="2-后缀表达式的计算是怎样的呢"><a href="#2-后缀表达式的计算是怎样的呢" class="headerlink" title="2.后缀表达式的计算是怎样的呢"></a>2.后缀表达式的计算是怎样的呢</h3><p>从左到右遍历，遇到数字就出栈，遇到符合，就将栈顶两个数字出栈进行运算，运算结果进栈</p><h3 id="3-中缀表达式怎么转后缀表达式呢"><a href="#3-中缀表达式怎么转后缀表达式呢" class="headerlink" title="3.中缀表达式怎么转后缀表达式呢"></a>3.中缀表达式怎么转后缀表达式呢</h3><p>如果是数字，直接出栈，如果是符号的话，和栈顶符号进行比较，如果优先级大于栈顶符号的话，就入栈，如果优先级小于栈顶符号或者是右括号的话，就依次出栈（右括号的话，出栈到左括号）</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="4-7-栈的作用"><a href="#4-7-栈的作用" class="headerlink" title="4.7 栈的作用"></a>4.7 栈的作用</h1><h2 id="为什么要用栈呢？"><a href="#为什么要用栈呢？" class="headerlink" title="为什么要用栈呢？"></a>为什么要用栈呢？</h2><p>其实栈，简化了程序设计的问题，划分的了不同关注层次，使思考范围聚集于问题核心</p>]]></content>
       
       
       <categories>
@@ -949,33 +978,6 @@
     
     
     <entry>
-      <title>5.3 串的比较</title>
-      <link href="/2019/10/13/5.3-chuan-de-bi-jiao/"/>
-      <url>/2019/10/13/5.3-chuan-de-bi-jiao/</url>
-      
-        <content type="html"><![CDATA[<h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p><ol><li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p></li><li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p><p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 大话数据结构 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 大话数据结构 </tag>
-            
-            <tag> 字符串 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>4.10 队列的定义</title>
       <link href="/2019/10/13/4.10-dui-lie-de-ding-yi/"/>
       <url>/2019/10/13/4.10-dui-lie-de-ding-yi/</url>
@@ -995,6 +997,33 @@
             <tag> 大话数据结构 </tag>
             
             <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.3 串的比较</title>
+      <link href="/2019/10/13/5.3-chuan-de-bi-jiao/"/>
+      <url>/2019/10/13/5.3-chuan-de-bi-jiao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h1><h2 id="1-怎么进行串的比较呢？"><a href="#1-怎么进行串的比较呢？" class="headerlink" title="1.怎么进行串的比较呢？"></a>1.怎么进行串的比较呢？</h2><p>举例子：</p><ol><li><p>“hap”&lt;”hapa”，因为“”hapa”前面3个字母已经包含了”hap”,可以简单理解为：儿子的年龄肯定没有父亲的大</p></li><li><p>”hpaaa“&lt;”hpb”,因为前2个字母均相同，但是”hpb“第3个字母是b,”hpaaa“第3个字母是a，b&gt;a，所以”hpb”&gt;”hpaaa”，</p><p>可以简单理解为：不是父子关系的，看父亲（前面的字母），拼爹，只要你父亲厉害，无论你后面有多大努力（多长），都是白费（比不过）</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大话数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大话数据结构 </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
