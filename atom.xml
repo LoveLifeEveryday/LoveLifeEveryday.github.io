@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2019-10-29T15:13:35.816Z</updated>
+  <updated>2019-11-21T02:53:57.071Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>8.7 平衡二叉树</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.7-ping-heng-er-cha-shu/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/8.7-ping-heng-er-cha-shu/</id>
+    <published>2019-11-21T02:53:59.000Z</published>
+    <updated>2019-11-21T02:53:57.071Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;8-7-平衡二叉树&quot;&gt;&lt;a href=&quot;#8-7-平衡二叉树&quot; class=&quot;headerlink&quot; title=&quot;8.7 平衡二叉树&quot;&gt;&lt;/a&gt;8.7
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>8.6 二叉排序树</title>
@@ -578,35 +607,6 @@
       <category term="单例模式" scheme="https://lovelifeeveryday.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="java设计模式" scheme="https://lovelifeeveryday.github.io/tags/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>6.4 树的存储结构</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/15/6.4-shu-de-cun-chu-jie-gou/</id>
-    <published>2019-10-15T08:32:59.000Z</published>
-    <updated>2019-10-15T08:32:58.382Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;6-4-树的存储结构&quot;&gt;&lt;a href=&quot;#6-4-树的存储结构&quot; class=&quot;headerlink&quot; title=&quot;6.4 树的存储结构&quot;&gt;&lt;/a&gt;6.4 树的存储结构&lt;/h1&gt;&lt;h2 id=&quot;6-4-1-双亲表示法&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
     
   </entry>
   

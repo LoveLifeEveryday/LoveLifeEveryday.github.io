@@ -4,9 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="8.11 处理冲突的方法, Hexo">
-    <meta name="description" content="8.11 处理冲突的方法8.11.1 开放定址法1.什么是开放定址法呢一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。
-公式为：fi(key) = (f(key)+di) MOD m (di">
+    <meta name="keywords" content="8.7 平衡二叉树, Hexo">
+    <meta name="description" content="8.7 平衡二叉树
+二叉排序树如果不平衡的话，效率会高吗？当然不会
+
+什么是平衡二叉树？是一种二叉排序树，当中每个节点的左子树和右子树的高度差至多等于1.
+什么是平衡因子BF？二叉树上节点的左子树深度减去右子树深度的值
+什么是最小不平衡树呢">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>8.11 处理冲突的方法 | Hexo</title>
+    <title>8.7 平衡二叉树 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,13 +312,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        8.11 处理冲突的方法
+                        8.7 平衡二叉树
                     </div>
                 </div>
             </div>
@@ -430,8 +434,8 @@
                                 <span class="chip bg-color">大话数据结构</span>
                             </a>
                         
-                            <a href="/tags/哈希表/">
-                                <span class="chip bg-color">哈希表</span>
+                            <a href="/tags/树/">
+                                <span class="chip bg-color">树</span>
                             </a>
                         
                     </div>
@@ -454,7 +458,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-13
+                    2019-11-21
                 </div>
 
                 
@@ -470,17 +474,124 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="8-11-处理冲突的方法"><a href="#8-11-处理冲突的方法" class="headerlink" title="8.11 处理冲突的方法"></a>8.11 处理冲突的方法</h1><h2 id="8-11-1-开放定址法"><a href="#8-11-1-开放定址法" class="headerlink" title="8.11.1 开放定址法"></a>8.11.1 开放定址法</h2><h3 id="1-什么是开放定址法呢"><a href="#1-什么是开放定址法呢" class="headerlink" title="1.什么是开放定址法呢"></a>1.什么是开放定址法呢</h3><p>一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p>
-<h3 id="公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1"><a href="#公式为：fi-key-f-key-di-MOD-m-di-1-2-3-……-m-1" class="headerlink" title="公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)"></a>公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)</h3><h3 id="2-什么是线性探测法"><a href="#2-什么是线性探测法" class="headerlink" title="2.什么是线性探测法"></a>2.什么是线性探测法</h3><p>其实就是按顺序找下去地定址</p>
-<h3 id="3-什么是堆积"><a href="#3-什么是堆积" class="headerlink" title="3.什么是堆积"></a>3.什么是堆积</h3><p>其实就是冲突的连环出现，我原本a有冲突，a的冲突解决了，b又和a有冲突了，本来都不是同义词却需要争夺一个地址的叫做堆积</p>
-<h3 id="4-什么是二次探测法"><a href="#4-什么是二次探测法" class="headerlink" title="4.什么是二次探测法"></a>4.什么是二次探测法</h3><p>其实就是增加了平方和正负运算，</p>
-<p>fi(key) = (f(key)+di) MOD m (di = 1 2, -1 2, 2 2, -2 2,……, q 2, -q 2, q &lt;= m/2) 这里的是指平方</p>
-<h3 id="5-什么是随机探测法"><a href="#5-什么是随机探测法" class="headerlink" title="5.什么是随机探测法"></a>5.什么是随机探测法</h3><p>对于位移量 di 采用随机函数计算得到，我们称之为随机探测法。</p>
-<h3 id="6-什么是伪随机数"><a href="#6-什么是伪随机数" class="headerlink" title="6.什么是伪随机数"></a>6.什么是伪随机数</h3><p>其实就是由随机种子按照某种随机算法，生成的数，</p>
-<p>随机种子是以随机数作为对象的以真随机数（种子）为初始条件的随机数。一般以系统时间作为随机种子</p>
-<h2 id="8-11-2-再散列函数法"><a href="#8-11-2-再散列函数法" class="headerlink" title="8.11.2 再散列函数法"></a>8.11.2 再散列函数法</h2><p>其实就是随机调用不同的散列函数</p>
-<h2 id="8-11-3-链地址法"><a href="#8-11-3-链地址法" class="headerlink" title="8.11.3 链地址法"></a>8.11.3 链地址法</h2><p>就是在冲突的地址里面，生成1个链表，类似于HashMap</p>
-<h2 id="8-11-4-公共溢出区法"><a href="#8-11-4-公共溢出区法" class="headerlink" title="8.11.4 公共溢出区法"></a>8.11.4 公共溢出区法</h2><p>其实就是把所有冲突的关键词存到一个公共区，查找的时候，当在普通区查不到，就到公共溢出区查</p>
+                <h1 id="8-7-平衡二叉树"><a href="#8-7-平衡二叉树" class="headerlink" title="8.7 平衡二叉树"></a>8.7 平衡二叉树</h1><blockquote>
+<p>二叉排序树如果不平衡的话，效率会高吗？当然不会</p>
+</blockquote>
+<h2 id="什么是平衡二叉树？"><a href="#什么是平衡二叉树？" class="headerlink" title="什么是平衡二叉树？"></a>什么是平衡二叉树？</h2><p>是一种<strong>二叉排序树</strong>，当中每个节点的<strong>左子树和右子树的高度差至多等于1</strong>.</p>
+<h2 id="什么是平衡因子BF？"><a href="#什么是平衡因子BF？" class="headerlink" title="什么是平衡因子BF？"></a>什么是平衡因子BF？</h2><p>二叉树上节点的<strong>左子树深度减去右子树深度</strong>的值</p>
+<h2 id="什么是最小不平衡树呢？"><a href="#什么是最小不平衡树呢？" class="headerlink" title="什么是最小不平衡树呢？"></a>什么是最小不平衡树呢？</h2><p>距离<strong>插入节点</strong>最<strong>近</strong>的。且<strong>平衡因子的绝对值大于1</strong>的节点为根的子树。<br>下图中，新插入节点37时。距离它近期的平衡因子绝对值超过1的节点是58。所以从58开始下面的子树为最小不平衡子树。</p>
+<p><img src="https://s2.ax1x.com/2019/11/15/Ma25KP.png" alt="Ma25KP.png"></p>
+<h2 id="8-7-1-实现原理"><a href="#8-7-1-实现原理" class="headerlink" title="8.7.1 实现原理"></a>8.7.1 实现原理</h2><h3 id="1-什么是左旋，右旋，双旋"><a href="#1-什么是左旋，右旋，双旋" class="headerlink" title="1.什么是左旋，右旋，双旋"></a>1.什么是左旋，右旋，双旋</h3><p>原理：其实就是利用左旋，右旋，双旋，进行二叉树的调整，</p>
+<p>当BF&gt;1就右旋，反之左旋</p>
+<p>什么是<strong>左旋</strong>？</p>
+<p>其实就是将要旋转的结点B，<strong>左孩子A与它断开</strong>，然后旋转后，A再接到旋转后的B的左孩子下面，作为B的左孩子的右孩子</p>
+<p><img src="https://files.jb51.net/file_images/article/201901/2019110153603213.gif?2019010153616" alt="img"></p>
+<p>同理右旋</p>
+<p><strong>双旋</strong>分为<strong>先左后右双旋转</strong>和<strong>先右后左双旋转</strong>，具体情况具体分析，下面的例子是先左后右双旋转的</p>
+<p><img src="https://files.jb51.net/file_images/article/201901/2019110153648046.png?201901015370" alt="img"></p>
+<h2 id="8-7-2-平衡二叉树的实现算法"><a href="#8-7-2-平衡二叉树的实现算法" class="headerlink" title="8.7.2 平衡二叉树的实现算法"></a>8.7.2 平衡二叉树的实现算法</h2><h3 id="1-平衡二叉树的结构"><a href="#1-平衡二叉树的结构" class="headerlink" title="1.平衡二叉树的结构"></a>1.平衡二叉树的结构</h3><p>其实就是相对于二叉排序树来说<strong>多了个平衡因子</strong></p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span>  <span class="token keyword">struct</span> BiTNode <span class="token comment" spellcheck="true">/* 结点结构 */</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* 结点数据 */</span>
+    <span class="token keyword">int</span> bf<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  结点的平衡因子 */</span> 
+    <span class="token keyword">struct</span> BiTNode <span class="token operator">*</span>lchild<span class="token punctuation">,</span> <span class="token operator">*</span>rchild<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 左右孩子指针 */</span>
+<span class="token punctuation">}</span> BiTNode<span class="token punctuation">,</span> <span class="token operator">*</span>BiTree<span class="token punctuation">;</span></code></pre>
+<h3 id="2-右旋操作"><a href="#2-右旋操作" class="headerlink" title="2.右旋操作"></a>2.右旋操作</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/* 对以p为根的二叉排序树作右旋处理。 */</span>
+<span class="token comment" spellcheck="true">/* 处理之后p指向新的树根结点。即旋转处理之前的左子树的根结点 */</span>
+<span class="token keyword">void</span> <span class="token function">R_Rotate</span><span class="token punctuation">(</span>BiTree <span class="token operator">*</span>P<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    BiTree L<span class="token punctuation">;</span>
+    L<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  L指向P的左子树根结点 */</span> 
+    <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token operator">=</span>L<span class="token operator">-></span>rchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  L的右子树挂接为P的左子树 */</span> 
+    L<span class="token operator">-></span>rchild<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">*</span>P<span class="token operator">=</span>L<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  P指向新的根结点 */</span> 
+<span class="token punctuation">}</span></code></pre>
+<p><img src="https://s2.ax1x.com/2019/11/15/Ma2O8s.png" alt="Ma2O8s.png"></p>
+<p>左旋操作类似，所以不写出来了</p>
+<h3 id="3-左平衡旋转代码"><a href="#3-左平衡旋转代码" class="headerlink" title="3.左平衡旋转代码"></a>3.左平衡旋转代码</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> LH +1 </span><span class="token comment" spellcheck="true">/*  左高 */</span> 
+<span class="token macro property">#<span class="token directive keyword">define</span> EH 0  </span><span class="token comment" spellcheck="true">/*  等高 */</span> 
+<span class="token macro property">#<span class="token directive keyword">define</span> RH -1 </span><span class="token comment" spellcheck="true">/*  右高 */</span> 
+
+<span class="token comment" spellcheck="true">/*  对以指针T所指结点为根的二叉树作左平衡旋转处理 */</span>
+<span class="token comment" spellcheck="true">/*  本算法结束时，指针T指向新的根结点 */</span>
+<span class="token keyword">void</span> <span class="token function">LeftBalance</span><span class="token punctuation">(</span>BiTree <span class="token operator">*</span>T<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> 
+    BiTree L<span class="token punctuation">,</span>Lr<span class="token punctuation">;</span>
+    L<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  L指向T的左子树根结点 */</span> 
+    <span class="token keyword">switch</span><span class="token punctuation">(</span>L<span class="token operator">-></span>bf<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*  检查T的左子树的平衡度，并作对应平衡处理 */</span> 
+         <span class="token keyword">case</span> LH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  新结点插入在T的左孩子的左子树上。要作单右旋处理 */</span> 
+            <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>L<span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span>
+            <span class="token function">R_Rotate</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+         <span class="token keyword">case</span> RH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  新结点插入在T的左孩子的右子树上。要作双旋处理 */</span> 
+            Lr<span class="token operator">=</span>L<span class="token operator">-></span>rchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  Lr指向T的左孩子的右子树根 */</span> 
+            <span class="token keyword">switch</span><span class="token punctuation">(</span>Lr<span class="token operator">-></span>bf<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*  改动T及其左孩子的平衡因子 */</span> 
+                <span class="token keyword">case</span> LH<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>RH<span class="token punctuation">;</span>
+                         L<span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span>
+                         <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> EH<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>L<span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span>
+                         <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> RH<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span>
+                         L<span class="token operator">-></span>bf<span class="token operator">=</span>LH<span class="token punctuation">;</span>
+                         <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Lr<span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span>
+            <span class="token function">L_Rotate</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  对T的左子树作左旋平衡处理 */</span> 
+            <span class="token function">R_Rotate</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  对T作右旋平衡处理 */</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="4-主函数代码"><a href="#4-主函数代码" class="headerlink" title="4.主函数代码"></a>4.主函数代码</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*  若在平衡的二叉排序树T中不存在和e有同样关键字的结点，则插入一个 */</span> 
+<span class="token comment" spellcheck="true">/*  数据元素为e的新结点。并返回1，否则返回0。若因插入而使二叉排序树 */</span> 
+<span class="token comment" spellcheck="true">/*  失去平衡，则作平衡旋转处理。布尔变量taller反映T长高与否。 */</span>
+Status <span class="token function">InsertAVL</span><span class="token punctuation">(</span>BiTree <span class="token operator">*</span>T<span class="token punctuation">,</span><span class="token keyword">int</span> e<span class="token punctuation">,</span>Status <span class="token operator">*</span>taller<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>  
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">*</span>T<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*  插入新结点。树“长高”，置taller为TRUE */</span> 
+         <span class="token operator">*</span>T<span class="token operator">=</span><span class="token punctuation">(</span>BiTree<span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>BiTNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>data<span class="token operator">=</span>e<span class="token punctuation">;</span> <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>rchild<span class="token operator">=</span><span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span>
+         <span class="token operator">*</span>taller<span class="token operator">=</span>TRUE<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token operator">==</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>data<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*  树中已存在和e有同样关键字的结点则不再插入 */</span> 
+            <span class="token operator">*</span>taller<span class="token operator">=</span>FALSE<span class="token punctuation">;</span> <span class="token keyword">return</span> FALSE<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>data<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*  应继续在T的左子树中进行搜索 */</span> 
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">InsertAVL</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token punctuation">,</span>e<span class="token punctuation">,</span>taller<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/*  未插入 */</span> 
+                <span class="token keyword">return</span> FALSE<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>taller<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/*   已插入到T的左子树中且左子树“长高” */</span> 
+                <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/*  检查T的平衡度 */</span> 
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">case</span> LH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  原本左子树比右子树高。须要作左平衡处理 */</span> 
+                            <span class="token function">LeftBalance</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">*</span>taller<span class="token operator">=</span>FALSE<span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    <span class="token keyword">case</span> EH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  原本左、右子树等高，现因左子树增高而使树增高 */</span> 
+                            <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>LH<span class="token punctuation">;</span> <span class="token operator">*</span>taller<span class="token operator">=</span>TRUE<span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    <span class="token keyword">case</span> RH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  原本右子树比左子树高，现左、右子树等高 */</span>  
+                            <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span> <span class="token operator">*</span>taller<span class="token operator">=</span>FALSE<span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*  应继续在T的右子树中进行搜索 */</span> 
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">InsertAVL</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>rchild<span class="token punctuation">,</span>e<span class="token punctuation">,</span>taller<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/*  未插入 */</span> 
+                <span class="token keyword">return</span> FALSE<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">*</span>taller<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/*  已插入到T的右子树且右子树“长高” */</span> 
+                <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">/*  检查T的平衡度 */</span> 
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">case</span> LH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  原本左子树比右子树高。现左、右子树等高 */</span> 
+                            <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>EH<span class="token punctuation">;</span> <span class="token operator">*</span>taller<span class="token operator">=</span>FALSE<span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    <span class="token keyword">case</span> EH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  原本左、右子树等高，现因右子树增高而使树增高  */</span>
+                            <span class="token punctuation">(</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token operator">-></span>bf<span class="token operator">=</span>RH<span class="token punctuation">;</span> <span class="token operator">*</span>taller<span class="token operator">=</span>TRUE<span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    <span class="token keyword">case</span> RH<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/*  原本右子树比左子树高，须要作右平衡处理 */</span> 
+                            <span class="token function">RightBalance</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">*</span>taller<span class="token operator">=</span>FALSE<span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> TRUE<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -641,8 +752,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/13/8.11-chu-li-chong-tu-de-fang-fa/">
-                    《8.11 处理冲突的方法》
+            <a  href="/2019/11/21/8.7-ping-heng-er-cha-shu/">
+                    《8.7 平衡二叉树》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -684,7 +795,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2019-10-13T20-08-59',
+        id: '2019-11-21T10-53-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -705,29 +816,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/14/4.3-zhan-de-shun-xu-cun-chu-jie-gou-ji-shi-xian/">
+                <a href="/2019/11/21/8.7-ping-heng-er-cha-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="4.3 栈的顺序存储结构及实现">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="8.7 平衡二叉树">
                         
-                        <span class="card-title">4.3 栈的顺序存储结构及实现</span>
+                        <span class="card-title">8.7 平衡二叉树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            栈的结构定义
+                            二叉排序树如果不平衡的话，效率会高吗？当然不会
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -740,6 +852,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -747,8 +860,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/栈/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/树/">
+                        <span class="chip bg-color">树</span>
                     </a>
                     
                 </div>
@@ -762,24 +875,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/13/8.12-san-lie-biao-cha-zhao-shi-xian/">
+                <a href="/2019/10/29/8.6-er-cha-pai-xu-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="8.12 散列表查找实现">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="8.6 二叉排序树">
                         
-                        <span class="card-title">8.12 散列表查找实现</span>
+                        <span class="card-title">8.6 二叉排序树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            散列表查找算法实现
+                            在前面我们了解了动态查找表（在查找的时候进行插入和删除的查找表），那什么结构可以实现动态查找表呢？
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-29
                             </span>
                         <span class="publish-author">
                             
@@ -800,8 +913,8 @@
                         <span class="chip bg-color">大话数据结构</span>
                     </a>
                     
-                    <a href="/tags/哈希表/">
-                        <span class="chip bg-color">哈希表</span>
+                    <a href="/tags/树/">
+                        <span class="chip bg-color">树</span>
                     </a>
                     
                 </div>
