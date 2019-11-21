@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2019-11-21T02:53:57.071Z</updated>
+  <updated>2019-11-21T03:13:58.202Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,100 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>8.7 平衡二叉树</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.7-ping-heng-er-cha-shu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/8.7-ping-heng-er-cha-shu/</id>
-    <published>2019-11-21T02:53:59.000Z</published>
-    <updated>2019-11-21T02:53:57.071Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-7-平衡二叉树&quot;&gt;&lt;a href=&quot;#8-7-平衡二叉树&quot; class=&quot;headerlink&quot; title=&quot;8.7 平衡二叉树&quot;&gt;&lt;/a&gt;8.7
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>8.6 二叉排序树</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/29/8.6-er-cha-pai-xu-shu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/29/8.6-er-cha-pai-xu-shu/</id>
-    <published>2019-10-29T15:12:59.000Z</published>
-    <updated>2019-10-29T15:13:35.816Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-6-二叉排序树&quot;&gt;&lt;a href=&quot;#8-6-二叉排序树&quot; class=&quot;headerlink&quot; title=&quot;8.6 二叉排序树&quot;&gt;&lt;/a&gt;8.6
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>9.7 堆排序</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/29/9.7-dui-pai-xu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/29/9.7-dui-pai-xu/</id>
-    <published>2019-10-29T12:49:59.000Z</published>
-    <updated>2019-10-29T12:49:56.427Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;9-7-堆排序&quot;&gt;&lt;a href=&quot;#9-7-堆排序&quot; class=&quot;headerlink&quot; title=&quot;9.7 堆排序&quot;&gt;&lt;/a&gt;9.7
-        
-      
-    
-    </summary>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="排序" scheme="https://lovelifeeveryday.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-      <category term="堆" scheme="https://lovelifeeveryday.github.io/tags/%E5%A0%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title></title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/26/jin-jie-zhi-guang-1.1-an-zhuo-5.0-xin-te-xing/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/26/jin-jie-zhi-guang-1.1-an-zhuo-5.0-xin-te-xing/</id>
-    <published>2019-10-26T12:40:04.858Z</published>
-    <updated>2019-10-26T12:40:41.789Z</updated>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.3-http-xie-yi-yuan-li/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/5.3-http-xie-yi-yuan-li/</id>
+    <published>2019-11-21T03:25:15.782Z</published>
+    <updated>2019-11-21T03:13:58.202Z</updated>
     
     <summary type="html">
     
@@ -118,7 +29,11 @@
       
         
         
-          &lt;h1 id=&quot;1-1-安卓5-0新特性&quot;&gt;&lt;a href=&quot;#1-1-安卓5-0新特性&quot; class=&quot;headerlink&quot; title=&quot;1.1 安卓5.0新特性&quot;&gt;&lt;/a&gt;1.1 安卓5.0新特性&lt;/h1&gt;&lt;h2
+          &lt;hr&gt;
+&lt;p&gt;title: 5.3 HTTP协议原理&lt;br&gt;date: 2019-11-21 11:13:01&lt;br&gt;tags: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安卓进阶之光 &lt;/li&gt;
+&lt;li&gt;网络编程与网络框架&lt;br&gt;categories:
         
       
     
@@ -129,11 +44,11 @@
   </entry>
   
   <entry>
-    <title>7.7 最短路径</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/26/7.7-zui-duan-lu-jing/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/26/7.7-zui-duan-lu-jing/</id>
-    <published>2019-10-26T08:23:59.000Z</published>
-    <updated>2019-10-26T08:23:44.955Z</updated>
+    <title>9.3 依赖注入框架</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.3-yi-lai-zhu-ru-kuang-jia/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/9.3-yi-lai-zhu-ru-kuang-jia/</id>
+    <published>2019-11-21T03:22:01.000Z</published>
+    <updated>2019-11-21T03:22:29.218Z</updated>
     
     <summary type="html">
     
@@ -141,28 +56,28 @@
       
         
         
-          &lt;h1 id=&quot;7-7-最短路径&quot;&gt;&lt;a href=&quot;#7-7-最短路径&quot; class=&quot;headerlink&quot; title=&quot;7.7 最短路径&quot;&gt;&lt;/a&gt;7.7
+          &lt;h1 id=&quot;9-3-依赖注入框架&quot;&gt;&lt;a href=&quot;#9-3-依赖注入框架&quot; class=&quot;headerlink&quot; title=&quot;9.3 依赖注入框架&quot;&gt;&lt;/a&gt;9.3 依赖注入框架&lt;/h1&gt;&lt;h2 id=&quot;1-ButterKnife&quot;&gt;&lt;a
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="图" scheme="https://lovelifeeveryday.github.io/tags/%E5%9B%BE/"/>
+      <category term="注解与依赖注入框架" scheme="https://lovelifeeveryday.github.io/tags/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
-    <title>7.6 最小生成树</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/25/7.6-zui-xiao-sheng-cheng-shu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/25/7.6-zui-xiao-sheng-cheng-shu/</id>
-    <published>2019-10-25T14:47:59.000Z</published>
-    <updated>2019-10-25T14:47:40.950Z</updated>
+    <title>9.2 依赖注入的原理</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/</id>
+    <published>2019-11-21T03:21:01.000Z</published>
+    <updated>2019-11-21T03:22:04.624Z</updated>
     
     <summary type="html">
     
@@ -170,28 +85,28 @@
       
         
         
-          &lt;h1 id=&quot;7-6-最小生成树&quot;&gt;&lt;a href=&quot;#7-6-最小生成树&quot; class=&quot;headerlink&quot; title=&quot;7.6 最小生成树&quot;&gt;&lt;/a&gt;7.6
+          &lt;h1 id=&quot;9-2-依赖注入的原理&quot;&gt;&lt;a href=&quot;#9-2-依赖注入的原理&quot; class=&quot;headerlink&quot; title=&quot;9.2 依赖注入的原理&quot;&gt;&lt;/a&gt;9.2 依赖注入的原理&lt;/h1&gt;&lt;h2 id=&quot;1-控制反转和依赖注入&quot;&gt;&lt;a
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="图" scheme="https://lovelifeeveryday.github.io/tags/%E5%9B%BE/"/>
+      <category term="注解与依赖注入框架" scheme="https://lovelifeeveryday.github.io/tags/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
-    <title>7.5 图的遍历</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/25/7.5-tu-de-bian-li/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/25/7.5-tu-de-bian-li/</id>
-    <published>2019-10-25T07:34:59.000Z</published>
-    <updated>2019-10-25T07:34:48.108Z</updated>
+    <title>9.1 注解</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/</id>
+    <published>2019-11-21T03:21:01.000Z</published>
+    <updated>2019-11-21T03:21:41.480Z</updated>
     
     <summary type="html">
     
@@ -199,28 +114,28 @@
       
         
         
-          &lt;h1 id=&quot;7-5-图的遍历&quot;&gt;&lt;a href=&quot;#7-5-图的遍历&quot; class=&quot;headerlink&quot; title=&quot;7.5 图的遍历&quot;&gt;&lt;/a&gt;7.5 图的遍历&lt;/h1&gt;&lt;h2 id=&quot;7-5-1-深度优先遍历&quot;&gt;&lt;a href=&quot;#7-5-1-深度优先遍历&quot;
+          &lt;h1 id=&quot;9-1-注解&quot;&gt;&lt;a href=&quot;#9-1-注解&quot; class=&quot;headerlink&quot; title=&quot;9.1 注解&quot;&gt;&lt;/a&gt;9.1 注解&lt;/h1&gt;&lt;h2 id=&quot;1-注解分类&quot;&gt;&lt;a href=&quot;#1-注解分类&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="图" scheme="https://lovelifeeveryday.github.io/tags/%E5%9B%BE/"/>
+      <category term="注解与依赖注入框架" scheme="https://lovelifeeveryday.github.io/tags/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
-    <title>7.4 图的存储结构</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/25/7.4-tu-de-cun-chu-jie-gou/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/25/7.4-tu-de-cun-chu-jie-gou/</id>
-    <published>2019-10-25T06:11:59.000Z</published>
-    <updated>2019-10-25T06:11:57.275Z</updated>
+    <title>8.5 RxJava使用场景</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.5-rxjava-shi-yong-chang-jing/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/8.5-rxjava-shi-yong-chang-jing/</id>
+    <published>2019-11-21T03:20:01.000Z</published>
+    <updated>2019-11-21T03:20:46.214Z</updated>
     
     <summary type="html">
     
@@ -228,28 +143,28 @@
       
         
         
-          &lt;h1 id=&quot;7-4-图的存储结构&quot;&gt;&lt;a href=&quot;#7-4-图的存储结构&quot; class=&quot;headerlink&quot; title=&quot;7.4 图的存储结构&quot;&gt;&lt;/a&gt;7.4 图的存储结构&lt;/h1&gt;&lt;h2 id=&quot;7-4-1-邻接矩阵&quot;&gt;&lt;a
+          &lt;h1 id=&quot;8-5-RxJava使用场景&quot;&gt;&lt;a href=&quot;#8-5-RxJava使用场景&quot; class=&quot;headerlink&quot; title=&quot;8.5 RxJava使用场景&quot;&gt;&lt;/a&gt;8.5 RxJava使用场景&lt;/h1&gt;&lt;h2
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="图" scheme="https://lovelifeeveryday.github.io/tags/%E5%9B%BE/"/>
+      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>6.12 赫夫曼树及其应用</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/24/6.12-he-fu-man-shu-ji-qi-ying-yong/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/24/6.12-he-fu-man-shu-ji-qi-ying-yong/</id>
-    <published>2019-10-24T08:04:59.000Z</published>
-    <updated>2019-10-24T08:04:43.368Z</updated>
+    <title>8.2 RxJava的Subject</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.2-rxjava-de-subject/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/8.2-rxjava-de-subject/</id>
+    <published>2019-11-21T03:19:01.000Z</published>
+    <updated>2019-11-21T03:19:56.042Z</updated>
     
     <summary type="html">
     
@@ -257,28 +172,28 @@
       
         
         
-          &lt;h1 id=&quot;6-12-赫夫曼树及其应用&quot;&gt;&lt;a href=&quot;#6-12-赫夫曼树及其应用&quot; class=&quot;headerlink&quot; title=&quot;6.12 赫夫曼树及其应用&quot;&gt;&lt;/a&gt;6.12
+          &lt;h1 id=&quot;8-2-RxJava的Subject&quot;&gt;&lt;a href=&quot;#8-2-RxJava的Subject&quot; class=&quot;headerlink&quot; title=&quot;8.2 RxJava的Subject&quot;&gt;&lt;/a&gt;8.2 RxJava的Subject&lt;/h1&gt;&lt;h2
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
+      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>6.10 线索二叉树</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/24/6.10-xian-suo-er-cha-shu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/24/6.10-xian-suo-er-cha-shu/</id>
-    <published>2019-10-24T05:59:59.000Z</published>
-    <updated>2019-10-24T06:00:18.962Z</updated>
+    <title>6.5  行为型设计模式</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/</id>
+    <published>2019-11-21T03:18:01.000Z</published>
+    <updated>2019-11-21T03:18:38.891Z</updated>
     
     <summary type="html">
     
@@ -286,30 +201,28 @@
       
         
         
-          &lt;h1 id=&quot;6-10-线索二叉树&quot;&gt;&lt;a href=&quot;#6-10-线索二叉树&quot; class=&quot;headerlink&quot; title=&quot;6.10 线索二叉树&quot;&gt;&lt;/a&gt;6.10 线索二叉树&lt;/h1&gt;&lt;h2 id=&quot;6-10-1-线索二叉树的原理&quot;&gt;&lt;a
+          &lt;h1 id=&quot;6-5-行为型设计模式&quot;&gt;&lt;a href=&quot;#6-5-行为型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.5  行为型设计模式&quot;&gt;&lt;/a&gt;6.5  行为型设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-策略模式&quot;&gt;&lt;a href=&quot;#1-策略模式&quot;
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-      <category term="二叉树" scheme="https://lovelifeeveryday.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
-    <title>接口和接口回调</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/jie-kou-he-jie-kou-hui-diao/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/jie-kou-he-jie-kou-hui-diao/</id>
-    <published>2019-10-23T12:52:59.000Z</published>
-    <updated>2019-10-23T12:53:10.751Z</updated>
+    <title>8.1 RxJava基本用法</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.1-rxjava-ji-ben-yong-fa/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/8.1-rxjava-ji-ben-yong-fa/</id>
+    <published>2019-11-21T03:18:01.000Z</published>
+    <updated>2019-11-21T03:19:28.078Z</updated>
     
     <summary type="html">
     
@@ -317,30 +230,28 @@
       
         
         
-          &lt;h1 id=&quot;接口和接口回调&quot;&gt;&lt;a href=&quot;#接口和接口回调&quot; class=&quot;headerlink&quot; title=&quot;接口和接口回调&quot;&gt;&lt;/a&gt;接口和接口回调&lt;/h1&gt;&lt;h2 id=&quot;1-什么是接口·&quot;&gt;&lt;a href=&quot;#1-什么是接口·&quot;
+          &lt;h1 id=&quot;8-1-RxJava基本用法&quot;&gt;&lt;a href=&quot;#8-1-RxJava基本用法&quot; class=&quot;headerlink&quot; title=&quot;8.1 RxJava基本用法&quot;&gt;&lt;/a&gt;8.1 RxJava基本用法&lt;/h1&gt;&lt;h2 id=&quot;1-概述&quot;&gt;&lt;a
         
       
     
     </summary>
     
     
-      <category term="安卓基础知识" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="安卓基础知识" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="java基础知识" scheme="https://lovelifeeveryday.github.io/tags/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-      <category term="接口回调" scheme="https://lovelifeeveryday.github.io/tags/%E6%8E%A5%E5%8F%A3%E5%9B%9E%E8%B0%83/"/>
+      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>6.11 树、森林与二叉树的转换</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/6.11-shu-sen-lin-yu-er-cha-shu-de-zhuan-huan/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/6.11-shu-sen-lin-yu-er-cha-shu-de-zhuan-huan/</id>
-    <published>2019-10-23T11:24:59.000Z</published>
-    <updated>2019-10-23T15:24:28.534Z</updated>
+    <title>8.3 RxJava操作符入门</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/</id>
+    <published>2019-11-21T03:18:01.000Z</published>
+    <updated>2019-11-21T03:20:16.958Z</updated>
     
     <summary type="html">
     
@@ -348,28 +259,28 @@
       
         
         
-          &lt;h1 id=&quot;6-11-树、森林与二叉树的转换&quot;&gt;&lt;a href=&quot;#6-11-树、森林与二叉树的转换&quot; class=&quot;headerlink&quot; title=&quot;6.11 树、森林与二叉树的转换&quot;&gt;&lt;/a&gt;6.11 树、森林与二叉树的转换&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;8-3-RxJava操作符入门&quot;&gt;&lt;a href=&quot;#8-3-RxJava操作符入门&quot; class=&quot;headerlink&quot; title=&quot;8.3 RxJava操作符入门&quot;&gt;&lt;/a&gt;8.3 RxJava操作符入门&lt;/h1&gt;&lt;h2 id=&quot;1-创建操作符&quot;&gt;&lt;a
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
+      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>广义表简析</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/guang-yi-biao-jian-xi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/guang-yi-biao-jian-xi/</id>
-    <published>2019-10-23T06:50:59.000Z</published>
-    <updated>2019-10-23T06:50:38.514Z</updated>
+    <title>6.3 创建型设计模式</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.3-chuang-jian-xing-she-ji-mo-shi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.3-chuang-jian-xing-she-ji-mo-shi/</id>
+    <published>2019-11-21T03:17:01.000Z</published>
+    <updated>2019-11-21T03:17:39.745Z</updated>
     
     <summary type="html">
     
@@ -377,31 +288,28 @@
       
         
         
-          &lt;h1 id=&quot;广义表简析&quot;&gt;&lt;a href=&quot;#广义表简析&quot; class=&quot;headerlink&quot; title=&quot;广义表简析&quot;&gt;&lt;/a&gt;广义表简析&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;什么是广义表呢？你知道文件系统吗&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2
+          &lt;h1 id=&quot;6-3-创建型设计模式&quot;&gt;&lt;a href=&quot;#6-3-创建型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.3 创建型设计模式&quot;&gt;&lt;/a&gt;6.3
         
       
     
     </summary>
     
     
-      <category term="数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="广义表" scheme="https://lovelifeeveryday.github.io/tags/%E5%B9%BF%E4%B9%89%E8%A1%A8/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
-    <title>6.9 二叉树的建立</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/6.9-er-cha-shu-de-jian-li/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/6.9-er-cha-shu-de-jian-li/</id>
-    <published>2019-10-23T05:28:59.000Z</published>
-    <updated>2019-11-12T04:28:31.001Z</updated>
+    <title>6.4 结构型设计模式</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/</id>
+    <published>2019-11-21T03:16:01.000Z</published>
+    <updated>2019-11-21T03:18:07.624Z</updated>
     
     <summary type="html">
     
@@ -409,30 +317,28 @@
       
         
         
-          &lt;h1 id=&quot;6-9-二叉树的建立&quot;&gt;&lt;a href=&quot;#6-9-二叉树的建立&quot; class=&quot;headerlink&quot; title=&quot;6.9 二叉树的建立&quot;&gt;&lt;/a&gt;6.9 二叉树的建立&lt;/h1&gt;&lt;h2 id=&quot;1-什么是拓展二叉树&quot;&gt;&lt;a
+          &lt;h1 id=&quot;6-4-结构型设计模式&quot;&gt;&lt;a href=&quot;#6-4-结构型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.4 结构型设计模式&quot;&gt;&lt;/a&gt;6.4
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-      <category term="二叉树" scheme="https://lovelifeeveryday.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
-    <title>6.8 遍历二叉树</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/6.8-bian-li-er-cha-shu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/6.8-bian-li-er-cha-shu/</id>
-    <published>2019-10-23T05:27:59.000Z</published>
-    <updated>2019-10-23T05:27:52.870Z</updated>
+    <title>6.1 设计模式六大原则</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/</id>
+    <published>2019-11-21T03:16:01.000Z</published>
+    <updated>2019-11-21T03:16:42.259Z</updated>
     
     <summary type="html">
     
@@ -440,30 +346,28 @@
       
         
         
-          &lt;h1 id=&quot;6-8-遍历二叉树&quot;&gt;&lt;a href=&quot;#6-8-遍历二叉树&quot; class=&quot;headerlink&quot; title=&quot;6.8 遍历二叉树&quot;&gt;&lt;/a&gt;6.8 遍历二叉树&lt;/h1&gt;&lt;h2 id=&quot;6-8-1-原理&quot;&gt;&lt;a href=&quot;#6-8-1-原理&quot;
+          &lt;h1 id=&quot;6-1-设计模式六大原则&quot;&gt;&lt;a href=&quot;#6-1-设计模式六大原则&quot; class=&quot;headerlink&quot; title=&quot;6.1 设计模式六大原则&quot;&gt;&lt;/a&gt;6.1 设计模式六大原则&lt;/h1&gt;&lt;h2 id=&quot;1-单一职责原则&quot;&gt;&lt;a
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-      <category term="二叉树" scheme="https://lovelifeeveryday.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
-    <title>6.7 二叉树的存储结构</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/6.7-er-cha-shu-de-cun-chu-jie-gou/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/6.7-er-cha-shu-de-cun-chu-jie-gou/</id>
-    <published>2019-10-23T05:25:59.000Z</published>
-    <updated>2019-10-23T05:26:07.564Z</updated>
+    <title>5.7 解析Retrofit</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.7-jie-xi-retrofit/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/5.7-jie-xi-retrofit/</id>
+    <published>2019-11-21T03:15:01.000Z</published>
+    <updated>2019-11-21T03:15:17.835Z</updated>
     
     <summary type="html">
     
@@ -471,30 +375,28 @@
       
         
         
-          &lt;h1 id=&quot;6-7-二叉树的存储结构&quot;&gt;&lt;a href=&quot;#6-7-二叉树的存储结构&quot; class=&quot;headerlink&quot; title=&quot;6.7 二叉树的存储结构&quot;&gt;&lt;/a&gt;6.7 二叉树的存储结构&lt;/h1&gt;&lt;h2 id=&quot;1-顺序存储&quot;&gt;&lt;a
+          &lt;h1 id=&quot;5-7-解析Retrofit&quot;&gt;&lt;a href=&quot;#5-7-解析Retrofit&quot; class=&quot;headerlink&quot; title=&quot;5.7 解析Retrofit&quot;&gt;&lt;/a&gt;5.7
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-      <category term="二叉树" scheme="https://lovelifeeveryday.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
-    <title>6.6 二叉树的性质</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/6.6-er-cha-shu-de-xing-zhi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/6.6-er-cha-shu-de-xing-zhi/</id>
-    <published>2019-10-23T05:24:59.000Z</published>
-    <updated>2019-10-23T05:24:37.675Z</updated>
+    <title>5.5 解析Volley</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.5-jie-xi-volley/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/5.5-jie-xi-volley/</id>
+    <published>2019-11-21T03:14:01.000Z</published>
+    <updated>2019-11-21T03:14:39.962Z</updated>
     
     <summary type="html">
     
@@ -502,30 +404,28 @@
       
         
         
-          &lt;h1 id=&quot;6-6-二叉树的性质&quot;&gt;&lt;a href=&quot;#6-6-二叉树的性质&quot; class=&quot;headerlink&quot; title=&quot;6.6 二叉树的性质&quot;&gt;&lt;/a&gt;6.6 二叉树的性质&lt;/h1&gt;&lt;h2 id=&quot;1-一层最多结点数性质：&quot;&gt;&lt;a
+          &lt;h1 id=&quot;5-5-解析Volley&quot;&gt;&lt;a href=&quot;#5-5-解析Volley&quot; class=&quot;headerlink&quot; title=&quot;5.5 解析Volley&quot;&gt;&lt;/a&gt;5.5
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-      <category term="二叉树" scheme="https://lovelifeeveryday.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
-    <title>6.5 二叉树的定义</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/23/6.5-er-cha-shu-de-ding-yi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/23/6.5-er-cha-shu-de-ding-yi/</id>
-    <published>2019-10-23T05:22:59.000Z</published>
-    <updated>2019-10-23T05:23:04.552Z</updated>
+    <title>5.2 TCP的三次握手与四次挥手</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.2-tcp-de-san-ci-wo-shou-yu-si-ci-hui-shou/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/5.2-tcp-de-san-ci-wo-shou-yu-si-ci-hui-shou/</id>
+    <published>2019-11-21T03:12:01.000Z</published>
+    <updated>2019-11-21T03:12:58.747Z</updated>
     
     <summary type="html">
     
@@ -533,31 +433,28 @@
       
         
         
-          &lt;h1 id=&quot;6-5-二叉树的定义&quot;&gt;&lt;a href=&quot;#6-5-二叉树的定义&quot; class=&quot;headerlink&quot; title=&quot;6.5 二叉树的定义&quot;&gt;&lt;/a&gt;6.5 二叉树的定义&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;上一节6.4
+          &lt;h1 id=&quot;5-2-TCP的三次握手与四次挥手&quot;&gt;&lt;a href=&quot;#5-2-TCP的三次握手与四次挥手&quot; class=&quot;headerlink&quot; title=&quot;5.2 TCP的三次握手与四次挥手&quot;&gt;&lt;/a&gt;5.2 TCP的三次握手与四次挥手&lt;/h1&gt;&lt;h2
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="树" scheme="https://lovelifeeveryday.github.io/tags/%E6%A0%91/"/>
-    
-      <category term="二叉树" scheme="https://lovelifeeveryday.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
-    <title>9.8 归并排序</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/22/9.8-gui-bing-pai-xu/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/22/9.8-gui-bing-pai-xu/</id>
-    <published>2019-10-22T15:24:59.000Z</published>
-    <updated>2019-10-22T15:25:23.190Z</updated>
+    <title>4.5 AsyncTask的原理</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/4.5-asynctask-de-yuan-li/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/4.5-asynctask-de-yuan-li/</id>
+    <published>2019-11-21T03:11:01.000Z</published>
+    <updated>2019-11-21T03:11:35.868Z</updated>
     
     <summary type="html">
     
@@ -565,28 +462,28 @@
       
         
         
-          &lt;h1 id=&quot;9-8-归并排序&quot;&gt;&lt;a href=&quot;#9-8-归并排序&quot; class=&quot;headerlink&quot; title=&quot;9.8 归并排序&quot;&gt;&lt;/a&gt;9.8
+          &lt;h1 id=&quot;4-5-AsyncTask的原理&quot;&gt;&lt;a href=&quot;#4-5-AsyncTask的原理&quot; class=&quot;headerlink&quot; title=&quot;4.5 AsyncTask的原理&quot;&gt;&lt;/a&gt;4.5 AsyncTask的原理&lt;/h1&gt;&lt;h2
         
       
     
     </summary>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="大话数据结构" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="排序" scheme="https://lovelifeeveryday.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
+      <category term="多线程编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>单例模式简析</title>
-    <link href="https://lovelifeeveryday.github.io/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/10/20/2019-10-20-dan-li-mo-shi-jian-xi/</id>
-    <published>2019-10-20T06:29:59.000Z</published>
-    <updated>2019-11-08T05:14:42.154Z</updated>
+    <title>5.1 网络分层</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.1-wang-luo-fen-ceng/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/5.1-wang-luo-fen-ceng/</id>
+    <published>2019-11-21T03:11:01.000Z</published>
+    <updated>2019-11-21T03:12:22.559Z</updated>
     
     <summary type="html">
     
@@ -594,19 +491,106 @@
       
         
         
-          &lt;h1 id=&quot;单例模式简析&quot;&gt;&lt;a href=&quot;#单例模式简析&quot; class=&quot;headerlink&quot; title=&quot;单例模式简析&quot;&gt;&lt;/a&gt;单例模式简析&lt;/h1&gt;&lt;h2 id=&quot;1-什么是单例模式（Singleton-Pattern）&quot;&gt;&lt;a
+          &lt;h1 id=&quot;5-1-网络分层&quot;&gt;&lt;a href=&quot;#5-1-网络分层&quot; class=&quot;headerlink&quot; title=&quot;5.1 网络分层&quot;&gt;&lt;/a&gt;5.1 网络分层&lt;/h1&gt;&lt;h2 id=&quot;1-什么是网络分层&quot;&gt;&lt;a href=&quot;#1-什么是网络分层&quot;
         
       
     
     </summary>
     
     
-      <category term="java设计模式" scheme="https://lovelifeeveryday.github.io/categories/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
     
     
-      <category term="单例模式" scheme="https://lovelifeeveryday.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
-      <category term="java设计模式" scheme="https://lovelifeeveryday.github.io/tags/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4.4 线程池</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/4.4-xian-cheng-chi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/4.4-xian-cheng-chi/</id>
+    <published>2019-11-21T03:11:01.000Z</published>
+    <updated>2019-11-21T03:11:08.848Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;4-4-线程池&quot;&gt;&lt;a href=&quot;#4-4-线程池&quot; class=&quot;headerlink&quot; title=&quot;4.4 线程池&quot;&gt;&lt;/a&gt;4.4 线程池&lt;/h1&gt;&lt;h2 id=&quot;4-4-1-ThreadPoolExecutor&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
+    
+      <category term="多线程编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4.2 同步</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/4.2-tong-bu/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/4.2-tong-bu/</id>
+    <published>2019-11-21T03:10:01.000Z</published>
+    <updated>2019-11-21T03:10:15.667Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;4-2-同步&quot;&gt;&lt;a href=&quot;#4-2-同步&quot; class=&quot;headerlink&quot; title=&quot;4.2 同步&quot;&gt;&lt;/a&gt;4.2 同步&lt;/h1&gt;&lt;h2 id=&quot;4-2-1-重入锁与条件对象&quot;&gt;&lt;a href=&quot;#4-2-1-重入锁与条件对象&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
+    
+      <category term="多线程编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4.3 阻塞队列</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/4.3-zu-sai-dui-lie/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/4.3-zu-sai-dui-lie/</id>
+    <published>2019-11-21T03:10:01.000Z</published>
+    <updated>2019-11-21T03:10:44.391Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;4-3-阻塞队列&quot;&gt;&lt;a href=&quot;#4-3-阻塞队列&quot; class=&quot;headerlink&quot; title=&quot;4.3 阻塞队列&quot;&gt;&lt;/a&gt;4.3 阻塞队列&lt;/h1&gt;&lt;h2 id=&quot;4-3-1-阻塞队列简介&quot;&gt;&lt;a href=&quot;#4-3-1-阻塞队列简介&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
+    
+      <category term="多线程编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
