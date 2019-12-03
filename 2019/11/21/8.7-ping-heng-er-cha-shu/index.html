@@ -485,10 +485,10 @@
 <p>当BF&gt;1就右旋，反之左旋</p>
 <p>什么是<strong>左旋</strong>？</p>
 <p>其实就是将要旋转的结点B，<strong>左孩子A与它断开</strong>，然后旋转后，A再接到旋转后的B的左孩子下面，作为B的左孩子的右孩子</p>
-<p><img src="https://files.jb51.net/file_images/article/201901/2019110153603213.gif?2019010153616" alt="img"></p>
 <p>同理右旋</p>
 <p><strong>双旋</strong>分为<strong>先左后右双旋转</strong>和<strong>先右后左双旋转</strong>，具体情况具体分析，下面的例子是先左后右双旋转的</p>
-<p><img src="https://files.jb51.net/file_images/article/201901/2019110153648046.png?201901015370" alt="img"></p>
+<p> <img src="https://img-blog.csdnimg.cn/20190505172528631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODcwMzM2Ng==,size_16,color_FFFFFF,t_70" alt="å¨è¿éæå¥å¾çæè¿°"> </p>
+<p> <img src="https://img-blog.csdnimg.cn/20190505172601987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODcwMzM2Ng==,size_16,color_FFFFFF,t_70" alt="å¨è¿éæå¥å¾çæè¿°"> </p>
 <h2 id="8-7-2-平衡二叉树的实现算法"><a href="#8-7-2-平衡二叉树的实现算法" class="headerlink" title="8.7.2 平衡二叉树的实现算法"></a>8.7.2 平衡二叉树的实现算法</h2><h3 id="1-平衡二叉树的结构"><a href="#1-平衡二叉树的结构" class="headerlink" title="1.平衡二叉树的结构"></a>1.平衡二叉树的结构</h3><p>其实就是相对于二叉排序树来说<strong>多了个平衡因子</strong></p>
 <pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span>  <span class="token keyword">struct</span> BiTNode <span class="token comment" spellcheck="true">/* 结点结构 */</span>
 <span class="token punctuation">{</span>
@@ -501,10 +501,10 @@
 <span class="token keyword">void</span> <span class="token function">R_Rotate</span><span class="token punctuation">(</span>BiTree <span class="token operator">*</span>P<span class="token punctuation">)</span>
 <span class="token punctuation">{</span> 
     BiTree L<span class="token punctuation">;</span>
-    L<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  L指向P的左子树根结点 */</span> 
-    <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token operator">=</span>L<span class="token operator">-></span>rchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  L的右子树挂接为P的左子树 */</span> 
+    L<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">/*L指向P的左子树根结点 */</span> 
+    <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token operator">-></span>lchild<span class="token operator">=</span>L<span class="token operator">-></span>rchild<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*L的右子树挂接为P的左子树 */</span> 
     L<span class="token operator">-></span>rchild<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">*</span>P<span class="token operator">=</span>L<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*  P指向新的根结点 */</span> 
+    <span class="token operator">*</span>P<span class="token operator">=</span>L<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*P指向新的根结点 */</span> 
 <span class="token punctuation">}</span></code></pre>
 <p><img src="https://s2.ax1x.com/2019/11/15/Ma2O8s.png" alt="Ma2O8s.png"></p>
 <p>左旋操作类似，所以不写出来了</p>
@@ -513,7 +513,7 @@
 <span class="token macro property">#<span class="token directive keyword">define</span> RH -1 </span><span class="token comment" spellcheck="true">/*  右高 */</span> 
 
 <span class="token comment" spellcheck="true">/*  对以指针T所指结点为根的二叉树作左平衡旋转处理 */</span>
-<span class="token comment" spellcheck="true">/*  本算法结束时，指针T指向新的根结点 */</span>
+<span class="token comment" spellcheck="true">/*  本算法结束时，指针T指向新的根结点*/</span>
 <span class="token keyword">void</span> <span class="token function">LeftBalance</span><span class="token punctuation">(</span>BiTree <span class="token operator">*</span>T<span class="token punctuation">)</span>
 <span class="token punctuation">{</span> 
     BiTree L<span class="token punctuation">,</span>Lr<span class="token punctuation">;</span>
