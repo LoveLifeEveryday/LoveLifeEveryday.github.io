@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-01-12T05:03:35.536Z</updated>
+  <updated>2020-01-12T07:33:47.896Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>轻轻松松过六级</title>
+    <link href="https://lovelifeeveryday.github.io/2020/01/12/qing-qing-song-song-guo-liu-ji/"/>
+    <id>https://lovelifeeveryday.github.io/2020/01/12/qing-qing-song-song-guo-liu-ji/</id>
+    <published>2020-01-12T07:32:01.000Z</published>
+    <updated>2020-01-12T07:33:47.896Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;轻轻松松过六级&quot;&gt;&lt;a href=&quot;#轻轻松松过六级&quot; class=&quot;headerlink&quot; title=&quot;轻轻松松过六级&quot;&gt;&lt;/a&gt;轻轻松松过六级&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="杂七杂八" scheme="https://lovelifeeveryday.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+    
+      <category term="英语相关" scheme="https://lovelifeeveryday.github.io/tags/%E8%8B%B1%E8%AF%AD%E7%9B%B8%E5%85%B3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>写博客没头绪？我手把手教你！</title>
     <link href="https://lovelifeeveryday.github.io/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/"/>
     <id>https://lovelifeeveryday.github.io/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/</id>
     <published>2020-01-11T03:07:01.000Z</published>
-    <updated>2020-01-12T05:03:35.536Z</updated>
+    <updated>2020-01-12T07:27:21.100Z</updated>
     
     <summary type="html">
     
@@ -562,35 +589,6 @@
       <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
       <category term="多线程编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5.1 网络分层</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.1-wang-luo-fen-ceng/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/5.1-wang-luo-fen-ceng/</id>
-    <published>2019-11-21T03:11:01.000Z</published>
-    <updated>2019-11-21T03:12:22.559Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;5-1-网络分层&quot;&gt;&lt;a href=&quot;#5-1-网络分层&quot; class=&quot;headerlink&quot; title=&quot;5.1 网络分层&quot;&gt;&lt;/a&gt;5.1 网络分层&lt;/h1&gt;&lt;h2 id=&quot;1-什么是网络分层&quot;&gt;&lt;a href=&quot;#1-什么是网络分层&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
