@@ -1,0 +1,1545 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="2.2 Design Support Library 常用控件详解, Sunny">
+    <meta name="description" content="2.2 Design Support Library 常用控件详解2.2.2 TextInputLayout输入框1.什么是TextInputLayout？其实是一个输入框的控件
+
+2.TextInputLayout的使用
+    &amp;lt;">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>2.2 Design Support Library 常用控件详解 | Sunny</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sunny</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sunny</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveLifeEveryday" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveLifeEveryday" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        2.2 Design Support Library 常用控件详解
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/安卓进阶之光/">
+                                <span class="chip bg-color">安卓进阶之光</span>
+                            </a>
+                        
+                            <a href="/tags/Material-Design/">
+                                <span class="chip bg-color">Material Design</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/安卓/" class="post-category">
+                                安卓
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-11-21
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="2-2-Design-Support-Library-常用控件详解"><a href="#2-2-Design-Support-Library-常用控件详解" class="headerlink" title="2.2 Design Support Library 常用控件详解"></a>2.2 Design Support Library 常用控件详解</h1><h2 id="2-2-2-TextInputLayout输入框"><a href="#2-2-2-TextInputLayout输入框" class="headerlink" title="2.2.2 TextInputLayout输入框"></a>2.2.2 TextInputLayout输入框</h2><h3 id="1-什么是TextInputLayout？"><a href="#1-什么是TextInputLayout？" class="headerlink" title="1.什么是TextInputLayout？"></a>1.什么是TextInputLayout？</h3><p>其实是一个输入框的控件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8850933-06fc0260057f22e4.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/482/format/webp" alt="img"></p>
+<h3 id="2-TextInputLayout的使用"><a href="#2-TextInputLayout的使用" class="headerlink" title="2.TextInputLayout的使用"></a>2.TextInputLayout的使用</h3><pre class=" language-xml"><code class="language-xml">
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>android.support.design.widget.TextInputLayout</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tl_username<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_centerInParent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>EditText</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/et_username<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>hint</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>maxLength</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>25<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>maxLines</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>android.support.design.widget.TextInputLayout</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="3-显示错误信息"><a href="#3-显示错误信息" class="headerlink" title="3.显示错误信息"></a>3.显示错误信息</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">validateUserName</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         tl_username<span class="token punctuation">.</span><span class="token function">setErrorEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         tl_username<span class="token punctuation">.</span><span class="token function">setError</span><span class="token punctuation">(</span><span class="token string">"请输入正确的邮箱地址"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+         tl_username<span class="token punctuation">.</span><span class="token function">setErrorEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         tl_password<span class="token punctuation">.</span><span class="token function">setErrorEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"登录成功"</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span></code></pre>
+<h3 id="4-改变样式"><a href="#4-改变样式" class="headerlink" title="4.改变样式"></a>4.改变样式</h3><p>如果对TextInputLayout输入框以及输入框上方的hint提示颜色不满意，则还可以在style.xml文件中对 colorAccent属性进行修改</p>
+<pre class=" language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>colorAccent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>@color/colorAccent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+</code></pre>
+<h2 id="2-2-4-用TabLayout实现动态滑动效果"><a href="#2-2-4-用TabLayout实现动态滑动效果" class="headerlink" title="2.2.4 用TabLayout实现动态滑动效果"></a>2.2.4 用TabLayout实现动态滑动效果</h2><h3 id="1-主界面布局"><a href="#1-主界面布局" class="headerlink" title="1.主界面布局"></a>1.主界面布局</h3><pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>app</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res-auto<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">tools:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.TabLayoutActivity<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--这里用AppBarLayout是为了把tabLayout放在标题栏里--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>android.support.design.widget.AppBarLayout</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/appbar<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/ThemeOverlay.AppCompat.Dark.ActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>android.support.v7.widget.Toolbar</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/toolbar<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?attr/actionBarSize<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">app:</span>layout_scrollFlags</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scroll|enterAlways<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">app:</span>popupTheme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/ThemeOverlay.AppCompat.Light<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>android.support.design.widget.TabLayout</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tabs<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">app:</span>tabIndicatorColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#ADBE107E<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">app:</span>tabMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scrollable<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>android.support.design.widget.AppBarLayout</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>android.support.v4.view.ViewPager</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/viewpager<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">app:</span>layout_behavior</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@string/appbar_scrolling_view_behavior<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
+</code></pre>
+<p><img src="https://i.bmp.ovh/imgs/2019/10/b160476c557804fc.png" alt></p>
+<h3 id="2-流程："><a href="#2-流程：" class="headerlink" title="2.流程："></a>2.流程：</h3><ol>
+<li><p>初始化Toolbar和TabLayout和ViewPager</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> ViewPager mViewPager<span class="token operator">=</span> <span class="token punctuation">(</span>ViewPager<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>viewpager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> TabLayout mTabLayout <span class="token operator">=</span> <span class="token punctuation">(</span>TabLayout<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tabs<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>准备好tabLayout的标题</p>
+<pre class=" language-java"><code class="language-java"> List<span class="token operator">&lt;</span>String<span class="token operator">></span> titles <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"精选"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"体育"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"巴萨"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"购物"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"明星"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"视频"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"健康"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"励志"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"图文"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"本地"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"动漫"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"搞笑"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"精选"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>将tabLayout的标题设置进tabLayout</p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> titles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mTabLayout<span class="token punctuation">.</span><span class="token function">addTab</span><span class="token punctuation">(</span>mTabLayout<span class="token punctuation">.</span><span class="token function">newTab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>titles<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>新建和标题数量相等的fragment</p>
+<pre class=" language-java"><code class="language-java"> List<span class="token operator">&lt;</span>Fragment<span class="token operator">></span> fragments <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> titles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            fragments<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ListFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>准备好ViewPager和TabLayout的adapter</p>
+<pre class=" language-java"><code class="language-java">
+</code></pre>
+</li>
+</ol>
+<p>   public class FragmentAdapter extends FragmentStatePagerAdapter {<br>       private List<fragment> mFragments;<br>       private List<string> mTitles;</string></fragment></p>
+<pre><code>   public FragmentAdapter(FragmentManager fm, List&lt;Fragment&gt; fragments, List&lt;String&gt; titles) {
+       super(fm);
+       mFragments = fragments;
+       mTitles = titles;
+   }
+
+   //得到具体的fragment
+   @Override
+   public Fragment getItem(int position) {
+       return mFragments.get(position);
+   }
+
+   //得到数目
+   @Override
+   public int getCount() {
+       return mFragments.size();
+   }
+
+   //得到title
+   @Override
+   public CharSequence getPageTitle(int position) {
+       return mTitles.get(position);
+   }</code></pre><p>   }</p>
+<pre><code>
+6. 准备好fragment
+
+7. 给ViewPager和tabLayout设置adapter,并且将二者关联起来
+
+   ```java
+    FragmentAdapter mFragmentAdapteradapter =
+                   new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
+           //给ViewPager设置适配器
+           mViewPager.setAdapter(mFragmentAdapteradapter);
+           //将TabLayout和ViewPager关联起来。
+           mTabLayout.setupWithViewPager(mViewPager);
+
+       }</code></pre><h3 id="3-总的代码："><a href="#3-总的代码：" class="headerlink" title="3.总的代码："></a>3.总的代码：</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>liuwangshu<span class="token punctuation">.</span>mytablayout<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>design<span class="token punctuation">.</span>widget<span class="token punctuation">.</span>TabLayout<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v4<span class="token punctuation">.</span>app<span class="token punctuation">.</span>Fragment<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v4<span class="token punctuation">.</span>view<span class="token punctuation">.</span>ViewPager<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v4<span class="token punctuation">.</span>widget<span class="token punctuation">.</span>DrawerLayout<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v7<span class="token punctuation">.</span>app<span class="token punctuation">.</span>AppCompatActivity<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Bundle<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v7<span class="token punctuation">.</span>widget<span class="token punctuation">.</span>Toolbar<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TabLayoutActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> DrawerLayout mDrawerLayout<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> ViewPager mViewPager<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> TabLayout mTabLayout<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_tab_layout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Toolbar toolbar <span class="token operator">=</span> <span class="token punctuation">(</span>Toolbar<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>toolbar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setSupportActionBar</span><span class="token punctuation">(</span>toolbar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mViewPager <span class="token operator">=</span> <span class="token punctuation">(</span>ViewPager<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>viewpager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initViewPager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initViewPager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mTabLayout <span class="token operator">=</span> <span class="token punctuation">(</span>TabLayout<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tabs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> titles <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"精选"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"体育"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"巴萨"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"购物"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"明星"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"视频"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"健康"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"励志"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"图文"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"本地"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"动漫"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"搞笑"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        titles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"精选"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> titles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mTabLayout<span class="token punctuation">.</span><span class="token function">addTab</span><span class="token punctuation">(</span>mTabLayout<span class="token punctuation">.</span><span class="token function">newTab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>titles<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        List<span class="token operator">&lt;</span>Fragment<span class="token operator">></span> fragments <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> titles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            fragments<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ListFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        FragmentAdapter mFragmentAdapteradapter <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">FragmentAdapter</span><span class="token punctuation">(</span><span class="token function">getSupportFragmentManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> fragments<span class="token punctuation">,</span> titles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//给ViewPager设置适配器</span>
+        mViewPager<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>mFragmentAdapteradapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//将TabLayout和ViewPager关联起来</span>
+        mTabLayout<span class="token punctuation">.</span><span class="token function">setupWithViewPager</span><span class="token punctuation">(</span>mViewPager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="4-当tab数不确定的时候，怎么动态添加fragment并且区分他们"><a href="#4-当tab数不确定的时候，怎么动态添加fragment并且区分他们" class="headerlink" title="4.当tab数不确定的时候，怎么动态添加fragment并且区分他们"></a>4.当tab数不确定的时候，怎么动态添加fragment并且区分他们</h3><p>利用bundle，setArguments</p>
+<pre class=" language-java"><code class="language-java">  mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"特惠新品"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"有机果蔬"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"放养牲畜"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"健康吧"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"调味品"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"素食者"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"时令食品"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"野生菌类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"放养家禽"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"休闲吧"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"粮油类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"素食类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"周边菜场"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//动态添加Fragment</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mTabs<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Fragment fragment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TabFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Bundle bundle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Bundle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bundle<span class="token punctuation">.</span><span class="token function">putInt</span><span class="token punctuation">(</span><span class="token string">"position"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            fragment<span class="token punctuation">.</span><span class="token function">setArguments</span><span class="token punctuation">(</span>bundle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mFragmentArrays<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+<p>然后在fragment中</p>
+<pre class=" language-java"><code class="language-java">mPosition <span class="token operator">=</span> <span class="token function">getArguments</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">"position"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="5-怎么解决切换回来的时候，空白的情况"><a href="#5-怎么解决切换回来的时候，空白的情况" class="headerlink" title="5.怎么解决切换回来的时候，空白的情况"></a>5.怎么解决切换回来的时候，空白的情况</h3><p>在fragment  缓存View</p>
+<pre class=" language-java"><code class="language-java">
+<span class="token comment" spellcheck="true">/**
+ * 首页
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeFragment</span> <span class="token keyword">extends</span> <span class="token class-name">Fragment</span> <span class="token keyword">implements</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@BindView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tablayout<span class="token punctuation">)</span>
+    TabLayout tablayout<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@BindView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab_viewpager<span class="token punctuation">)</span>
+    ViewPager tabViewpager<span class="token punctuation">;</span>
+    Unbinder unbinder<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@BindView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>iv_fenlei<span class="token punctuation">)</span>
+    ImageView mIvFenlei<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Fragment<span class="token operator">></span> mFragmentArrays <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> mTabs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> View view<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> View <span class="token function">onCreateView</span><span class="token punctuation">(</span>LayoutInflater inflater<span class="token punctuation">,</span> ViewGroup container<span class="token punctuation">,</span>
+                             Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//解决点击“我的”回来方法二，首页空白的问题，推荐的方法</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>view <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            unbinder <span class="token operator">=</span> ButterKnife<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> view<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//必须加，不然报ButterKnife的异常</span>
+            ViewGroup parent <span class="token operator">=</span> <span class="token punctuation">(</span>ViewGroup<span class="token punctuation">)</span> view<span class="token punctuation">.</span><span class="token function">getParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                parent<span class="token punctuation">.</span><span class="token function">removeView</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> view<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        view <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>fragment_home<span class="token punctuation">,</span> container<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        unbinder <span class="token operator">=</span> ButterKnife<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> view<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里也得有，不然报ButterKnife的异常</span>
+        <span class="token function">initView</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> view<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initView</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mIvFenlei<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tablayout<span class="token punctuation">.</span><span class="token function">removeAllTabs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tabViewpager<span class="token punctuation">.</span><span class="token function">removeAllViews</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mFragmentArrays <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mFragmentArrays<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mTabs<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//替换成从服务器接口请求数据就成动态了</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"特惠新品"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"有机果蔬"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"放养牲畜"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"健康吧"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"调味品"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"素食者"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"时令食品"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"野生菌类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"放养家禽"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"休闲吧"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"粮油类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"素食类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTabs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"周边菜场"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//动态添加Fragment</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mTabs<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Fragment fragment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TabFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Bundle bundle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Bundle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bundle<span class="token punctuation">.</span><span class="token function">putInt</span><span class="token punctuation">(</span><span class="token string">"position"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            fragment<span class="token punctuation">.</span><span class="token function">setArguments</span><span class="token punctuation">(</span>bundle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mFragmentArrays<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        tabViewpager<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TabFragmentAdapter</span><span class="token punctuation">(</span><span class="token function">getFragmentManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mFragmentArrays<span class="token punctuation">,</span> mTabs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tablayout<span class="token punctuation">.</span><span class="token function">setupWithViewPager</span><span class="token punctuation">(</span>tabViewpager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>view<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>iv_fenlei<span class="token operator">:</span>
+                <span class="token function">startPopuwindows</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">startPopuwindows</span><span class="token punctuation">(</span>View view1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        View view<span class="token operator">=</span>LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token function">getActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_main_popuwindows<span class="token punctuation">,</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RecyclerView recyclerView<span class="token operator">=</span>view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>recycler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        recyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token function">getActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RecycleViewGridAdapter gridAdapter<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">RecycleViewGridAdapter</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>item_gride_fenlei<span class="token punctuation">,</span>mTabs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        recyclerView<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>gridAdapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> PopupWindow popupWindow<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">PopupWindow</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>MATCH_PARENT<span class="token punctuation">,</span> ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>WRAP_CONTENT<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        popupWindow<span class="token punctuation">.</span><span class="token function">showAsDropDown</span><span class="token punctuation">(</span>view1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        gridAdapter<span class="token punctuation">.</span><span class="token function">setOnItemChildClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BaseQuickAdapter<span class="token punctuation">.</span>OnItemChildClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onItemChildClick</span><span class="token punctuation">(</span>BaseQuickAdapter adapter<span class="token punctuation">,</span> View view<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token function">getActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"点击了"</span><span class="token operator">+</span>mTabs<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                tabViewpager<span class="token punctuation">.</span><span class="token function">setCurrentItem</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                popupWindow<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        gridAdapter<span class="token punctuation">.</span><span class="token function">setOnItemChildClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BaseQuickAdapter<span class="token punctuation">.</span>OnItemChildClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onItemChildClick</span><span class="token punctuation">(</span>BaseQuickAdapter adapter<span class="token punctuation">,</span> View view<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                tabViewpager<span class="token punctuation">.</span><span class="token function">setCurrentItem</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                popupWindow<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyView</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroyView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        unbinder<span class="token punctuation">.</span><span class="token function">unbind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="2-2-6-实现Toolbar隐藏和折叠"><a href="#2-2-6-实现Toolbar隐藏和折叠" class="headerlink" title="2.2.6 实现Toolbar隐藏和折叠"></a>2.2.6 实现Toolbar隐藏和折叠</h2><h3 id="1-自定义Behavior"><a href="#1-自定义Behavior" class="headerlink" title="1.自定义Behavior"></a>1.自定义Behavior</h3><p>Behavior就是实现组件和滑动交互</p>
+<h4 id="1-实现自定义Behavior的方式有哪些？"><a href="#1-实现自定义Behavior的方式有哪些？" class="headerlink" title="1.实现自定义Behavior的方式有哪些？"></a>1.实现自定义Behavior的方式有哪些？</h4><p>我们来做个demo,就是底部提示条，当向上滑的时候就消失，当向下滑的时候就显示</p>
+<ol>
+<li><h5 id="定义View监听CoordinatorLayout里的滑动状态"><a href="#定义View监听CoordinatorLayout里的滑动状态" class="headerlink" title="定义View监听CoordinatorLayout里的滑动状态"></a>定义View监听CoordinatorLayout里的滑动状态</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FooterBehavior</span> <span class="token keyword">extends</span> <span class="token class-name">CoordinatorLayout<span class="token punctuation">.</span>Behavior</span><span class="token operator">&lt;</span>View<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> directionChange<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">FooterBehavior</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> AttributeSet attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//返回值表示滑动要不要关注</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onStartNestedScroll</span><span class="token punctuation">(</span>CoordinatorLayout coordinatorLayout<span class="token punctuation">,</span> View child<span class="token punctuation">,</span> View directTargetChild<span class="token punctuation">,</span> View target<span class="token punctuation">,</span> <span class="token keyword">int</span> nestedScrollAxes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//关注竖直方向的滑动</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>nestedScrollAxes <span class="token operator">&amp;</span> ViewCompat<span class="token punctuation">.</span>SCROLL_AXIS_VERTICAL<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//dy是滑动的距离，上滑是正，下滑是负</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onNestedPreScroll</span><span class="token punctuation">(</span>CoordinatorLayout coordinatorLayout<span class="token punctuation">,</span> View child<span class="token punctuation">,</span> View target<span class="token punctuation">,</span> <span class="token keyword">int</span> dx<span class="token punctuation">,</span> <span class="token keyword">int</span> dy<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> consumed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>dy <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> directionChange <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> dy <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> directionChange <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            child<span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            directionChange <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        directionChange <span class="token operator">+=</span> dy<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>directionChange <span class="token operator">></span> child<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> child<span class="token punctuation">.</span><span class="token function">getVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">hide</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>directionChange <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> child<span class="token punctuation">.</span><span class="token function">getVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> View<span class="token punctuation">.</span>GONE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">show</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">hide</span><span class="token punctuation">(</span><span class="token keyword">final</span> View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//设置动画</span>
+        ViewPropertyAnimator animator <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">translationY</span><span class="token punctuation">(</span>view<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FastOutSlowInInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        animator<span class="token punctuation">.</span><span class="token function">setListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">AnimatorListenerAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onAnimationEnd</span><span class="token punctuation">(</span>Animator animator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//动画结束</span>
+                view<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>GONE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        animator<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token keyword">final</span> View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ViewPropertyAnimator animator <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">translationY</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FastOutSlowInInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        animator<span class="token punctuation">.</span><span class="token function">setListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">AnimatorListenerAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onAnimationEnd</span><span class="token punctuation">(</span>Animator animator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                view<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//开启动画</span>
+        animator<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在xml中</p>
+<pre class=" language-xml"><code class="language-xml">//指定behavior
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span>
+<span class="token attr-name">...</span>
+<span class="token attr-name"><span class="token namespace">app:</span>layout_behavior</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.FooterBehavior<span class="token punctuation">"</span></span>
+
+<span class="token punctuation">/></span></span></code></pre>
+</li>
+<li><h5 id="定义View来监听另一个View的显示，来改变自己的状态"><a href="#定义View来监听另一个View的显示，来改变自己的状态" class="headerlink" title="定义View来监听另一个View的显示，来改变自己的状态"></a>定义View来监听另一个View的显示，来改变自己的状态</h5><p>java:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FooterBehaviorAppBar</span> <span class="token keyword">extends</span> <span class="token class-name">CoordinatorLayout<span class="token punctuation">.</span>Behavior</span><span class="token operator">&lt;</span>View<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">FooterBehaviorAppBar</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> AttributeSet attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//这个方法是返回我们关心的类，第一个参数是CoordinatorLayout，第2个是设置这个Behavior的view,第3个dependency是我们监听的View</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">layoutDependsOn</span><span class="token punctuation">(</span>CoordinatorLayout parent<span class="token punctuation">,</span> View child<span class="token punctuation">,</span> View dependency<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//这里我们监听的是AppBarLayout</span>
+        <span class="token keyword">return</span> dependency <span class="token keyword">instanceof</span> <span class="token class-name">AppBarLayout</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onDependentViewChanged</span><span class="token punctuation">(</span>CoordinatorLayout parent<span class="token punctuation">,</span> View child<span class="token punctuation">,</span> View dependency<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//得到监听的控件的y</span>
+        <span class="token keyword">float</span> translationY <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>dependency<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"wangshu"</span><span class="token punctuation">,</span>translationY<span class="token operator">+</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token comment" spellcheck="true">//使其与被监听的控件同步显示</span>
+        child<span class="token punctuation">.</span><span class="token function">setTranslationY</span><span class="token punctuation">(</span>translationY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <a  href="/2019/11/21/2.2-design-support-library-chang-yong-kong-jian-xiang-jie/">
+                    《2.2 Design Support Library 常用控件详解》
+            </a> 由
+            <a href="https://lovelifeeveryday.github.io">
+                Xu Canyou
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '112e6084ab0d347bb611',
+        clientSecret: 'b8f70092496c20501812dccac798c13eac3bcc94',
+        repo: 'lovelifeeveryday.github.io',
+        owner: 'lovelifeeveryday',
+        admin: "lovelifeeveryday",
+        id: '2019-11-21T11-04-01',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/11/21/3.2-zuo-biao-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="3.2 坐标系">
+                        
+                        <span class="card-title">3.2 坐标系</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android坐标系
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/安卓/" class="post-category">
+                                    安卓
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/安卓进阶之光/">
+                        <span class="chip bg-color">安卓进阶之光</span>
+                    </a>
+                    
+                    <a href="/tags/自定义View/">
+                        <span class="chip bg-color">自定义View</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/11/21/1.2-android-6.0-xin-te-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="1.2 Android 6.0 新特性">
+                        
+                        <span class="card-title">1.2 Android 6.0 新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android 6.0 新特性
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/安卓/" class="post-category">
+                                    安卓
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/安卓进阶之光/">
+                        <span class="chip bg-color">安卓进阶之光</span>
+                    </a>
+                    
+                    <a href="/tags/Android新特性/">
+                        <span class="chip bg-color">Android新特性</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://lovelifeeveryday.github.io" target="_blank">Xu Canyou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/LoveLifeEveryday" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+
+</body>
+
+</html>
