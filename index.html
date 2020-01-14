@@ -510,6 +510,41 @@ $(function () {
                     
 
                     
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="title center-align">
+        <i class="fas fa-music"></i>&nbsp;&nbsp;听听音乐
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'false' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"Feel Alive","artist":"王以太","url":"http://music.163.com/song/media/outer/url?id=1396141678.mp3","cover":"http://p2.music.126.net/PGgq1Jf2HY7R8u5Aw2d7iA==/109951164418089173.jpg?param=300x300"},{"name":"还没想好","artist":"王以太/谢帝","url":"http://music.163.com/song/media/outer/url?id=1396141662.mp3","cover":"http://p1.music.126.net/PGgq1Jf2HY7R8u5Aw2d7iA==/109951164418089173.jpg?param=300x300"},{"name":"爱不会走","artist":"王大痣","url":"http://music.163.com/song/media/outer/url?id=1378997347.mp3","cover":"http://p1.music.126.net/gDd6Kw6r80zU2NVLDdKN3g==/109951164225478023.jpg?param=300x300"}]')
+    });
+});
+</script>
+                    
 
                     
 
