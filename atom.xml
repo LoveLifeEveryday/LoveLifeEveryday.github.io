@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-01-14T04:11:58.666Z</updated>
+  <updated>2020-02-03T09:48:43.628Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>带你封装自己的MVP+Retrofit+RxJava2框架</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia/</id>
+    <published>2020-02-03T09:47:01.000Z</published>
+    <updated>2020-02-03T09:48:43.628Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;带你封装自己的MVP-Retrofit-RxJava2框架&quot;&gt;&lt;a href=&quot;#带你封装自己的MVP-Retrofit-RxJava2框架&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="框架使用" scheme="https://lovelifeeveryday.github.io/tags/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>轻轻松松过六级</title>
@@ -48,7 +75,7 @@
     <link href="https://lovelifeeveryday.github.io/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/"/>
     <id>https://lovelifeeveryday.github.io/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/</id>
     <published>2020-01-11T03:07:01.000Z</published>
-    <updated>2020-01-13T09:10:26.509Z</updated>
+    <updated>2020-01-17T08:53:05.767Z</updated>
     
     <summary type="html">
     
@@ -245,35 +272,6 @@
   </entry>
   
   <entry>
-    <title>8.3 RxJava操作符入门</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/</id>
-    <published>2019-11-21T03:18:01.000Z</published>
-    <updated>2019-11-21T03:20:16.958Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-3-RxJava操作符入门&quot;&gt;&lt;a href=&quot;#8-3-RxJava操作符入门&quot; class=&quot;headerlink&quot; title=&quot;8.3 RxJava操作符入门&quot;&gt;&lt;/a&gt;8.3 RxJava操作符入门&lt;/h1&gt;&lt;h2 id=&quot;1-创建操作符&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>6.5  行为型设计模式</title>
     <link href="https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/"/>
     <id>https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/</id>
@@ -299,6 +297,35 @@
       <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
       <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>8.3 RxJava操作符入门</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/</id>
+    <published>2019-11-21T03:18:01.000Z</published>
+    <updated>2019-11-21T03:20:16.958Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;8-3-RxJava操作符入门&quot;&gt;&lt;a href=&quot;#8-3-RxJava操作符入门&quot; class=&quot;headerlink&quot; title=&quot;8.3 RxJava操作符入门&quot;&gt;&lt;/a&gt;8.3 RxJava操作符入门&lt;/h1&gt;&lt;h2 id=&quot;1-创建操作符&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
+    
+      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -560,35 +587,6 @@
       <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
       <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>4.5 AsyncTask的原理</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/4.5-asynctask-de-yuan-li/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/4.5-asynctask-de-yuan-li/</id>
-    <published>2019-11-21T03:11:01.000Z</published>
-    <updated>2019-11-21T03:11:35.868Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;4-5-AsyncTask的原理&quot;&gt;&lt;a href=&quot;#4-5-AsyncTask的原理&quot; class=&quot;headerlink&quot; title=&quot;4.5 AsyncTask的原理&quot;&gt;&lt;/a&gt;4.5 AsyncTask的原理&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="多线程编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
