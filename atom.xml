@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-02-07T13:54:13.378Z</updated>
+  <updated>2020-02-08T11:18:24.047Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>带你封装自己的MVP+Retrofit+RxJava2框架</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia/</id>
+    <title>带你封装自己的MVP+Retrofit+RxJava2框架（二）</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/08/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-er/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/08/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-er/</id>
+    <published>2020-02-08T11:17:01.000Z</published>
+    <updated>2020-02-08T11:18:24.047Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;带你封装自己的MVP-Retrofit-RxJava2框架（二）&quot;&gt;&lt;a href=&quot;#带你封装自己的MVP-Retrofit-RxJava2框架（二）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="框架系列" scheme="https://lovelifeeveryday.github.io/tags/%E6%A1%86%E6%9E%B6%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>带你封装自己的MVP+Retrofit+RxJava2框架（一）</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/</id>
     <published>2020-02-03T09:47:01.000Z</published>
-    <updated>2020-02-07T13:54:13.378Z</updated>
+    <updated>2020-02-08T11:17:05.699Z</updated>
     
     <summary type="html">
     
@@ -272,35 +299,6 @@
   </entry>
   
   <entry>
-    <title>6.5  行为型设计模式</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/</id>
-    <published>2019-11-21T03:18:01.000Z</published>
-    <updated>2019-11-21T03:18:38.891Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;6-5-行为型设计模式&quot;&gt;&lt;a href=&quot;#6-5-行为型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.5  行为型设计模式&quot;&gt;&lt;/a&gt;6.5  行为型设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-策略模式&quot;&gt;&lt;a href=&quot;#1-策略模式&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>8.3 RxJava操作符入门</title>
     <link href="https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/"/>
     <id>https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/</id>
@@ -359,6 +357,35 @@
   </entry>
   
   <entry>
+    <title>6.5  行为型设计模式</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/</id>
+    <published>2019-11-21T03:18:01.000Z</published>
+    <updated>2019-11-21T03:18:38.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;6-5-行为型设计模式&quot;&gt;&lt;a href=&quot;#6-5-行为型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.5  行为型设计模式&quot;&gt;&lt;/a&gt;6.5  行为型设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-策略模式&quot;&gt;&lt;a href=&quot;#1-策略模式&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
+    
+      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>6.3 创建型设计模式</title>
     <link href="https://lovelifeeveryday.github.io/2019/11/21/6.3-chuang-jian-xing-she-ji-mo-shi/"/>
     <id>https://lovelifeeveryday.github.io/2019/11/21/6.3-chuang-jian-xing-she-ji-mo-shi/</id>
@@ -388,11 +415,11 @@
   </entry>
   
   <entry>
-    <title>6.1 设计模式六大原则</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/</id>
+    <title>6.4 结构型设计模式</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/</id>
     <published>2019-11-21T03:16:01.000Z</published>
-    <updated>2019-11-21T03:16:42.259Z</updated>
+    <updated>2019-11-21T03:18:07.624Z</updated>
     
     <summary type="html">
     
@@ -400,7 +427,7 @@
       
         
         
-          &lt;h1 id=&quot;6-1-设计模式六大原则&quot;&gt;&lt;a href=&quot;#6-1-设计模式六大原则&quot; class=&quot;headerlink&quot; title=&quot;6.1 设计模式六大原则&quot;&gt;&lt;/a&gt;6.1 设计模式六大原则&lt;/h1&gt;&lt;h2 id=&quot;1-单一职责原则&quot;&gt;&lt;a
+          &lt;h1 id=&quot;6-4-结构型设计模式&quot;&gt;&lt;a href=&quot;#6-4-结构型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.4 结构型设计模式&quot;&gt;&lt;/a&gt;6.4
         
       
     
@@ -417,11 +444,11 @@
   </entry>
   
   <entry>
-    <title>6.4 结构型设计模式</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/</id>
+    <title>6.1 设计模式六大原则</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/</id>
     <published>2019-11-21T03:16:01.000Z</published>
-    <updated>2019-11-21T03:18:07.624Z</updated>
+    <updated>2019-11-21T03:16:42.259Z</updated>
     
     <summary type="html">
     
@@ -429,7 +456,7 @@
       
         
         
-          &lt;h1 id=&quot;6-4-结构型设计模式&quot;&gt;&lt;a href=&quot;#6-4-结构型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.4 结构型设计模式&quot;&gt;&lt;/a&gt;6.4
+          &lt;h1 id=&quot;6-1-设计模式六大原则&quot;&gt;&lt;a href=&quot;#6-1-设计模式六大原则&quot; class=&quot;headerlink&quot; title=&quot;6.1 设计模式六大原则&quot;&gt;&lt;/a&gt;6.1 设计模式六大原则&lt;/h1&gt;&lt;h2 id=&quot;1-单一职责原则&quot;&gt;&lt;a
         
       
     
@@ -546,35 +573,6 @@
         
         
           &lt;h1 id=&quot;5-2-TCP的三次握手与四次挥手&quot;&gt;&lt;a href=&quot;#5-2-TCP的三次握手与四次挥手&quot; class=&quot;headerlink&quot; title=&quot;5.2 TCP的三次握手与四次挥手&quot;&gt;&lt;/a&gt;5.2 TCP的三次握手与四次挥手&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5.1 网络分层</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.1-wang-luo-fen-ceng/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/5.1-wang-luo-fen-ceng/</id>
-    <published>2019-11-21T03:11:01.000Z</published>
-    <updated>2019-11-21T03:12:22.559Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;5-1-网络分层&quot;&gt;&lt;a href=&quot;#5-1-网络分层&quot; class=&quot;headerlink&quot; title=&quot;5.1 网络分层&quot;&gt;&lt;/a&gt;5.1 网络分层&lt;/h1&gt;&lt;h2 id=&quot;1-什么是网络分层&quot;&gt;&lt;a href=&quot;#1-什么是网络分层&quot;
         
       
     
