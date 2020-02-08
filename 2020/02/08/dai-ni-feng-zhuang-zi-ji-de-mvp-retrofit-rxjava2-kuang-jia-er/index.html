@@ -491,10 +491,10 @@
 <li>Cookie自动持久化与Retrofit的协同使用</li>
 <li>接口管理Retrofit请求接口的优美方式</li>
 </ul>
-<h2 id="一-为什么要封装这套框架"><a href="#一-为什么要封装这套框架" class="headerlink" title="一.为什么要封装这套框架"></a>一.为什么要封装这套框架</h2><p>​        如<a href>上一篇文章</a>所说，在MVP模式日渐流行的时候，封装一套MVP框架，不仅对日常的开发大大便利，还能提前积累一下未来在实际工作中的技巧，并且，良好的封装和规范使用还能减少开发中的各种令人头疼的BUG。</p>
+<h2 id="一-为什么要封装这套框架"><a href="#一-为什么要封装这套框架" class="headerlink" title="一.为什么要封装这套框架"></a>一.为什么要封装这套框架</h2><p>​        如<a href="http://xcynice.xyz/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/" target="_blank" rel="noopener">上一篇文章</a>所说，在MVP模式日渐流行的时候，封装一套MVP框架，不仅对日常的开发大大便利，还能提前积累一下未来在实际工作中的技巧，并且，良好的封装和规范使用还能减少开发中的各种令人头疼的BUG。</p>
 <p>​        有人可能会问：“你上一篇不是也写了MVP框架吗？你这篇难道还是一样的吗？难道你是换汤不换药吗？”</p>
 <p>​        其实，一开始笔者也以为我上一篇文章封装的MVP框架已经够不错了，但是，在笔者某天看了<a href="https://github.com/yechaoa" target="_blank" rel="noopener">yechaoa</a>大神<strong>玩安卓java</strong>的源码后，被其封装的MVP框架的所折服，因此第一时间写这篇文章，想向大家分享下，笔者从中吸取的经验，希望能够帮助到各位！</p>
-<p>​        本文相对<a href="https://github./yechaoa" target="_blank" rel="noopener">上一篇文章</a>的改进地方有下面几点：</p>
+<p>​        本文相对<a href="http://xcynice.xyz/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/" target="_blank" rel="noopener">上一篇文章</a>的改进地方有下面几点：</p>
 <ul>
 <li><strong>精简了Activity基类</strong>，将原来的两个BaseActivity和BaseMvpActivity精简为一个BaseActivity</li>
 <li><strong>修复了</strong>当继承了Activity基类，不添加presenter会导致<strong>空指针</strong>的bug</li>
