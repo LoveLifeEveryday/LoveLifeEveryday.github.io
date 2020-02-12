@@ -4,15 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="写博客没头绪？我手把手教你！, Sunny">
-    <meta name="description" content="写博客没头绪？我手把手教你！前言
+    <meta name="keywords" content="学习笔记 | 奇妙的Activity之旅, Sunny">
+    <meta name="description" content="学习笔记 | 奇妙的Activity之旅前言
 本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
 我的GIthub博客
 
-本篇文章并不涉及到博客的搭建，主要是想分享下我对写博客整体思路的一些见解，学习清单：
-写博客的好处
-博客的思路框架
-博客">
+本篇文章需要已经具备的知识：
+Activity的基本概念
+AndroidManifest.xml的基本概念
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>写博客没头绪？我手把手教你！ | Sunny</title>
+    <title>学习笔记 | 奇妙的Activity之旅 | Sunny</title>
     <link rel="icon" type="image/png" href="/blueRabbit.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,13 +314,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        写博客没头绪？我手把手教你！
+                        学习笔记 | 奇妙的Activity之旅
                     </div>
                 </div>
             </div>
@@ -432,8 +432,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/博客相关/">
-                                <span class="chip bg-color">博客相关</span>
+                            <a href="/tags/开发艺术探索/">
+                                <span class="chip bg-color">开发艺术探索</span>
                             </a>
                         
                     </div>
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/杂七杂八/" class="post-category">
-                                杂七杂八
+                            <a href="/categories/安卓/" class="post-category">
+                                安卓
                             </a>
                         
                     </div>
@@ -456,7 +456,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-11
+                    2020-02-12
                 </div>
 
                 
@@ -472,78 +472,212 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="写博客没头绪？我手把手教你！"><a href="#写博客没头绪？我手把手教你！" class="headerlink" title="写博客没头绪？我手把手教你！"></a>写博客没头绪？我手把手教你！</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+                <h1 id="学习笔记-奇妙的Activity之旅"><a href="#学习笔记-奇妙的Activity之旅" class="headerlink" title="学习笔记 | 奇妙的Activity之旅"></a>学习笔记 | 奇妙的Activity之旅</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：</p>
 <p><a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
 </blockquote>
-<h3 id="本篇文章并不涉及到博客的搭建，主要是想分享下我对写博客整体思路的一些见解，学习清单："><a href="#本篇文章并不涉及到博客的搭建，主要是想分享下我对写博客整体思路的一些见解，学习清单：" class="headerlink" title="本篇文章并不涉及到博客的搭建，主要是想分享下我对写博客整体思路的一些见解，学习清单："></a>本篇文章并不涉及到博客的搭建，主要是想分享下我对写博客整体思路的一些见解，学习清单：</h3><ul>
-<li>写博客的好处</li>
-<li>博客的思路框架</li>
-<li>博客的格式推荐</li>
-<li>写博客的工具</li>
-<li>写博客的语言</li>
-<li>写博客的平台推荐</li>
+<h2 id="本篇文章需要已经具备的知识："><a href="#本篇文章需要已经具备的知识：" class="headerlink" title="本篇文章需要已经具备的知识："></a>本篇文章需要已经具备的知识：</h2><ul>
+<li>Activity的基本概念</li>
+<li><code>AndroidManifest.xml</code>的基本概念</li>
 </ul>
-<h2 id="一-为什么要写博客？"><a href="#一-为什么要写博客？" class="headerlink" title="一.为什么要写博客？"></a>一.为什么要写博客？</h2><ul>
-<li>写技术博客，可以让你对已经学习的<strong>知识</strong>进行<strong>巩固</strong>，并且很有可能对自己提出一些新的问题，让你摆脱“我好像搞懂了”的怪圈，从而可以更好地沉淀自己的知识与经验。</li>
-<li>写技术博客，对于你后面的<strong>复习</strong>也是很有帮助的。之后你有些知识点忘记了的时候，你回去翻翻博客，重新掌握这一部分的知识点就很快了。</li>
-<li>写技术博客，可能有利于你的<strong>求职</strong>。试想，当你面试的时候，简历上写了你的博客地址，面试官点进去，wow，你的粉丝这么多，你的文章阅读量这么大，你对知识的整理能力这么强，一瞬间就让你在茫茫人海中脱颖而出。</li>
-<li>写技术博客，可以提高你的<strong>学习效率</strong>。不信的话，我们看一下下面一张图。</li>
+<h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><ul>
+<li>Activity的生命周期</li>
+<li>Fragment的生命周期</li>
+<li>Activity的启动模式</li>
+<li>IntentFilter的匹配规则</li>
 </ul>
-<p><img src="https://s2.ax1x.com/2020/01/10/l4RTf0.png" alt="学习内容平均留存率"></p>
-<p>​        我们可以看到，主动学习中的教授给他人，有90%的的留存率，而仅仅是阅读的话，留存率只有10%，学习效率提高        了8倍，但是你可能只是多花了一倍的时间。而写博客，把自己当作一个分享者，而读者是一个小白，恰恰就是主动        教授给他人，这样的话，学习效率难道不高吗？</p>
-<h2 id="二-写博客的思路框架"><a href="#二-写博客的思路框架" class="headerlink" title="二.写博客的思路框架"></a>二.写博客的思路框架</h2><p>总体的思路就是把你自己当作一个分享者，而读者是一个小白，现在思考一个问题：我要教会隔壁村的giao哥这个知识点？我要怎么做呢？</p>
-<p>按照我的思路，我会这样做：</p>
-<ol>
-<li>这项技术是什么？</li>
-<li>为什么要学习这项技术？和其他技术相比，有什么优点？</li>
-<li>技术的核心用法？（简单示例）</li>
-<li>使用技术可能会出现的一些问题（或者是你在使用中遇到的问题）</li>
-</ol>
-<p>下面，比如说，我来介绍一下快排</p>
-<ol>
-<li><p>快速排序是什么？</p>
-<p>快速排序是一种快速的排序算法，基本思想是将一串数字序列中，一个数放在合适的位置，在这个位置下，左边的数字都比它小，右边的都比他大，这个数的位置称为枢纽</p>
-</li>
-<li><p>为什么要学习快速排序呢？</p>
-<p>快速排序是目前最高效率的排序算法之一。面试必问的算法之一。他是冒泡排序的改进版本</p>
-</li>
-<li><p>技术的核心用法</p>
-<pre><code>...代码</code></pre></li>
-<li><p>使用技术遇到的问题（可选）</p>
-</li>
-</ol>
-<h2 id="三-写博客用的语言"><a href="#三-写博客用的语言" class="headerlink" title="三.写博客用的语言"></a>三.写博客用的语言</h2><p>这里炒鸡推荐使用markdown这个轻量级标记语言，这个语言可以不用像word一样，对各种字号字体伤脑筋，还可以很方便地插入各种链接或者是图片，简直是程序员必备技能！！！不会的感觉学起来</p>
-<p><a href="https://www.runoob.com/markdown/md-tutorial.html" target="_blank" rel="noopener">markdown入门教程</a></p>
-<h2 id="四-写博客用的工具"><a href="#四-写博客用的工具" class="headerlink" title="四.写博客用的工具"></a>四.写博客用的工具</h2><p>这里推荐一个人见人爱的markdown语言编译器。</p>
-<p>为什么说是人见人爱呢？</p>
-<p>因为它支持各种快捷键，方便你调字号，插入各种公式，完全免费，支持实时预览…反正好处数不过来，简直和markdown是绝配</p>
-<p><img src="https://i.loli.net/2020/01/10/cqgTGMSp7Xd4V5x.png" alt="image.png"></p>
-<p>下面是官网：</p>
-<p><a href="https://www.typora.io/" target="_blank" rel="noopener">typora官网</a></p>
-<h2 id="五-博客的格式推荐"><a href="#五-博客的格式推荐" class="headerlink" title="五.博客的格式推荐"></a>五.博客的格式推荐</h2><p>这里个人感觉是比较重要的，一个博客，如果写得非常晦涩难懂的话，就算技术非常高深，但是受众太小，也不能算上真正的好博客；所以这里介绍一下，写博客的格式及其小技巧，同学们，可要竖起耳朵听了。</p>
-<h3 id="5-1-前言的书写"><a href="#5-1-前言的书写" class="headerlink" title="5.1 前言的书写"></a>5.1 前言的书写</h3><p>如果你有个人博客或者是想要各位大佬的一个小星星的话，可以在前言里面贴上自己的博客或者github链接，这样的话，有可能可以增加关注度</p>
-<h3 id="5-2-学习清单的展示"><a href="#5-2-学习清单的展示" class="headerlink" title="5.2 学习清单的展示"></a>5.2 学习清单的展示</h3><p>这个不仅可以帮助读者快速获取到他们想要的知识，更可以在你脑海中展示一个清晰的知识脉络，双重好处，双倍快乐</p>
-<h3 id="5-3-标题的书写"><a href="#5-3-标题的书写" class="headerlink" title="5.3 标题的书写"></a>5.3 标题的书写</h3><p>名人说：“一个好标题，胜过一篇文。”，由此可见，取个好标题的重要性多大。但是呢，不能矫枉过正，形成UC震惊体就不好了。</p>
-<p>现在这里推荐一下，本人看到的比较好的标题命名：</p>
+<h2 id="一-为什么要深入了解Activity呢？"><a href="#一-为什么要深入了解Activity呢？" class="headerlink" title="一.为什么要深入了解Activity呢？"></a>一.为什么要深入了解<code>Activity</code>呢？</h2><p><code>Activity</code>翻译为活动，在<code>Android</code>中代表了界面和以界面为中心相应的业务逻辑，包括显示、与用户交互等，它也是四大组件之一，重要性不言而喻。并且，许多公司在考察<code>Android</code>的知识点的时候，经常会考察到<code>Activity</code>的知识。</p>
+<p>因此，深入了解Activity，不仅对你日常的开发有帮助，还对你之后找工作有所增益。</p>
+<h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-生命周期全解析"><a href="#2-1-生命周期全解析" class="headerlink" title="2.1  生命周期全解析"></a>2.1  生命周期全解析</h3><h4 id="2-1-1-典型情况下的生命周期"><a href="#2-1-1-典型情况下的生命周期" class="headerlink" title="2.1.1 典型情况下的生命周期"></a>2.1.1 典型情况下的生命周期</h4><h5 id="2-1-1-1-Activity生命周期图解"><a href="#2-1-1-1-Activity生命周期图解" class="headerlink" title="2.1.1.1 Activity生命周期图解"></a>2.1.1.1 Activity生命周期图解</h5><p><a href="https://imgchr.com/i/Mon8C4" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/11/21/Mon8C4.md.png" alt="活动生命周期图"></a></p>
+<h5 id="2-1-1-2-Activity切换过程"><a href="#2-1-1-2-Activity切换过程" class="headerlink" title="2.1.1.2 Activity切换过程"></a>2.1.1.2 Activity切换过程</h5><p>（1）启动Activity</p>
 <ul>
-<li>学习笔记|Retrofit篇</li>
-<li>学习笔记|markdown篇</li>
-<li>要点提炼|大话数据结构</li>
-<li>手把手带你体验IO流</li>
-<li>从零开始学XXX</li>
-<li>一文带你认识封装</li>
+<li><code>onCreate()</code>–&gt;<code>onStart()</code>–&gt;<code>onResume()</code></li>
 </ul>
-<h3 id="5-4-文章结尾的书写"><a href="#5-4-文章结尾的书写" class="headerlink" title="5.4 文章结尾的书写"></a>5.4 文章结尾的书写</h3><p>可以在文章结尾的时候，贴上你参考的文章的链接，而且加上一句，希望这篇文章对你有帮助，不仅可以拉近与读者之间的距离，更可以体现你的严谨。</p>
-<h2 id="六-写博客的平台推荐"><a href="#六-写博客的平台推荐" class="headerlink" title="六.写博客的平台推荐"></a>六.写博客的平台推荐</h2><p>之前Java3y大佬专门写了一篇不错的文章，介绍各个平台，有兴趣的可以去看下</p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&amp;mid=2247484656&amp;idx=1&amp;sn=9e1dd44bc50ddb370bfa607257ed43a2&amp;chksm=ebd745f1dca0cce7ae67eedd77632ccbaf36d1c0970d66aa28f4db18f1878deb83323f9183a1###rd" target="_blank" rel="noopener">程序员可以选择哪些平台写技术博客？</a></p>
+<p>（2）打开新的Activity / 切换到桌面</p>
+<ul>
+<li>正常情况：<code>onPause()</code>–&gt;<code>onStop()</code></li>
+<li>特殊情况：当新的<code>Activity</code>使用了透明主题，当前的<code>Activity</code>不会回调onStop，会停留在Paused</li>
+</ul>
+<blockquote>
+<p>想要了解Android 透明主题的可以点击链接：<a href="https://www.cnblogs.com/jdhdevelop/p/11130462.html" target="_blank" rel="noopener">Android透明主题</a></p>
+</blockquote>
+<p>（3）返回旧的Activity</p>
+<ul>
+<li>当旧的Activity不可见：新Activity <code>onPaused()</code>–&gt;旧Activity<code>onRestart()</code>–&gt;旧Activity<code>onStart()</code>–&gt;旧Activity<code>onResume()</code>–&gt;新Activity<code>onStop()</code>–&gt;新Activity<code>onDestory()</code></li>
+<li>当旧的Activity可见：新Activity <code>onPaused()</code>–&gt;旧Activity<code>onResume()</code>–&gt;新Activity<code>onStop()</code>–&gt;新Activity<code>onDestory()</code></li>
+</ul>
+<blockquote>
+<p>问题思考：当前Activity为A，打开新的ActivityB,那么B的<code>onResume（）</code>和A的<code>onPause（）</code>的执行顺序是怎样的呢?</p>
+</blockquote>
+<p>答案：A<code>onPause（）</code>–&gt;B<code>onResume（）</code>，要得到这个答案，需要对Activity的工作原理有所了解，笔者在本系列文章的后面几篇会介绍。</p>
+<blockquote>
+<p>小Tips:要关闭Activity的时候，尽量在<code>onStop()</code>中进行耗时操作，而使得新Activity尽快显示出来。</p>
+</blockquote>
+<h4 id="2-1-2-异常情况下的生命周期"><a href="#2-1-2-异常情况下的生命周期" class="headerlink" title="2.1.2 异常情况下的生命周期"></a>2.1.2 异常情况下的生命周期</h4><h5 id="2-1-2-1-异常情况下数据的保存和恢复"><a href="#2-1-2-1-异常情况下数据的保存和恢复" class="headerlink" title="2.1.2.1 异常情况下数据的保存和恢复"></a>2.1.2.1 异常情况下数据的保存和恢复</h5><p>这个涉及到<code>onSaveInstanceState</code>和<code>onRestoreInstanceState</code>方法，具体可见下图</p>
+<p><img src="https://s2.ax1x.com/2020/02/12/1HmXJU.png" alt="数据恢复顺序"></p>
+<blockquote>
+<p>需要特别留意的是：</p>
+<ul>
+<li><code>onSaveInstanceState</code>的执行顺序，是在<code>onStop</code>之前，与<code>onPause</code>没有既定顺序</li>
+<li><code>onRestoreInstanceState</code>的执行顺序,是在<code>onStart</code>之后</li>
+</ul>
+</blockquote>
+<p>Q1:<strong>其中保存和恢复View的工作流程是怎样的呢？</strong></p>
+<p><img src="https://s2.ax1x.com/2020/02/12/1HMCes.png" alt="保存View的工作流程"></p>
+<blockquote>
+<p>可以看出，保存和恢复View的工作流程是典型的<strong>委托思想</strong>，上层委托下层，父容器委托子元素处理事情。</p>
+<p>后面会讲到的<code>View</code>的绘制流程，事件分发机制等，都是才有类似的思想。</p>
+</blockquote>
+<p>Q2:<strong>其中数据恢复的方式有哪些？</strong></p>
+<ol>
+<li><p>在onCreate中恢复</p>
+<blockquote>
+<p>需要注意的是，必须要判断Bundle是否为空</p>
+</blockquote>
+</li>
+</ol>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+       <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token comment" spellcheck="true">//方法一：在onCreate中调用缓存恢复数据，必须要判断savedInstanceState是否为空</span>
+           <span class="token keyword">if</span> <span class="token punctuation">(</span>savedInstanceState <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               String test <span class="token operator">=</span> savedInstanceState<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"extra_test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+               Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"[onCreate]restore extra_test:"</span> <span class="token operator">+</span> test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+</code></pre>
+<ol start="2">
+<li><p>在onRestoreInstanceState中恢复</p>
+<blockquote>
+<p>Bundle一定有值，不需要判断是否为空，是官方推荐的恢复数据的方法</p>
+</blockquote>
+</li>
+</ol>
+<pre class=" language-java"><code class="language-java">   <span class="token comment" spellcheck="true">//利用onRestoreInstanceState </span>
+   <span class="token annotation punctuation">@Override</span>
+       <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onRestoreInstanceState</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onRestoreInstanceState</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+           String test <span class="token operator">=</span> savedInstanceState<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"extra_test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+           Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"[onRestoreInstanceState]restore extra_test:"</span> <span class="token operator">+</span> test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span></code></pre>
+<h5 id="2-1-2-2-系统配置变化导致的异常"><a href="#2-1-2-2-系统配置变化导致的异常" class="headerlink" title="2.1.2.2 系统配置变化导致的异常"></a>2.1.2.2 系统配置变化导致的异常</h5><p>Q1:<strong>发生改变的系统配置通常有哪些？</strong></p>
+<ul>
+<li>locale:一般指切换了系统语言</li>
+<li>orientation：旋转屏幕</li>
+<li>keyboardHidden：键盘的可访问性发生变化，比如：调出键盘</li>
+</ul>
+<p>Q2：<strong>想系统配置改变后，activity不被重新创建，应该怎么办？</strong></p>
+<blockquote>
+<p>在<code>ActivityManifest.xml</code>中，对应的<code>Activity</code>的<code>configChanges</code>属性中指定该选项</p>
+</blockquote>
+<pre class=" language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.ryg.chapter_1.MainActivity<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>configChanges</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>orientation|screenSize<span class="token punctuation">"</span></span>  
+            <span class="token attr-name"><span class="token namespace">android:</span>label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@string/app_name<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>launchMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>standard<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity</span><span class="token punctuation">></span></span></code></pre>
+<h5 id="2-1-2-3-资源内存不足导致的异常"><a href="#2-1-2-3-资源内存不足导致的异常" class="headerlink" title="2.1.2.3 资源内存不足导致的异常"></a>2.1.2.3 资源内存不足导致的异常</h5><blockquote>
+<p>这种情况应该很容易理解，类比于：当使用小内存手机的时候，会发现某些应用经常一切换后台，就会自动关闭了，原理也是资源内存不足，被系统自动回收了。</p>
+</blockquote>
+<p>Q1：<code>Activity</code>的优先级排序是什么？</p>
+<blockquote>
+<p>由上到下，优先级由高到低</p>
+</blockquote>
+<ul>
+<li>前台<code>Activity</code>–正在和用户交互</li>
+<li>可见非前台<code>Activity</code>–比如说，弹出新的对话框，对话框后面的<code>Activity</code>即属于可见非前台<code>Activity</code></li>
+<li>后台<code>Activity</code>–已经被停止的<code>Activity</code></li>
+</ul>
+<p>Q2：怎么提高后台工作的优先级呢？</p>
+<p>将后台工作放入<code>Service</code>中，保证进程有一定的优先级</p>
+<h4 id="2-1-3-Fragment的生命周期"><a href="#2-1-3-Fragment的生命周期" class="headerlink" title="2.1.3 Fragment的生命周期"></a>2.1.3 <code>Fragment</code>的生命周期</h4><blockquote>
+<p>因为本篇是<code>Activity</code>篇，笔者不便大费周章地叙述，为了满足求知欲强的读者，笔者特地推荐一篇：<a href="https://juejin.im/post/5c2df25be51d451d46035449#heading-7" target="_blank" rel="noopener">Fragment生命周期</a>，里面写得非常详细</p>
+</blockquote>
 <hr>
-<p>希望这篇文章对你有一点小小的帮助</p>
+<h3 id="2-2-Activity启动模式"><a href="#2-2-Activity启动模式" class="headerlink" title="2.2 Activity启动模式"></a>2.2 <code>Activity</code>启动模式</h3><h4 id="2-2-1-Activity的四种启动模式"><a href="#2-2-1-Activity的四种启动模式" class="headerlink" title="2.2.1 Activity的四种启动模式"></a>2.2.1 <code>Activity</code>的四种启动模式</h4><p>a:<code>standard</code>:标准模式</p>
+<ul>
+<li>含义：每次启动一个Activity就会创建一个新的实例，而不管实例存在与否。</li>
+<li>注意：使用<code>ApplicationContext</code>去启动<code>standard</code>模式<code>Activity</code>就会报错。因为<strong>standard模式的Activity会默认进入启动它所属的任务栈</strong>，但是由于非Activity的Context没有所谓的任务栈，所以就会报错。</li>
+</ul>
+<p>b:<code>singleTop</code>：栈顶复用模式</p>
+<ul>
+<li>含义：如果新Activity已经位于任务栈的栈顶，就不会重新创建，并回调<strong>onNewIntent(intent)</strong>方法。</li>
+</ul>
+<p>c:<code>singleTask</code>：栈内复用模式</p>
+<ul>
+<li>含义：只要Activity在一个栈中存在，都不会重新创建，并回调<code>onNewIntent(intent)</code>方法。如果不存在，系统会先寻找是否存在需要的栈，如果不存在该栈，就创建一个任务栈，并把该Activity放进去；如果存在，就会查看栈中是否有实例存在，若实例存在，则将实例调到栈顶，并回调<code>onNewIntent(intent)</code>方法，否则创建实例到已经存在的栈中。</li>
+</ul>
+<p>d:<code>singleInstance</code>:单实例模式</p>
+<ul>
+<li>含义： 具有此模式的Activity只能单独位于一个任务栈中，且此任务栈中只有<strong>唯一</strong>一个实例。</li>
+</ul>
+<blockquote>
+<p>标识Activity任务栈名称的属性：<code>android：taskAffinity</code>，默认为应用包名。</p>
+</blockquote>
+<h4 id="2-2-2-Activity的Flags"><a href="#2-2-2-Activity的Flags" class="headerlink" title="2.2.2 Activity的Flags"></a>2.2.2 <code>Activity</code>的Flags</h4><blockquote>
+<p>Flags有很多，这里介绍几个常用的Flags</p>
+</blockquote>
+<ul>
+<li><code>FLAG_ACTIVITY_NEW_TASK</code>:指定<code>singleTask</code>模式</li>
+<li><code>FLAG_ACTIVITY_SINGLE_TOP</code>:指定<code>singleTop</code>模式</li>
+<li><code>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS</code>：指定新的Activity不会出现在最近启动的Activity的列表中</li>
+</ul>
+<h3 id="2-3-IntentFilter的匹配规则"><a href="#2-3-IntentFilter的匹配规则" class="headerlink" title="2.3 IntentFilter的匹配规则"></a>2.3 IntentFilter的匹配规则</h3><blockquote>
+<p>原则：</p>
+<ul>
+<li>一个intent只有<strong>同时</strong>匹配某个Activity的intent-filter中的<code>action</code>、<code>category</code>、<code>data</code>才算<strong>完全匹配</strong>，才能启动该Activity。</li>
+<li>一个Activity可以有<strong>多个</strong>intent-filter，一个 intent只要成功匹配<strong>任意一组</strong> intent-filter，就可以启动该Activity。</li>
+</ul>
+</blockquote>
+<p>Q1:<strong><code>action</code>的匹配规则</strong></p>
+<ul>
+<li>只要Intent中的<strong>存在</strong>一个action且能够和任何<strong>一个 intent-filter中的action相同</strong>即可成功匹配</li>
+<li>区分<strong>大小写</strong> </li>
+<li>必须存在</li>
+</ul>
+<p>Q2:<strong><code>category</code>的匹配规则</strong></p>
+<ul>
+<li>有其他<code>category</code>，则要求intent中的<code>category</code>和intent-filter中的<strong>所有</strong><code>category</code> 相同。</li>
+<li>非必须，这是因为此时系统给该Activity <strong>默认</strong>加上了<code>&lt; category  android:name=&quot;android.intent.category.DEAFAULT&quot; /&gt;</code>属性值。</li>
+</ul>
+<p>Q3:<strong><code>data</code>匹配规则</strong></p>
+<ul>
+<li>类似于<code>action</code></li>
+<li>URI非必须指定，默认值为<code>content</code>和<code>file</code></li>
+</ul>
+<blockquote>
+<p>需要注意的是，为<code>Intent</code>指定完整的data的时候，要调用<code>setDataAndType(URI,mimeType)</code>方法</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java">intent<span class="token punctuation">.</span><span class="token function">setDataAndType</span><span class="token punctuation">(</span>Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"file://abc"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"video/png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>采用隐式方式启动Activity时，可以用<code>PackageManager</code>的<code>resolveActivity(Intent)</code>方法或者<code>Intent</code>的<code>resolveActivity(Intent)</code>方法，来判断是否有Activity匹配该隐式Intent,如果匹配不到，会返回NULL</p>
+</blockquote>
+<h2 id="三-课堂小测试"><a href="#三-课堂小测试" class="headerlink" title="三.课堂小测试"></a>三.课堂小测试</h2><blockquote>
+<p>恭喜你，已经看完了前面的文章，相信你对<code>Activity</code>已经有一定深度的了解，下面，进行一下课堂小测试，验证一下自己的学习成果吧！</p>
+</blockquote>
+<ul>
+<li><p>题目情景：有三个<code>Activity</code>，分别名为<code>A</code>,<code>B</code>,<code>C</code>，<code>A</code>的启动模式是<code>standard</code>，<code>B</code>和<code>C</code>的启动模式是<code>singleTask</code>,现在进行如下操作：A启动了B，B启动了C，C启动了A，A再启动B，现在连按2次<code>BACK</code>，你看到的是哪个<code>Activity</code>？</p>
+</li>
+<li><p>答案揭晓：回到桌面，具体过程可以参考下面的流程图</p>
+<p><img src="https://i.loli.net/2020/02/12/vizg1e4p5c8AFyZ.png" alt="流程图"></p>
+</li>
+</ul>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
 <ul>
-<li><a href="https://www.jianshu.com/p/4025e67d10f1" target="_blank" rel="noopener">如何写一篇技术博客，谈谈我的看法</a></li>
+<li><a href="https://www.cnblogs.com/jdhdevelop/p/11130462.html" target="_blank" rel="noopener">Android透明主题</a></li>
+<li><a href="https://juejin.im/post/5c2df25be51d451d46035449#heading-7" target="_blank" rel="noopener">Fragment生命周期</a></li>
+<li>《Android 进阶之光》</li>
+<li><a href="https://blog.csdn.net/fanxingps/article/details/62456180" target="_blank" rel="noopener">Activity到底是什么（新手学Android）</a></li>
+<li><a href="https://www.iteye.com/blog/djun100-2079943" target="_blank" rel="noopener">Android Activity生命周期大全详解</a></li>
 <li><a href="https://www.jianshu.com/p/602b1ec4ca7a" target="_blank" rel="noopener">要点提炼|开发艺术之Activity</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&amp;mid=2247484656&amp;idx=1&amp;sn=9e1dd44bc50ddb370bfa607257ed43a2&amp;chksm=ebd745f1dca0cce7ae67eedd77632ccbaf36d1c0970d66aa28f4db18f1878deb83323f9183a1###rd" target="_blank" rel="noopener">程序员可以选择哪些平台写技术博客？</a></li>
 </ul>
 
             </div>
@@ -705,8 +839,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/">
-                    《写博客没头绪？我手把手教你！》
+            <a  href="/2020/02/12/xue-xi-bi-ji-qi-miao-de-activity-zhi-lu/">
+                    《学习笔记 | 奇妙的Activity之旅》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -748,7 +882,7 @@
         repo: 'lovelifeeveryday.github.io',
         owner: 'lovelifeeveryday',
         admin: "lovelifeeveryday",
-        id: '2020-01-11T11-07-01',
+        id: '2020-02-12T18-06-01',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -769,46 +903,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/12/qing-qing-song-song-guo-liu-ji/">
+                <a href="/2020/02/12/xue-xi-bi-ji-qi-miao-de-activity-zhi-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="轻轻松松过六级">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="学习笔记 | 奇妙的Activity之旅">
                         
-                        <span class="card-title">轻轻松松过六级</span>
+                        <span class="card-title">学习笔记 | 奇妙的Activity之旅</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本篇文章主要想分享下，网上搜集和总结的一些通过六级的技巧和方法
+                            Activity翻译为活动，在Android中代表了界面和以界面为中心相应的业务逻辑，包括显示、与用户交互等，它也是四大组件之一，重要性不言而喻。并且，许多公司在考察Android的知识点的时候，经常会考察到Activity的知识。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/杂七杂八/" class="post-category">
-                                    杂七杂八
+                            <a href="/categories/安卓/" class="post-category">
+                                    安卓
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/英语相关/">
-                        <span class="chip bg-color">英语相关</span>
+                    <a href="/tags/开发艺术探索/">
+                        <span class="chip bg-color">开发艺术探索</span>
                     </a>
                     
                 </div>
@@ -822,31 +958,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/28/8.8-b-shu/">
+                <a href="/2020/02/08/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-er/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="8.8 B树">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="带你封装自己的MVP+Retrofit+RxJava2框架（二）">
                         
-                        <span class="card-title">8.8 B树</span>
+                        <span class="card-title">带你封装自己的MVP+Retrofit+RxJava2框架（二）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是B树？有什么用呢？B树是由什么演变过来的呢？
+                            本篇文章是针对上一篇文章：带你封装自己的MVP+Retrofit+RxJava2框架（一）的进一步封装改进，建议在看完上一篇文章后，再食用本文效果更佳！
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大话数据结构/" class="post-category">
-                                    大话数据结构
+                            <a href="/categories/安卓/" class="post-category">
+                                    安卓
                                 </a>
                             
                             
@@ -856,12 +992,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/大话数据结构/">
-                        <span class="chip bg-color">大话数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/树/">
-                        <span class="chip bg-color">树</span>
+                    <a href="/tags/框架系列/">
+                        <span class="chip bg-color">框架系列</span>
                     </a>
                     
                 </div>
