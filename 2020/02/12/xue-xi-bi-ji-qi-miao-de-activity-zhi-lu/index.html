@@ -490,9 +490,7 @@ AndroidManifest.xml的基本概念
 <p>因此，深入了解Activity，不仅对你日常的开发有帮助，还对你之后找工作有所增益。</p>
 <h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-生命周期全解析"><a href="#2-1-生命周期全解析" class="headerlink" title="2.1  生命周期全解析"></a>2.1  生命周期全解析</h3><h4 id="2-1-1-典型情况下的生命周期"><a href="#2-1-1-典型情况下的生命周期" class="headerlink" title="2.1.1 典型情况下的生命周期"></a>2.1.1 典型情况下的生命周期</h4><h5 id="2-1-1-1-Activity生命周期图解"><a href="#2-1-1-1-Activity生命周期图解" class="headerlink" title="2.1.1.1 Activity生命周期图解"></a>2.1.1.1 Activity生命周期图解</h5><p><a href="https://imgchr.com/i/Mon8C4" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/11/21/Mon8C4.md.png" alt="活动生命周期图"></a></p>
 <h5 id="2-1-1-2-Activity切换过程"><a href="#2-1-1-2-Activity切换过程" class="headerlink" title="2.1.1.2 Activity切换过程"></a>2.1.1.2 Activity切换过程</h5><p>（1）启动Activity</p>
-<ul>
-<li><code>onCreate()</code>–&gt;<code>onStart()</code>–&gt;<code>onResume()</code></li>
-</ul>
+<p><img src="https://s2.ax1x.com/2020/02/12/1HL81g.png" alt="启动Activity"></p>
 <p>（2）打开新的Activity / 切换到桌面</p>
 <ul>
 <li>正常情况：<code>onPause()</code>–&gt;<code>onStop()</code></li>
@@ -503,9 +501,13 @@ AndroidManifest.xml的基本概念
 </blockquote>
 <p>（3）返回旧的Activity</p>
 <ul>
-<li>当旧的Activity不可见：新Activity <code>onPaused()</code>–&gt;旧Activity<code>onRestart()</code>–&gt;旧Activity<code>onStart()</code>–&gt;旧Activity<code>onResume()</code>–&gt;新Activity<code>onStop()</code>–&gt;新Activity<code>onDestory()</code></li>
-<li>当旧的Activity可见：新Activity <code>onPaused()</code>–&gt;旧Activity<code>onResume()</code>–&gt;新Activity<code>onStop()</code>–&gt;新Activity<code>onDestory()</code></li>
+<li><p>当旧的Activity不可见：</p>
+<p><img src="https://s2.ax1x.com/2020/02/12/1HLWAx.png" alt="当旧的Activity不可见"></p>
+</li>
+<li><p>当旧的Activity可见：</p>
+</li>
 </ul>
+<p><img src="https://s2.ax1x.com/2020/02/12/1HOQbR.png" alt="当旧的Activity可见"></p>
 <blockquote>
 <p>问题思考：当前Activity为A，打开新的ActivityB,那么B的<code>onResume（）</code>和A的<code>onPause（）</code>的执行顺序是怎样的呢?</p>
 </blockquote>
