@@ -506,7 +506,7 @@ View">
 <p><code>ViewGroup</code>是<code>View</code>的继承，它的内部包含了一组View。</p>
 <p>很多时候，面对产品经理的各种奇葩的需求，仅仅使用系统提供的控件是不能满足需求的，因此，我们就需要自定义特定的控件，而自定义控件就需要对<code>View</code>体系有一定程度的理解；有时候，涉及到滑动事件的自定义View的时候，难免会出现各种各样的滑动冲突，而要解决滑动冲突的话，还需要对<code>View</code>的事件分发机制了然于心。</p>
 <p>综上，掌握好<code>View</code>这方面的知识，不仅可以让你在日常开发中对自定义View的各种场景胸有成竹，还可以让你在面试官的重重追问（ai hu）下游刃有余（xin tai bao zha）。</p>
-<p><img src="https://s2.ax1x.com/2020/02/17/3ilqo9.png" alt="3ilqo9.png"></p>
+<p><img src="https://s2.ax1x.com/2020/02/17/3ilqo9.png" alt="View体系"></p>
 <h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-View的位置参数"><a href="#2-1-View的位置参数" class="headerlink" title="2.1 View的位置参数"></a>2.1 <code>View</code>的位置参数</h3><p>Q1：<strong>Android坐标系</strong>是怎样的呢？</p>
 <blockquote>
 <p>以屏幕的左上角为坐标原点，<strong>向右</strong>为x轴增大方向，<strong>向下</strong>为y轴增大方向</p>
@@ -833,7 +833,6 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
        return true;
    }
   }</code></pre>
-<p>  作者：厘米姑娘<br>  链接：<a href="https://www.jianshu.com/p/06ff0dfeed39" target="_blank" rel="noopener">https://www.jianshu.com/p/06ff0dfeed39</a><br>  来源：简书<br>  著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <blockquote>
 <p>内部拦截法要求父容器不能拦截<code>ACTION_DOWN</code>的原因：</p>
 <p>由于该事件并不受<code>FLAG_DISALLOW_INTERCEPT</code>（由<code>requestDisallowInterceptTouchEvent</code>方法设置）标记位控制，一旦<code>ACTION_DOWN</code>事件到来，该标记位会被重置。所以一旦父容器拦截了该事件，那么所有的事件都<strong>不会传递给子View</strong>，内部拦截法也就失效了。</p>
