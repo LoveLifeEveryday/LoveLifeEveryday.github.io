@@ -1,0 +1,1649 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="进阶之路 | 奇妙的View之旅, Sunny">
+    <meta name="description" content="进阶之路 | 奇妙的View之旅前言
+本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
+我的GIthub博客
+
+学习清单：
+View是什么
+View的位置参数
+View的触控
+View的滑动
+
+
+涉及以下各个知识点：
+
+View">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>进阶之路 | 奇妙的View之旅 | Sunny</title>
+    <link rel="icon" type="image/png" href="/blueRabbit.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/rabbit.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sunny</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/rabbit.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sunny</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveLifeEveryday" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveLifeEveryday" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        进阶之路 | 奇妙的View之旅
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/开发艺术探索/">
+                                <span class="chip bg-color">开发艺术探索</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/安卓/" class="post-category">
+                                安卓
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-02-19
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="进阶之路-奇妙的View之旅"><a href="#进阶之路-奇妙的View之旅" class="headerlink" title="进阶之路 | 奇妙的View之旅"></a>进阶之路 | 奇妙的View之旅</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：</p>
+<p><a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
+</blockquote>
+<h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><ul>
+<li>View是什么</li>
+<li>View的位置参数</li>
+<li>View的触控</li>
+<li>View的滑动</li>
+</ul>
+<blockquote>
+<p>涉及以下各个知识点：</p>
+<ul>
+<li>View的各种滑动方式及其对比</li>
+<li>弹性滑动</li>
+<li>滑动冲突</li>
+</ul>
+</blockquote>
+<ul>
+<li>View的动画</li>
+<li>View的事件分发机制</li>
+<li>View的工作原理</li>
+<li>View的自定义方式</li>
+</ul>
+<h2 id="一-为什么要学习View？"><a href="#一-为什么要学习View？" class="headerlink" title="一.为什么要学习View？"></a>一.为什么要学习View？</h2><p><code>View</code>,是<code>Android</code>中十分重要的一个知识点，是所有控件的基类，尽管<code>View</code>不属于四大组件，但是它的作用堪比四大组件，甚至重要性大于<code>ContentProvider</code>和<code>Broadcast Receivers</code>。</p>
+<p><code>ViewGroup</code>是<code>View</code>的继承，它的内部包含了一组View。</p>
+<p>很多时候，面对产品经理的各种奇葩的需求，仅仅使用系统提供的控件是不能满足需求的，因此，我们就需要自定义特定的控件，而自定义控件就需要对<code>View</code>体系有一定程度的理解；有时候，涉及到滑动事件的自定义View的时候，难免会出现各种各样的滑动冲突，而要解决滑动冲突的话，还需要对<code>View</code>的事件分发机制了然于心。</p>
+<p>综上，掌握好<code>View</code>这方面的知识，不仅可以让你在日常开发中对自定义View的各种场景胸有成竹，还可以让你在面试官的重重追问（ai hu）下游刃有余（xin tai bao zha）。</p>
+<p><img src="https://s2.ax1x.com/2020/02/17/3ilqo9.png" alt="3ilqo9.png"></p>
+<h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-View的位置参数"><a href="#2-1-View的位置参数" class="headerlink" title="2.1 View的位置参数"></a>2.1 <code>View</code>的位置参数</h3><p>Q1：<strong>Android坐标系</strong>是怎样的呢？</p>
+<blockquote>
+<p>以屏幕的左上角为坐标原点，<strong>向右</strong>为x轴增大方向，<strong>向下</strong>为y轴增大方向</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/10/27/KscNIs.png" alt="Android坐标系"></p>
+<p>Q2：<strong>View的位置怎么确定</strong>?</p>
+<ul>
+<li>由四个顶点确定，分别对应四个属性：<strong>top、left、right、bottom</strong>。</li>
+</ul>
+<blockquote>
+<ul>
+<li>left是左上角的横坐标，left = <code>getLeft()</code></li>
+<li>right是右下角的横坐标，right = <code>getRight()</code></li>
+<li>top是左上角的纵坐标，top = <code>getTop()</code></li>
+<li>bottom是右下角的纵坐标，bottom=<code>getBottom()</code></li>
+</ul>
+<p>注意：这些坐标是相对于父容器而言的，属于相对坐标；如果想要得到绝对坐标，需要调用<code>getRawX()</code>，绝对坐标的知识在下文将会详细讲解。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/17/3iGLnK.png" alt="View坐标系"></p>
+<blockquote>
+<p>因此，View的宽高和坐标关系：</p>
+<ul>
+<li>width = right - left,可直接通过<code>getWidth()</code>得到</li>
+<li>height = bottom - top，可直接通过<code>getHeight()</code>得到</li>
+</ul>
+</blockquote>
+<p>Q3：View偏移量<strong>translation</strong></p>
+<blockquote>
+<p><code>translationX</code>和<code>translationY</code>是View 左上角相对父容器左上角的偏移量，它们默认值是0。这些参数也是<strong>相对于View父容器</strong>。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/17/3iNVAO.png" alt="View偏移量"></p>
+<blockquote>
+<ul>
+<li>存在关系：x = left + translationX，y = top + translationY</li>
+<li>由此可见，x和left不同体现在：</li>
+<li><strong>left</strong>是View的<strong>初始坐标</strong>，在绘制完毕后就不会再改变；</li>
+<li>而<strong>x</strong>是View偏移后的<strong>实时坐标</strong>，是实际坐标。y和top的区别同理。</li>
+</ul>
+</blockquote>
+<p>需要注意的是，在<code>onCreate()</code>方法里无法获取到View的坐标参数，这是因为此时<strong>View还未开始绘制</strong>，全部坐标参数将都是0。</p>
+<h3 id="2-2-View的触控"><a href="#2-2-View的触控" class="headerlink" title="2.2 View的触控"></a>2.2 <code>View</code>的触控</h3><h4 id="2-2-1-MotionEvent"><a href="#2-2-1-MotionEvent" class="headerlink" title="2.2.1 MotionEvent"></a>2.2.1 MotionEvent</h4><p>它是手指触摸屏幕所产生的一系列事件。典型事件有：</p>
+<ul>
+<li><strong>ACTION_DOWN</strong>：手指刚接触屏幕</li>
+<li><strong>ACTION_MOVE</strong>：手指在屏幕上滑动</li>
+<li><strong>ACTION_UP</strong>：手指在屏幕上松开的一瞬间</li>
+</ul>
+<blockquote>
+<p>事件列：从手指接触屏幕至手指离开屏幕，这个过程产生的一系列事件，任何事件列都是以DOWN事件开始，UP事件结束，中间有无数的MOVE事件</p>
+</blockquote>
+<ul>
+<li><p>通过MotionEvent 对象可以得到触摸事件的<strong>x、y</strong>坐标。其中通过<code>getX()</code>、<code>getY()</code>可获取相对于<strong>当前view</strong>（注意：不是父容器）左上角的x、y坐标(相对坐标)；</p>
+</li>
+<li><p>通过<code>getRawX()</code>、<code>getRawY()</code>可获取相对于手机屏幕左上角的x，y坐标（绝对坐标）。</p>
+<p>具体关系见下图：</p>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/02/18/3FBcff.png" alt="MotionEvent具体关系"></p>
+<h4 id="2-2-2-TouchSlop"><a href="#2-2-2-TouchSlop" class="headerlink" title="2.2.2 TouchSlop"></a>2.2.2 TouchSlop</h4><ul>
+<li>系统所能识别的被认为是<strong>滑动的最小距离</strong>。即当手指在屏幕上滑动时，如果两次滑动之间的距离小于这个常量，那么系统就不认为你是在进行滑动操作。</li>
+<li>该常量和设备有关，可用它来判断用户的滑动是否达到阈值</li>
+<li>获取方法：<code>ViewConfiguration.get(getContext()).getScaledTouchSlop()</code></li>
+</ul>
+<h4 id="2-2-3-VelocityTracker"><a href="#2-2-3-VelocityTracker" class="headerlink" title="2.2.3 VelocityTracker"></a>2.2.3 VelocityTracker</h4><blockquote>
+<p><strong>速度追踪</strong>，用于追踪手指在滑动过程中的速度，包括水平和竖直方向的速度。</p>
+</blockquote>
+<p>使用过程：</p>
+<ul>
+<li><p>在view的<code>onTouchEvent</code>方法中追踪当前单击事件的速度：</p>
+<pre class=" language-java"><code class="language-java">VelocityTracker velocityTracker <span class="token operator">=</span> VelocityTracker<span class="token punctuation">.</span><span class="token function">obtain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//实例化一个VelocityTracker 对象</span>
+velocityTracker<span class="token punctuation">.</span><span class="token function">addMovement</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//添加追踪事件</span></code></pre>
+</li>
+<li><p>在<code>ACTION_UP</code>事件中获取当前的速度 </p>
+<pre class=" language-java"><code class="language-java">velocityTracker <span class="token punctuation">.</span><span class="token function">computeCurrentVelocity</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取速度前先计算速度，这里计算的是在1000ms内</span>
+<span class="token keyword">float</span> xVelocity <span class="token operator">=</span> velocityTracker <span class="token punctuation">.</span><span class="token function">getXVelocity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//得到的是1000ms内手指在水平方向从左向右滑过的像素数，即水平速度</span>
+<span class="token keyword">float</span> yVelocity <span class="token operator">=</span> velocityTracker <span class="token punctuation">.</span><span class="token function">getYVelocity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//得到的是1000ms内手指在水平方向从上向下滑过的像素数，垂直速度</span></code></pre>
+<blockquote>
+<p>注意速度方向，这个速度方向和下面的mScrollX的方向相反</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>当不需要使用它的时候，需要调用<code>clear</code>方法来重置并回收内存</p>
+<pre class=" language-java"><code class="language-java">velocityTracker<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+velocityTracker<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</li>
+</ul>
+<h4 id="2-2-4-GestureDetector"><a href="#2-2-4-GestureDetector" class="headerlink" title="2.2.4 GestureDetector"></a>2.2.4 GestureDetector</h4><blockquote>
+<p>手势检测，用于辅助检测用户的单击、滑动、长按、<strong>双击</strong>等行为</p>
+</blockquote>
+<p>使用过程：</p>
+<ul>
+<li><p>创建一个GestureDetecor对象并实现OnGestureListener接口，根据需要实现单击等方法</p>
+<pre class=" language-java"><code class="language-java">GestureDetector mGestureDetector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GestureDetector</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//实例化一个GestureDetector对象</span>
+mGestureDetector<span class="token punctuation">.</span><span class="token function">setIsLongpressEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 解决长按屏幕后无法拖动的现象</span></code></pre>
+</li>
+<li><p>接管目标view的onTouchEvent方法，在待监听view的onTouchEvent方法中添加如下实现</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">boolean</span> consume <span class="token operator">=</span> mGestureDetector<span class="token punctuation">.</span><span class="token function">onTouchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> consume<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>有选择的实现OnGestureListener和OnDoubleTapListener中的方法</p>
+</li>
+</ul>
+<blockquote>
+<p>建议：如果只是监听滑动操作，建议在<code>onTouchEvent</code>中实现；如果要监听双击这种行为，则使用<code>GestureDetector</code> 。</p>
+</blockquote>
+<h3 id="2-3-View的滑动"><a href="#2-3-View的滑动" class="headerlink" title="2.3 View的滑动"></a>2.3 <code>View</code>的滑动</h3><h4 id="2-3-1-scrollTo-scollBy"><a href="#2-3-1-scrollTo-scollBy" class="headerlink" title="2.3.1 scrollTo/scollBy"></a>2.3.1 <code>scrollTo</code>/<code>scollBy</code></h4><blockquote>
+<ul>
+<li>区别：<code>scrollBy</code>是内部调用了<code>scrollTo</code>的，它是基于当前位置的<strong>相对滑动</strong>；而<code>scrollTo</code>是<strong>绝对滑动</strong>，因此如果利用相同输入参数多次调用<code>scrollTo</code>()方法，由于View初始位置是不变只会出现一次View滚动的效果而不是多次。</li>
+<li>注意：两者都只能对<strong>view内容</strong>进行滑动，而不能使view本身滑动。</li>
+<li>方向：手指从右向左滑动，mScrollX为正值，反之为负值；手指从下往上滑动，mScrollY为正值，反之为负值。（更直观感受：查看下一张照片或者查看长图时手指滑动方向为正）</li>
+<li>滑动类型：非弹性滑动</li>
+</ul>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3FhDBV.png" alt="灰色是内容，绿框是View"></p>
+<h4 id="2-3-2-LayoutParams"><a href="#2-3-2-LayoutParams" class="headerlink" title="2.3.2 LayoutParams"></a>2.3.2 LayoutParams</h4><blockquote>
+<ul>
+<li>原理：通过改变View的<strong>LayoutParams</strong>使得View重新布局：比如将一个View向右移动100像素，向右，只需要把它的marginLeft参数增大即可</li>
+<li>滑动类型：<strong>非弹性</strong>滑动</li>
+</ul>
+</blockquote>
+<pre class=" language-java"><code class="language-java">MarginLayoutParams params <span class="token operator">=</span> <span class="token punctuation">(</span>MarginLayoutParams<span class="token punctuation">)</span> btn<span class="token punctuation">.</span><span class="token function">getLayoutParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span>leftMargin <span class="token operator">+=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+btn<span class="token punctuation">.</span><span class="token function">requestLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 请求重新对View进行measure、layout</span></code></pre>
+<h4 id="2-3-3-动画"><a href="#2-3-3-动画" class="headerlink" title="2.3.3 动画"></a>2.3.3 动画</h4><blockquote>
+<ul>
+<li><p>动画分为View动画和属性动画，View动画又分为帧动画和补间动画</p>
+</li>
+<li><p>如果使用属性动画的话，为了能够兼容3.0以下版本，需要采用开源动画库nineoldandroids。</p>
+</li>
+<li><p>属于弹性滑动</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3FopE6.png" alt="动画的分类"></p>
+<pre class=" language-java"><code class="language-java">ObjectAnimator<span class="token punctuation">.</span><span class="token function">ofFloat</span><span class="token punctuation">(</span>targetView<span class="token punctuation">,</span><span class="token string">"translationX"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//在100ms内使得View从原始位置向右平移100像素</span></code></pre>
+<blockquote>
+<p>想要了解动画的详细内容，可以看一下这篇：<a href="https://www.jianshu.com/p/25efc9f3a8f0" target="_blank" rel="noopener">Android属性动画和视图动画的区别</a></p>
+</blockquote>
+<h4 id="2-3-4-layout"><a href="#2-3-4-layout" class="headerlink" title="2.3.4 layout()"></a>2.3.4 <code>layout()</code></h4><blockquote>
+<ul>
+<li><p>基本思想：记下触摸点的坐标移动之后，记下移动后的坐标算出偏移量</p>
+</li>
+<li><p>使用方式：在<code>onTouchEvent</code>中获取到手指的横纵坐标，在<code>ACTION_DOWN</code>中存储上次的x，在<code>ACTION_MOVE</code>中计算移动的距离，最后调用<code>layout</code>方法重新放置<code>View</code></p>
+</li>
+</ul>
+</blockquote>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onTouchEvent</span><span class="token punctuation">(</span>MotionEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//获取到手指处的横坐标和纵坐标</span>
+        <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_DOWN<span class="token operator">:</span>
+                <span class="token comment" spellcheck="true">//lastX是存储上一次的x</span>
+                lastX <span class="token operator">=</span> x<span class="token punctuation">;</span>
+                lastY <span class="token operator">=</span> y<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_MOVE<span class="token operator">:</span>
+                <span class="token comment" spellcheck="true">//计算移动的距离</span>
+                <span class="token keyword">int</span> offsetX <span class="token operator">=</span> x <span class="token operator">-</span> lastX<span class="token punctuation">;</span>
+                <span class="token keyword">int</span> offsetY <span class="token operator">=</span> y <span class="token operator">-</span> lastY<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//调用layout方法来重新放置它的位置,左上右下</span>
+               <span class="token function">layout</span><span class="token punctuation">(</span><span class="token function">getLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>offsetX<span class="token punctuation">,</span> <span class="token function">getTop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>offsetY<span class="token punctuation">,</span>
+                       <span class="token function">getRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>offsetX <span class="token punctuation">,</span> <span class="token function">getBottom</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>offsetY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+<h4 id="2-3-5-offsetLeftAndRight-与offsetTopAndBottom"><a href="#2-3-5-offsetLeftAndRight-与offsetTopAndBottom" class="headerlink" title="2.3.5 offsetLeftAndRight()与offsetTopAndBottom()"></a>2.3.5 <code>offsetLeftAndRight()</code>与<code>offsetTopAndBottom()</code></h4><blockquote>
+<p>使用方式类似于<code>layout()</code>，将 <code>layout(getLeft()+offsetX, getTop()+offsetY,getRight()+offsetX , getBottom()+offsetY)</code>换成<code>offsetLeftAndRight(offsetX)</code>与<code>offsetTopAndBottom(offsetY)</code>即可</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java">           <span class="token comment" spellcheck="true">// 对left和right进行偏移</span>
+           <span class="token function">offsetLeftAndRight</span><span class="token punctuation">(</span>offsetX<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//对top和bottom进行偏移</span>
+           <span class="token function">offsetTopAndBottom</span><span class="token punctuation">(</span>offsetY<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="2-3-6-Scroller"><a href="#2-3-6-Scroller" class="headerlink" title="2.3.6 Scroller"></a>2.3.6 Scroller</h4><blockquote>
+<ul>
+<li>与scrollTo/scrollBy不同：scrollTo/scrollBy过程是瞬间完成的，非平滑；而Scroller则有过渡滑动的效果</li>
+<li>注意：Scoller本身无法让View弹性滑动，它需要和View的<strong>computerScroller</strong>方法配合使用。</li>
+<li>原理：Scroll的<code>computeScrollOffset()</code>根据<strong>时间的流逝</strong>动态计算一小段时间里View滑动的距离，并得到当前View位置，再通过scrollTo继续滑动。即把一次滑动拆分成无数次小距离滑动从而实现弹性滑动。</li>
+</ul>
+</blockquote>
+<p><code>Scroller</code>惯用代码：</p>
+<pre class=" language-java"><code class="language-java">Scroller scroller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scroller</span><span class="token punctuation">(</span>mContext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//实例化一个Scroller对象</span>
+
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">smoothScrollTo</span><span class="token punctuation">(</span><span class="token keyword">int</span> dstX<span class="token punctuation">,</span> <span class="token keyword">int</span> dstY<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> scrollX <span class="token operator">=</span> <span class="token function">getScrollX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//View的左边缘到其内容左边缘的距离</span>
+  <span class="token keyword">int</span> scrollY <span class="token operator">=</span> <span class="token function">getScrollY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//View的上边缘到其内容上边缘的距离</span>
+  <span class="token keyword">int</span> deltaX <span class="token operator">=</span> dstX <span class="token operator">-</span> scrollX<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//x方向滑动的位移量</span>
+  <span class="token keyword">int</span> deltaY <span class="token operator">=</span> dstY <span class="token operator">-</span> scrollY<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//y方向滑动的位移量</span>
+  scroller<span class="token punctuation">.</span><span class="token function">startScroll</span><span class="token punctuation">(</span>scrollX<span class="token punctuation">,</span> scrollY<span class="token punctuation">,</span> deltaX<span class="token punctuation">,</span> deltaY<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//开始滑动</span>
+  <span class="token function">invalidate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//刷新界面</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//计算一段时间间隔内偏移的距离，并返回是否滚动结束的标记</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">computeScroll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>scroller<span class="token punctuation">.</span><span class="token function">computeScrollOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token function">scrollTo</span><span class="token punctuation">(</span>scroller<span class="token punctuation">.</span><span class="token function">getCurrX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> scroller<span class="token punctuation">.</span><span class="token function">getCurY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">postInvalidate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//通过不断的重绘不断的调用computeScroll方法</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>startScroll()</code>的源码：</p>
+<blockquote>
+<p>只是进行前期的准备工作，并没有进行实际的滑动操作，而是通过后续invalidate()方法去做滑动动作。</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">startScroll</span><span class="token punctuation">(</span><span class="token keyword">int</span> startX<span class="token punctuation">,</span><span class="token keyword">int</span> startY<span class="token punctuation">,</span><span class="token keyword">int</span> dx<span class="token punctuation">,</span><span class="token keyword">int</span> dy<span class="token punctuation">,</span><span class="token keyword">int</span> duration<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  mMode <span class="token operator">=</span> SCROLL_MODE<span class="token punctuation">;</span>
+  mFinished <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  mDuration <span class="token operator">=</span> duration<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动时间</span>
+  mStartTime <span class="token operator">=</span> AnimationUtils<span class="token punctuation">.</span><span class="token function">currentAminationTimeMills</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//开始时间</span>
+  mStartX <span class="token operator">=</span> startX<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动起点</span>
+  mStartY <span class="token operator">=</span> startY<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动起点</span>
+  mFinalX <span class="token operator">=</span> startX <span class="token operator">+</span> dx<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动终点</span>
+  mFinalY <span class="token operator">=</span> startY <span class="token operator">+</span> dy<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动终点</span>
+  mDeltaX <span class="token operator">=</span> dx<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动距离</span>
+  mDeltaY <span class="token operator">=</span> dy<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//滑动距离</span>
+  mDurationReciprocal <span class="token operator">=</span> <span class="token number">1.0f</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>mDuration<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span></code></pre>
+<p><img src="https://s2.ax1x.com/2020/02/18/3kFo4S.png" alt="Scroller具体流程"></p>
+<h4 id="2-3-7-延时策略"><a href="#2-3-7-延时策略" class="headerlink" title="2.3.7 延时策略"></a>2.3.7 延时策略</h4><blockquote>
+<ul>
+<li>通过发送一系列<strong>延时信息</strong>从而达到一种渐近式的效果，具体可以通过<code>Handler</code>/<code>View</code>的<code>postDelayed</code>，也可使用线程的<code>sleep</code>方法。</li>
+<li>缺点：无法精确地定时；原因：系统的<strong>消息调度</strong>也需要时间</li>
+</ul>
+</blockquote>
+<h4 id="2-3-8-滑动冲突"><a href="#2-3-8-滑动冲突" class="headerlink" title="2.3.8 滑动冲突"></a>2.3.8 滑动冲突</h4><p>Q1:<strong>产生原因</strong>：</p>
+<blockquote>
+<p>一般情况下，在一个界面里存在内外两层可同时滑动的情况时，会出现滑动冲突现象。</p>
+</blockquote>
+<p>Q2:<strong>出现的场景：</strong></p>
+<ul>
+<li>外部滑动和内部滑动<strong>方向不一致</strong>：如ViewPager嵌套ListView(实际这么用没问题，因为ViewPager内部已处理过)。</li>
+<li>外部滑动方向和内部滑动<strong>方向一致</strong>：如ScrollView嵌套ListView。</li>
+</ul>
+<blockquote>
+<p>感兴趣的读者如果想要了解出现原因和解决方式，笔者推荐一篇文章：<a href="https://www.jianshu.com/p/5f198f8a0977" target="_blank" rel="noopener">ScrollView嵌套ListView时可能产生的问题解决</a></p>
+</blockquote>
+<ul>
+<li>上面两种情况的嵌套</li>
+</ul>
+<p>Q3:<strong>处理规则</strong>：</p>
+<ul>
+<li>对场景一：当用户左右/上下滑动时让外部View拦截点击事件，当用户上下/左右滑动时让内部View拦截点击事件。即根据滑动的方向判断谁来拦截事件。关于判断是上下滑动还是左右滑动，可根据<strong>滑动的距离</strong>或者<strong>滑动的角度</strong>去判断。</li>
+<li>对场景二：一般从<strong>业务</strong>上找突破点。即根据业务需求，规定何时让外部View拦截事件何时由内部View拦截事件。</li>
+<li>对场景三：相对复杂，可同样根据需求在业务上找到突破点。</li>
+</ul>
+<p>Q4:<strong>解决方式</strong>：</p>
+<blockquote>
+<p>这里的<code>onInterceptTouchEvent</code>，<code>dispatchTouchEvent</code>，<code>requestDisallowInterceptTouchEvent</code>等方法在View的事件分发机制会详细说明</p>
+</blockquote>
+<p>A1：外部拦截法</p>
+<ul>
+<li>含义：指点击事件都先经过<strong>父容器的拦截处理</strong>，如果父容器需要此事件就拦截，否则就不拦截。</li>
+<li>方法：需要重写父容器的<code>onInterceptTouchEvent</code>方法，在内部做出相应的拦截。</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//重写父容器的拦截方法</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onInterceptTouchEvent</span> <span class="token punctuation">(</span>MotionEvent event<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">boolean</span> intercepted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_DOWN<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>对于ACTION_DOWN事件必须返回<span class="token boolean">false</span>，一旦拦截后续事件将不能传递给子View
+         intercepted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_MOVE<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>对于ACTION_MOVE事件根据需要决定是否拦截
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>父容器需要当前事件） <span class="token punctuation">{</span>
+             intercepted <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+             intercepted <span class="token operator">=</span> flase<span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+      <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_UP<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>对于ACTION_UP事件必须返回<span class="token boolean">false</span>，一旦拦截子View的onClick事件将不会触发
+         intercepted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token keyword">default</span> <span class="token operator">:</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+    mLastXIntercept <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    mLastYIntercept <span class="token operator">=</span> y<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> intercepted<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span></code></pre>
+<p>A2：内部拦截法</p>
+<ul>
+<li><p>含义：指父容器不拦截任何事件，而将所有的事件都传递给子容器，如果子容器需要此事件就直接消耗，否则就交由父容器进行处理。</p>
+</li>
+<li><p>方法：需要配合<code>requestDisallowInterceptTouchEvent</code>方法。重写<code>子View</code>的<code>dispatchTouchEvent()</code></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">dispatchTouchEvent</span> <span class="token punctuation">(</span> MotionEvent event <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>getAction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_DOWN<span class="token operator">:</span>
+         parent<span class="token punctuation">.</span><span class="token function">requestDisallowInterceptTouchEvent</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//为true表示禁止父容器拦截</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_MOVE<span class="token operator">:</span>
+         <span class="token keyword">int</span> deltaX <span class="token operator">=</span> x <span class="token operator">-</span> mLastX<span class="token punctuation">;</span>
+         <span class="token keyword">int</span> deltaY <span class="token operator">=</span> y <span class="token operator">-</span> mLastY<span class="token punctuation">;</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>父容器需要此类点击事件<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             parent<span class="token punctuation">.</span><span class="token function">requestDisallowInterceptTouchEvent</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//为fasle表示允许父容器拦截</span>
+         <span class="token punctuation">}</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_UP<span class="token operator">:</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token keyword">default</span> <span class="token operator">:</span>
+         <span class="token keyword">break</span><span class="token punctuation">;</span>        
+ <span class="token punctuation">}</span>
+
+  mLastX <span class="token operator">=</span> x<span class="token punctuation">;</span>
+  mLastY <span class="token operator">=</span> y<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">dispatchTouchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>除子容器需要做处理外，父容器也要<strong>默认拦截除了<code>ACTION_DOWN</code>以外的其他事件</strong>，这样当子容器调用<code>parent.requestDisallowInterceptTouchEvent(false)</code>方法时，父元素才能继续拦截所需的事件。</p>
+<p>因此，<code>父View</code>需要重写<code>onInterceptTouchEvent()</code>：</p>
+</blockquote>
+</li>
+</ul>
+<pre class=" language-JAVA"><code class="language-JAVA">  public boolean onInterceptTouchEvent (MotionEvent event) {
+   int action = event.getAction();
+   if(action == MotionEvent.ACTION_DOWN) {
+       return false;
+   } else {
+       return true;
+   }
+  }</code></pre>
+<p>  作者：厘米姑娘<br>  链接：<a href="https://www.jianshu.com/p/06ff0dfeed39" target="_blank" rel="noopener">https://www.jianshu.com/p/06ff0dfeed39</a><br>  来源：简书<br>  著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<blockquote>
+<p>内部拦截法要求父容器不能拦截<code>ACTION_DOWN</code>的原因：</p>
+<p>由于该事件并不受<code>FLAG_DISALLOW_INTERCEPT</code>（由<code>requestDisallowInterceptTouchEvent</code>方法设置）标记位控制，一旦<code>ACTION_DOWN</code>事件到来，该标记位会被重置。所以一旦父容器拦截了该事件，那么所有的事件都<strong>不会传递给子View</strong>，内部拦截法也就失效了。</p>
+</blockquote>
+<h3 id="2-4-View的事件分发机制"><a href="#2-4-View的事件分发机制" class="headerlink" title="2.4 View的事件分发机制"></a>2.4 View的事件分发机制</h3><blockquote>
+<p>读者看完本篇对事件分发机制还有些模糊的话，笔者墙裂推荐一篇浅显易懂的博客：<a href="https://www.cnblogs.com/fuly550871915/p/4983682.html" target="_blank" rel="noopener">android中的事件传递和处理机制</a></p>
+</blockquote>
+<p>Q1：<strong>了解</strong><code>setContentView()</code></p>
+<blockquote>
+<p>我们将从源码的角度，一步步带大家深入<code>setContentView()</code>的本质，为后面事件分发的了解打好基础</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3k86dU.png" alt="setContentView()机制"></p>
+<blockquote>
+<p>因此，我们可以得到Activity的构成，如下图所示</p>
+</blockquote>
+<p><img src="https://ftp.bmp.ovh/imgs/2019/11/bda68cabafb44473.png" alt="Activity的构成"></p>
+<p>Q2：<strong>事件分发本质是什么</strong>:</p>
+<blockquote>
+<p>就是对<code>MotionEvent</code>事件分发的过程。即当一个<code>MotionEvent</code>产生了以后，系统需要将这个点击事件传递到一个具体的<code>View</code>上。（关于MotionEvent介绍见本篇2.2.1）</p>
+</blockquote>
+<p>Q3：<strong>事件分发需要的主要方法是什么</strong>：</p>
+<ul>
+<li><code>dispatchTouchEvent</code>：进行事件的<strong>分发</strong>（传递）。返回值是 <code>boolean</code> 类型，受当前<code>onTouchEvent</code>和<strong>下级view</strong>的<code>dispatchTouchEvent</code>影响</li>
+<li><code>onInterceptTouchEvent</code>:对事件进行<strong>拦截</strong>。该方法只在<code>ViewGroup</code>中有，<code>View</code>（不包含 <code>ViewGroup</code>）是没有的。如果一旦拦截，则执行<code>ViewGroup</code>的<code>onTouchEvent</code>，在<code>ViewGroup</code>中处理事件，而不接着分发给View,且只调用一次，所以后面的事件都会交给<code>ViewGroup</code>处理。</li>
+<li><code>onTouchEvent</code>：进行事件处理</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/02/18/3kYtIO.png" alt="事件分发过程图"></p>
+<blockquote>
+<ul>
+<li>事件分发是逐级下发的，目的是将事件传递给一个View。</li>
+<li>ViewGroup一旦拦截事件，就不往下分发，同时调用onTouchEvent处理事件。</li>
+</ul>
+</blockquote>
+<h3 id="2-5-View的工作原理"><a href="#2-5-View的工作原理" class="headerlink" title="2.5 View的工作原理"></a>2.5 View的工作原理</h3><h4 id="2-5-1-View工作流程"><a href="#2-5-1-View工作流程" class="headerlink" title="2.5.1 View工作流程"></a>2.5.1 View工作流程</h4><blockquote>
+<p><strong><code>measure</code>测量-&gt;<code>layout</code>布局-&gt;<code>draw</code>绘制</strong></p>
+</blockquote>
+<ul>
+<li>measure确定View的<strong>测量宽高</strong></li>
+<li>layout确定View的<strong>最终宽高</strong>和<strong>四个顶点的位置</strong></li>
+<li>draw将View <strong>绘制到屏幕</strong>上</li>
+<li>对应<code>onMeasure()</code>、<code>onLayout()</code>、<code>onDraw()</code>三个方法。</li>
+</ul>
+<blockquote>
+<p>具体过程：</p>
+<ul>
+<li><code>ViewRoot</code>对应于<code>ViewRootImpl</code>类，它是连接<code>WindowManager</code>和<code>DecorView</code>的纽带</li>
+<li>View的绘制流程是从<code>ViewRoot.performTraversals</code>开始。</li>
+<li><code>performTraversals()</code>依次调用<code>performMeasure()</code>、<code>performLayout()</code>和<code>performDraw()</code>三个方法，完成<strong>顶级</strong> View的绘制。</li>
+<li>其中，<code>performMeasure()</code>会调用<code>measure()</code>，<code>measure()</code>中又调用<code>onMeasure()</code>，实现对其所有子元素的measure过程，这样就完成了一次measure过程；接着子元素会重复父容器的measure过程，如此反复至完成整个View树的遍历。layout和draw同理。过程图如下：</li>
+</ul>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3ks3VJ.png" alt="View工作流程图"></p>
+<h4 id="2-5-2-measure"><a href="#2-5-2-measure" class="headerlink" title="2.5.2 measure"></a>2.5.2 <code>measure</code></h4><blockquote>
+<p>先来理解<code>MeasureSpec</code>：</p>
+<ul>
+<li><p>作用：通过宽测量值<code>widthMeasureSpec</code>和高测量值<code>**heightMeasureSpec**</code>决定View的大小</p>
+</li>
+<li><p>组成：一个32位int值，高2位代表<strong>SpecMode</strong>(测量模式)，低30位代表<strong>SpecSize</strong>( 某种测量模式下的规格大小)。</p>
+</li>
+<li><p>三种模式：</p>
+<p>a.<code>UNSPECIFIED</code>: 父容器不对View有任何限制，要多大有多大。常用于系统内部。</p>
+<p>b.<code>EXACTLY</code>(精确模式): 父视图为子视图指定一个确切的尺寸<code>SpecSize</code>。对应<code>LayoutParams</code>中的<code>match_parent</code>或<strong>具体数值</strong>。</p>
+<p>c.<code>AT_MOST</code>(最大模式): 父容器为子视图指定一个最大尺寸<code>SpecSize</code>，View的大小不能大于这个值。对应<code>LayoutParams</code>中的<code>wrap_content</code>。</p>
+</li>
+<li><p>决定因素：由<code>子View</code>的布局参数<code>LayoutParams</code>和<strong>父容器</strong>的<code>MeasureSpec</code>值共同决定。</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3k6XE4.png" alt="MeasureSpec决定因素"></p>
+<p>现在，分别讨论两种<code>measure</code>：</p>
+<ul>
+<li><p>View的measure：只有一个原始的View，通过measure()即可完成测量。</p>
+<p><img src="https://s2.ax1x.com/2020/02/18/3A9UAO.png" alt="View的measure流程"></p>
+</li>
+</ul>
+<blockquote>
+<p>从<code>getDefaultSize()</code>中可以看出，直接继承View的自定义View需要重写<code>onMeasure()</code>并设置<code>wrap_content</code>时的自身大小，否则效果相当于<code>macth_parent</code>。解决上述问题的典型代码：</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onMeasure</span><span class="token punctuation">(</span><span class="token keyword">int</span> widthMeasureSpec<span class="token punctuation">,</span> <span class="token keyword">int</span> heightMeasureSpec<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onMeasure</span><span class="token punctuation">(</span>widthMeasureSpec<span class="token punctuation">,</span>heightMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> widthSpecMode <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">getMode</span><span class="token punctuation">(</span>widthMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> widthSpecSize <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span>widthMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> heightSpecMode <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">getMode</span><span class="token punctuation">(</span>heightMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> heightSpecSize <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span>heightMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//分析模式，根据不同的模式来设置</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>widthSpecMode <span class="token operator">==</span> MeasureSpec<span class="token punctuation">.</span>AT_MOST <span class="token operator">&amp;&amp;</span> heightSpecMode <span class="token operator">==</span> MeasureSpec<span class="token punctuation">.</span>AT_MOST<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">setMeasuredDimension</span><span class="token punctuation">(</span>mWidth<span class="token punctuation">,</span>mHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>widthSpecMode <span class="token operator">==</span> MeasureSpec<span class="token punctuation">.</span>AT_MOST<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">setMeasuredDimension</span><span class="token punctuation">(</span>mWidth<span class="token punctuation">,</span>heightSpecSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>heightSpecMode <span class="token operator">==</span> MeasureSpec<span class="token punctuation">.</span>AT_MOST<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">setMeasuredDimension</span><span class="token punctuation">(</span>widthSpecSize<span class="token punctuation">,</span>mHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<ul>
+<li>ViewGroup的measure：除了完成ViewGroup自身的测量外，还会遍历去调用所有子元素的<code>measure</code>方法。</li>
+</ul>
+<blockquote>
+<p>ViewGroup中没有重写<code>onMeasure()</code>，而是提供<code>measureChildren()</code>。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3APxn1.png" alt="ViewGroup的measure"></p>
+<blockquote>
+<p>如果读者对onMeasure的详细重写例子感兴趣的话，笔者推荐一篇文章：<a href="https://www.jianshu.com/p/1dab927b2f36" target="_blank" rel="noopener">自定义View Measure过程 - 最易懂的自定义View原理系列（2）</a></p>
+</blockquote>
+<h4 id="2-5-3-layout"><a href="#2-5-3-layout" class="headerlink" title="2.5.3 layout"></a>2.5.3 <code>layout</code></h4><ul>
+<li>确定View的最终宽高和四个顶点的位置</li>
+</ul>
+<blockquote>
+<p>大致流程：从顶级View开始依次调用layout()，其中子View的layout()会调用setFrame()来设定自己的四个顶点（mLeft、mRight、mTop、mBottom），接着调用onLayout()来确定其坐标，注意该方法是空方法，因为不同的ViewGroup对其子View的布局是不相同的。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3AVXcD.png" alt="layout流程"></p>
+<blockquote>
+<p>如果读者对<code>onLayout()</code>的详细重写例子感兴趣的话，笔者推荐一篇文章：<a href="https://www.jianshu.com/p/158736a2549d" target="_blank" rel="noopener">（3）自定义View Layout过程 - 最易懂的自定义View原理系列</a></p>
+</blockquote>
+<h4 id="2-5-4-draw"><a href="#2-5-4-draw" class="headerlink" title="2.5.4 draw"></a>2.5.4 <code>draw</code></h4><blockquote>
+<p><strong>推荐阅读</strong>：<a href="https://www.jianshu.com/p/dc32ed4a384e" target="_blank" rel="noopener">对View工作流程的理解（源码)</a></p>
+</blockquote>
+<ul>
+<li>绘制到屏幕</li>
+</ul>
+<blockquote>
+<p>绘制顺序：</p>
+<ul>
+<li>绘制背景：<code>background.draw(canvas)</code></li>
+<li>绘制自己：<code>onDraw(canvas)</code></li>
+<li>绘制children：<code>dispatchDraw(canvas)</code></li>
+<li>绘制装饰：<code>onDrawScrollBars(canvas)</code></li>
+</ul>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/18/3AeaLQ.png" alt="draw流程"></p>
+<blockquote>
+<p><strong>注意</strong>：Vew有一个特殊的方法<code>setWillNotDraw()</code>，该方法用于设置 <code>WILL_NOT_DRAW</code> 标记位（其作用是当一个View<strong>不需要绘制内容</strong>时，系统可进行相应优化）。<strong>默认</strong>情况下View是<strong>没有</strong>这个优化标志的（设为true）。</p>
+</blockquote>
+<h3 id="2-6-自定义View"><a href="#2-6-自定义View" class="headerlink" title="2.6 自定义View"></a>2.6 自定义View</h3><blockquote>
+<p>如果想了解自定义View实例的读者，笔者推荐一篇文章：<a href="https://www.jianshu.com/p/e9d8420b1b9c" target="_blank" rel="noopener">手把手教你写一个完整的自定义View</a></p>
+</blockquote>
+<p>Q1：<strong>自定义View的类型有哪些</strong>？</p>
+<p><img src="https://s2.ax1x.com/2020/02/18/3Amfc8.png" alt="自定义View的类型"></p>
+<p><strong>特别提醒</strong>：</p>
+<p><img src="https://s2.ax1x.com/2020/02/18/3AnEjO.png" alt="自定义View须知"></p>
+<h2 id="三-课堂小测试"><a href="#三-课堂小测试" class="headerlink" title="三.课堂小测试"></a>三.课堂小测试</h2><blockquote>
+<p>恭喜你！已经看完了前面的文章，相信你对<code>View</code>已经有一定深度的了解，下面，进行一下课堂小测试，验证一下自己的学习成果吧！</p>
+</blockquote>
+<p>Q1：<strong><code>View</code>的测量宽高和最终宽高有什么区别</strong>？</p>
+<blockquote>
+<p>这个问题具体为<code>View</code>的<code>getMeasuredWidth</code>和<code>getWidth</code>有什么区别？</p>
+</blockquote>
+<ul>
+<li><p>答案揭晓：</p>
+<p>在<code>View</code>的<strong>默认实现</strong>中，测量宽高和最终宽高相等，但是测量宽高的<strong>赋值时机</strong>比最终宽高的赋值时机稍微早一点，测量宽高形成于<code>measure</code>过程，最终宽高形成于View的<code>layout</code>过程。</p>
+</li>
+</ul>
+<p>Q2：<strong>什么情况下测量宽高和最终宽高不一致呢</strong>？</p>
+<ul>
+<li><p>重写了View的<code>layout</code>方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">layout</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> t<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">layout</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span>t<span class="token punctuation">,</span>r<span class="token operator">+</span><span class="token number">100</span><span class="token punctuation">,</span>b<span class="token operator">+</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>在某些情况下，<code>View</code>需要多次<code>measure</code>才能确定自己的测量宽高，在前几次的测量过程中，得出的测量宽高有可能和最终宽高不一致，但最终两者还是一致的。</p>
+</li>
+</ul>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
+<p>本文参考链接：</p>
+<ul>
+<li>《Android 进阶之光》</li>
+<li>《Android 开发艺术探索》</li>
+<li><a href="https://www.jianshu.com/p/25efc9f3a8f0" target="_blank" rel="noopener">Android属性动画和视图动画的区别</a></li>
+<li><a href="https://www.jianshu.com/p/5f198f8a0977" target="_blank" rel="noopener">ScrollView嵌套ListView时可能产生的问题解决</a></li>
+<li><a href="https://www.jianshu.com/p/1dab927b2f36" target="_blank" rel="noopener">自定义View Measure过程 - 最易懂的自定义View原理系列（2）</a></li>
+<li><a href="https://www.jianshu.com/p/158736a2549d" target="_blank" rel="noopener">（3）自定义View Layout过程 - 最易懂的自定义View原理系列</a></li>
+<li><a href="https://www.jianshu.com/p/dc32ed4a384e" target="_blank" rel="noopener">对View工作流程的理解（源码)</a></li>
+<li><a href="https://www.jianshu.com/p/e9d8420b1b9c" target="_blank" rel="noopener">手把手教你写一个完整的自定义View</a></li>
+<li><a href="https://www.jianshu.com/p/06ff0dfeed39" target="_blank" rel="noopener">要点提炼|开发艺术之View</a></li>
+<li><a href="https://www.cnblogs.com/fuly550871915/p/4983682.html" target="_blank" rel="noopener">android中的事件传递和处理机制</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <a  href="/2020/02/19/jin-jie-zhi-lu-qi-miao-de-view-zhi-lu/">
+                    《进阶之路 | 奇妙的View之旅》
+            </a> 由
+            <a href="https://lovelifeeveryday.github.io">
+                Xu Canyou
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '112e6084ab0d347bb611',
+        clientSecret: 'b8f70092496c20501812dccac798c13eac3bcc94',
+        repo: 'lovelifeeveryday.github.io',
+        owner: 'lovelifeeveryday',
+        admin: "lovelifeeveryday",
+        id: '2020-02-19T14-40-01',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/02/19/jin-jie-zhi-lu-qi-miao-de-view-zhi-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="进阶之路 | 奇妙的View之旅">
+                        
+                        <span class="card-title">进阶之路 | 奇妙的View之旅</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            View,是Android中十分重要的一个知识点，是所有控件的基类，尽管View不属于四大组件，但是它的作用堪比四大组件，甚至重要性大于ContentProvider和Broadcast Receivers。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/安卓/" class="post-category">
+                                    安卓
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/开发艺术探索/">
+                        <span class="chip bg-color">开发艺术探索</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="进阶之路 | 奇妙的 IPC 之旅">
+                        
+                        <span class="card-title">进阶之路 | 奇妙的 IPC 之旅</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            IPC是Inter-Process Communication的缩写，含义是进程间通信，是指两个进程之间进行数据交换的过程。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/安卓/" class="post-category">
+                                    安卓
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/开发艺术探索/">
+                        <span class="chip bg-color">开发艺术探索</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://lovelifeeveryday.github.io" target="_blank">Xu Canyou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:913710642@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=913710642" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 913710642" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+
+</body>
+
+</html>

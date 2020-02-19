@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-02-15T07:22:10.802Z</updated>
+  <updated>2020-02-19T06:40:44.107Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>学习笔记 | 奇妙的 IPC 之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/xue-xi-bi-ji-qi-miao-de-ipc-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/xue-xi-bi-ji-qi-miao-de-ipc-zhi-lu/</id>
-    <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-02-15T07:22:10.802Z</updated>
+    <title>进阶之路 | 奇妙的View之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/19/jin-jie-zhi-lu-qi-miao-de-view-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/19/jin-jie-zhi-lu-qi-miao-de-view-zhi-lu/</id>
+    <published>2020-02-19T06:40:01.000Z</published>
+    <updated>2020-02-19T06:40:44.107Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;学习笔记-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#学习笔记-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;学习笔记 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;学习笔记 | 奇妙的 &lt;code&gt;IPC&lt;/code&gt; 之旅&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;进阶之路-奇妙的View之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的View之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的View之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的View之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
         
       
     
@@ -44,11 +44,11 @@
   </entry>
   
   <entry>
-    <title>学习笔记 | 奇妙的Activity之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/xue-xi-bi-ji-qi-miao-de-activity-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/xue-xi-bi-ji-qi-miao-de-activity-zhi-lu/</id>
+    <title>进阶之路 | 奇妙的 IPC 之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/</id>
     <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-02-15T06:23:45.488Z</updated>
+    <updated>2020-02-19T06:38:18.848Z</updated>
     
     <summary type="html">
     
@@ -56,7 +56,34 @@
       
         
         
-          &lt;h1 id=&quot;学习笔记-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#学习笔记-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;学习笔记 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;学习笔记 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 &lt;code&gt;IPC&lt;/code&gt; 之旅&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="开发艺术探索" scheme="https://lovelifeeveryday.github.io/tags/%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>进阶之路 | 奇妙的Activity之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/</id>
+    <published>2020-02-12T10:06:01.000Z</published>
+    <updated>2020-02-19T06:39:18.641Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;进阶之路-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
         
       
     
@@ -237,11 +264,11 @@
   </entry>
   
   <entry>
-    <title>9.2 依赖注入的原理</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/</id>
+    <title>9.1 注解</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/</id>
     <published>2019-11-21T03:21:01.000Z</published>
-    <updated>2019-11-21T03:22:04.624Z</updated>
+    <updated>2019-11-21T03:21:41.480Z</updated>
     
     <summary type="html">
     
@@ -249,7 +276,7 @@
       
         
         
-          &lt;h1 id=&quot;9-2-依赖注入的原理&quot;&gt;&lt;a href=&quot;#9-2-依赖注入的原理&quot; class=&quot;headerlink&quot; title=&quot;9.2 依赖注入的原理&quot;&gt;&lt;/a&gt;9.2 依赖注入的原理&lt;/h1&gt;&lt;h2 id=&quot;1-控制反转和依赖注入&quot;&gt;&lt;a
+          &lt;h1 id=&quot;9-1-注解&quot;&gt;&lt;a href=&quot;#9-1-注解&quot; class=&quot;headerlink&quot; title=&quot;9.1 注解&quot;&gt;&lt;/a&gt;9.1 注解&lt;/h1&gt;&lt;h2 id=&quot;1-注解分类&quot;&gt;&lt;a href=&quot;#1-注解分类&quot; class=&quot;headerlink&quot;
         
       
     
@@ -266,11 +293,11 @@
   </entry>
   
   <entry>
-    <title>9.1 注解</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/</id>
+    <title>9.2 依赖注入的原理</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/</id>
     <published>2019-11-21T03:21:01.000Z</published>
-    <updated>2019-11-21T03:21:41.480Z</updated>
+    <updated>2019-11-21T03:22:04.624Z</updated>
     
     <summary type="html">
     
@@ -278,7 +305,7 @@
       
         
         
-          &lt;h1 id=&quot;9-1-注解&quot;&gt;&lt;a href=&quot;#9-1-注解&quot; class=&quot;headerlink&quot; title=&quot;9.1 注解&quot;&gt;&lt;/a&gt;9.1 注解&lt;/h1&gt;&lt;h2 id=&quot;1-注解分类&quot;&gt;&lt;a href=&quot;#1-注解分类&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;9-2-依赖注入的原理&quot;&gt;&lt;a href=&quot;#9-2-依赖注入的原理&quot; class=&quot;headerlink&quot; title=&quot;9.2 依赖注入的原理&quot;&gt;&lt;/a&gt;9.2 依赖注入的原理&lt;/h1&gt;&lt;h2 id=&quot;1-控制反转和依赖注入&quot;&gt;&lt;a
         
       
     
@@ -353,35 +380,6 @@
   </entry>
   
   <entry>
-    <title>6.5  行为型设计模式</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/</id>
-    <published>2019-11-21T03:18:01.000Z</published>
-    <updated>2019-11-21T03:18:38.891Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;6-5-行为型设计模式&quot;&gt;&lt;a href=&quot;#6-5-行为型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.5  行为型设计模式&quot;&gt;&lt;/a&gt;6.5  行为型设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-策略模式&quot;&gt;&lt;a href=&quot;#1-策略模式&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>8.3 RxJava操作符入门</title>
     <link href="https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/"/>
     <id>https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/</id>
@@ -436,6 +434,35 @@
       <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
       <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>6.5  行为型设计模式</title>
+    <link href="https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/"/>
+    <id>https://lovelifeeveryday.github.io/2019/11/21/6.5-xing-wei-xing-she-ji-mo-shi/</id>
+    <published>2019-11-21T03:18:01.000Z</published>
+    <updated>2019-11-21T03:18:38.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;6-5-行为型设计模式&quot;&gt;&lt;a href=&quot;#6-5-行为型设计模式&quot; class=&quot;headerlink&quot; title=&quot;6.5  行为型设计模式&quot;&gt;&lt;/a&gt;6.5  行为型设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-策略模式&quot;&gt;&lt;a href=&quot;#1-策略模式&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
+    
+      <category term="设计模式" scheme="https://lovelifeeveryday.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -540,35 +567,6 @@
         
         
           &lt;h1 id=&quot;5-7-解析Retrofit&quot;&gt;&lt;a href=&quot;#5-7-解析Retrofit&quot; class=&quot;headerlink&quot; title=&quot;5.7 解析Retrofit&quot;&gt;&lt;/a&gt;5.7
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="网络编程与网络框架" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5.5 解析Volley</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/5.5-jie-xi-volley/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/5.5-jie-xi-volley/</id>
-    <published>2019-11-21T03:14:01.000Z</published>
-    <updated>2019-11-21T03:14:39.962Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;5-5-解析Volley&quot;&gt;&lt;a href=&quot;#5-5-解析Volley&quot; class=&quot;headerlink&quot; title=&quot;5.5 解析Volley&quot;&gt;&lt;/a&gt;5.5
         
       
     
