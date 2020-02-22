@@ -539,7 +539,7 @@ Drawable分类
 <ul>
 <li><code>src</code>:图片的资源id</li>
 <li><code>antialias</code>:是否开启图片<a href="http://www.twinklingstar.cn/2013/390/introduction-to-alias-antialias/" target="_blank" rel="noopener">抗锯齿</a>。开启后会让图片会更加平滑，同时清晰度降低很少，应该开启。</li>
-<li><code>dither</code>：是否开启<strong>抖动</strong>效果。开启后让高质量的图片的比较低质量的屏幕上不失真，应该开启。</li>
+<li><code>dither</code>：是否开启<strong>抖动</strong>效果。开启后让高质量的图片的在低质量的屏幕上显示不失真，应该开启。</li>
 <li><code>filter</code>：是否开启<strong>过滤</strong>效果。当图片尺寸被拉伸或压缩时，开启后可保持较好的显示效果，应该开启</li>
 <li><code>tileMode</code>：平铺模式。开启后<code>gravity</code>会失效；可选值的具体含义：</li>
 </ul>
@@ -708,14 +708,14 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <li><code>startColor</code>：渐变的起始色</li>
 <li><code>centerColor</code>：渐变的中间色</li>
 <li><code>endColor</code>：渐变的结束色</li>
-<li><code>gradient</code>：渐变半径。仅当<code>android:type=&quot;radial&quot;</code>时有效</li>
+<li><code>gradientRadius</code>：渐变半径。仅当<code>android:type=&quot;radial&quot;</code>时有效</li>
 <li><code>useLevel</code>：一般为false，当Drawable作<code>StateListDrawable</code>时为true</li>
 <li><code>type</code>：渐变的类别。可选值：</li>
 </ul>
 <blockquote>
 <ul>
 <li><code>linear</code>(线性渐变)：默认</li>
-<li><code>radial</code>(辐射渐变)：需要配合<code>android:gradient</code>属性一起使用。</li>
+<li><code>radial</code>(辐射渐变)：需要配合<code>android:gradientRadius</code>属性一起使用。</li>
 <li><code>sweep</code>(扫描线渐变)：</li>
 </ul>
 <p><img src="https://s2.ax1x.com/2020/02/21/3umcyn.png" alt="渐变的样式"></p>
@@ -762,7 +762,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 </tbody></table>
 <h4 id="2-2-4-LayerDrawable"><a href="#2-2-4-LayerDrawable" class="headerlink" title="2.2.4 LayerDrawable"></a>2.2.4 <code>LayerDrawable</code></h4><ul>
 <li>表示一种<strong>层次化</strong>的Drawable集合，通过将不同的Drawable放置在不同的层上面从而达到一种叠加后的效果。</li>
-<li>根节点``，常用属性：</li>
+<li>根节点<code>layer-list</code>，常用属性：</li>
 </ul>
 <pre class=" language-swift"><code class="language-swift">layer<span class="token operator">-</span>list
     <span class="token operator">|</span><span class="token operator">-</span> item
