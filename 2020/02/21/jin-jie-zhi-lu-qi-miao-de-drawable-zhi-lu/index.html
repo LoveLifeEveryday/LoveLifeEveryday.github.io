@@ -497,7 +497,7 @@ Drawable分类
 <p><img src="https://s2.ax1x.com/2020/02/20/3m0LCj.png" alt="Drawable继承关系"></p>
 <p>Q2:<strong><code>Drawable</code>使用方式</strong>:</p>
 <ul>
-<li>创建所需Drawable的根节点的<strong>xml</strong>，再通过<strong>@drawable/xxx</strong>引入布局中。（常用）</li>
+<li>创建所需Drawable的根节点的<strong>xml</strong>，再通过<code>@drawable/xxx</code>引入布局中。（常用）</li>
 </ul>
 <blockquote>
 <ul>
@@ -671,7 +671,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <li><strong>line</strong>(横线)：</li>
 </ul>
 <blockquote>
-<p>注意：<strong>必须</strong>通过<code>stroke</code>标签来指定线的宽度和颜色等信息。</p>
+<p>注意：<strong>必须</strong>通过<code>stroke</code>标签来指定横线的宽度和颜色等信息。</p>
 </blockquote>
 <ul>
 <li><strong>ring</strong>(圆环)：</li>
@@ -683,7 +683,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 </ul>
 <p><img src="https://s2.ax1x.com/2020/02/21/3nbMpd.png" alt="ring额外属性"></p>
 </blockquote>
-<p>Q2 <code>corners</code>：表示shape的四个圆角的角度，只适用于矩形。</p>
+<p>Q2 <code>corners</code>：表示shape的四个圆角的角度，<strong>只适用于矩形</strong>。</p>
 <ul>
 <li><code>radius</code>：为四个角同时设定相同的角度。优先级比以下4个属性要低。</li>
 <li><code>topLeftRadius</code>：左上角的角度</li>
@@ -913,7 +913,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <ul>
 <li><p>使用方法：无论是用xml还是代码实现，若作为View背景，都需要在Java代码中调用<code>setLevel()</code>方法；若作为ImageView前景，需要调用<code>setImageLevel()</code>。</p>
 </li>
-<li><p>加载规则：当某item的android:maxLevel <strong>等于</strong> setLevel所设置的数值时就会被加载。若都没有匹配的则都不显示。</p>
+<li><p>加载规则：当某item的<code>android:maxLevel</code> <strong>等于</strong> <code>setLevel</code>所设置的数值时就会被加载。若都没有匹配的则都不显示。</p>
 </li>
 <li><p>实例：</p>
 <pre class=" language-xml"><code class="language-xml">//在Drawable文件夹中创建bg_level.xml
@@ -983,7 +983,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <p>运行结果：ImageView的背景从image1缓缓切换到image2。</p>
 </blockquote>
 <h4 id="2-2-8-InsetDrawable"><a href="#2-2-8-InsetDrawable" class="headerlink" title="2.2.8 InsetDrawable"></a>2.2.8 <code>InsetDrawable</code></h4><ul>
-<li>表示把一个Drawable嵌入到另外一个Drawable的内部，并在四周留一些间距。、</li>
+<li>表示把一个Drawable嵌入到另外一个Drawable的内部，并在四周留一些间距。</li>
 </ul>
 <blockquote>
 <p>与Drawable的padding属性不同：padding表示的是<strong>Drawable的内容与Drawable本身</strong>的边距；而InsetDrawable表示的是<strong>Drawable与容器之间</strong>的边距。</p>
@@ -1020,8 +1020,13 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
     <span class="token attr-name"><span class="token namespace">android:</span>insetTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20dp<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>visible</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>inset</span><span class="token punctuation">></span></span></code></pre>
-<p>效果图：</p>
 <p><img src="https://s2.ax1x.com/2020/02/21/3u0gC4.png" alt="InsetDrawable效果"></p>
+<ul>
+<li>面试题：为一个充满整个屏幕的LinearLayout布局指定背景图，是否可以让背景图不充满屏幕？</li>
+</ul>
+<blockquote>
+<p>答案：可以使用嵌入(Inset)图像资源来指定图像，然后像使用普通图像资源一样使用嵌入图像资源</p>
+</blockquote>
 <h4 id="2-2-9-ScaleDrawable"><a href="#2-2-9-ScaleDrawable" class="headerlink" title="2.2.9 ScaleDrawable"></a>2.2.9 <code>ScaleDrawable</code></h4><ul>
 <li>表示将Drawable缩放到一定比例。</li>
 <li>根节点<code>scale</code>，常用属性：</li>
@@ -1049,6 +1054,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <ul>
 <li>level取值范围为0~10000</li>
 <li>默认值为0：表示不可见；1~10000：表示可见</li>
+<li>一般<code>level</code>设为1即可</li>
 </ul>
 </blockquote>
 <ul>
@@ -1102,7 +1108,8 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <ul>
 <li>level取值范围为0~10000。</li>
 <li>0：表示完全裁剪，即不可见；10000：表示不裁剪。</li>
-<li>level越大可见区越大。</li>
+<li><code>level</code>越大可见区越大。</li>
+<li>一般<code>level</code>设为1即可</li>
 </ul>
 </blockquote>
 <ul>
@@ -1172,6 +1179,7 @@ Bitmap bitmap <span class="token operator">=</span> BitmapFactory<span class="to
 <li><a href="https://www.jianshu.com/p/35c7775b8202" target="_blank" rel="noopener">要点提炼|开发艺术之Drawable</a></li>
 <li><a href="https://www.sohu.com/a/119744237_355135" target="_blank" rel="noopener">Android ImageView 正确使用姿势</a></li>
 <li><a href="https://blog.csdn.net/xin917480852/article/details/51249190" target="_blank" rel="noopener">InsetDrawable详解</a></li>
+<li><a href="https://blog.csdn.net/ouyang_peng/article/details/46958117" target="_blank" rel="noopener">Android嵌入图像InsetDrawable的用法</a></li>
 </ul>
 
             </div>
