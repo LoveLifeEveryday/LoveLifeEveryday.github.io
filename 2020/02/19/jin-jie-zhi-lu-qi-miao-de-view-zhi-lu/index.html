@@ -911,6 +911,7 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 <blockquote>
 <p>从<code>getDefaultSize()</code>中可以看出，直接继承View的自定义View需要重写<code>onMeasure()</code>并设置<code>wrap_content</code>时的自身大小，否则效果相当于<code>macth_parent</code>。解决上述问题的典型代码：</p>
 </blockquote>
+<p>方法一：</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
     <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onMeasure</span><span class="token punctuation">(</span><span class="token keyword">int</span> widthMeasureSpec<span class="token punctuation">,</span> <span class="token keyword">int</span> heightMeasureSpec<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onMeasure</span><span class="token punctuation">(</span>widthMeasureSpec<span class="token punctuation">,</span>heightMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -927,6 +928,20 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
         <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>heightSpecMode <span class="token operator">==</span> MeasureSpec<span class="token punctuation">.</span>AT_MOST<span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token function">setMeasuredDimension</span><span class="token punctuation">(</span>widthSpecSize<span class="token punctuation">,</span>mHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>方法二：</p>
+<blockquote>
+<ul>
+<li>原理其实和方法一类似，就是<code>resolveSize</code>封装了方法一的一系列操作</li>
+<li>想探究<code>resolveSize</code>源码的可以看一下这篇文章：<a href="https://www.jianshu.com/p/5d490ab147f8" target="_blank" rel="noopener">resolveSize(int size , int measureSpec)方法介绍</a></li>
+</ul>
+</blockquote>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onMeasure</span><span class="token punctuation">(</span><span class="token keyword">int</span> widthMeasureSpec<span class="token punctuation">,</span> <span class="token keyword">int</span> heightMeasureSpec<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onMeasure</span><span class="token punctuation">(</span>widthMeasureSpec<span class="token punctuation">,</span>heightMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> width<span class="token operator">=</span><span class="token function">resolveSize</span><span class="token punctuation">(</span>mWidth<span class="token punctuation">,</span> widthMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> height<span class="token operator">=</span><span class="token function">resolveSize</span><span class="token punctuation">(</span>mHeight<span class="token punctuation">,</span> heightMeasureSpec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setMeasuredDimension</span><span class="token punctuation">(</span>width<span class="token punctuation">,</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
 <ul>
 <li>ViewGroup的<code>measure</code>：除了完成ViewGroup自身的测量外，还会遍历去调用所有子元素的<code>measure</code>方法。</li>
