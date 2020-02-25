@@ -578,11 +578,9 @@ View动画的特殊使用场景
 <p>接下来分别解释各个节点下属性含义：</p>
 <p>A.<code>set</code>:表示动画集合，对应<code>AnimationSet</code>类</p>
 <ul>
-<li><code>interpolator</code>:表示动画集合所采用的插值器，影响动画的速度。可以不指定，默认是<code>accelerate_decelerate_interpolate</code>(加速减速插值器)。下文会详细介绍插值器的相关知识。<ul>
+<li><code>interpolator</code>:表示动画集合所采用的插值器，影响动画的速度。可以不指定，默认是<code>accelerate_decelerate_interpolate</code>(加速减速插值器)。下文<code>属性动画</code>会详细介绍插值器的相关知识。</li>
 <li><code>shareInterpolator</code>:表示集合中的动画是否和<strong>集合</strong>共享一个插值器。如果集合不指定插值器, 那么子动画就需要单独制定所需的插值器或者使用默认值。</li>
 <li><code>fillAfter</code>：表示动画结束时是否保持动画结束时的状态 </li>
-</ul>
-</li>
 </ul>
 <p> B.<code>translate</code>：表示平移动画，对应<code>TranslateAnimation</code>类</p>
 <ul>
@@ -659,7 +657,7 @@ View动画的特殊使用场景
 </blockquote>
 <p>以上四类补间动画除了各自的特有属性外，它们的共有属性有：</p>
 <p><img src="https://s2.ax1x.com/2020/02/23/31gTOK.png" alt="共有属性"></p>
-<p>在<code>xml</code>声明好之后，接下来只要在代码中<code>startAnimation(animation)</code>开始动画即可，代码如下：</p>
+<p>在<code>XML</code>声明好之后，接下来只要在代码中<code>startAnimation(animation)</code>开始动画即可，代码如下：</p>
 <pre class=" language-java"><code class="language-java">Animation animation <span class="token operator">=</span> AnimationUtils<span class="token punctuation">.</span><span class="token function">loadAnimation</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>anim<span class="token punctuation">.</span>XXX<span class="token punctuation">)</span><span class="token punctuation">;</span>
 mView<span class="token punctuation">.</span><span class="token function">startAnimation</span><span class="token punctuation">(</span>animation<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>同时，可通过Animation的<code>setAnimationListener(new AnimationListener(){...})</code>给动画添加过程监听，这样在动画开始、结束和每一次循环时都可在回调方法中监听到。接口代码如下：</p>
@@ -966,7 +964,7 @@ AnimationDrawable ad <span class="token operator">=</span> <span class="token ke
     ad<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//5.播放动画</span></code></pre>
 <blockquote>
 <ul>
-<li><p><strong>注意</strong>：使用帧动画要注意不能使用尺寸过大的图片，否则容易造成<code>OOM</code>( 内存溢出)错误</p>
+<li><p><strong>注意</strong>：使用帧动画要注意不能使用尺寸过大的图片，否则容易造成<code>OOM</code>( 内存溢出)</p>
 </li>
 <li><p>想要更进一步了解<strong>帧动画</strong>的读者，可以看一下这篇文章：<a href="https://www.jianshu.com/p/225fe1feba60" target="_blank" rel="noopener">关于 逐帧动画 的使用都在这里了！</a></p>
 </li>
@@ -1086,8 +1084,8 @@ set.start();</code></pre>
 </ul>
 <blockquote>
 <ul>
-<li><strong>together</strong>：默认值。表示动画集合中的子动画<strong>同时</strong>播放</li>
-<li><strong>equentially</strong>：表示动画集合中的子动画按照<strong>书写</strong>的先后顺序依次播放</li>
+<li><code>together</code>：默认值。表示动画集合中的子动画<strong>同时</strong>播放</li>
+<li><code>equentially</code>：表示动画集合中的子动画按照<strong>书写</strong>的先后顺序依次播放</li>
 </ul>
 </blockquote>
 <p>接下来具体介绍属性动画的实现方式：</p>
