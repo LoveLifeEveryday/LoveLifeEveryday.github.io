@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="进阶之路 | 奇妙的View之旅, Sunny">
+    <meta name="keywords" content="Sunny">
     <meta name="description" content="进阶之路 | 奇妙的View之旅前言
 本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
 我的GIthub博客
@@ -26,7 +26,7 @@ View">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>进阶之路 | 奇妙的View之旅 | Sunny</title>
+    <title>Sunny</title>
     <link rel="icon" type="image/png" href="/blueRabbit.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,13 +320,13 @@ View">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        进阶之路 | 奇妙的View之旅
+                        
                     </div>
                 </div>
             </div>
@@ -643,7 +643,7 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 <p><img src="https://s2.ax1x.com/2020/02/18/3FopE6.png" alt="动画的分类"></p>
 <pre class=" language-java"><code class="language-java">ObjectAnimator<span class="token punctuation">.</span><span class="token function">ofFloat</span><span class="token punctuation">(</span>targetView<span class="token punctuation">,</span><span class="token string">"translationX"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//在100ms内使得View从原始位置向右平移100像素</span></code></pre>
 <blockquote>
-<p>想要了解动画的详细内容，可以看一下这篇：<a href="https://www.jianshu.com/p/25efc9f3a8f0" target="_blank" rel="noopener">Android属性动画和视图动画的区别</a></p>
+<p>想要了解动画详细内容的读者，可以看一下笔者这篇文章：<a href="https://juejin.im/post/5e5376fdf265da5749474559" target="_blank" rel="noopener">进阶之路 | 奇妙的Animation之旅</a></p>
 </blockquote>
 <h5 id="4-layout"><a href="#4-layout" class="headerlink" title="4. layout()"></a>4. <code>layout()</code></h5><blockquote>
 <ul>
@@ -686,7 +686,7 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 <ul>
 <li>与scrollTo/scrollBy不同：scrollTo/scrollBy过程是瞬间完成的，非平滑；而Scroller则有过渡滑动的效果</li>
 <li>注意：Scoller本身无法让View弹性滑动，它需要和View的<code>computeScroll</code>方法配合使用。</li>
-<li>原理：Scroll的<code>computeScrollOffset()</code>根据<strong>时间的流逝</strong>动态计算一小段时间里View滑动的距离，并得到当前View位置，再通过scrollTo继续滑动。即把一次滑动拆分成无数次小距离滑动从而实现弹性滑动。</li>
+<li>原理：Scoller的<code>computeScrollOffset()</code>根据<strong>时间的流逝</strong>动态计算一小段时间里View滑动的距离，并得到当前View位置，再通过scrollTo继续滑动。即把一次滑动拆分成无数次小距离滑动从而实现弹性滑动。</li>
 </ul>
 </blockquote>
 <p><code>Scroller</code>惯用代码：</p>
@@ -739,14 +739,14 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 </blockquote>
 <p>Q2:<strong>出现的场景：</strong></p>
 <ul>
-<li>外部滑动和内部滑动<strong>方向不一致</strong>：如ViewPager嵌套ListView(实际这么用没问题，因为ViewPager内部已处理过)。</li>
-<li>外部滑动方向和内部滑动<strong>方向一致</strong>：如ScrollView嵌套ListView。</li>
+<li>场景一：外部滑动和内部滑动<strong>方向不一致</strong>：如ViewPager嵌套ListView(实际这么用没问题，因为ViewPager内部已处理过)。</li>
+<li>场景二：外部滑动方向和内部滑动<strong>方向一致</strong>：如ScrollView嵌套ListView。</li>
 </ul>
 <blockquote>
 <p>读者如果想要了解出现原因以及解决方式，笔者推荐一篇文章：<a href="https://www.jianshu.com/p/5f198f8a0977" target="_blank" rel="noopener">ScrollView嵌套ListView时可能产生的问题解决</a></p>
 </blockquote>
 <ul>
-<li>上面两种情况的嵌套</li>
+<li>场景三：上面两种情况的嵌套</li>
 </ul>
 <p>Q3:<strong>处理规则</strong>：</p>
 <ul>
@@ -838,11 +838,11 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 <p>由于该事件并不受<code>FLAG_DISALLOW_INTERCEPT</code>（由<code>requestDisallowInterceptTouchEvent</code>方法设置）标记位控制，一旦<code>ACTION_DOWN</code>事件到来，该标记位会被重置。所以一旦父容器拦截了该事件，那么所有的事件都<strong>不会传递给子View</strong>，内部拦截法也就失效了。</p>
 </blockquote>
 <h3 id="2-4-View的事件分发机制"><a href="#2-4-View的事件分发机制" class="headerlink" title="2.4 View的事件分发机制"></a>2.4 View的事件分发机制</h3><blockquote>
-<p>读者看完本篇对事件分发机制还有些模糊的话，笔者墙裂推荐一篇浅显易懂的博客：<a href="https://www.cnblogs.com/fuly550871915/p/4983682.html" target="_blank" rel="noopener">android中的事件传递和处理机制</a></p>
+<p>读者看完本篇对事件分发机制还有些模糊的话，笔者墙裂推荐一篇浅显易懂的文章：<a href="https://www.cnblogs.com/fuly550871915/p/4983682.html" target="_blank" rel="noopener">android中的事件传递和处理机制</a></p>
 </blockquote>
 <p>Q1：<strong>了解</strong><code>setContentView()</code></p>
 <blockquote>
-<p>我们将从源码的角度，一步步带大家深入<code>setContentView()</code>的本质，为后面事件分发的了解打好基础</p>
+<p>我们将从源码的角度，一步步带大家深入<code>setContentView()</code>的本质，为后面事件分发机制的了解打好基础</p>
 </blockquote>
 <p><img src="https://s2.ax1x.com/2020/02/18/3k86dU.png" alt="setContentView()机制"></p>
 <blockquote>
@@ -870,9 +870,9 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 <p><strong><code>measure</code>测量-&gt;<code>layout</code>布局-&gt;<code>draw</code>绘制</strong></p>
 </blockquote>
 <ul>
-<li>measure确定View的<strong>测量宽高</strong></li>
-<li>layout确定View的<strong>最终宽高</strong>和<strong>四个顶点的位置</strong></li>
-<li>draw将View <strong>绘制到屏幕</strong>上</li>
+<li><code>measure</code>确定View的<strong>测量宽高</strong></li>
+<li><code>layout</code>确定View的<strong>最终宽高</strong>和<strong>四个顶点的位置</strong></li>
+<li><code>draw</code>将View <strong>绘制到屏幕</strong>上</li>
 <li>对应<code>onMeasure()</code>、<code>onLayout()</code>、<code>onDraw()</code>三个方法。</li>
 </ul>
 <blockquote>
@@ -957,7 +957,7 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
 <li>确定View的最终宽高和四个顶点的位置</li>
 </ul>
 <blockquote>
-<p>大致流程：从顶级View开始依次调用layout()，其中子View的layout()会调用setFrame()来设定自己的四个顶点（mLeft、mRight、mTop、mBottom），接着调用onLayout()来确定其坐标，注意该方法是空方法，因为不同的ViewGroup对其子View的布局是不相同的。</p>
+<p>大致流程：从顶级View开始依次调用<code>layout()</code>，其中子View的<code>layout()</code>会调用<code>setFrame()</code>来设定自己的四个顶点（mLeft、mRight、mTop、mBottom），接着调用<code>onLayout()</code>来确定其坐标，注意该方法是空方法，因为不同的ViewGroup对其子View的布局是不相同的。</p>
 </blockquote>
 <p><img src="https://s2.ax1x.com/2020/02/18/3AVXcD.png" alt="layout流程"></p>
 <blockquote>
@@ -1188,7 +1188,7 @@ btn<span class="token punctuation">.</span><span class="token function">requestL
             </div>
             <br/>
             <a  href="/2020/02/19/jin-jie-zhi-lu-qi-miao-de-view-zhi-lu/">
-                    《进阶之路 | 奇妙的View之旅》
+                    《》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
