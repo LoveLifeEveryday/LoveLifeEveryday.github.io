@@ -512,7 +512,7 @@ Window&amp;amp;Window">
 <h4 id="2-1-3-Window-amp-WindowManagerService"><a href="#2-1-3-Window-amp-WindowManagerService" class="headerlink" title="2.1.3 Window&amp;WindowManagerService"></a>2.1.3 <code>Window</code>&amp;<code>WindowManagerService</code></h4><blockquote>
 <p>想了解IPC的读者，可以看下笔者写的一篇博客： <a href="https://juejin.im/post/5e520b5651882549194967c0" target="_blank" rel="noopener">进阶之路 | 奇妙的 IPC 之旅</a></p>
 </blockquote>
-<p>Window的具体实现位于<code>WindowManagerService</code>中。<code>WindowManager</code>和<code>WindowManagerService</code>的交互是一个<code>IPC</code>（跨进程通信）过程。</p>
+<p>Window的<strong>具体实现</strong>位于<code>WindowManagerService</code>中。<code>WindowManager</code>和<code>WindowManagerService</code>的交互是一个<code>IPC</code>（跨进程通信）过程。</p>
 <h4 id="2-1-4-Window-amp-WindowManager"><a href="#2-1-4-Window-amp-WindowManager" class="headerlink" title="2.1.4 Window&amp;WindowManager"></a>2.1.4 <code>Window</code>&amp;<code>WindowManager</code></h4><p>实际使用中无法访问<code>Window</code>，对<code>Window</code>的访问必须通过<code>WindowManager</code>（换句话说，<code>WindowManager</code>是外界访问<code>Window</code>的入口），对<code>Window</code>的操作通过它完成。</p>
 <ul>
 <li>例如：通过<code>WindowManager</code>添加<code>Window</code></li>
@@ -540,7 +540,7 @@ mWindowManager<span class="token punctuation">.</span><span class="token functio
 <blockquote>
 <ul>
 <li><code>FLAG_NOT_FOCUSABLE</code>：表示<code>Window</code><strong>不需要获取焦点</strong>，也不需要接收各种输入事件，此标记会同时启动<code>FLAG_NOT_TOUCH_MODEL</code>，最终事件会传递给下层的具有焦点的<code>Window</code>。</li>
-<li><code>FLAG_NOT_TOUCH_MODAL</code>：表示系统会将当前Window区域<strong>以外</strong>的单击事件传递给底层的Window，而区域<strong>以内</strong>的单击事件则自己处理。一般都需要开启此标记，否则其他Window将无法收到单击事件。</li>
+<li><code>FLAG_NOT_TOUCH_MODAL</code>：表示系统会将当前Window区域<strong>以外</strong>的单击事件<strong>传递给底层的Window</strong>，而区域<strong>以内</strong>的单击事件则<strong>自己处理</strong>。一般都<strong>需要开启</strong>此标记，否则其他Window将无法收到单击事件。</li>
 <li><code>FLAG_SHOW_WHEN_LOCKED</code>：表示Window可显示在锁屏界面。</li>
 </ul>
 </blockquote>
@@ -553,7 +553,8 @@ mWindowManager<span class="token punctuation">.</span><span class="token functio
 <li><p>系统权限有很多值，一般选用：<code>TYPE_SYSTEM_OVERLAY</code>/<code>TYPE_SYSTEM_ERROR</code></p>
 </li>
 <li><p>记得声明权限：<code>&lt; uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;/&gt;</code>,<code>Android</code>6.0以下直接声明权限即可，<code>Android6.0</code>以上还需要用户打开软件设置页手动打开，才能授权。</p>
-<p>参考自： <a href="https://www.jianshu.com/p/2746a627c6d2" target="_blank" rel="noopener">在android M版本SYSTEM_ALERT_WINDOW权限无法获取问题</a></p>
+</li>
+</ul>
 </li>
 </ul>
 <blockquote>
@@ -583,9 +584,8 @@ mWindowManager<span class="token punctuation">.</span><span class="token functio
 <td>2000-2999</td>
 </tr>
 </tbody></table>
-</li>
-<li><p><code>gravity</code>：表示<code>Window</code>的位置。</p>
-</li>
+<ul>
+<li><code>gravity</code>：表示<code>Window</code>的位置。</li>
 </ul>
 <blockquote>
 <ul>
@@ -637,11 +637,11 @@ mWindowManager<span class="token punctuation">.</span><span class="token functio
 <p>一幅图说明这几个类的关系：</p>
 <p><img src="https://s2.ax1x.com/2020/02/26/3Uf7VJ.png" alt="类的关系"></p>
 <blockquote>
-<p>因此，通过WindowManagerGlobal的addView()、updateViewLayout()、removeView()实现WindowManager对Window的添加、删除和修改。</p>
+<p>因此，通过<code>WindowManagerGlobal</code>的<code>addView()</code>、<code>updateViewLayout()</code>、<code>removeView()</code>实现<code>WindowManager</code>对<code>Window</code>的添加、删除和修改。</p>
 </blockquote>
 <h4 id="2-2-1-Window的添加"><a href="#2-2-1-Window的添加" class="headerlink" title="2.2.1 Window的添加"></a>2.2.1 <code>Window</code>的添加</h4><p><img src="https://s2.ax1x.com/2020/02/26/3UownK.png" alt="Window添加流程"></p>
-<h4 id="2-2-2-Window的删除"><a href="#2-2-2-Window的删除" class="headerlink" title="2.2.2 Window的删除"></a>2.2.2 <code>Window</code>的删除</h4><p><img src="https://s2.ax1x.com/2020/02/26/3UTDK0.png" alt="Window删除流程"></p>
-<h4 id="2-2-3-Window的更新"><a href="#2-2-3-Window的更新" class="headerlink" title="2.2.3 Window的更新"></a>2.2.3 <code>Window</code>的更新</h4><p><img src="https://s2.ax1x.com/2020/02/26/3U7es0.png" alt="`Window`的更新流程"></p>
+<h4 id="2-2-2-Window的删除"><a href="#2-2-2-Window的删除" class="headerlink" title="2.2.2 Window的删除"></a>2.2.2 <code>Window</code>的删除</h4><p><img src="https://s2.ax1x.com/2020/02/27/3d44Ag.png" alt="Window删除流程"></p>
+<h4 id="2-2-3-Window的更新"><a href="#2-2-3-Window的更新" class="headerlink" title="2.2.3 Window的更新"></a>2.2.3 <code>Window</code>的更新</h4><p><img src="https://s2.ax1x.com/2020/02/27/3dISZ8.png" alt="Window的更新流程"></p>
 <blockquote>
 <p>不难发现，以上验证了之前的总结：</p>
 <ul>
@@ -654,9 +654,12 @@ mWindowManager<span class="token punctuation">.</span><span class="token functio
 <p>由于<code>View</code>必须依附<code>Window</code>才能呈现出来，因此有<code>View</code>的地方必有<code>Window</code>。在<code>Android</code>中可以提供<code>View</code>的地方有<code>Activity</code>、<code>Dialog</code>和<code>Toast</code>，<code>PopupWindow</code>,<code>菜单</code>，下面分别来看<code>Activity</code>、<code>Dialog</code>和<code>Toast</code>三种<code>Window</code>的大致创建过程：</p>
 </blockquote>
 <h4 id="2-3-1-Activity的Window创建过程"><a href="#2-3-1-Activity的Window创建过程" class="headerlink" title="2.3.1 Activity的Window创建过程"></a>2.3.1 <code>Activity</code>的<code>Window</code>创建过程</h4><blockquote>
-<p>想了解<code>Activity</code>的<code>Window</code>创建过程的源码的读者，笔者推荐一篇文章： <a href="https://link.jianshu.com/?t=http%3A%2F%2Fblog.csdn.net%2FLuoshengyang%2Farticle%2Fdetails%2F8223770" target="_blank" rel="noopener">Activity的Window创建过程分析</a></p>
+<p><code>Activity</code>的启动流程这里不了解没关系，笔者后面会专门写一篇文章来介绍</p>
 </blockquote>
 <p><img src="https://s2.ax1x.com/2020/02/26/3UOigH.png" alt="Activity的Window创建过程"></p>
+<blockquote>
+<p>想了解<code>Activity</code>的<code>Window</code>创建过程的源码的读者，笔者推荐一篇文章： <a href="https://link.jianshu.com/?t=http%3A%2F%2Fblog.csdn.net%2FLuoshengyang%2Farticle%2Fdetails%2F8223770" target="_blank" rel="noopener">Activity的Window创建过程分析</a></p>
+</blockquote>
 <h4 id="2-3-2-Dialog的Window创建过程"><a href="#2-3-2-Dialog的Window创建过程" class="headerlink" title="2.3.2 Dialog的Window创建过程"></a>2.3.2 <code>Dialog</code>的<code>Window</code>创建过程</h4><p><img src="https://s2.ax1x.com/2020/02/26/3UzjDH.png" alt="Dialog的Window创建过程"></p>
 <ul>
 <li><code>Dialog.show()</code>方法：完成<code>DecorView</code>的显示</li>
