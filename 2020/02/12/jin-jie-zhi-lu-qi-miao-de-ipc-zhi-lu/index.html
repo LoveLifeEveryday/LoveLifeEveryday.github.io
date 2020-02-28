@@ -473,7 +473,7 @@ Android中的">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="进阶之路-奇妙的-IPC-之旅"><a href="#进阶之路-奇妙的-IPC-之旅" class="headerlink" title="进阶之路 | 奇妙的 IPC 之旅"></a>进阶之路 | 奇妙的 <code>IPC</code> 之旅</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+                <h1 id="进阶之路-奇妙的-IPC-之旅"><a href="#进阶之路-奇妙的-IPC-之旅" class="headerlink" title="进阶之路 | 奇妙的 IPC 之旅"></a>进阶之路 | 奇妙的 IPC 之旅</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：</p>
 <p><a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
 </blockquote>
@@ -539,14 +539,14 @@ Android中的">
 </blockquote>
 <h4 id="2-2-1-什么是序列化"><a href="#2-2-1-什么是序列化" class="headerlink" title="2.2.1 什么是序列化"></a>2.2.1 什么是序列化</h4><ul>
 <li>含义：序列化表示将一个对象转换成<strong>可存储或可传输</strong>的状态。序列化后的对象可以在网络上进行传输，也可以存储到本地。</li>
-<li>使用场景：需要通过<strong>Intent</strong>和<strong>Binder</strong>等传输<strong>类对象</strong>就必须完成对象的序列化过程。</li>
-<li>两种方式：实现Serializable/Parcelable接口。</li>
+<li>使用场景：需要通过<code>Intent</code>和<code>Binder</code>等传输<strong>类对象</strong>就必须完成对象的序列化过程。</li>
+<li>两种方式：实现<code>Serializable</code>/<code>Parcelable</code>接口。</li>
 </ul>
-<h4 id="2-2-2-Serializable接口"><a href="#2-2-2-Serializable接口" class="headerlink" title="2.2.2 Serializable接口"></a>2.2.2 Serializable接口</h4><blockquote>
+<h4 id="2-2-2-Serializable接口"><a href="#2-2-2-Serializable接口" class="headerlink" title="2.2.2 Serializable接口"></a>2.2.2 <code>Serializable</code>接口</h4><blockquote>
 <p>Java提供的序列化接口，使用方式比较简单：</p>
 <ul>
-<li>实体类实现Serializable</li>
-<li>手动设置/系统自动生成<strong>serialVersionUID</strong></li>
+<li>实体类实现<code>Serializable</code></li>
+<li>手动设置/系统自动生成<code>serialVersionUID</code></li>
 </ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//Serializable Demo</span>
@@ -568,16 +568,16 @@ Android中的">
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <blockquote>
-<p>这里特别注意一下<strong>serialVersionUID</strong>：</p>
+<p>这里特别注意一下<code>serialVersionUID</code>：</p>
 <ul>
-<li>含义：是Serializable接口中用来辅助序列化和反序列化过程。</li>
-<li>注意：原则上序列化后的数据中的serialVersionUID要和当前类的serialVersionUID <strong>相同</strong>才能正常的序列化。当类发生非常规性变化（修改了类名/修改了成员变量的类型）的时候，序列化失败。</li>
+<li>含义：是<code>Serializable</code>接口中用来辅助序列化和反序列化过程。</li>
+<li>注意：原则上序列化后的数据中的<code>serialVersionUID</code>要和当前类的<code>serialVersionUID</code> <strong>相同</strong>才能正常的序列化。当类发生非常规性变化（修改了<strong>类名</strong>/修改了成员<strong>变量的类型</strong>）的时候，序列化失败。</li>
 </ul>
 </blockquote>
-<h4 id="2-2-3-Parcelable接口"><a href="#2-2-3-Parcelable接口" class="headerlink" title="2.2.3 Parcelable接口"></a>2.2.3 Parcelable接口</h4><blockquote>
-<p>是Android中的序列化接口，使用的时候，类中需要实现下面几点：</p>
+<h4 id="2-2-3-Parcelable接口"><a href="#2-2-3-Parcelable接口" class="headerlink" title="2.2.3 Parcelable接口"></a>2.2.3 <code>Parcelable</code>接口</h4><blockquote>
+<p>是<code>Android</code>中的序列化接口，使用的时候，类中需要实现下面几点：</p>
 <ul>
-<li>实现Parcelable接口</li>
+<li>实现<code>Parcelable</code>接口</li>
 <li>内容描述</li>
 <li>序列化方法</li>
 <li>反序列化方法</li>
@@ -602,7 +602,7 @@ Android中的">
         <span class="token keyword">this</span><span class="token punctuation">.</span>isMale <span class="token operator">=</span> isMale<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment" spellcheck="true">//返回内容描述</span>
+    <span class="token comment" spellcheck="true">//返回内容描述 return 0 即可</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">describeContents</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -647,8 +647,8 @@ Android中的">
 <thead>
 <tr>
 <th></th>
-<th>Serializable接口</th>
-<th>Parcelable接口</th>
+<th><code>Serializable</code>接口</th>
+<th><code>Parcelable</code>接口</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -674,12 +674,12 @@ Android中的">
 </tbody></table>
 <h4 id="2-2-5-Binder"><a href="#2-2-5-Binder" class="headerlink" title="2.2.5 Binder"></a>2.2.5 Binder</h4><p>Q1：<strong>Binder是什么</strong>？</p>
 <ul>
-<li>从API角度：是一个类，实现<strong>IBinder</strong>接口。</li>
-<li>从IPC角度：是<strong>Android</strong>中的一种跨进程通信方式。</li>
-<li>从Framework角度：是<strong>ServiceManager</strong>连接各种<strong>Manager</strong>和相应<strong>ManagerService</strong>的桥梁。</li>
+<li>从API角度：是一个类，实现<code>IBinder</code>接口。</li>
+<li>从IPC角度：是<code>Android</code>中的一种跨进程通信方式。</li>
+<li>从Framework角度：是<code>ServiceManager</code>，连接各种<code>Manager</code>和相应<code>ManagerService</code>的桥梁。</li>
 <li>从应用层：是客户端和服务端进行通信的<strong>媒介</strong>。客户端通过它可获取服务端提供的服务或者数据。</li>
 </ul>
-<p>Q2:Android是基于Linux内核基础上设计的，却没有把管道/消息队列/共享内存/信号量/Socket等一些IPC通信手段作为Android的主要IPC方式，而是新增了Binder机制，其<strong>优点</strong>有:</p>
+<p>Q2:<code>Android</code>是基于<code>Linux</code>内核基础上设计的，却没有把管道/消息队列/共享内存/信号量/<code>Socket</code>等一些<code>IPC</code>通信手段作为Android的主要<code>IPC</code>方式，而是新增了<code>Binder</code>机制，其<strong>优点</strong>有:</p>
 <p>A1:传输效率高、可操作性强</p>
 <blockquote>
 <p>传输效率主要影响因素是<strong>内存拷贝的次数</strong>，拷贝次数越少，传输速率越高。几种数据传输方式比较</p>
@@ -723,244 +723,255 @@ Android中的">
 <p>对Binder来说：数据从发送方的缓存区拷贝到内核的缓存区，而<strong>接收</strong>方的缓存区与<strong>内核</strong>的缓存区是映射到<strong>同一块</strong>物理地址的，节省了一次数据拷贝的过程</p>
 <p>A2：实现C/S架构方便</p>
 <blockquote>
-<p>Linux的众IPC方式除了Socket以外都不是基于C/S架构，而Socket主要用于网络间的通信且传输效率较低。Binder基于C/S 架构 ，Server端与Client端相对独立，稳定性较好。</p>
+<p><code>Linux</code>的众<code>IPC</code>方式除了<code>Socket</code>以外都不是基于<code>C/S</code>架构，而<code>Socket</code>主要用于网络间的通信且传输效率较低。<code>Binder</code>基于<code>C/S</code> 架构 ，<code>Server</code>端与<code>Client</code>端相对独立，稳定性较好。</p>
 </blockquote>
 <p>A3:安全性高</p>
 <blockquote>
-<p>传统Linux IPC的接收方无法获得对方进程可靠的UID/PID，从而无法鉴别对方身份；而Binder机制为每个进程分配了UID/PID且在Binder通信时会根据UID/PID进行有效性检测。</p>
+<p>传统<code>Linux</code> <code>IPC</code>的接收方无法获得对方进程可靠的<code>UID/PID</code>，从而无法鉴别对方身份；而<code>Binder</code>机制为每个进程分配了<code>UID/PID</code>且在<code>Binder</code>通信时会根据<code>UID/PID</code>进行有效性检测。</p>
 </blockquote>
-<p>Q3:<strong>Binder框架定义了四个角色</strong>呢？</p>
-<p>A1:<strong>Server</strong>&amp;<strong>Client</strong></p>
+<p>Q3:<strong><code>Binder</code>框架定义了哪四个角色</strong>呢？</p>
+<p>A1:<code>Server</code>&amp;<code>Client</code></p>
 <blockquote>
-<p>服务器&amp;客户端。在Binder驱动和Service Manager提供的基础设施上，进行Client-Server之间的通信。</p>
+<p>服务器&amp;客户端。在<code>Binder</code>驱动和<code>Service Manager</code>提供的基础设施上，进行Client-Server之间的通信。</p>
 </blockquote>
-<p>A2:<strong>ServiceManager</strong>:</p>
+<p>A2:<code>ServiceManager</code>:</p>
 <blockquote>
-<p><strong>服务</strong>的<strong>管理者</strong>，将Binder名字转换为Client中对该Binder的引用，使得Client可以通过Binder名字获得Server中Binder实体的引用。</p>
+<p><strong>服务</strong>的<strong>管理者</strong>，将<code>Binder</code>名字转换为<code>Client</code>中对该<code>Binder</code>的引用，使得<code>Client</code>可以通过<code>Binder</code>名字获得<code>Server</code>中<code>Binder</code>实体的引用。</p>
 </blockquote>
 <p><img src="https://s2.ax1x.com/2020/02/14/1jdgsg.png" alt="ServiceManager工作机制"></p>
-<p>A3:<strong>Binder驱动</strong></p>
+<p>A3:<strong><code>Binder</code>驱动</strong></p>
 <ul>
 <li>与硬件设备没有关系，其工作方式与设备驱动程序是一样的，工作于内核态。</li>
-<li>提供<strong>open()</strong>、<strong>mmap()</strong>、<strong>poll()</strong>、<strong>ioctl()</strong>等标准文件操作。</li>
-<li>以字符驱动设备中的misc设备注册在设备目录/dev下，用户通过/dev/binder访问该它。</li>
-<li>负责进程之间binder通信的建立，传递，计数管理以及数据的传递交互等底层支持。</li>
-<li>驱动和应用程序之间定义了一套接口协议，主要功能由<strong>ioctl()</strong>接口实现，由于ioctl()灵活、方便且能够一次调用实现先写后读以满足同步交互，因此不必分别调用write()和read()接口。</li>
-<li>其代码位于linux目录的drivers/misc/binder.c中。</li>
+<li>提供<code>open()</code>、<code>mmap()</code>、<code>poll()</code>、<code>ioctl()</code>等标准文件操作。</li>
+<li>以字符驱动设备中的<code>misc</code>设备注册在设备目录<code>/dev</code>下，用户通过<code>/dev/binder</code>访问该它。</li>
+<li>负责进程之间<code>binder</code>通信的建立，传递，计数管理以及数据的传递交互等底层支持。</li>
+<li>驱动和应用程序之间定义了一套接口协议，主要功能由<code>ioctl()</code>接口实现，由于<code>ioctl()</code>灵活、方便且能够一次调用实现先写后读以满足同步交互，因此不必分别调用<code>write()</code>和<code>read()</code>接口。</li>
+<li>其代码位于<code>linux</code>目录的<code>drivers/misc/binder.c</code>中。</li>
 </ul>
 <blockquote>
 <p><strong>ioctl</strong>(input/output control)是一个专用于设备<strong>输入输出操作</strong>的系统调用,该调用传入一个跟设备有关的请求码，系统调用的功能完全取决于请求码</p>
 </blockquote>
-<p>Q4：Binder <strong>工作原理</strong>是什么</p>
+<p>Q4：<code>Binder</code> <strong>工作原理</strong>是什么</p>
 <ul>
-<li><p>服务器端：在服务端创建好了一个Binder对象后，内部就会开启一个线程用于接收Binder驱动发送的消息，收到消息后会执行<strong>onTranscat</strong>()，并按照参数执行不同的服务端代码。</p>
+<li><p>服务器端：在服务端创建好了一个<code>Binder</code>对象后，内部就会开启一个<strong>线程</strong>用于接收<code>Binder</code>驱动发送的消息，收到消息后会执行<code>onTranscat()</code>，并按照参数执行不同的服务端代码。</p>
 </li>
-<li><p>Binder驱动：在服务端成功创建Binder对象后，Binder驱动也会创建一个mRemote对象（也是Binder类），客户端可借助它调用transcat()即可向服务端发送消息。</p>
+<li><p><code>Binder</code>驱动：在服务端成功创建<code>Binder</code>对象后，<code>Binder</code>驱动也会创建一个<code>mRemote</code>对象（也是<code>Binder</code>类），客户端可借助它调用<code>transcat()</code>即可向服务端发送消息。</p>
 </li>
-<li><p>客户端：客户端要想访问Binder的远程服务，就必须获取远程服务的Binder对象在Binder驱动层对应的mRemote引用。当获取到mRemote对象的引用后，就可以调用相应Binder对象的暴露给客户端的方法。</p>
+<li><p>客户端：客户端要想访问<code>Binder</code>的远程服务，就必须获取远程服务的<code>Binder</code>对象在<code>Binder驱动层</code>对应的<code>mRemote</code>引用。当获取到<code>mRemote</code>对象的引用后，就可以调用相应<code>Binder</code>对象的暴露给客户端的方法。</p>
 <p><img src="https://ftp.bmp.ovh/imgs/2019/11/b5f0f1fd7b2d50fd.png" alt="Binder工作机制"></p>
 </li>
 </ul>
 <blockquote>
-<p>当发出远程请求后<strong>客户端会挂起</strong>，直到返回数据才会唤醒Client</p>
+<p>当发出远程请求后<strong>客户端会挂起</strong>，直到返回数据才会唤醒<code>Client</code></p>
 </blockquote>
-<p>Q5：<strong>当服务端进程异常终止的话，造成Binder死亡的话，怎么办？</strong></p>
-<p>在客户端绑定远程服务成功后，给Binder设置<strong>死亡代理</strong>，当Binder死亡的时候，我们会收到通知，从而重新发起连接请求。</p>
-<pre class=" language-java"><code class="language-java">        <span class="token keyword">private</span> IBinder<span class="token punctuation">.</span>DeathRecipient mDeathRecipient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IBinder<span class="token punctuation">.</span>DeathRecipient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">binderDied</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>mBookManager <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        mBookManager<span class="token punctuation">.</span><span class="token function">asBinder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unlinkToDeath</span><span class="token punctuation">(</span>mDeathRecipient<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mBookManager <span class="token operator">=</span> null<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// TODO：这里重新绑定远程Service</span>
-        <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span></code></pre>
+<p>Q5：<strong>当服务端进程异常终止的话，造成<code>Binder</code>死亡的话，怎么办？</strong></p>
+<p>在客户端绑定远程服务成功后，给<code>Binder</code>设置<strong>死亡代理</strong>，当<code>Binder</code>死亡的时候，我们会收到通知，从而重新发起连接请求。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> IBinder<span class="token punctuation">.</span>DeathRecipient mDeathRecipient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IBinder<span class="token punctuation">.</span>DeathRecipient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">binderDied</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>mBookManager <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+mBookManager<span class="token punctuation">.</span><span class="token function">asBinder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unlinkToDeath</span><span class="token punctuation">(</span>mDeathRecipient<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mBookManager <span class="token operator">=</span> null<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// TODO：这里重新绑定远程Service</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <pre class=" language-java"><code class="language-java">mService <span class="token operator">=</span> IBookManager<span class="token punctuation">.</span>Stub<span class="token punctuation">.</span><span class="token function">asInterface</span><span class="token punctuation">(</span>binder<span class="token punctuation">)</span><span class="token punctuation">;</span>
 binder<span class="token punctuation">.</span><span class="token function">linkToDeath</span><span class="token punctuation">(</span>mDeathRecipient<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="2-3-Android-中的IPC方式"><a href="#2-3-Android-中的IPC方式" class="headerlink" title="2.3 Android 中的IPC方式"></a>2.3 Android 中的<code>IPC</code>方式</h3><blockquote>
-<p>Android中的<code>IPC</code>方式有很多种，但是都与<code>Binder</code>有或多或少的关系</p>
+<h3 id="2-3-Android中的IPC方式"><a href="#2-3-Android中的IPC方式" class="headerlink" title="2.3 Android中的IPC方式"></a>2.3 <code>Android</code>中的<code>IPC</code>方式</h3><blockquote>
+<p><code>Android</code>中的<code>IPC</code>方式有很多种，但本质都是基于<code>Binder</code>构建的</p>
 </blockquote>
-<p><img src="https://s2.ax1x.com/2020/02/14/1js3id.png" alt="Android中各种IPC方式的关系"></p>
-<h4 id="2-3-1-Bundle"><a href="#2-3-1-Bundle" class="headerlink" title="2.3.1 Bundle"></a>2.3.1 Bundle</h4><ul>
-<li>原理：Bundle底层实现了<strong>Parcelable</strong>接口，它可方便的在不同的进程中传输。</li>
+<p><img src="https://s2.ax1x.com/2020/02/28/3BXSUA.png" alt="Android中的IPC方式"></p>
+<h4 id="2-3-1-Bundle"><a href="#2-3-1-Bundle" class="headerlink" title="2.3.1 Bundle"></a>2.3.1 <code>Bundle</code></h4><ul>
+<li>原理：<code>Bundle</code>底层实现了<code>Parcelable</code>接口，它可方便的在不同的进程中传输。</li>
 <li>注意：Bundle不支持的数据类型无法在进程中被传递。</li>
 </ul>
 <blockquote>
-<p>小课堂测试：在A进程进行计算后的结果不是Bundle所支持的数据类型，该如何传给B进程？</p>
-<p>Answer: 将在A进程进行的计算过程转移到B进程中的一个Service里去做，这样可成功避免进程间的通信问题。</p>
+<ul>
+<li>小课堂测试：在A进程进行计算后的结果不是<code>Bundle</code>所支持的数据类型，该如何传给B进程？</li>
+</ul>
+<ul>
+<li>答案: 将在A进程进行的计算过程转移到B进程中的一个<code>Service</code>里去做，这样可成功避免进程间的通信问题。</li>
+</ul>
 </blockquote>
 <ul>
-<li>Intent和Bundle的区别与联系：Intent底层其实是通过Bundle进行传递数据的；使用起来，Intent比较简单，Bundle比较复杂；Intent旨在数据传递，bundle旨在存取数据</li>
+<li><code>Intent</code>和<code>Bundle</code>的区别与联系：</li>
 </ul>
+<blockquote>
+<ul>
+<li><code>Intent</code>底层其实是通过<code>Bundle</code>进行传递数据的</li>
+<li>使用难易：<code>Intent</code>比较简单，<code>Bundle</code>比较复杂</li>
+<li><code>Intent</code>旨在数据传递，<code>bundle</code>旨在存取数据</li>
+</ul>
+</blockquote>
 <h4 id="2-3-2-文件共享"><a href="#2-3-2-文件共享" class="headerlink" title="2.3.2 文件共享"></a>2.3.2 文件共享</h4><ul>
 <li>概念：两个进程通过读/写同一个文件来交换数据。比如A进程把数据写入文件，B进程通过读取这个文件来获取数据。</li>
 <li>适用场景：对数据同步要求不高的进程之间进行通信，并且要妥善处理<strong>并发读/写</strong>的问题。</li>
-<li>特殊情况：<strong>SharedPreferences</strong>也是文件存储的一种，但不建议采用。因为系统对SharedPreferences的读/写有一定的缓存策略，即在内存中有一份该文件的<strong>缓存</strong>，因此在多进程模式下，其读/写会变得不可靠，甚至丢失数据。</li>
+<li>特殊情况：<code>SharedPreferences</code>也是文件存储的一种，但不建议采用。因为系统对<code>SharedPreferences</code>的读/写有一定的缓存策略，即在内存中有一份该文件的<strong>缓存</strong>，因此在多进程模式下，其读/写会变得不可靠，甚至丢失数据。</li>
 </ul>
-<h4 id="2-3-3-AIDL"><a href="#2-3-3-AIDL" class="headerlink" title="2.3.3 AIDL"></a>2.3.3 AIDL</h4><h5 id="2-3-3-1-概念"><a href="#2-3-3-1-概念" class="headerlink" title="2.3.3.1 概念"></a>2.3.3.1 概念</h5><p>AIDL(Android Interface Definition Language，<strong>Android接口定义语言</strong>)：如果在一个进程中要调用另一个进程中对象的方法，可使用AIDL生成可序列化的参数，AIDL会生成一个服务端对象的<strong>代理类</strong>，通过它客户端实现间接调用服务端对象的方法。</p>
+<h4 id="2-3-3-AIDL"><a href="#2-3-3-AIDL" class="headerlink" title="2.3.3 AIDL"></a>2.3.3 AIDL</h4><h5 id="2-3-3-1-概念"><a href="#2-3-3-1-概念" class="headerlink" title="2.3.3.1 概念"></a>2.3.3.1 概念</h5><p><code>AIDL</code>(Android Interface Definition Language，<strong>Android接口定义语言</strong>)：如果在一个进程中要调用另一个进程中对象的方法，可使用<code>AIDL</code>生成可序列化的参数，<code>AIDL</code>会生成一个服务端对象的<strong>代理类</strong>，通过它客户端实现间接调用服务端对象的方法。</p>
 <h5 id="2-3-3-2-支持的数据类型"><a href="#2-3-3-2-支持的数据类型" class="headerlink" title="2.3.3.2 支持的数据类型"></a>2.3.3.2 支持的数据类型</h5><ul>
 <li>基本数据类型</li>
-<li>String和CharSequence</li>
+<li><code>String</code>和<code>CharSequence</code></li>
 </ul>
 <blockquote>
-<p>想了解String和CharSequence区别的读者，可以看下这篇文章：<a href="https://www.cnblogs.com/skywang12345/p/string01.html" target="_blank" rel="noopener">String和CharSequence的区别</a></p>
+<p>想了解<code>String</code>和<code>CharSequence</code>区别的读者，可以看下这篇文章：<a href="https://www.cnblogs.com/skywang12345/p/string01.html" target="_blank" rel="noopener">String和CharSequence的区别</a></p>
 </blockquote>
 <ul>
-<li>ArrayList、HashMap且里面的每个元素都能被AIDL支持</li>
-<li>实现Parcelable接口的对象</li>
-<li>所有AIDL接口本身</li>
+<li><code>ArrayList</code>、<code>HashMap</code>且里面的每个元素都能被<code>AIDL</code>支持</li>
+<li>实现<code>Parcelable</code>接口的对象</li>
+<li>所有<code>AIDL</code>接口本身</li>
 </ul>
 <blockquote>
-<p><strong>注意</strong>：除了基本数据类型，其它类型的参数必须标上方向：<strong>in、out或inout</strong>，用于表示在跨进程通信中数据的流向。</p>
+<p><strong>注意</strong>：除了基本数据类型，其它类型的参数必须标上方向：<code>in、out或inout</code>，用于表示在跨进程通信中数据的流向。</p>
 </blockquote>
-<h5 id="2-3-3-3-两种AIDL文件"><a href="#2-3-3-3-两种AIDL文件" class="headerlink" title="2.3.3.3 两种AIDL文件"></a>2.3.3.3 两种AIDL文件</h5><ul>
-<li>用于定义parcelable对象，以供其他AIDL文件使用AIDL中非默认支持的数据类型的。</li>
+<h5 id="2-3-3-3-两种AIDL文件"><a href="#2-3-3-3-两种AIDL文件" class="headerlink" title="2.3.3.3 两种AIDL文件"></a>2.3.3.3 两种<code>AIDL</code>文件</h5><ul>
+<li>用于定义<code>Parcelable</code>对象，以供其他<code>AIDL</code>文件使用<code>AIDL</code>中非默认支持的数据类型的。</li>
 <li>用于定义方法接口，以供系统使用来完成跨进程通信的。</li>
 </ul>
 <blockquote>
 <p>注意：</p>
 <ul>
-<li>自定义的Parcelable对象<strong>必须</strong>把java文件和自定义的AIDL文件显式的<strong>import</strong>进来，无论是否在同一包内。</li>
-<li>AIDL文件用到自定义Parcelable的对象，<strong>必须</strong>新建一个和它同名的AIDL文件，并在其中声明它为Parcelable类型。</li>
+<li>自定义的<code>Parcelable</code>对象<strong>必须</strong>把<code>Java</code>文件和自定义的<code>AIDL</code>文件显式的<code>import</code>进来，无论是否在同一包内。</li>
+<li><code>AIDL</code>文件用到自定义<code>Parcelable</code>的对象，<strong>必须</strong>新建一个和它同名的<code>AIDL</code>文件，并在其中声明它为<code>Parcelable</code>类型。</li>
 </ul>
 </blockquote>
-<h5 id="2-3-3-4-本质，关键类和方法"><a href="#2-3-3-4-本质，关键类和方法" class="headerlink" title="2.3.3.4 本质，关键类和方法"></a>2.3.3.4 本质，关键类和方法</h5><p>a:本质是系统提供了一套可<strong>快速实现Binder</strong>的工具。</p>
+<h5 id="2-3-3-4-本质，关键类和方法"><a href="#2-3-3-4-本质，关键类和方法" class="headerlink" title="2.3.3.4 本质，关键类和方法"></a>2.3.3.4 本质，关键类和方法</h5><p>a:本质是系统提供了一套可<strong>快速实现<code>Binder</code></strong>的工具。</p>
 <p>b:关键类和方法是什么？</p>
 <ul>
-<li><strong>AIDL接口</strong>：继承<strong>IInterface</strong>。</li>
-<li><strong>Stub类</strong>：<code>Binder</code>的实现类，服务端通过这个类来提供服务。</li>
-<li><strong>Proxy类</strong>：服务器的本地代理，客户端通过这个类调用服务器的方法。</li>
-<li><code>asInterface（）</code>：客户端调用，将服务端的返回的Binder对象，转换成客户端所需要的AIDL接口类型对象。</li>
+<li><strong><code>AIDL</code>接口</strong>：继承<code>IInterface</code>。</li>
+<li><strong><code>Stub</code>类</strong>：<code>Binder</code>的实现类，服务端通过这个类来提供服务。</li>
+<li><strong><code>Proxy</code>类</strong>：服务器的本地代理，客户端通过这个类调用服务器的方法。</li>
+<li><code>asInterface()</code>：客户端调用，将服务端的返回的<code>Binder</code>对象，转换成客户端所需要的<code>AIDL</code>接口类型对象。</li>
 </ul>
 <blockquote>
 <p>返回对象：</p>
 <ul>
-<li>若客户端和服务端位于同一进程，则直接返回Stub对象本身；</li>
-<li>否则，返回的是系统封装后的Stub.proxy对象。</li>
+<li>若客户端和服务端位于同一进程，则直接返回<code>Stub</code>对象本身；</li>
+<li>否则，返回的是系统封装后的<code>Stub.proxy</code>对象。</li>
 </ul>
 </blockquote>
 <ul>
-<li><code>asBinder()</code>：返回代理Proxy的Binder对象。</li>
-<li><code>onTransact()</code>：运行服务端的Binder线程池中，当客户端发起跨进程请求时，远程请求会通过系统底层封装后交由此方法来处理。</li>
-<li><code>transact()</code>：运行在客户端，当客户端发起远程请求的同时将当前线程挂起。之后调用服务端的onTransact()直到远程请求返回，当前线程才继续执行。</li>
+<li><code>asBinder()</code>：返回代理<code>Proxy</code>的<code>Binder</code>对象。</li>
+<li><code>onTransact()</code>：运行服务端的<code>Binder</code>线程池中，当客户端发起跨进程请求时，远程请求会通过系统底层封装后交由此方法来处理。</li>
+<li><code>transact()</code>：运行在客户端，当客户端发起远程请求的同时将当前线程挂起。之后调用服务端的<code>onTransact()</code>直到远程请求返回，当前线程才继续执行。</li>
 </ul>
 <p><img src="https://s2.ax1x.com/2020/02/15/1vU8UI.png" alt="AIDL工作机制"></p>
 <h5 id="2-3-3-5-实现方法"><a href="#2-3-3-5-实现方法" class="headerlink" title="2.3.3.5 实现方法"></a>2.3.3.5 实现方法</h5><blockquote>
-<p>如果感兴趣的读者想要了解具体的AIDL实现IPC的流程，笔者分享一篇文章：<a href="https://blog.csdn.net/singwhatiwanna/article/details/17041691" target="_blank" rel="noopener">android跨进程通信（IPC）：使用AIDL</a></p>
+<p>如果感兴趣的读者想要了解具体的<code>AIDL</code>实现<code>IPC</code>的流程，笔者分享一篇文章：<a href="https://blog.csdn.net/singwhatiwanna/article/details/17041691" target="_blank" rel="noopener">android跨进程通信（IPC）：使用AIDL</a></p>
 </blockquote>
 <p>A.服务端：</p>
 <ul>
-<li>创建一个<strong>aidl文件</strong>；</li>
-<li>创建一个<strong>Service</strong>，实现AIDL的接口函数并暴露AIDL接口。</li>
+<li>创建一个<strong><code>aidl</code>文件</strong>；</li>
+<li>创建一个<code>Service</code>，实现<code>AIDL</code>的接口函数并暴露<code>AIDL</code>接口。</li>
 </ul>
 <p>B.客户端：</p>
 <ul>
-<li>通过<strong>bindService</strong>绑定服务端的Service；</li>
-<li>绑定成功后，将服务端返回的Binder对象<strong>转化</strong>成AIDL接口所属的类型，进而调用相应的AIDL中的方法。</li>
+<li>通过<code>bindService</code>绑定服务端的<code>Service</code>；</li>
+<li>绑定成功后，将服务端返回的<code>Binder</code>对象<strong>转化</strong>成<code>AIDL</code>接口所属的类型，进而调用相应的<code>AIDL</code>中的方法。</li>
 </ul>
 <blockquote>
-<p><strong>总结</strong>：服务端里的某个Service给和它绑定的特定客户端进程提供Binder对象，客户端通过AIDL接口的静态方法asInterface() 将Binder对象转化成AIDL接口的代理对象，通过这个代理对象就可以发起远程调用请求。</p>
+<p><strong>总结</strong>：服务端里的某个<code>Service</code>给和它绑定的特定客户端进程提供<code>Binder</code>对象，客户端通过<code>AIDL</code>接口的静态方法<code>asInterface()</code> 将<code>Binder</code>对象转化成<code>AIDL</code>接口的代理对象，通过这个代理对象就可以发起远程调用请求。</p>
 </blockquote>
-<h5 id="2-3-3-6-可能产生ANR的情形"><a href="#2-3-3-6-可能产生ANR的情形" class="headerlink" title="2.3.3.6 可能产生ANR的情形"></a>2.3.3.6 可能产生ANR的情形</h5><p>A.客户端：</p>
+<h5 id="2-3-3-6-可能产生ANR的情形"><a href="#2-3-3-6-可能产生ANR的情形" class="headerlink" title="2.3.3.6 可能产生ANR的情形"></a>2.3.3.6 可能产生<code>ANR</code>的情形</h5><p>A.客户端：</p>
 <ul>
-<li>调用服务端的方法是运行在服务端的Binder线程池中，若<strong>主线程</strong>所调用的方法里执行了较<strong>耗时</strong>的任务，同时会导致客户端线程长时间阻塞，易导致客户端ANR。</li>
-<li>在<strong>onServiceConnected()</strong>和<strong>onServiceDisconnected()</strong>里直接调用服务端的耗时方法，易导致客户端ANR。</li>
+<li>调用服务端的方法是运行在服务端的<code>Binder</code>线程池中，若<strong>主线程</strong>所调用的方法里执行了较<strong>耗时</strong>的任务，同时会导致客户端线程长时间阻塞，易导致客户端<code>ANR</code>。</li>
+<li>在<code>onServiceConnected()</code>和<code>onServiceDisconnected()</code>里直接调用服务端的耗时方法，易导致客户端<code>ANR</code>。</li>
 </ul>
 <p>B.服务端：</p>
 <ul>
-<li>服务端的方法本身就运行在服务端的<strong>Binder线程</strong>中，可在其中执行耗时操作，而<strong>无需再开启子线程</strong>。</li>
-<li><strong>回调客户端Listener的方法</strong>是运行在客户端的Binder线程中，若所调用的方法里执行了较<strong>耗时</strong>的任务，易导致服务端ANR。</li>
+<li>服务端的方法本身就运行在服务端的<strong><code>Binder</code>线程</strong>中，可在其中执行耗时操作，而<strong>无需再开启子线程</strong>。</li>
+<li><strong>回调客户端<code>Listener</code>的方法</strong>是运行在客户端的<code>Binder</code>线程中，若所调用的方法里执行了较<strong>耗时</strong>的任务，易导致服务端<code>ANR</code>。</li>
 </ul>
 <blockquote>
 <p>解决客户端频繁调用服务器方法导致性能极大损耗的办法：实现<strong>观察者模式</strong>。</p>
 <p>即当客户端关注的数据发生变化时，再让服务端通知客户端去做相应的业务处理。</p>
 </blockquote>
 <h5 id="2-3-3-7-解注册失败的问题"><a href="#2-3-3-7-解注册失败的问题" class="headerlink" title="2.3.3.7 解注册失败的问题"></a>2.3.3.7 解注册失败的问题</h5><ul>
-<li>原因: Binder进行对象传输实际是通过序列化和反序列化进行，即Binder会把客户端传递过来的对象<strong>重新转化</strong>并生成一个新的对象，虽然在注册和解注册的过程中使用的是同一个客户端传递的对象，但经过Binder传到服务端后会生成两个不同的对象。另外，多次跨进程传输的同一个客户端对象会在服务端生成<strong>不同</strong>的对象，但它们在底层的Binder对象是<strong>相同</strong>的。</li>
-<li>解决办法：当客户端解注册的时候，遍历服务端所有的Listener，找到和解注册Listener具有相同的Binder对象的服务端Listener，删掉即可。</li>
+<li>原因: <code>Binder</code>进行对象传输实际是通过序列化和反序列化进行，即<code>Binder</code>会把客户端传递过来的对象<strong>重新转化</strong>并生成一个新的对象，虽然在注册和解注册的过程中使用的是同一个客户端传递的对象，但经过<code>Binder</code>传到服务端后会生成两个不同的对象。另外，多次跨进程传输的同一个客户端对象会在服务端生成<strong>不同</strong>的对象，但它们在底层的<code>Binder</code>对象是<strong>相同</strong>的。</li>
+<li>解决办法：当客户端解注册的时候，遍历服务端所有的<code>Listener</code>，找到和解注册<code>Listener</code>具有相同的<code>Binder</code>对象的服务端<code>Listener</code>，删掉即可。</li>
 </ul>
 <blockquote>
-<p>需要用到<strong>RemoteCallBackList</strong>：Android系统专门提供的用于删除跨进程listener的接口。其内部自动实现了线程同步的功能。</p>
+<p>需要用到<code>RemoteCallBackList</code>：<code>Android</code>系统专门提供的用于删除跨进程<code>listener</code>的接口。其内部自动实现了线程同步的功能。</p>
 </blockquote>
-<h4 id="2-3-4-Messager"><a href="#2-3-4-Messager" class="headerlink" title="2.3.4 Messager"></a>2.3.4 Messager</h4><p>Q1.<strong>什么是Messager？</strong></p>
-<p>A1：Messager是轻量级的IPC方案，通过它可在不同进程中传递<strong>Message</strong>对象。</p>
+<h4 id="2-3-4-Messager"><a href="#2-3-4-Messager" class="headerlink" title="2.3.4 Messager"></a>2.3.4 <code>Messager</code></h4><p>Q1.<strong>什么是<code>Messager</code>？</strong></p>
+<p>A1：<code>Messager</code>是轻量级的<code>IPC</code>方案，通过它可在不同进程中传递<code>Message</code>对象。</p>
 <pre class=" language-java"><code class="language-java">Messenger<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>Message<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Q2：<strong>特点是什么</strong>？</p>
 <ul>
-<li>底层实现是<strong>AIDL</strong>，即对AIDL进行了封装，更便于进行进程间通信。</li>
+<li>底层实现是<code>AIDL</code>，即对<code>AIDL</code>进行了封装，更便于进行进程间通信。</li>
 <li>其服务端以<strong>串行</strong>的方式来处理客户端的请求，不存在并发执行的情形，故无需考虑线程同步的问题。</li>
-<li>可在不同进程中传递<strong>Message</strong>对象，Messager可支持的数据类型即Messenge可支持的数据类型。</li>
+<li>可在不同进程中传递<code>Message</code>对象，<code>Messager</code>可支持的数据类型即<code>Messenge</code>可支持的数据类型。</li>
 </ul>
 <blockquote>
-<p>Messenge可支持的数据类型：</p>
+<p><code>Messenge</code>可支持的数据类型：</p>
 <ul>
-<li>arg1、arg2、what字段：int型数据</li>
-<li>obj字段：Object对象，支持系统提供的Parcelable对象</li>
-<li>setData：Bundle对象</li>
+<li><code>arg1</code>、<code>arg2</code>、<code>what</code>字段：<code>int</code>型数据</li>
+<li><code>obj</code>字段：<code>Object</code>对象，支持系统提供的<code>Parcelable</code>对象</li>
+<li><code>setData</code>：<code>Bundle</code>对象</li>
 </ul>
 </blockquote>
 <ul>
-<li>有两个构造函数，分别接收<strong>Handler</strong>对象和<strong>Binder</strong>对象。</li>
+<li>有两个构造函数，分别接收<code>Handler</code>对象和<code>Binder</code>对象。</li>
 </ul>
 <p>Q3:<strong>实现的方法</strong>：</p>
 <blockquote>
-<p>读者如果对Messenger的具体使用感兴趣的话，可以看下这篇文章：<a href="https://blog.csdn.net/lezhang123/article/details/55100268" target="_blank" rel="noopener">IPC-Messenger使用实例</a></p>
+<p>读者如果对<code>Messenger</code>的具体使用感兴趣的话，可以看下这篇文章：<a href="https://blog.csdn.net/lezhang123/article/details/55100268" target="_blank" rel="noopener">IPC-Messenger使用实例</a></p>
 </blockquote>
 <p>A1：服务端：</p>
 <ul>
-<li>创建一个<strong>Service</strong>用于提供服务；</li>
-<li>其中创建一个<strong>Handler</strong>用于<strong>接收</strong>客户端进程发来的<strong>数据</strong>；</li>
-<li>利用Handler创建一个<strong>Messenger</strong>对象；</li>
-<li>在Service的<code>onBind()</code>中返回Messenger对应的Binder对象。</li>
+<li>创建一个<code>Service</code>用于提供服务；</li>
+<li>其中创建一个<code>Handler</code>用于<strong>接收</strong>客户端进程发来的<strong>数据</strong>；</li>
+<li>利用<code>Handler</code>创建一个<code>Messenger</code>对象；</li>
+<li>在<code>Service</code>的<code>onBind()</code>中返回<code>Messenger</code>对应的<code>Binder</code>对象。</li>
 </ul>
 <p>A2：客户端：</p>
 <ul>
-<li><p>通过<strong>bindService</strong>绑定服务端的Service；</p>
+<li><p>通过<code>bindService</code>绑定服务端的<code>Service</code>；</p>
 </li>
-<li><p>通过绑定后返回的IBinder对象创建一个Messenger，进而可向服务器端进程发送Message数据。（至此只完成单向通信）</p>
+<li><p>通过绑定后返回的<code>IBinder</code>对象创建一个<code>Messenger</code>，进而可向服务器端进程发送<code>Message</code>数据。（至此只完成单向通信）</p>
 </li>
-<li><p>在客户端创建一个Handler并由此创建一个Messenger，并通过Message的<strong>replyTo字段</strong>传递给服务器端进程。服务端通过读取Message得到Messenger对象，进而向客户端进程传递数据。（完成双向通信）</p>
+<li><p>在客户端创建一个<code>Handler</code>并由此创建一个<code>Messenger</code>，并通过<code>Message</code>的<strong><code>replyTo</code>字段</strong>传递给服务器端进程。服务端通过读取<code>Message</code>得到<code>Messenger</code>对象，进而向客户端进程传递数据。（完成双向通信）</p>
 <p> <img src="https://i.bmp.ovh/imgs/2019/11/ba070a20bc6c33d5.png" alt="Messenger通信"></p>
 </li>
 </ul>
 <p>Q4:缺点：</p>
 <ul>
-<li>主要作用是传递 Message，难以实现远程方法调用。</li>
+<li>主要作用是传递 <code>Message</code>，难以实现远程方法调用。</li>
 <li>以串行的方式处理客户端发来的消息的，不适合高并发的场景。</li>
 </ul>
 <blockquote>
-<p>解决方式：使用AIDL的方式处理IPC以应对高并发的场景</p>
+<p>解决方式：使用<code>AIDL</code>的方式处理IPC以应对高并发的场景</p>
 </blockquote>
-<h4 id="2-3-5-ContentProvider"><a href="#2-3-5-ContentProvider" class="headerlink" title="2.3.5 ContentProvider"></a>2.3.5 ContentProvider</h4><blockquote>
-<p>ContentProvider是Android提供的<strong>专门</strong>用来进行不同应用间数据共享的方式,底层同样是通过<strong>Binder</strong>实现的。</p>
+<h4 id="2-3-5-ContentProvider"><a href="#2-3-5-ContentProvider" class="headerlink" title="2.3.5 ContentProvider"></a>2.3.5 <code>ContentProvider</code></h4><blockquote>
+<p><code>ContentProvider</code>是<code>Android</code>提供的<strong>专门</strong>用来进行不同应用间数据共享的方式,底层同样是通过<code>Binder</code>实现的。</p>
 </blockquote>
 <ul>
-<li>除了<strong>onCreat()</strong>运行在UI线程中，其他的query()、update()、insert()、delete()和getType()都运行在Binder线程池中。</li>
-<li>CRUD四大操作存在多线程并发访问，要注意在方法内部要做好线程同步。</li>
-<li>一个SQLiteDatabase内部对数据库的操作有同步处理，但多个SQLiteDatabase之间无法同步。</li>
+<li>除了<code>onCreate()</code>运行在UI线程中，其他的<code>query()</code>、<code>update()</code>、<code>insert()</code>、<code>delete()</code>和<code>getType()</code>都运行在<code>Binder</code>线程池中。</li>
+<li><code>CRUD</code>四大操作存在多线程并发访问，要注意在方法内部要做好线程同步。</li>
+<li>一个<code>SQLiteDatabase</code>内部对数据库的操作有同步处理，但多个<code>SQLiteDatabase</code>之间无法同步。</li>
 </ul>
-<h4 id="2-3-6-Socket"><a href="#2-3-6-Socket" class="headerlink" title="2.3.6 Socket"></a>2.3.6 Socket</h4><blockquote>
-<p>Socket不仅可以跨进程，还可以跨设备通信</p>
+<h4 id="2-3-6-Socket"><a href="#2-3-6-Socket" class="headerlink" title="2.3.6 Socket"></a>2.3.6 <code>Socket</code></h4><blockquote>
+<p><code>Socket</code>不仅可以跨进程，还可以跨设备通信</p>
 </blockquote>
 <p>Q1:使用类型是什么？</p>
 <ul>
-<li>流套接字：基于TCP协议，采用流的方式提供可靠的字节流服务。</li>
-<li>数据流套接字：基于<strong>UDP</strong>协议，采用数据报文提供数据打包发送的服务。</li>
+<li>流套接字：基于<code>TCP</code>协议，采用流的方式提供可靠的字节流服务。</li>
+<li>数据流套接字：基于<code>UDP</code>协议，采用数据报文提供数据打包发送的服务。</li>
 </ul>
 <p>Q2：实现方法是什么？</p>
 <p>A1：服务端：</p>
 <ul>
-<li>创建一个Service，在线程中建立TCP服务、监听相应的端口等待客户端连接请求；</li>
-<li>与客户端连接时，会生成新的Socket对象，利用它可与客户端进行数据传输；</li>
-<li>与客户端断开连接时，关闭相应的Socket并结束线程。</li>
+<li>创建一个<code>Service</code>，在线程中建立<code>TCP</code>服务、监听相应的端口等待客户端连接请求；</li>
+<li>与客户端连接时，会生成新的<code>Socket</code>对象，利用它可与客户端进行数据传输；</li>
+<li>与客户端断开连接时，关闭相应的<code>Socket</code>并结束线程。</li>
 </ul>
 <p>A2：客户端：</p>
 <ul>
-<li>开启一个线程、通过Socket发出连接请求；</li>
+<li>开启一个线程、通过<code>Socket</code>发出连接请求；</li>
 <li>连接成功后，读取服务端消息；</li>
-<li>断开连接，关闭Socket。</li>
+<li>断开连接，关闭<code>Socket</code>。</li>
 </ul>
 <h4 id="2-3-7-优缺点比较"><a href="#2-3-7-优缺点比较" class="headerlink" title="2.3.7 优缺点比较"></a>2.3.7 优缺点比较</h4><table>
 <thead>
@@ -972,9 +983,9 @@ binder<span class="token punctuation">.</span><span class="token function">linkT
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">Bundle</td>
+<td align="left"><code>Bundle</code></td>
 <td align="left">简单易用</td>
-<td align="left">只能传输Bundle支持的数据类型</td>
+<td align="left">只能传输<code>Bundle</code>支持的数据类型</td>
 <td align="left">四大组件间的进程间通信</td>
 </tr>
 <tr>
@@ -984,46 +995,46 @@ binder<span class="token punctuation">.</span><span class="token function">linkT
 <td align="left">无并发访问，交换简单数据且实时性不高</td>
 </tr>
 <tr>
-<td align="left">AIDL</td>
+<td align="left"><code>AIDL</code></td>
 <td align="left">支持一对多并发和实时通信</td>
 <td align="left">使用稍复杂，需要处理线程同步</td>
-<td align="left">一对多且有RPC需求</td>
+<td align="left">一对多且有<code>RPC</code>需求</td>
 </tr>
 <tr>
-<td align="left">Messenger</td>
+<td align="left"><code>Messenger</code></td>
 <td align="left">支持一对多串行通信</td>
-<td align="left">不能很好处理高并发，不支持RPC，只能传输Bundle支持的数据类型</td>
+<td align="left">不能很好处理高并发，不支持<code>RPC</code>，只能传输<code>Bundle</code>支持的数据类型</td>
 <td align="left">低并发的一对多</td>
 </tr>
 <tr>
-<td align="left">ContentProvider</td>
+<td align="left"><code>ContentProvider</code></td>
 <td align="left">支持一对多并发数据共享</td>
-<td align="left">可理解为受约束的AIDL</td>
+<td align="left">可理解为受约束的<code>AIDL</code></td>
 <td align="left">一对多进程间数据共享</td>
 </tr>
 <tr>
-<td align="left">Socket</td>
+<td align="left"><code>Socket</code></td>
 <td align="left">支持一对多并发数据共享</td>
 <td align="left">实现细节繁琐</td>
 <td align="left">网络数据交换</td>
 </tr>
 </tbody></table>
-<h3 id="2-4-Binder连接池"><a href="#2-4-Binder连接池" class="headerlink" title="2.4 Binder连接池"></a>2.4 Binder连接池</h3><blockquote>
-<p>有多个业务模块都需要AIDL来进行IPC，此时需要为每个模块创建特定的aidl文件，那么相应的Service就会很多。必然会出现系统资源耗费严重、应用过度重量级的问题。因此需要Binder连接池，通过将每个业务模块的Binder请求<strong>统一</strong>转发到一个远程Service中去执行的方式，从而避免重复创建Service。</p>
+<h3 id="2-4-Binder连接池"><a href="#2-4-Binder连接池" class="headerlink" title="2.4 Binder连接池"></a>2.4 <code>Binder</code>连接池</h3><blockquote>
+<p>有多个业务模块都需要<code>AIDL</code>来进行<code>IPC</code>，此时需要为每个模块创建特定的<code>aidl</code>文件，那么相应的<code>Service</code>就会很多。必然会出现系统资源耗费严重、应用过度重量级的问题。因此需要<code>Binder</code>连接池，通过将每个业务模块的<code>Binder</code>请求<strong>统一</strong>转发到一个远程<code>Service</code>中去执行的方式，从而避免重复创建<code>Service</code>。</p>
 </blockquote>
 <p>Q1：<strong>工作原理是什么</strong>？</p>
-<p>每个业务模块创建自己的AIDL接口并实现此接口，然后向服务端提供自己的<strong>唯一标识</strong>和其对应的<strong>Binder</strong>对象。服务端只需要一个Service，服务器提供一个<strong>queryBinder</strong>接口，它会根据业务模块的特征来返回相应的Binder对像，不同的业务模块拿到所需的Binder对象后就可进行远程方法的调用了。</p>
+<p>每个业务模块创建自己的<code>AIDL</code>接口并实现此接口，然后向服务端提供自己的<strong>唯一标识</strong>和其对应的<strong>Binder</strong>对象。服务端只需要一个<code>Service</code>，服务器提供一个<code>queryBinder</code>接口，它会根据业务模块的特征来返回相应的<code>Binder</code>对像，不同的业务模块拿到所需的<code>Binder</code>对象后就可进行远程方法的调用了。</p>
 <p><img src="https://s2.ax1x.com/2020/02/15/1xtW8K.png" alt="Binder连接池工作原理"></p>
 <p>Q2：<strong>实现方式是什么</strong>？</p>
 <blockquote>
 <p>读者如果对具体的实现方式感兴趣的话，可以看一下这篇文章：<a href="https://blog.csdn.net/a553181867/article/details/51150867" target="_blank" rel="noopener">Android IPC机制(四):细说Binder连接池</a></p>
 </blockquote>
 <ul>
-<li>为每个业务模块创建AIDL接口并具体实现；</li>
-<li>为Binder连接池创建AIDL接口IBinderPool.aidl并具体实现；</li>
-<li>远程服务BinderPoolService的实现，在onBind()返回实例化的IBinderPool实现类对象；</li>
-<li>Binder连接池的具体实现，来绑定远程服务。</li>
-<li>客户端的调用。</li>
+<li>为每个业务模块创建<code>AIDL</code>接口并具体实现</li>
+<li>为<code>Binder</code>连接池创建<code>AIDL</code>接口<code>IBinderPool.aidl</code>并具体实现</li>
+<li>远程服务<code>BinderPoolService</code>的实现，在<code>onBind()</code>返回实例化的<code>IBinderPool</code>实现类对象</li>
+<li><code>Binder</code>连接池的具体实现，来绑定远程服务</li>
+<li>客户端的调用</li>
 </ul>
 <h2 id="三-碎碎念"><a href="#三-碎碎念" class="headerlink" title="三.碎碎念"></a>三.碎碎念</h2><blockquote>
 <p>恭喜你，已经完成了这次奇妙的<code>IPC</code>之旅了，如果你感到对概念还是有点模糊不清的话，没关系，很正常，不用太纠结于细节，你可以继续进行下面的旅程了，未来的你，再看这篇文章，也许会有更深的体会，到时候就会有茅舍顿开的感觉了。未来的你，一定会更优秀！！！</p>
