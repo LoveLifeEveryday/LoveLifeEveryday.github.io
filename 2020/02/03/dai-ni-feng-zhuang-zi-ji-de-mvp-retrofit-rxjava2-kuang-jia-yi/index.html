@@ -450,31 +450,31 @@
 <p>看完本篇文章的，可以看下<a href="https://juejin.im/post/5e520db1e51d45270c277ca8" target="_blank" rel="noopener">带你封装自己的MVP+Retrofit+RxJava2框架（二）</a>，里面封装得到了改进</p>
 </blockquote>
 <h2 id="本篇文章需要已经具备的知识："><a href="#本篇文章需要已经具备的知识：" class="headerlink" title="本篇文章需要已经具备的知识："></a>本篇文章需要已经具备的知识：</h2><ul>
-<li><strong>MVP</strong>的概念和基本使用</li>
-<li><strong>Retrofit</strong>框架的基本使用</li>
-<li><strong>RxJava2</strong>框架的基本使用</li>
-<li><strong>ButterKnife</strong>框架的基本使用</li>
-<li><strong>Base</strong>基类的概念</li>
+<li><code>MVP</code>的概念和基本使用</li>
+<li><code>Retrofit</code>框架的基本使用</li>
+<li><code>RxJava2</code>框架的基本使用</li>
+<li><code>ButterKnife</code>框架的基本使用</li>
+<li><code>Base</code>基类的概念</li>
 </ul>
 <h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><ul>
-<li>Activity和Fragment基类的封装</li>
-<li>MVP的封装使用</li>
+<li><code>Activity</code>和<code>Fragment</code>基类的封装</li>
+<li><code>MVP</code>的封装使用</li>
 </ul>
 <h2 id="一-为什么要封装这套框架呢？"><a href="#一-为什么要封装这套框架呢？" class="headerlink" title="一.为什么要封装这套框架呢？"></a>一.为什么要封装这套框架呢？</h2><p>在搞清楚这个问题之前，我们回顾一下基本概念</p>
-<p>RxJava: ReactiveX 在JVM上的一个实现，ReactiveX使用Observable序列组合异步和基于事件的程序；掌握了它，你可以优美地处理异步任务和事件的回调</p>
-<p>Retrofit:一个 RESTful 的 HTTP 网络请求框架的封装，网络请求的工作本质上是 OkHttp 完成，而 Retrofit 仅负责 网络请求接口的封装:掌握了它，你能优美地进行网络请求。</p>
-<p>MVP：一种解耦模型和视图的模式，是现在很多公司的主流模式。</p>
+<p><code>RxJava</code>: <code>ReactiveX</code> 在<code>JVM</code>上的一个实现，<code>ReactiveX</code>使用<code>Observable</code>序列组合异步和基于事件的程序；掌握了它，你可以优美地处理异步任务和事件的回调</p>
+<p><code>Retrofit</code>:一个 <code>RESTful</code> 的 <code>HTTP</code>网络请求框架的封装，网络请求的工作本质上是<code>OkHttp</code> 完成，而 <code>Retrofit</code>仅负责 网络请求接口的封装:掌握了它，你能优美地进行网络请求。</p>
+<p><code>MVP</code>：一种解耦模型和视图的模式，是现在很多公司的主流模式。</p>
 <p>由此可见，在平时的开发中熟练运用这种模式，不仅可以满足生活中大部分应用程序的场景，还可以为将来的工作积攒宝贵的实战经验。</p>
 <h2 id="二-核心用法"><a href="#二-核心用法" class="headerlink" title="二.核心用法"></a>二.核心用法</h2><blockquote>
-<p>本项目基于Android X 进行构建，完整代码可在我的github上下载:<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP" target="_blank" rel="noopener">带你封装自己的MVP+Retrofit+RxJava2框架</a></p>
+<p>本项目基于<code>Android X</code> 进行构建，完整代码可在我的<code>Github</code>上下载:<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP" target="_blank" rel="noopener">带你封装自己的MVP+Retrofit+RxJava2框架</a></p>
 </blockquote>
 <p>首先，看一下我们项目的<strong>基本结构</strong>，下面笔者将为大家详细介绍每个类的相关信息</p>
 <p><img src="https://s2.ax1x.com/2020/02/03/1a9wzn.png" alt="项目基本结构"></p>
-<h3 id="2-1-基类base"><a href="#2-1-基类base" class="headerlink" title="2.1 基类base"></a>2.1 基类base</h3><blockquote>
-<p>Base基类是封装了一些基类，方便后面新建新的activity或者fragment，减少耦合</p>
+<h3 id="2-1-基类Base"><a href="#2-1-基类Base" class="headerlink" title="2.1 基类Base"></a>2.1 基类<code>Base</code></h3><blockquote>
+<p><code>Base</code>基类是封装了一些基类，方便后面新建新的<code>Activity</code>或者<code>Fragment</code>，减少耦合</p>
 </blockquote>
-<h4 id="2-1-1-BaseActivity"><a href="#2-1-1-BaseActivity" class="headerlink" title="2.1.1 BaseActivity"></a>2.1.1 BaseActivity</h4><blockquote>
-<p>这个类是Activity的基类，注意与下面的BaseMvpActivity区分开</p>
+<h4 id="2-1-1-BaseActivity"><a href="#2-1-1-BaseActivity" class="headerlink" title="2.1.1 BaseActivity"></a>2.1.1 <code>BaseActivity</code></h4><blockquote>
+<p>这个类是<code>Activity</code>的基类，注意与下面的<code>BaseMvpActivity</code>区分开</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * Description : BaseActivity 基类活动
@@ -531,8 +531,8 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-1-2-BaseView"><a href="#2-1-2-BaseView" class="headerlink" title="2.1.2 BaseView"></a>2.1.2 BaseView</h4><blockquote>
-<p>一个接口，说明了每一个View基本需要的一些操作</p>
+<h4 id="2-1-2-BaseView"><a href="#2-1-2-BaseView" class="headerlink" title="2.1.2 BaseView"></a>2.1.2 <code>BaseView</code></h4><blockquote>
+<p>一个接口，说明了每一个<code>View</code>基本需要的一些操作</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>users<span class="token punctuation">.</span>xucanyou666<span class="token punctuation">.</span>rxjava2_retrofit_mvp<span class="token punctuation">.</span>base<span class="token punctuation">;</span>
 
@@ -567,8 +567,13 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-1-3-BaseMvpActivity–MVP活动的基类"><a href="#2-1-3-BaseMvpActivity–MVP活动的基类" class="headerlink" title="2.1.3 BaseMvpActivity–MVP活动的基类"></a>2.1.3 BaseMvpActivity–MVP活动的基类</h4><blockquote>
-<p>继承自BaseActivity,它是MVP活动的基类，封装好了presenter的相关操作</p>
+<h4 id="2-1-3-BaseMvpActivity"><a href="#2-1-3-BaseMvpActivity" class="headerlink" title="2.1.3 BaseMvpActivity"></a>2.1.3 <code>BaseMvpActivity</code></h4><blockquote>
+<ul>
+<li><p><code>MVP</code>活动的基类</p>
+</li>
+<li><p>继承自<code>BaseActivity</code>,它是<code>MVP</code>活动的基类，封装好了<code>Presenter</code>的相关操作</p>
+</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>users<span class="token punctuation">.</span>xucanyou666<span class="token punctuation">.</span>rxjava2_retrofit_mvp<span class="token punctuation">.</span>base<span class="token punctuation">;</span>
 
@@ -625,8 +630,13 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-1-4-BaseFragment–Fragment的基类"><a href="#2-1-4-BaseFragment–Fragment的基类" class="headerlink" title="2.1.4 BaseFragment–Fragment的基类"></a>2.1.4 BaseFragment–Fragment的基类</h4><blockquote>
-<p>需要注意的是，这里用了ButterKnife框架，对碎片进行了绑定和解绑操作</p>
+<h4 id="2-1-4-BaseFragment"><a href="#2-1-4-BaseFragment" class="headerlink" title="2.1.4 BaseFragment"></a>2.1.4 <code>BaseFragment</code></h4><blockquote>
+<ul>
+<li><p><code>Fragment</code>的基类</p>
+</li>
+<li><p>需要注意的是，这里用了<code>ButterKnife</code>框架，对碎片进行了绑定和解绑操作</p>
+</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * Fragment的基类，封装了一些Fragment的相关操作
@@ -805,8 +815,13 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-5-BasePresenter"><a href="#2-1-5-BasePresenter" class="headerlink" title="2.1.5 BasePresenter"></a>2.1.5 BasePresenter</h4><blockquote>
-<p>Presenter的基类，这里的CompositeDisposable主要用途是及时取消订阅，以防止内存泄漏，具体CompositeDisposable的用法可参照<a href="https://www.jianshu.com/p/2a882604bbe8" target="_blank" rel="noopener">Rxjava关于Disposable你应该知道的事</a></p>
+<h4 id="2-1-5-BasePresenter"><a href="#2-1-5-BasePresenter" class="headerlink" title="2.1.5 BasePresenter"></a>2.1.5 <code>BasePresenter</code></h4><blockquote>
+<ul>
+<li><p><code>Presenter</code>的基类，</p>
+</li>
+<li><p><code>CompositeDisposable</code>主要用途是及时取消订阅，以防止内存泄漏，具体<code>CompositeDisposable</code>的用法可参照<a href="https://www.jianshu.com/p/2a882604bbe8" target="_blank" rel="noopener">Rxjava关于Disposable你应该知道的事</a></p>
+</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -865,8 +880,11 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-1-6-MyApplication"><a href="#2-1-6-MyApplication" class="headerlink" title="2.1.6  MyApplication"></a>2.1.6  MyApplication</h4><blockquote>
-<p>封装了一个可以全局获取context的方法，参考写法自：《第一行代码–第二版》，需要注意的是，记得在AndroidManifest中注册application</p>
+<h4 id="2-1-6-MyApplication"><a href="#2-1-6-MyApplication" class="headerlink" title="2.1.6  MyApplication"></a>2.1.6  <code>MyApplication</code></h4><blockquote>
+<ul>
+<li>封装了一个可以全局获取<code>Context</code>的方法，参考写法自：《第一行代码–第二版》</li>
+<li>注意：记得在<code>AndroidManifest</code>中注册<code>Application</code></li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>users<span class="token punctuation">.</span>xucanyou666<span class="token punctuation">.</span>rxjava2_retrofit_mvp<span class="token punctuation">.</span>base<span class="token punctuation">;</span>
 
@@ -895,8 +913,8 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="2-2-工具类-util"><a href="#2-2-工具类-util" class="headerlink" title="2.2 工具类 util"></a>2.2 工具类 util</h3><h4 id="2-2-1-RetrofitManager"><a href="#2-2-1-RetrofitManager" class="headerlink" title="2.2.1 RetrofitManager"></a>2.2.1 RetrofitManager</h4><blockquote>
-<p>Retrofit单例工具类</p>
+<h3 id="2-2-工具类-Util"><a href="#2-2-工具类-Util" class="headerlink" title="2.2 工具类 Util"></a>2.2 工具类 <code>Util</code></h3><h4 id="2-2-1-RetrofitManager"><a href="#2-2-1-RetrofitManager" class="headerlink" title="2.2.1 RetrofitManager"></a>2.2.1 <code>RetrofitManager</code></h4><blockquote>
+<p><code>Retrofit</code>单例工具类</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * Retrofit单例工具类
@@ -946,8 +964,8 @@
         <span class="token keyword">return</span> mRetrofit<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>ser<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-2-2-RxJavaUtil"><a href="#2-2-2-RxJavaUtil" class="headerlink" title="2.2.2 RxJavaUtil"></a>2.2.2 RxJavaUtil</h4><blockquote>
-<p>RxJava的工具类，执行线程调度工作</p>
+<h4 id="2-2-2-RxJavaUtil"><a href="#2-2-2-RxJavaUtil" class="headerlink" title="2.2.2 RxJavaUtil"></a>2.2.2 <code>RxJavaUtil</code></h4><blockquote>
+<p><code>RxJava</code>的工具类，执行线程调度工作</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * created by xucanyou666
@@ -971,8 +989,8 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="2-3-常量类-contant"><a href="#2-3-常量类-contant" class="headerlink" title="2.3 常量类 contant"></a>2.3 常量类 contant</h3><blockquote>
-<p>常量池，特别感谢api open网提供的免费api</p>
+<h3 id="2-3-常量类-Contant"><a href="#2-3-常量类-Contant" class="headerlink" title="2.3 常量类 Contant"></a>2.3 常量类 <code>Contant</code></h3><blockquote>
+<p>常量池，特别感谢<code>api open</code>网提供的免费<code>API</code></p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * created by xucanyou666
@@ -982,8 +1000,8 @@
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StaticQuality</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String BASE_URL<span class="token operator">=</span><span class="token string">"https://api.gushi.ci/"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-4-接口管理器-contract"><a href="#2-4-接口管理器-contract" class="headerlink" title="2.4 接口管理器 contract"></a>2.4 接口管理器 contract</h3><blockquote>
-<p>这里集中了一些Model层,Presenter层,View层的与诗歌相关的接口</p>
+<h3 id="2-4-接口管理器-Contract"><a href="#2-4-接口管理器-Contract" class="headerlink" title="2.4 接口管理器 Contract"></a>2.4 接口管理器 <code>Contract</code></h3><blockquote>
+<p>这里集中了一些<code>Model</code>层,<code>Presenter</code>层,<code>View</code>层的与诗歌相关的接口</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 诗歌的接口管理器
@@ -1013,7 +1031,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="2-5-实体类-entity"><a href="#2-5-实体类-entity" class="headerlink" title="2.5 实体类 entity"></a>2.5 实体类 entity</h3><pre class=" language-java"><code class="language-java">
+<h3 id="2-5-实体类-Entity"><a href="#2-5-实体类-Entity" class="headerlink" title="2.5 实体类 Entity"></a>2.5 实体类 <code>Entity</code></h3><pre class=" language-java"><code class="language-java">
 
 <span class="token comment" spellcheck="true">/**
  * 诗歌的实体类
@@ -1067,7 +1085,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="2-6-retrofit接口-iApiService"><a href="#2-6-retrofit接口-iApiService" class="headerlink" title="2.6 retrofit接口 iApiService"></a>2.6 retrofit接口 iApiService</h3><pre class=" language-java"><code class="language-java">
+<h3 id="2-6-Retrofit接口-iApiService"><a href="#2-6-Retrofit接口-iApiService" class="headerlink" title="2.6 Retrofit接口 iApiService"></a>2.6 <code>Retrofit</code>接口 <code>iApiService</code></h3><pre class=" language-java"><code class="language-java">
 
 <span class="token comment" spellcheck="true">/**
  * retrofit接口
@@ -1084,11 +1102,11 @@
     <span class="token annotation punctuation">@GET</span><span class="token punctuation">(</span><span class="token string">"all.json"</span><span class="token punctuation">)</span>
     Observable<span class="token operator">&lt;</span>PoetryEntity<span class="token operator">></span> <span class="token function">getPoetry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-7-视图层-view"><a href="#2-7-视图层-view" class="headerlink" title="2.7 视图层 view"></a>2.7 视图层 view</h3><blockquote>
-<p>这里为了减少代码量，方便读者们掌握核心操作，故View层都是用的同一个presenter和model，仅作学习参考</p>
+<h3 id="2-7-视图层-View"><a href="#2-7-视图层-View" class="headerlink" title="2.7 视图层 View"></a>2.7 视图层 <code>View</code></h3><blockquote>
+<p>这里为了减少代码量，方便读者们掌握核心操作，故<code>View</code>层都是用的同一个<code>Presenter</code>和<code>Model</code>，仅作学习参考</p>
 </blockquote>
-<h4 id="2-7-1-MainActivity"><a href="#2-7-1-MainActivity" class="headerlink" title="2.7.1 MainActivity"></a>2.7.1 MainActivity</h4><blockquote>
-<p>需要注意的是，这里BaseMvpActivity&lt;activity, presenter&gt;,activity填入的是当前的activity，presenter填入的是对应的presenter</p>
+<h4 id="2-7-1-MainActivity"><a href="#2-7-1-MainActivity" class="headerlink" title="2.7.1 MainActivity"></a>2.7.1 <code>MainActivity</code></h4><blockquote>
+<p>需要注意的是，这里<code>BaseMvpActivity&lt;activity, presenter&gt;</code>中<code>Activity</code>填入的是当前的<code>Activity</code>，<code>Presenter</code>填入的是对应的<code>Presenter</code></p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -1159,7 +1177,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-7-2-MainFragment"><a href="#2-7-2-MainFragment" class="headerlink" title="2.7.2 MainFragment"></a>2.7.2 MainFragment</h4><pre class=" language-java"><code class="language-java">
+<h4 id="2-7-2-MainFragment"><a href="#2-7-2-MainFragment" class="headerlink" title="2.7.2 MainFragment"></a>2.7.2 <code>MainFragment</code></h4><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * Description : MainFragment
  *
@@ -1212,7 +1230,7 @@
         tvPoetryAuthor<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>author<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-8-presenter层"><a href="#2-8-presenter层" class="headerlink" title="2.8  presenter层"></a>2.8  presenter层</h3><pre class=" language-java"><code class="language-java">
+<h3 id="2-8-Presenter层"><a href="#2-8-Presenter层" class="headerlink" title="2.8  Presenter层"></a>2.8  <code>Presenter</code>层</h3><pre class=" language-java"><code class="language-java">
 
 <span class="token comment" spellcheck="true">/**
  * created by xucanyou666
@@ -1278,7 +1296,7 @@
 <span class="token punctuation">}</span>
 
 </code></pre>
-<h3 id="2-9-model层"><a href="#2-9-model层" class="headerlink" title="2.9 model层"></a>2.9 model层</h3><pre class=" language-java"><code class="language-java">
+<h3 id="2-9-Model层"><a href="#2-9-Model层" class="headerlink" title="2.9 Model层"></a>2.9 <code>Model</code>层</h3><pre class=" language-java"><code class="language-java">
 
 <span class="token comment" spellcheck="true">/**
  * created by xucanyou666
@@ -1311,7 +1329,7 @@
         <span class="token keyword">return</span> RetrofitManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createRs</span><span class="token punctuation">(</span>GetPoetryEntity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPoetry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-10-app-build-gradle"><a href="#2-10-app-build-gradle" class="headerlink" title="2.10 app-build.gradle"></a>2.10 app-build.gradle</h3><pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'com.android.application'</span>
+<h3 id="2-10-app-build-gradle"><a href="#2-10-app-build-gradle" class="headerlink" title="2.10 app.build.gradle"></a>2.10 <code>app.build.gradle</code></h3><pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'com.android.application'</span>
 
 android <span class="token punctuation">{</span>
     compileSdkVersion <span class="token number">28</span>
@@ -1359,39 +1377,56 @@ dependencies <span class="token punctuation">{</span>
     androidTestImplementation <span class="token string">'androidx.test.espresso:espresso-core:3.2.0'</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="三-我在使用中遇到的问题"><a href="#三-我在使用中遇到的问题" class="headerlink" title="三.我在使用中遇到的问题"></a>三.我在使用中遇到的问题</h2><h3 id="3-1-网络权限忘记授予"><a href="#3-1-网络权限忘记授予" class="headerlink" title="3.1 网络权限忘记授予"></a>3.1 网络权限忘记授予</h3><p>解决措施：加上权限即可</p>
+<h2 id="三-我在使用中遇到的问题"><a href="#三-我在使用中遇到的问题" class="headerlink" title="三.我在使用中遇到的问题"></a>三.我在使用中遇到的问题</h2><h3 id="3-1-网络权限忘记授予"><a href="#3-1-网络权限忘记授予" class="headerlink" title="3.1 网络权限忘记授予"></a>3.1 网络权限忘记授予</h3><ul>
+<li>解决措施：加上权限即可</li>
+</ul>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
-<h3 id="3-2-ButterKnife框架版本问题"><a href="#3-2-ButterKnife框架版本问题" class="headerlink" title="3.2 ButterKnife框架版本问题"></a>3.2 ButterKnife框架版本问题</h3><p>使用ButterKnife框架的时候</p>
-<p>当是androidX的时候，需要implementation 10.2.0版本的ButterKnife</p>
+<h3 id="3-2-ButterKnife框架版本问题"><a href="#3-2-ButterKnife框架版本问题" class="headerlink" title="3.2 ButterKnife框架版本问题"></a>3.2 <code>ButterKnife</code>框架版本问题</h3><p>使用<code>ButterKnife</code>框架的时候</p>
+<p>当是<code>androidX</code>的时候，需要<code>implementation 10.2.0</code>版本的<code>ButterKnife</code></p>
 <pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">//引入ButterKnife</span>
     implementation <span class="token string">"com.jakewharton:butterknife:10.2.0"</span>
     implementation <span class="token string">'androidx.legacy:legacy-support-v4:1.0.0'</span>
     annotationProcessor <span class="token string">"com.jakewharton:butterknife-compiler:10.2.0"</span></code></pre>
-<p>当是android 28等其他版本的时候，可以导入8.4.0版本的ButterKnife（导入10.2.0版本会出错）</p>
-<pre class=" language-groovy"><code class="language-groovy"> implementation <span class="token string">'com.jakewharton:butterknife:8.4.0'</span>
-    annotationProcessor <span class="token string">'com.jakewharton:butterknife-compiler:8.4.0'</span> </code></pre>
-<h3 id="3-3-ButterKnife需要Java-1-8以上的支持"><a href="#3-3-ButterKnife需要Java-1-8以上的支持" class="headerlink" title="3.3 ButterKnife需要Java 1.8以上的支持"></a>3.3 ButterKnife需要Java 1.8以上的支持</h3><pre class=" language-groovy"><code class="language-groovy"> compileOptions <span class="token punctuation">{</span>
+<p>当是<code>android 28</code>等其他版本的时候，可以导入<code>8.4.0</code>版本的<code>ButterKnife</code>（导入<code>10.2.0</code>版本会出错）</p>
+<pre class=" language-groovy"><code class="language-groovy">implementation <span class="token string">'com.jakewharton:butterknife:8.4.0'</span>
+annotationProcessor <span class="token string">'com.jakewharton:butterknife-compiler:8.4.0'</span> </code></pre>
+<h3 id="3-3-ButterKnife需要Java-1-8以上的支持"><a href="#3-3-ButterKnife需要Java-1-8以上的支持" class="headerlink" title="3.3 ButterKnife需要Java 1.8以上的支持"></a>3.3 <code>ButterKnife</code>需要Java 1.8以上的支持</h3><pre class=" language-groovy"><code class="language-groovy"> compileOptions <span class="token punctuation">{</span>
         sourceCompatibility JavaVersion<span class="token operator">.</span>VERSION_1_8
         targetCompatibility JavaVersion<span class="token operator">.</span>VERSION_1_8
     <span class="token punctuation">}</span> </code></pre>
-<h3 id="3-4-Fragment中点击事件失效的问题"><a href="#3-4-Fragment中点击事件失效的问题" class="headerlink" title="3.4  Fragment中点击事件失效的问题"></a>3.4  Fragment中点击事件失效的问题</h3><blockquote>
-<p>点击事件发生的场景：Fragment中初始化控件没有用butterKnife框架</p>
+<h3 id="3-4-Fragment中点击事件失效的问题"><a href="#3-4-Fragment中点击事件失效的问题" class="headerlink" title="3.4  Fragment中点击事件失效的问题"></a>3.4  <code>Fragment</code>中点击事件失效的问题</h3><blockquote>
+<ul>
+<li>点击事件失效发生的场景：<code>Fragment</code>中初始化控件没有用<code>ButterKnife</code>框架</li>
+</ul>
 </blockquote>
 <p>解决措施如下：</p>
+<p>A:方法一:</p>
 <ul>
-<li>将控件的初始化防止onCreateView中</li>
-<li>将控件的点击事件的代码放在onActivityCreated中</li>
+<li>将控件的初始化放在<code>onCreateView</code>中  </li>
+<li>将控件的点击事件的代码放在<code>onActivityCreated</code>中</li>
+</ul>
+<p>B:方法二：</p>
+<ul>
+<li>在<code>Fragment</code>中使用<code>ButterKnife</code>框架</li>
 </ul>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
 <ul>
-<li><a href="https://www.jianshu.com/p/2a882604bbe8" target="_blank" rel="noopener">Rxjava关于Disposable你应该知道的事</a></li>
-<li><a href="https://www.jianshu.com/p/651146bd0688" target="_blank" rel="noopener">Mvp实战心得(二)—Base基类的封装</a></li>
-<li><a href="https://blog.csdn.net/gpf1320253667/article/details/84363059" target="_blank" rel="noopener">最实用的Retrofit2+RxJava2+MVP框架搭建，避免各种内存泄漏</a></li>
-<li><a href="https://blog.csdn.net/u010940300/article/details/43170477?utm_source=blogkpcl3" target="_blank" rel="noopener">Android中Fragment点击事件的添加</a></li>
-<li><a href="https://blog.csdn.net/xzytl60937234/article/details/52871584" target="_blank" rel="noopener">在Fragment中的子View（如Button等）点击事件失效解决方法</a></li>
-<li><a href="https://www.jianshu.com/p/5ba83d9639fb" target="_blank" rel="noopener">谈谈RxJava</a></li>
+<li><p>《第一行代码》</p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/2a882604bbe8" target="_blank" rel="noopener">Rxjava关于Disposable你应该知道的事</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/651146bd0688" target="_blank" rel="noopener">Mvp实战心得(二)—Base基类的封装</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/gpf1320253667/article/details/84363059" target="_blank" rel="noopener">最实用的Retrofit2+RxJava2+MVP框架搭建，避免各种内存泄漏</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/u010940300/article/details/43170477?utm_source=blogkpcl3" target="_blank" rel="noopener">Android中Fragment点击事件的添加</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/xzytl60937234/article/details/52871584" target="_blank" rel="noopener">在Fragment中的子View（如Button等）点击事件失效解决方法</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/5ba83d9639fb" target="_blank" rel="noopener">谈谈RxJava</a></p>
+</li>
 </ul>
 
             </div>
