@@ -7,7 +7,7 @@
     <meta name="keywords" content="带你封装自己的MVP+Retrofit+RxJava2框架（二）, Sunny">
     <meta name="description" content="带你封装自己的MVP+Retrofit+RxJava2框架（二）前言
 本篇文章是针对上一篇文章：带你封装自己的MVP+Retrofit+RxJava2框架（一）的进一步封装改进，建议在看完上一篇文章后，再食用本文效果更佳！
-文本已经收录到我">
+本文已经收录到我">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -447,54 +447,54 @@
             <div id="articleContent">
                 <h1 id="带你封装自己的MVP-Retrofit-RxJava2框架（二）"><a href="#带你封装自己的MVP-Retrofit-RxJava2框架（二）" class="headerlink" title="带你封装自己的MVP+Retrofit+RxJava2框架（二）"></a>带你封装自己的MVP+Retrofit+RxJava2框架（二）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>本篇文章是针对上一篇文章：<a href="https://juejin.im/post/5e520d60f265da57127e43af" target="_blank" rel="noopener">带你封装自己的MVP+Retrofit+RxJava2框架（一）</a>的进一步封装改进，建议在看完上一篇文章后，再食用本文效果更佳！</p>
-<p>文本已经收录到我的Github个人博客，欢迎大佬们光临寒舍：<a href="http://xcynice.xyz/" target="_blank" rel="noopener">我的GIthub博客</a></p>
+<p>本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：<a href="http://xcynice.xyz/" target="_blank" rel="noopener">我的GIthub博客</a></p>
 </blockquote>
 <h2 id="本篇文章需要已经具备的知识："><a href="#本篇文章需要已经具备的知识：" class="headerlink" title="本篇文章需要已经具备的知识："></a>本篇文章需要已经具备的知识：</h2><ul>
-<li><strong>MVP</strong>的概念和基本使用</li>
-<li><strong>Retrofit</strong>框架的基本使用</li>
-<li><strong>RxJava2</strong>框架的基本使用</li>
-<li><strong>ButterKnife</strong>框架的基本使用</li>
-<li><strong>Base</strong>基类的概念</li>
+<li><code>MVP</code>的概念和基本使用</li>
+<li><code>Retrofit</code>框架的基本使用</li>
+<li><code>RxJava2</code>框架的基本使用</li>
+<li><code>ButterKnife</code>框架的基本使用</li>
+<li><code>Base</code>基类的概念</li>
 <li><a href="https://github.com/yechaoa/YUtils" target="_blank" rel="noopener">YUtils</a>的简单使用</li>
 <li><a href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper" target="_blank" rel="noopener">BaseRecyclerViewAdapterHelper</a>的简单使用</li>
 </ul>
 <h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><ul>
-<li>Base实体类的封装</li>
-<li>Base异常类的封装</li>
-<li>Base观察者的封装</li>
-<li>RxJava线程自动调度的小技巧</li>
+<li><code>Base</code>实体类的封装</li>
+<li><code>Base</code>异常类的封装</li>
+<li><code>Base</code>观察者的封装</li>
+<li><code>RxJava</code>线程自动调度的小技巧</li>
 <li>进行网络请求自动显示加载中</li>
 <li>完成网络请求自动关闭加载中</li>
 <li>自动处理异常信息</li>
-<li>Cookie自动持久化与Retrofit的协同使用</li>
-<li>接口管理Retrofit请求接口的优美方式</li>
+<li><code>Cookie</code>自动持久化与<code>Retrofit</code>的协同使用</li>
+<li>接口管理<code>Retrofit</code>请求接口的优美方式</li>
 </ul>
-<h2 id="一-为什么要封装这套框架"><a href="#一-为什么要封装这套框架" class="headerlink" title="一.为什么要封装这套框架"></a>一.为什么要封装这套框架</h2><p>​        如<a href="http://xcynice.xyz/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/" target="_blank" rel="noopener">上一篇文章</a>所说，在MVP模式日渐流行的时候，封装一套MVP框架，不仅对日常的开发大大便利，还能提前积累一下未来在实际工作中的技巧，并且，良好的封装和规范使用还能减少开发中的各种令人头疼的BUG。</p>
-<p>​        有人可能会问：“你上一篇不是也写了MVP框架吗？你这篇难道还是一样的吗？难道你是换汤不换药吗？”</p>
-<p>​        其实，一开始笔者也以为我上一篇文章封装的MVP框架已经够不错了，但是，在笔者某天看了<a href="https://github.com/yechaoa" target="_blank" rel="noopener">yechaoa</a>大神<strong>玩安卓java</strong>的源码后，被其封装的MVP框架的所折服，因此第一时间写这篇文章，想向大家分享下，笔者从中吸取的经验，希望能够帮助到各位！</p>
-<p>​        本文相对<a href="http://xcynice.xyz/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/" target="_blank" rel="noopener">上一篇文章</a>的改进地方有下面几点：</p>
+<h2 id="一-为什么要封装这套框架"><a href="#一-为什么要封装这套框架" class="headerlink" title="一.为什么要封装这套框架"></a>一.为什么要封装这套框架</h2><p>​        如<a href="http://xcynice.xyz/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/" target="_blank" rel="noopener">上一篇文章</a>所说，在<code>MVP</code>模式日渐流行的时候，封装一套<code>MVP</code>框架，不仅对日常的开发大大便利，还能提前积累一下未来在实际工作中的技巧，并且，良好的封装和规范使用还能减少开发中的各种令人头疼的BUG。</p>
+<p>​        有人可能会问：“你上一篇不是也写了<code>MVP</code>框架吗？你这篇难道还是一样的吗？难道你是换汤不换药吗？”</p>
+<p>​        其实，一开始笔者自以为我上一篇文章封装的<code>MVP</code>框架已经够不错了，但是，在笔者某天看了<a href="https://github.com/yechaoa" target="_blank" rel="noopener">yechaoa</a>大神<strong>玩安卓java</strong>的源码后，被其封装的<code>MVP</code>框架的所折服，因此第一时间写这篇文章，想向大家分享下，笔者从中汲取的经验，希望能够帮助到各位！</p>
+<p>​        本文相对<a href="http://xcynice.xyz/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/" target="_blank" rel="noopener">带你封装自己的MVP+Retrofit+RxJava2框架（一）</a>的改进地方有下面几点：</p>
 <ul>
-<li><strong>精简了Activity基类</strong>，将原来的两个BaseActivity和BaseMvpActivity精简为一个BaseActivity</li>
-<li><strong>修复了</strong>当继承了Activity基类，不添加presenter会导致<strong>空指针</strong>的bug</li>
+<li><strong>精简了Activity基类</strong>，将原来的两个<code>BaseActivity</code>和<code>BaseMvpActivity</code>精简为一个<code>BaseActivity</code></li>
+<li><strong>修复了</strong>当继承了<code>Activity</code>基类，不添加<code>Presenter</code>会导致<strong>空指针</strong>的<code>Bug</code></li>
 <li>添加了<strong>网络请求</strong>可选择<strong>自动</strong>显示加载中和自动关闭加载中的功能</li>
 <li>添加了<strong>自动处理异常</strong>信息的功能</li>
-<li>封装了一个<strong>Bean</strong>对象的<strong>基类</strong></li>
-<li><strong>精简了RxJava</strong>的用法，因此可以省去Model类的编写</li>
-<li><strong>封装</strong>了一个<strong>Observer</strong>的基类</li>
+<li>封装了一个<code>Bean</code>对象的<strong>基类</strong></li>
+<li><strong>精简了RxJava</strong>的用法，因此可以省去<code>Model</code>类的编写</li>
+<li><strong>封装</strong>了一个<code>Observer</code>的基类</li>
 <li>增添了<strong>cookie自动持久化</strong>的功能</li>
-<li><strong>改进</strong>了<strong>RetrofitService</strong>的封装，将Retrofit接口的实例化引入基类</li>
+<li><strong>改进</strong>了<code>RetrofitService</code>的封装，将<code>Retrofit</code>接口的实例化引入基类</li>
 </ul>
 <h2 id="二-核心用法与样例分析"><a href="#二-核心用法与样例分析" class="headerlink" title="二.核心用法与样例分析"></a>二.核心用法与样例分析</h2><blockquote>
-<p>本项目基于Android X 进行构建，完整代码可在我的github上下载:<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2" target="_blank" rel="noopener">带你封装自己的MVP+Retrofit+RxJava2框架(二)</a></p>
+<p>本项目基于<code>Android X</code> 进行构建，完整代码已经上传到<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2" target="_blank" rel="noopener">我的Github仓库</a></p>
 </blockquote>
-<p>首先，可以看一下笔者项目的<strong>基本结构</strong></p>
+<p>首先，先给大家介绍下笔者项目的<strong>基本结构</strong></p>
 <p><img src="https://i.loli.net/2020/02/08/GxFTq4ntgHAapOS.png" alt="项目基本结构"></p>
-<p>为了给大家模拟带<strong>自动获取Cookie</strong>的功能,所以笔者设计了一个具有<strong>登陆，注册，收藏</strong>功能的Demo</p>
+<p>为了给大家模拟带<strong>自动获取Cookie</strong>的功能,所以笔者设计了一个具有<strong>登陆，注册，收藏</strong>功能的<code>Demo</code></p>
 <blockquote>
 <p>在这里特别感谢<a href="https://www.wanandroid.com/" target="_blank" rel="noopener">玩安卓</a>提供的<a href="https://www.wanandroid.com/blog/show/2" target="_blank" rel="noopener">API</a></p>
 </blockquote>
 <p><img src="https://i.loli.net/2020/02/08/5OjmlFoMG3kcX2V.png" alt="Demo截图"></p>
-<p>笔者在Demo中用到的框架如下</p>
+<p>笔者在<code>Demo</code>中用到的框架如下</p>
 <pre class=" language-groovy"><code class="language-groovy">    implementation <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'libs'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'*.jar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     implementation <span class="token string">'androidx.appcompat:appcompat:1.1.0'</span>
     implementation <span class="token string">'androidx.legacy:legacy-support-v4:1.0.0'</span>
@@ -531,8 +531,12 @@
     <span class="token comment" spellcheck="true">/*banner*/</span>
     implementation <span class="token string">'com.youth.banner:banner:1.4.10'</span></code></pre>
 <p>下面笔者将为大家详细介绍每个类的相关信息</p>
-<h3 id="2-1-base基类"><a href="#2-1-base基类" class="headerlink" title="2.1 base基类"></a>2.1 base基类</h3><h4 id="2-1-1-BaseActivity"><a href="#2-1-1-BaseActivity" class="headerlink" title="2.1.1 BaseActivity"></a>2.1.1 BaseActivity</h4><blockquote>
-<p>BaseActivity相对于笔者上一个版本的MVP框架,改进的地方是：将两个基类Activity合并为一个BaseActivity，并且在其中封装了进度条的显示和隐藏的方法</p>
+<h3 id="2-1-Base基类"><a href="#2-1-Base基类" class="headerlink" title="2.1 Base基类"></a>2.1 <code>Base</code>基类</h3><h4 id="2-1-1-BaseActivity"><a href="#2-1-1-BaseActivity" class="headerlink" title="2.1.1 BaseActivity"></a>2.1.1 <code>BaseActivity</code></h4><blockquote>
+<p><code>BaseActivity</code>相对于笔者上一个版本的<code>MVP</code>框架的改进之处：</p>
+<ul>
+<li>将两个基类<code>Activity</code>合并为一个<code>BaseActivity</code></li>
+<li>在其中封装了进度条的显示和隐藏的方法</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -615,7 +619,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-2-BaseFragment"><a href="#2-1-2-BaseFragment" class="headerlink" title="2.1.2 BaseFragment"></a>2.1.2 BaseFragment</h4><pre class=" language-java"><code class="language-java">
+<h4 id="2-1-2-BaseFragment"><a href="#2-1-2-BaseFragment" class="headerlink" title="2.1.2 BaseFragment"></a>2.1.2 <code>BaseFragment</code></h4><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * Description : BaseFragment
  *
@@ -692,8 +696,12 @@
         YUtils<span class="token punctuation">.</span><span class="token function">dismissLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-3-BasePresenter"><a href="#2-1-3-BasePresenter" class="headerlink" title="2.1.3 BasePresenter"></a>2.1.3 BasePresenter</h4><blockquote>
-<p>BasePresenter相对于笔者上一个版本的MVP框架,改进的地方是：将线程的调度写入了addDisposable中，并改写了addDisposable方法，使得调用方式更加简单优美</p>
+<h4 id="2-1-3-BasePresenter"><a href="#2-1-3-BasePresenter" class="headerlink" title="2.1.3 BasePresenter"></a>2.1.3 <code>BasePresenter</code></h4><blockquote>
+<p><code>BasePresenter</code>相对于笔者上一个版本的<code>MVP</code>框架的改进之处：</p>
+<ul>
+<li>将线程的调度写入了<code>addDisposable</code>中</li>
+<li>改写了<code>addDisposable</code>方法，使得调用方式更加简单优美</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -749,8 +757,15 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-4-BaseObserver"><a href="#2-1-4-BaseObserver" class="headerlink" title="2.1.4 BaseObserver"></a>2.1.4 BaseObserver</h4><blockquote>
-<p>Observer的基类，提供了自动显示和自动隐藏进度条的方法，对内处理了onStart，onError，onComplete方法，对外只提供了onSuccess和onError方法，符合使用习惯</p>
+<h4 id="2-1-4-BaseObserver"><a href="#2-1-4-BaseObserver" class="headerlink" title="2.1.4 BaseObserver"></a>2.1.4 <code>BaseObserver</code></h4><blockquote>
+<ul>
+<li><p><code>Observer</code>的基类，提供了自动显示和自动隐藏进度条的方法</p>
+</li>
+<li><p>对内处理了<code>onStart</code>，<code>onError</code>，<code>onComplete</code>方法</p>
+</li>
+<li><p>对外只提供了<code>onSuccess</code>和<code>onError</code>方法，符合用户一般使用习惯</p>
+</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -848,7 +863,7 @@
     <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">onError</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-5-BaseException"><a href="#2-1-5-BaseException" class="headerlink" title="2.1.5 BaseException"></a>2.1.5 BaseException</h4><blockquote>
+<h4 id="2-1-5-BaseException"><a href="#2-1-5-BaseException" class="headerlink" title="2.1.5 BaseException"></a>2.1.5 <code>BaseException</code></h4><blockquote>
 <p>异常的基类</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
@@ -909,8 +924,8 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-6-BaseBean"><a href="#2-1-6-BaseBean" class="headerlink" title="2.1.6 BaseBean"></a>2.1.6 BaseBean</h4><blockquote>
-<p>实体类的基类，方便处理返回的json数据，具体的写法根据每个API而定</p>
+<h4 id="2-1-6-BaseBean"><a href="#2-1-6-BaseBean" class="headerlink" title="2.1.6 BaseBean"></a>2.1.6 <code>BaseBean</code></h4><blockquote>
+<p>实体类的基类，方便处理返回的<code>Json</code>数据，具体的写法需根据每个<code>API</code>而定</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -937,7 +952,7 @@
         <span class="token keyword">this</span><span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> data<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-1-7-BaseView"><a href="#2-1-7-BaseView" class="headerlink" title="2.1.7 BaseView"></a>2.1.7 BaseView</h4><pre class=" language-java"><code class="language-java">
+<h4 id="2-1-7-BaseView"><a href="#2-1-7-BaseView" class="headerlink" title="2.1.7 BaseView"></a>2.1.7 <code>BaseView</code></h4><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * Description : BaseView
  *
@@ -955,8 +970,8 @@
     <span class="token keyword">void</span> <span class="token function">onErrorCode</span><span class="token punctuation">(</span>BaseBean bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-2-http"><a href="#2-2-http" class="headerlink" title="2.2 http"></a>2.2 http</h3><h4 id="2-2-1-cookie"><a href="#2-2-1-cookie" class="headerlink" title="2.2.1 cookie"></a>2.2.1 cookie</h4><blockquote>
-<p>持久化cookie,因为代码太多，这里只展示一个类的代码，详细代码请前往我的Github<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/http/cookie" target="_blank" rel="noopener">查看</a></p>
+<h3 id="2-2-http"><a href="#2-2-http" class="headerlink" title="2.2 http"></a>2.2 <code>http</code></h3><h4 id="2-2-1-cookie"><a href="#2-2-1-cookie" class="headerlink" title="2.2.1 cookie"></a>2.2.1 <code>cookie</code></h4><blockquote>
+<p>持久化<code>cookie</code>,因为代码太多，这里只展示一个类的代码，详细代码请前往我的Github<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/http/cookie" target="_blank" rel="noopener">查看</a></p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>users<span class="token punctuation">.</span>xucanyou666<span class="token punctuation">.</span>rxjava2_retrofit_mvp2<span class="token punctuation">.</span>http<span class="token punctuation">.</span>cookie<span class="token punctuation">;</span>
 
@@ -995,8 +1010,8 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-2-2-gson"><a href="#2-2-2-gson" class="headerlink" title="2.2.2 gson"></a>2.2.2 gson</h4><blockquote>
-<p>重写ResponseBodyConverter对json预处理，这里只展示一个类的代码，详细代码请前往我的Github<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/http/gson" target="_blank" rel="noopener">查看</a></p>
+<h4 id="2-2-2-gson"><a href="#2-2-2-gson" class="headerlink" title="2.2.2 gson"></a>2.2.2 <code>gson</code></h4><blockquote>
+<p>重写<code>ResponseBodyConverter</code>对<code>Json</code>预处理，这里只展示一个类的代码，详细代码请前往<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/http/gson" target="_blank" rel="noopener">我的Github</a></p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -1042,7 +1057,10 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <h4 id="2-2-3-API"><a href="#2-2-3-API" class="headerlink" title="2.2.3 API"></a>2.2.3 API</h4><blockquote>
-<p>随着项目日渐庞大，请求也越来越多，不可能每个请求都使用一个接口，这样不仅造成浪费，更是不方便管理，因此，新建一个API作为Retrofit的管理类，用一个接口管理所有网络请求，可以有效改善代码质量</p>
+<ul>
+<li>原因：随着项目日渐庞大，请求也越来越多，不可能每个请求都使用一个接口，否则不但造成浪费，而且不方便管理</li>
+<li>作用：新建一个<code>API</code>作为<code>Retrofit</code>的管理类，用一个接口管理所有网络请求，可以有效改善代码质量</li>
+</ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -1095,8 +1113,8 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-2-4-RetrofitService"><a href="#2-2-4-RetrofitService" class="headerlink" title="2.2.4 RetrofitService"></a>2.2.4 RetrofitService</h4><blockquote>
-<p>Retrofit的配置类，在里面初始化了apiServer对象，并配置了日志信息，超时时间，Cookie持久化，用了静态内部类的单例模式</p>
+<h4 id="2-2-4-RetrofitService"><a href="#2-2-4-RetrofitService" class="headerlink" title="2.2.4 RetrofitService"></a>2.2.4 <code>RetrofitService</code></h4><blockquote>
+<p><code>Retrofit</code>的配置类，在里面初始化了<code>apiServer</code>对象，并配置了日志信息，超时时间，<code>Cookie</code>持久化，用了静态内部类的单例模式</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
  <span class="token operator">*</span> Description <span class="token operator">:</span> RetrofitService
@@ -1154,10 +1172,13 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-3-bean"><a href="#2-3-bean" class="headerlink" title="2.3 bean"></a>2.3 bean</h3><blockquote>
-<p>这里的带有嵌套的实体类看似很复杂，其实可以通过一个<a href="http://www.bejson.com/json2javapojo/new/" target="_blank" rel="noopener">在线JSON字符串转Java实体类</a>的工具进行生成，需要注意的是，不要将BaseBean的那一层导入到实体类中</p>
+<h3 id="2-3-bean"><a href="#2-3-bean" class="headerlink" title="2.3 bean"></a>2.3 <code>bean</code></h3><blockquote>
+<ul>
+<li>这里的带有嵌套的实体类看似很复杂，其实可以通过一个<a href="http://www.bejson.com/json2javapojo/new/" target="_blank" rel="noopener">在线JSON字符串转Java实体类</a>的工具进行生成</li>
+<li>注意：不要将<code>BaseBean</code>的那一层导入到实体类中</li>
+</ul>
 </blockquote>
-<h4 id="2-3-1-Article"><a href="#2-3-1-Article" class="headerlink" title="2.3.1 Article"></a>2.3.1 Article</h4><blockquote>
+<h4 id="2-3-1-Article"><a href="#2-3-1-Article" class="headerlink" title="2.3.1 Article"></a>2.3.1 <code>Article</code></h4><blockquote>
 <p>文章内容的实体类</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
@@ -1243,7 +1264,7 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-3-2-User"><a href="#2-3-2-User" class="headerlink" title="2.3.2 User"></a>2.3.2 User</h4><pre class=" language-java"><code class="language-java">
+<h4 id="2-3-2-User"><a href="#2-3-2-User" class="headerlink" title="2.3.2 User"></a>2.3.2 <code>User</code></h4><pre class=" language-java"><code class="language-java">
 
 <span class="token comment" spellcheck="true">/**
  * GitHub : https://github.com/yechaoa
@@ -1274,11 +1295,14 @@
     <span class="token keyword">public</span> String repassword<span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-4-module"><a href="#2-4-module" class="headerlink" title="2.4 module"></a>2.4 module</h3><blockquote>
-<p>这里分为每个模块进行管理，本Demo有Login,Register,Home总共3个模块,在这里仅说明一个模块，其他的模块的写法也是类似的，具体其他模块的写法，可以上<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/module" target="_blank" rel="noopener">Github</a>查看</p>
+<h3 id="2-4-module"><a href="#2-4-module" class="headerlink" title="2.4 module"></a>2.4 <code>module</code></h3><blockquote>
+<ul>
+<li>这里分模块化进行管理，本<code>Demo</code>有<code>Login</code>,<code>Register</code>,<code>Home</code>总共三个模块</li>
+<li>限于篇幅，在这里仅说明一个模块，其他模块的写法类似，具体写法，可以上<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/module" target="_blank" rel="noopener">Github</a>查看</li>
+</ul>
 </blockquote>
-<h4 id="2-4-1-login"><a href="#2-4-1-login" class="headerlink" title="2.4.1 login"></a>2.4.1 login</h4><h5 id="2-4-1-1-ILoginView"><a href="#2-4-1-1-ILoginView" class="headerlink" title="2.4.1.1 ILoginView"></a>2.4.1.1 ILoginView</h5><blockquote>
-<p>LoginView层的接口</p>
+<h4 id="2-4-1-login"><a href="#2-4-1-login" class="headerlink" title="2.4.1 login"></a>2.4.1 <code>login</code></h4><h5 id="2-4-1-1-ILoginView"><a href="#2-4-1-1-ILoginView" class="headerlink" title="2.4.1.1 ILoginView"></a>2.4.1.1 <code>ILoginView</code></h5><blockquote>
+<p><code>LoginView</code>层的接口</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -1307,8 +1331,8 @@
     <span class="token keyword">void</span> <span class="token function">doSuccess</span><span class="token punctuation">(</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">></span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h5 id="2-4-1-2-LoginPresenter"><a href="#2-4-1-2-LoginPresenter" class="headerlink" title="2.4.1.2 LoginPresenter"></a>2.4.1.2 LoginPresenter</h5><blockquote>
-<p>这里因为RxJava经过封装后，model层的代码太少，所以将Model直接写入Presenter中</p>
+<h5 id="2-4-1-2-LoginPresenter"><a href="#2-4-1-2-LoginPresenter" class="headerlink" title="2.4.1.2 LoginPresenter"></a>2.4.1.2 <code>LoginPresenter</code></h5><blockquote>
+<p>这里因为<code>RxJava</code>经过封装后，<code>Model</code>层的代码比较精简，所以将<code>Model</code>直接写入<code>Presenter</code>中，以节省工作量</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
@@ -1341,7 +1365,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h5 id="2-4-1-3-LoginTextWatcher"><a href="#2-4-1-3-LoginTextWatcher" class="headerlink" title="2.4.1.3 LoginTextWatcher"></a>2.4.1.3 LoginTextWatcher</h5><blockquote>
+<h5 id="2-4-1-3-LoginTextWatcher"><a href="#2-4-1-3-LoginTextWatcher" class="headerlink" title="2.4.1.3 LoginTextWatcher"></a>2.4.1.3 <code>LoginTextWatcher</code></h5><blockquote>
 <p>登陆界面输入框的监听器</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
@@ -1396,7 +1420,7 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h5 id="2-4-1-4-LoginActivity"><a href="#2-4-1-4-LoginActivity" class="headerlink" title="2.4.1.4 LoginActivity"></a>2.4.1.4 LoginActivity</h5><pre class=" language-java"><code class="language-java">
+<h5 id="2-4-1-4-LoginActivity"><a href="#2-4-1-4-LoginActivity" class="headerlink" title="2.4.1.4 LoginActivity"></a>2.4.1.4 <code>LoginActivity</code></h5><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * Description : LoginActivity
  *
@@ -1509,7 +1533,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="三-我在使用中遇到的问题"><a href="#三-我在使用中遇到的问题" class="headerlink" title="三.我在使用中遇到的问题"></a>三.我在使用中遇到的问题</h2><h3 id="3-1-颜色的资源文件出错"><a href="#3-1-颜色的资源文件出错" class="headerlink" title="3.1 颜色的资源文件出错"></a>3.1 颜色的资源文件出错</h3><p>有一天， 当我点开我的colors.xml资源文件的时候，发现是下图这个样子</p>
+<h2 id="三-我在使用中遇到的问题"><a href="#三-我在使用中遇到的问题" class="headerlink" title="三.我在使用中遇到的问题"></a>三.我在使用中遇到的问题</h2><h3 id="3-1-颜色的资源文件出错"><a href="#3-1-颜色的资源文件出错" class="headerlink" title="3.1 颜色的资源文件出错"></a>3.1 颜色的资源文件出错</h3><p>有一天， 当我点开我的<code>colors.xml</code>资源文件的时候，发现是下图这个样子</p>
 <p><img src="https://s2.ax1x.com/2020/02/08/1RhyPe.png" alt="colors.xml"></p>
 <p>然后当鼠标的光标移动到红色标记处，发现</p>
 <blockquote>
@@ -1517,19 +1541,19 @@
 </blockquote>
 <p>接着我翻译了一下:</p>
 <blockquote>
-<p>值中的颜色“colorPrimary”在基本值folde中没有声明</p>
+<p>值中的颜色“<code>colorPrimary</code>”在基本值<code>folde</code>中没有声明</p>
 </blockquote>
 <p>懵逼了，我不是声明了吗….最后还是百度到了结果</p>
-<p>解决方式是：先把colors文件剪切下来，再粘回去。</p>
-<p>感觉是AS的BUG….我用的AS版本是3.5.1</p>
-<h3 id="3-2-导入依赖的时候提示Failed-to-resolve"><a href="#3-2-导入依赖的时候提示Failed-to-resolve" class="headerlink" title="3.2 导入依赖的时候提示Failed to resolve"></a>3.2 导入依赖的时候提示Failed to resolve</h3><p><img src="https://s2.ax1x.com/2020/02/08/1R4Byn.png" alt="Failed to resolve"></p>
-<p>当然百度了一下，解决方式是：在根目录的build.gradle中添加maven</p>
+<p>解决方式是：先把<code>colors</code>文件剪切下来，再粘回去。</p>
+<p>感觉是<code>AS</code>的<code>BUG</code>….我用的<code>AS</code>版本是<code>3.5.1</code></p>
+<h3 id="3-2-导入依赖的时候提示Failed-to-resolve"><a href="#3-2-导入依赖的时候提示Failed-to-resolve" class="headerlink" title="3.2 导入依赖的时候提示Failed to resolve"></a>3.2 导入依赖的时候提示<code>Failed to resolve</code></h3><p><img src="https://s2.ax1x.com/2020/02/08/1R4Byn.png" alt="Failed to resolve"></p>
+<p>当然百度了一下，解决方式是：在根目录的<code>build.gradle</code>中添加<code>maven</code></p>
 <p>就是下面这样</p>
 <p><img src="https://i.loli.net/2020/02/08/278XKBGTmtvRJNo.png" alt="image.png"></p>
 <h3 id="3-3-在进入文章列表界面的时候，进度条不会自动隐藏"><a href="#3-3-在进入文章列表界面的时候，进度条不会自动隐藏" class="headerlink" title="3.3 在进入文章列表界面的时候，进度条不会自动隐藏"></a>3.3 在进入文章列表界面的时候，进度条不会自动隐藏</h3><blockquote>
-<p>发生问题的场景，就是我在presenter中设置了请求文章列表的数据的时候，会自动显示和隐藏进度条，但是请求完文章列表后，不能自动隐藏</p>
+<p>发生问题的场景：笔者在<code>Presenter</code>中请求文章列表的数据的时候，会自动显示和隐藏进度条，但请求完文章列表后，不能自动隐藏</p>
 </blockquote>
-<p>经过浏览代码，发现，我的请求文章列表的方法写多了一次，解决方法：只保存onResume里面的一次</p>
+<p>经过浏览代码，发现，我的请求文章列表的方法写多了一次，解决方法：只保存<code>onResume</code>里面的一次</p>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
