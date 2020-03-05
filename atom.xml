@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-03-02T16:08:34.446Z</updated>
+  <updated>2020-03-05T16:21:30.070Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>进阶之路 | 奇妙的Handler之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/03/06/jin-jie-zhi-lu-qi-miao-de-handler-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/03/06/jin-jie-zhi-lu-qi-miao-de-handler-zhi-lu/</id>
+    <published>2020-03-05T16:20:01.000Z</published>
+    <updated>2020-03-05T16:21:30.070Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;进阶之路-奇妙的Handler之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Handler之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Handler之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Handler之旅&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="开发艺术探索" scheme="https://lovelifeeveryday.github.io/tags/%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>进阶之路 | 奇妙的四大组件之旅</title>
@@ -501,35 +528,6 @@
         
         
           &lt;h1 id=&quot;8-1-RxJava基本用法&quot;&gt;&lt;a href=&quot;#8-1-RxJava基本用法&quot; class=&quot;headerlink&quot; title=&quot;8.1 RxJava基本用法&quot;&gt;&lt;/a&gt;8.1 RxJava基本用法&lt;/h1&gt;&lt;h2 id=&quot;1-概述&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>8.3 RxJava操作符入门</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/8.3-rxjava-cao-zuo-fu-ru-men/</id>
-    <published>2019-11-21T03:18:01.000Z</published>
-    <updated>2019-11-21T03:20:16.958Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-3-RxJava操作符入门&quot;&gt;&lt;a href=&quot;#8-3-RxJava操作符入门&quot; class=&quot;headerlink&quot; title=&quot;8.3 RxJava操作符入门&quot;&gt;&lt;/a&gt;8.3 RxJava操作符入门&lt;/h1&gt;&lt;h2 id=&quot;1-创建操作符&quot;&gt;&lt;a
         
       
     
