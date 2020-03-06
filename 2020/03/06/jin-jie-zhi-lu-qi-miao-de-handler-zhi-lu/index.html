@@ -570,7 +570,7 @@ Handler的基本概念及使用
 </blockquote>
 <p>Q4:原理</p>
 <blockquote>
-<p>ThreadLocal主要操作为<code>set</code>,<code>get</code>操作，下面分别介绍流程</p>
+<p><code>ThreadLocal</code>主要操作为<code>set</code>,<code>get</code>操作，下面分别介绍流程</p>
 </blockquote>
 <p>A1：<code>set</code>的原理</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/05/155410-152067.png" alt="set流程图"></p>
@@ -590,18 +590,18 @@ Handler的基本概念及使用
 <p>A.<code>enqueueMessage</code></p>
 <p>主要操作是单链表的插入操作</p>
 <p>B.<code>next</code></p>
-<p>是一个无限循环的方法，如果没有消息，会一直阻塞；当有消息的时候，next会返回消息并将其从单链表中移出</p>
+<p>是一个无限循环的方法，如果没有消息，会一直阻塞；当有消息的时候，<code>next</code>会返回消息并将其从单链表中移出</p>
 </li>
 </ul>
-<h4 id="2-2-3-Looper"><a href="#2-2-3-Looper" class="headerlink" title="2.2.3 Looper"></a>2.2.3 <code>Looper</code></h4><p>Q1：<code>Looper</code>的<strong>作用</strong>：</p>
+<h4 id="2-2-3-Looper"><a href="#2-2-3-Looper" class="headerlink" title="2.2.3 Looper"></a>2.2.3 <code>Looper</code></h4><p>Q1：<strong><code>Looper</code>的作用</strong></p>
 <blockquote>
 <ul>
 <li>作为消息循环的角色</li>
-<li>它会不停地从<code>MessageQueue</code>中查看是否有新消息，若有新消息则立即处理，否则一直阻塞（不是ANR）</li>
+<li>它会不停地从<code>MessageQueue</code>中查看是否有新消息，若有新消息则立即处理，否则一直阻塞（不是<code>ANR</code>）</li>
 <li><code>Handler</code>需要<code>Looper</code>，否则将报错</li>
 </ul>
 </blockquote>
-<p>Q2：<code>Looper</code>的<strong>使用</strong></p>
+<p>Q2：<strong><code>Looper</code>的使用</strong></p>
 <p>a1：开启：</p>
 <blockquote>
 <p><code>UI</code>线程会自动创建<code>Looper</code>，子线程需自行创建</p>
@@ -617,8 +617,8 @@ Handler的基本概念及使用
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <blockquote>
 <ul>
-<li>除了<code>prepare</code>,还提供<code>prepareMainLooper()</code>，本质也是通过<code>prepare</code></li>
-<li><code>getMainLooper()</code>–&gt;获取主线程的<code>Looper</code></li>
+<li>除了<code>prepare()</code>,还提供<code>prepareMainLooper()</code>，本质也是通过<code>prepare()</code></li>
+<li><code>getMainLooper()</code>   作用：获取主线程的<code>Looper</code></li>
 </ul>
 </blockquote>
 <p>a2：关闭:</p>
@@ -627,13 +627,13 @@ Handler的基本概念及使用
 <li><code>quitSafely</code>:设定退出标记，待<code>MessageQueue</code>中处理完所有消息再退出</li>
 </ul>
 <blockquote>
-<p>退出<code>Looper</code>的话，子线程会立刻终止，因此：建议在不需要的时候终止<code>Looper</code></p>
+<p>退出<code>Looper</code>的话，子线程会立刻终止；因此：建议在不需要的时候终止<code>Looper</code></p>
 </blockquote>
 <p>Q3：原理：</p>
-<p><img src="https://s2.ax1x.com/2020/03/05/372grn.png" alt="Looper原理"></p>
-<h4 id="2-2-4-Handler"><a href="#2-2-4-Handler" class="headerlink" title="2.2.4 Handler"></a>2.2.4 <code>Handler</code></h4><p>Q1:<code>Handler</code>的两种使用方式：</p>
+<p><img src="https://s2.ax1x.com/2020/03/06/3bcKLn.png" alt="Looper原理"></p>
+<h4 id="2-2-4-Handler"><a href="#2-2-4-Handler" class="headerlink" title="2.2.4 Handler"></a>2.2.4 <code>Handler</code></h4><p>Q1:<strong><code>Handler</code>的两种使用方式：</strong></p>
 <blockquote>
-<p><strong>注意</strong>：创建Handler实例之前必须先创建<code>Looper</code>实例，否则会抛<code>RuntimeException</code>。(<code>UI</code>线程自动创建<code>Looper</code>)</p>
+<p><strong>注意</strong>：创建<code>Handler</code>实例之前必须先创建<code>Looper</code>实例，否则会抛<code>RuntimeException</code>(<code>UI</code>线程自动创建<code>Looper</code>)</p>
 </blockquote>
 <ul>
 <li><code>send</code>方式</li>
@@ -698,7 +698,7 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleMessage</span><span class="token punctuation">(</span>Message message<span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">switch</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>what<span class="token punctuation">)</span><span class="token punctuation">{</span>
              HandlerActivity activity<span class="token operator">=</span>mActivityReference<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-             <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">handleMessage</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">handleMessage</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token keyword">if</span><span class="token punctuation">(</span>activity<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
                 <span class="token comment" spellcheck="true">//执行业务逻辑</span>
 
@@ -721,21 +721,24 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
     <span class="token punctuation">}</span>
     <span class="token function">handleMessage</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>可以看到 Handler.Callback 有<strong>优先处理消息的权利</strong> ，当一条消息被 <code>Callback</code> 处理<strong>并拦截（返回 true）</strong>，那么 <code>Handler. handleMessage(Msg)</code> 方法就不会被调用了；如果<code>Callback</code>处理了消息，但是并没有拦截，那么就意味着<strong>一个消息可以同时被<code>Callback</code>以及 <code>Handler</code> 处理</strong></p>
+<span class="token punctuation">}</span></code></pre>
+<p>可以看到 <code>Handler.Callback</code> 有<strong>优先处理消息的权利</strong> </p>
+<ul>
+<li>当一条消息被 <code>Callback</code> 处理<strong>并拦截（返回 <code>true</code>）</strong>，那么 <code>Handler.handleMessage(Msg)</code> 方法就不会被调用了</li>
+<li>如果<code>Callback</code>处理了消息，但是并没有拦截，那么就意味着<strong>一个消息可以同时被<code>Callback</code>以及 <code>Handler</code> 处理</strong></li>
+</ul>
 <p>这个就很有意思了，这有什么作用呢？</p>
 <p><strong>我们可以利用 <code>Callback</code> 这个拦截机制来拦截 <code>Handler</code> 的消息！</strong></p>
-<p>场景：<code>Hook</code> <a href="http://activitythread.mh/" target="_blank" rel="noopener">ActivityThread.mH</a> ，笔者在<a href="https://juejin.im/post/5e5c74c1e51d4526dc7be184" target="_blank" rel="noopener">进阶之路 | 奇妙的四大组件之旅</a>介绍过<code>ActivityThread</code>，在 <code>ActivityThread</code>中有个成员变量 <code>mH</code> ，它是个 <code>Handler</code>，又是个极其重要的类，几乎所有的插件化框架都使用了这个方法</p>
+<p>场景：<code>Hook</code> <a href="http://activitythread.mh/" target="_blank" rel="noopener">ActivityThread.mH</a> ，笔者在<a href="https://juejin.im/post/5e5c74c1e51d4526dc7be184" target="_blank" rel="noopener">进阶之路 | 奇妙的四大组件之旅</a>介绍过<code>ActivityThread</code>，在 <code>ActivityThread</code>中有个成员变量 <code>mH</code> ，它是个 <code>Handler</code>，又是个极其重要的类，几乎所有的<strong>插件化</strong>框架都使用了这个方法</p>
 <blockquote>
-<p>限于当前知识水平，笔者还未研究过插件化的知识，有机会的话希望能给大家介绍！</p>
+<p>限于当前知识水平，笔者尚未研究过插件化的知识，以后有机会的话希望能给大家介绍！</p>
 </blockquote>
 <h4 id="2-3-3-创建-Message-的最佳方式"><a href="#2-3-3-创建-Message-的最佳方式" class="headerlink" title="2.3.3 创建 Message 的最佳方式"></a>2.3.3 创建 <code>Message</code> 的最佳方式</h4><blockquote>
 <p>为了节省开销,尽量复用 <code>Message</code> ，减少内存消耗</p>
 </blockquote>
 <p>法一：<code>Message msg=Message.obtain();</code></p>
 <p>法二：<code>Message msg=handler.obtainMessage();</code></p>
-<h4 id="2-3-4-妙用-Looper-机制"><a href="#2-3-4-妙用-Looper-机制" class="headerlink" title="2.3.4 妙用 Looper 机制"></a>2.3.4 妙用 <code>Looper</code> 机制</h4><p>我们可以利用 Looper 的机制来帮助我们做一些事情：</p>
+<h4 id="2-3-4-妙用-Looper-机制"><a href="#2-3-4-妙用-Looper-机制" class="headerlink" title="2.3.4 妙用 Looper 机制"></a>2.3.4 妙用 <code>Looper</code> 机制</h4><p>我们可以利用<code>Looper</code>的机制来帮助我们做一些事情：</p>
 <ul>
 <li>将 <code>Runnable</code> <code>post</code> 到主线程执行</li>
 <li>利用 <code>Looper</code> 判断当前线程是否是主线程</li>
@@ -747,6 +750,7 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
 
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Handler HANDLER <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Handler</span><span class="token punctuation">(</span>Looper<span class="token punctuation">.</span><span class="token function">getMainLooper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+    <span class="token comment" spellcheck="true">//将 Runnable post 到主线程执行</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> Runnable runnable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isMainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             runnable<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -755,6 +759,7 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
+    <span class="token comment" spellcheck="true">//判断当前线程是否是主线程</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isMainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> Looper<span class="token punctuation">.</span><span class="token function">myLooper</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> Looper<span class="token punctuation">.</span><span class="token function">getMainLooper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -763,20 +768,20 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
 </code></pre>
 <h4 id="2-3-5-Android中为什么主线程不会因Looper-loop-的死循环卡死？"><a href="#2-3-5-Android中为什么主线程不会因Looper-loop-的死循环卡死？" class="headerlink" title="2.3.5 Android中为什么主线程不会因Looper.loop()的死循环卡死？"></a>2.3.5 <code>Android</code>中为什么主线程不会因<code>Looper.loop()</code>的死循环卡死？</h4><blockquote>
 <p>这个是老生常谈的问题了，记得当初被学长问到这个问题的时候，一脸懵逼，然后胡说一通，实属羞愧</p>
-<p>要弄清这个问题，我们通过几个问题来逐层深入讲解</p>
+<p>要弄清这个问题，我们可以通过几个问题来逐层深入剖析</p>
 </blockquote>
 <p>Q1：<strong>什么是线程？</strong></p>
-<p>线程是一段可执行的代码，当可执行代码执行完成后，线程生命周期便该终止了，线程退出。</p>
+<p>线程是一段可执行的代码，当可执行代码执行完成后，线程生命周期便该终止了，线程退出</p>
 <p>Q2：<strong>进入死循环是不是说明一定会阻塞</strong>？</p>
-<p>前面也说到了线程既然是一段可执行的代码，当可执行代码执行完成后，线程生命周期便该终止了，线程退出。而对于主线程，我们是绝不希望会被运行一段时间，自己就退出，那么如何保证能一直存活呢？<strong>简单做法就是可执行代码是能一直执行下去的，死循环便能保证不会被退出.</strong></p>
+<p>前面也说到了线程既然是一段可执行的代码，当可执行代码执行完成后，线程生命周期便该终止了，线程退出。而对于主线程，我们是绝不希望会被运行一段时间，自己就退出，那么如何保证能一直存活呢？<strong>简单做法就是可执行代码是能一直执行下去的，死循环便能保证不会被退出</strong></p>
 <p>想到这就理解，主线程也是一个线程，它也要维持自己的周期，所以也是需要一个死循环的。所以死循环并不是那么让人担心。</p>
 <p>Q3:<strong>什么是<code>Looper</code>的阻塞？</strong></p>
 <ul>
-<li><code>Looper</code>的阻塞，前提是没有输入事件，此时<code>MessageQueue</code>是空的，<code>Looper</code>进入空闲，线程进入阻塞，释放CPU，等待输入事件的唤醒</li>
-<li><code>Looper</code>阻塞的时候，主线程大多数时候都是处于休眠状态，并不会消耗大量CPU资源</li>
+<li><code>Looper</code>的阻塞，前提是没有输入事件，此时<code>MessageQueue</code>是空的，<code>Looper</code>进入空闲，线程进入阻塞，释放<code>CPU</code>，等待输入事件的唤醒</li>
+<li><code>Looper</code>阻塞的时候，主线程大多数时候都是处于休眠状态，并不会消耗大量<code>CPU</code>资源</li>
 </ul>
 <blockquote>
-<p><code>Looper</code>的阻塞涉及到<code>Linux pipe/epoll</code>机制，笔者目前才疏学浅，故不能解释，想了解的读者可自行<code>Google</code></p>
+<p><code>Looper</code>的阻塞涉及到<code>Linux pipe/epoll</code>机制，想了解的读者可自行<code>Google</code></p>
 </blockquote>
 <p>Q4：<strong>聊聊<code>ANR</code></strong></p>
 <ul>
