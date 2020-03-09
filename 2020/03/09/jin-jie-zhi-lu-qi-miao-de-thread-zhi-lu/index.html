@@ -666,7 +666,7 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 <li>初始化</li>
 <li><code>instance</code>指向分配的那块内存</li>
 </ol>
-<p>上面的2和3操作是有可能重排序的, 如果3重排序到2的前面, 这时候2操作还没有执行, <code>instance</code>已经不是<code>null</code>了, 当然不是安全的</p>
+<p>上面的2和3操作是有可能重排序的, 如果3重排序到2的前面, 这时候2操作还没有执行, <code>instance！=null</code>, 当然不是安全的</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">static</span> Singleton instance <span class="token operator">=</span> null<span class="token punctuation">;</span>
@@ -770,7 +770,7 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>Q2:<code>synchronized</code>与<code>ReentrantLock</code>的关系</p>
 <ul>
 <li>两者都是重入锁</li>
-<li>两者有些方法互相对应:</li>
+<li>两者有些方法互相对应</li>
 </ul>
 <blockquote>
 <ul>
@@ -1098,17 +1098,17 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">,</span>xxx<span class="token punctuation">)</span><span class="token punctuation">;</span>  
 <span class="token function">startService</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//启动服务</span></code></pre>
 <blockquote>
-<p>注意：无需手动停止服务，<code>onHandleIntent()</code>执行结束之后，IntentService会自动停止。</p>
+<p>注意：无需手动停止服务，<code>onHandleIntent()</code>执行结束之后，<code>IntentService</code>会自动停止。</p>
 </blockquote>
 <p>Q4:工作原理</p>
 <ul>
-<li>在<code>IntentService.onCreate()</code>里创建一个<code>Handler</code>对象即<code>HandlerThread</code>，利用其内部的<code>Looper</code>会实例化一个<code>ServiceHandler</code></li>
+<li>在<code>IntentService.onCreate()</code>里创建一个<code>Thread</code>对象即<code>HandlerThread</code>，利用其内部的<code>Looper</code>会实例化一个<code>ServiceHandler</code></li>
 <li>任务请求的<code>Intent</code>会被封装到<code>Message</code>并通过<code>ServiceHandler</code>发送给<code>Looper</code>的<code>MessageQueue</code>，最终在<code>HandlerThread</code>中执行</li>
 <li>在<code>ServiceHandler.handleMessage()</code>中会调用<code>IntentService.onHandleIntent()</code>，可在该方法中处理后台任务的逻辑,执行完毕后会调用<code>stopSelf()</code>，以实现自动停止</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/09/130332-40654.png" alt="总体流程图"></p>
 <p>下面继续来研究下：将<code>Intent</code> 传递给服务 &amp; 依次插入到工作队列中的流程</p>
-<p><img src="https://s2.ax1x.com/2020/03/09/8Szv4g.png" alt="8Szv4g.png"></p>
+<p><img src="https://s2.ax1x.com/2020/03/09/8Szv4g.png" alt="Intent传递流程"></p>
 <blockquote>
 <p>如果对<code>IntentService</code>的具体源码感兴趣的话，笔者推荐一篇文章：<a href="https://blog.csdn.net/carson_ho/article/details/53407806" target="_blank" rel="noopener">Android多线程：IntentService用法&amp;源码分析</a></p>
 </blockquote>
