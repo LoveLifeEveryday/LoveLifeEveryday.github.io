@@ -479,7 +479,7 @@ Android中的">
 </ul>
 <p>注意：不可在主线程做大量耗时操作，会导致<strong>ANR</strong>（应用无响应）。解决办法:将耗时任务放在线程中。</p>
 </blockquote>
-<p><code>IPC</code>不是Android所特有的，Android中最有特色的<code>IPC</code>方式是<code>Binder</code>。而日常开发中涉及到的知识：AIDL，插件化，组件化等等，都离不开Binder。由此可见，<code>IPC</code>是挺重要的。</p>
+<p><code>IPC</code>不是<code>Android</code>所特有的，<code>Android</code>中最有特色的<code>IPC</code>方式是<code>Binder</code>。而日常开发中涉及到的知识：<code>AIDL</code>，插件化，组件化等等，都离不开<code>Binder</code>。由此可见，<code>IPC</code>是挺重要的。</p>
 <h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-Android中的多进程模式"><a href="#2-1-Android中的多进程模式" class="headerlink" title="2.1 Android中的多进程模式"></a>2.1 <code>Android</code>中的多进程模式</h3><p>Q1：<strong>开启多线程的方式</strong>：</p>
 <ul>
 <li>（常用）在<code>AndroidMenifest</code>中给四大组件指定属性<code>android:process</code></li>
@@ -1235,24 +1235,24 @@ binder<span class="token punctuation">.</span><span class="token function">linkT
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/">
+                <a href="/2020/02/19/jin-jie-zhi-lu-qi-miao-de-view-zhi-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="进阶之路 | 奇妙的Activity之旅">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="进阶之路 | 奇妙的View之旅">
                         
-                        <span class="card-title">进阶之路 | 奇妙的Activity之旅</span>
+                        <span class="card-title">进阶之路 | 奇妙的View之旅</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Activity翻译为活动，在Android中代表了界面和以界面为中心相应的业务逻辑，包括显示、与用户交互等，它也是四大组件之一，重要性不言而喻。并且，许多公司在考察Android的知识点的时候，经常会考察到Activity的知识。
+                            View,是Android中十分重要的一个知识点，是所有控件的基类，尽管View不属于四大组件，但是它的作用堪比四大组件，甚至重要性大于ContentProvider和Broadcast Receivers。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
                         </span>
                         <span class="publish-author">
                             
@@ -1284,24 +1284,24 @@ binder<span class="token punctuation">.</span><span class="token function">linkT
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/08/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-er/">
+                <a href="/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="带你封装自己的MVP+Retrofit+RxJava2框架（二）">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="进阶之路 | 奇妙的Activity之旅">
                         
-                        <span class="card-title">带你封装自己的MVP+Retrofit+RxJava2框架（二）</span>
+                        <span class="card-title">进阶之路 | 奇妙的Activity之旅</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本篇文章是针对上一篇文章：带你封装自己的MVP+Retrofit+RxJava2框架（一）的进一步封装改进，建议在看完上一篇文章后，再食用本文效果更佳！
+                            Activity翻译为活动，在Android中代表了界面和以界面为中心相应的业务逻辑，包括显示、与用户交互等，它也是四大组件之一，重要性不言而喻。并且，许多公司在考察Android的知识点的时候，经常会考察到Activity的知识。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
                             </span>
                         <span class="publish-author">
                             
@@ -1318,8 +1318,8 @@ binder<span class="token punctuation">.</span><span class="token function">linkT
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/框架系列/">
-                        <span class="chip bg-color">框架系列</span>
+                    <a href="/tags/开发艺术探索/">
+                        <span class="chip bg-color">开发艺术探索</span>
                     </a>
                     
                 </div>
