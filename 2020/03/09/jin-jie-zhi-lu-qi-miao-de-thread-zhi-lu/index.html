@@ -13,9 +13,8 @@
 Thread的基本概念及使用
 AsyncTask的基本概念及使用
 
-学习清单：
-线程概述
-">
+学习导图：
+一.为什么">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -461,22 +460,7 @@ AsyncTask的基本概念及使用
 <li><code>Thread</code>的基本概念及使用</li>
 <li><code>AsyncTask</code>的基本概念及使用</li>
 </ul>
-<h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><ul>
-<li>线程概述</li>
-<li>线程的同步</li>
-<li>阻塞队列</li>
-<li><code>Android</code>中的线程形态</li>
-</ul>
-<blockquote>
-<ul>
-<li><code>AsyncTask</code></li>
-<li><code>HandlerThread</code></li>
-<li><code>IntentService</code></li>
-</ul>
-</blockquote>
-<ul>
-<li>线程池</li>
-</ul>
+<h2 id="学习导图："><a href="#学习导图：" class="headerlink" title="学习导图："></a>学习导图：</h2><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/09/153149-457927.png" alt="学习导图"></p>
 <h2 id="一-为什么要学习Thread"><a href="#一-为什么要学习Thread" class="headerlink" title="一.为什么要学习Thread?"></a>一.为什么要学习<code>Thread</code>?</h2><p>在<code>Android</code>中，几乎完全采用了<code>Java</code>中的线程机制。线程是最小的调度单位，在很多情况下为了使<code>APP</code>更加流程地运行，我们不可能将很多事情都放在主线程上执行，这样会造成严重卡顿（<code>ANR</code>），那么这些事情应该交给子线程去做，但对于一个系统而言，创建、销毁、调度线程的过程是需要开销的，所以我们并不能无限量地开启线程，那么对线程的了解就变得尤为重要了。</p>
 <p>本篇文章将带领大家由浅入深，从<strong>线程的基础</strong>，谈到<strong>同步机制</strong>，再讲到<strong>阻塞队列</strong>，接着提及<strong><code>Android</code>中的线程形态</strong>，最终一览<strong>线程池机制</strong>。</p>
 <p>话不多说，赶紧开始奇妙的<code>Thread</code>之旅吧！</p>
