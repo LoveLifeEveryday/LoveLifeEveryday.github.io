@@ -472,7 +472,10 @@ AsyncTask的基本概念及使用
 <p>Q2：<strong>特点</strong></p>
 <p>线程是一种<strong>受限</strong>的系统资源。即线程不可无限制的产生且线程的创建和销毁都有一定的开销</p>
 <blockquote>
-<p><strong>Q</strong>：如何避免频繁创建和销毁线程所带来的系统开销？<br><strong>A</strong>：采用<strong>线程池</strong>，池中会缓存一定数量的线程，进而达到效果</p>
+<ul>
+<li><strong>Q</strong>：如何避免频繁创建和销毁线程所带来的系统开销？</li>
+<li><strong>A</strong>：采用<strong>线程池</strong>，池中会缓存一定数量的线程，进而达到效果</li>
+</ul>
 </blockquote>
 <p>Q3:<strong>分类</strong></p>
 <ul>
@@ -780,7 +783,7 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 </tr>
 <tr>
 <td>同步代码块</td>
-<td>不建议使用</td>
+<td>不太建议使用，因为操作起来容易出错</td>
 </tr>
 <tr>
 <td><code>Lock/Condition</code></td>
@@ -992,9 +995,11 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>如果想要了解具体源码的读者，笔者推荐一篇文章：<a href="https://blog.csdn.net/guolin_blog/article/details/11711405" target="_blank" rel="noopener">Android AsyncTask完全解析，带你从源码的角度彻底理解</a></p>
 </blockquote>
 <h4 id="2-4-2-HandlerThread"><a href="#2-4-2-HandlerThread" class="headerlink" title="2.4.2 HandlerThread"></a>2.4.2 <code>HandlerThread</code></h4><p>Q1：定义：</p>
-<p><code>HandlerThread</code>是一个线程类，它继承自<code>Thread</code></p>
+<ul>
+<li><code>HandlerThread</code>是一个线程类，它继承自<code>Thread</code></li>
+<li>与普通<code>Thread</code>的区别：具有<strong>消息循环</strong>的效果。原理：</li>
+</ul>
 <blockquote>
-<p>与普通<code>Thread</code>的区别：具有<strong>消息循环</strong>的效果。原理：</p>
 <ul>
 <li>内部<code>HandlerThread.run()</code>方法中有<code>Looper</code>，通过<code>Looper.prepare()</code>来创建消息队列，并通过<code>Looper.loop()</code>来开启消息循环</li>
 </ul>
@@ -1052,7 +1057,7 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>Q4：原理：</p>
 <ul>
 <li>实际就是<code>HandlerThread.run()</code>里面封装了<code>Looper.prepare()</code>和<code>Looper.loop()</code>，以便能在子线程中使用<code>Handler</code></li>
-<li>同时，<code>HandlerThread.getLooper()</code>中使用了<code>wait()和synchronized代码块</code>，当<code>Looper==NULL</code>的时候，锁住了当前的对象，那什么时候唤醒等待呢？当然是在初始化完该线程关联<code>Looper</code>对象的地方，也就是<code>run()</code></li>
+<li>同时，<code>HandlerThread.getLooper()</code>中使用了<code>wait()</code>和<code>synchronized代码块</code>，当<code>Looper==NULL</code>的时候，锁住了当前的对象，那什么时候唤醒等待呢？当然是在初始化完该线程关联<code>Looper</code>对象的地方，也就是<code>run()</code></li>
 </ul>
 <blockquote>
 <p>想了解源码的话，笔者推荐一篇文章：<a href="https://blog.csdn.net/ta893115871/article/details/55272187" target="_blank" rel="noopener">浅析HandlerThread</a></p>
@@ -1228,7 +1233,7 @@ intent<span class="token punctuation">.</span><span class="token function">putEx
 <blockquote>
 <p>由于 <code>AsyncTask</code> 的串行和并行执行在多个版本上都进行了修改，所以当多个 <code>AsyncTask</code> 依次执行时，它究竟是串行还是并行执行取决于用户手机的版本。具体修改如下：</p>
 <p>A.<code>Android 1.6</code> 之前：各个 <code>AsyncTask</code> 按串行的顺序进行执行</p>
-<p>B.<code>Android 3.0</code> 之前：由于设计者认为串行执行效率太低，因此改为了并行执行，最多五个 <code>AsyncTask</code> 同时执行</p>
+<p>B.<code>Android 1.6</code>–<code>Android 3.0</code> ：由于设计者认为串行执行效率太低，因此改为了并行执行，最多五个 <code>AsyncTask</code> 同时执行</p>
 <p>C.<code>Android 3.0</code> 之后：由于之前的改动，很多应用出现了并发问题，因此引入 <code>SerialExecutor</code> 改回了串行执行，但对并行执行进行了支持</p>
 </blockquote>
 <hr>

@@ -671,10 +671,11 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
 </blockquote>
 <p><img src="https://s2.ax1x.com/2020/03/05/3HYfxS.png" alt="Handler警告"></p>
 <ul>
-<li><p>发生场景：<code>Handler</code> 允许我们发送<strong>延时消息</strong>，如果在延时期间用户关闭了<code>Activity</code>，那么该<code>Activity</code>会泄露</p>
-</li>
-<li><p>原因：这个泄露是因为因为 <strong><code>Java</code> 的特性，内部类会持有外部类</strong>， <code>Handler</code> 持有 <code>Activity</code> 的引用，<code>Message</code>持有<code>Handler</code>的引用，而<code>MessageQueue</code>会持有<code>Message</code>的引用，而<code>MessageQueue</code>是属于<code>TLS（ThreadLocalStorage）</code>线程，是与Activity不同的生命周期。所以当<code>Activity</code>的生命周期结束后，而<code>MessageQueue</code>中还存在未处理的消息，那么上面一连串的引用链就不允许<code>Activity</code>的对象被回收，就造成了内存泄漏</p>
-</li>
+<li>发生场景：<code>Handler</code> 允许我们发送<strong>延时消息</strong>，如果在延时期间用户关闭了<code>Activity</code>，那么该<code>Activity</code>会泄露</li>
+<li>原因：这个泄露是因为因为 <strong><code>Java</code> 的特性，内部类会持有外部类</strong>，<code>Activity</code> 被 <code>Handler</code> 持有引用，<code>Handler</code>被<code>Message</code>持有引用，而<code>Message</code>被<code>MessageQueue</code>持有引用，而<code>MessageQueue</code>是属于<code>TLS（ThreadLocalStorage）</code>线程，是与Activity不同的生命周期。所以当<code>Activity</code>的生命周期结束后，而<code>MessageQueue</code>中还存在未处理的消息，那么上面一连串的引用链就不允许<code>Activity</code>的对象被回收，就造成了内存泄漏</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/10/154241-273934.png" alt="引用链"></p>
+<ul>
 <li><p>解决方式：</p>
 <p>A.<code>Activity</code>销毁时，清空<code>Handler</code>中未执行或正在执行的<code>Callback</code>以及<code>Message</code></p>
 </li>
