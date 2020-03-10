@@ -1126,11 +1126,11 @@
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RetrofitService</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">private</span> <span class="token keyword">static</span> RetrofitService apiRetrofit<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">static</span> RetrofitService apiRetrofit<span class="token punctuation">;</span>
     <span class="token keyword">private</span> API<span class="token punctuation">.</span>WAZApi apiServer<span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">//单例调用</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> RetrofitService <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span>  <span class="token keyword">static</span> RetrofitService <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>apiRetrofit <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token keyword">if</span> <span class="token punctuation">(</span>apiRetrofit <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
