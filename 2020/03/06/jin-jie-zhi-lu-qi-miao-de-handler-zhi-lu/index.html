@@ -578,10 +578,10 @@ Handler的基本概念及使用
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/05/155653-993515.png" alt="get流程图"></p>
 <p>综上所述，<code>ThreadLocal</code>之所以有这么奇妙的效果，是因为：</p>
 <ul>
-<li>不同线程访问同一个<code>ThreadLocal.get()</code>，其内部会从各种线程中取出<code>table</code>数组，然后根据当前<code>ThreadLocal</code>的索引查找出对应的<code>values</code>值</li>
+<li>不同线程访问同一个<code>ThreadLocal.get()</code>，其内部会从各种线程中取出对应线程的<code>table</code>数组，然后根据当前<code>ThreadLocal</code>的索引查找出对应的<code>values</code>值</li>
 </ul>
 <blockquote>
-<p>想要了解<code>ThreadLocal</code>源码的读者，推荐一篇文章：<a href="https://www.jianshu.com/p/411c40b09a81" target="_blank" rel="noopener">ThreadLocal详解</a></p>
+<p>想要了解<code>ThreadLocal</code>具体源码的读者，推荐一篇文章：<a href="https://www.jianshu.com/p/411c40b09a81" target="_blank" rel="noopener">ThreadLocal详解</a></p>
 </blockquote>
 <h4 id="2-2-2-MessageQueue"><a href="#2-2-2-MessageQueue" class="headerlink" title="2.2.2 MessageQueue"></a>2.2.2 <code>MessageQueue</code></h4><ul>
 <li><p>数据结构：<code>MessageQueue</code>的数据结构是单链表</p>
@@ -599,6 +599,7 @@ Handler的基本概念及使用
 <li>作为消息循环的角色</li>
 <li>它会不停地从<code>MessageQueue</code>中查看是否有新消息，若有新消息则立即处理，否则一直阻塞（不是<code>ANR</code>）</li>
 <li><code>Handler</code>需要<code>Looper</code>，否则将报错</li>
+<li><code>Handler</code>内部通过<code>ThreadLocal</code>获取到当前线程的<code>Looper</code></li>
 </ul>
 </blockquote>
 <p>Q2：<strong><code>Looper</code>的使用</strong></p>
@@ -674,6 +675,13 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
 <li>发生场景：<code>Handler</code> 允许我们发送<strong>延时消息</strong>，如果在延时期间用户关闭了<code>Activity</code>，那么该<code>Activity</code>会泄露</li>
 <li>原因：这个泄露是因为因为 <strong><code>Java</code> 的特性，内部类会持有外部类</strong>，<code>Activity</code> 被 <code>Handler</code> 持有引用，<code>Handler</code>被<code>Message</code>持有引用，而<code>Message</code>被<code>MessageQueue</code>持有引用，而<code>MessageQueue</code>是属于<code>TLS（ThreadLocalStorage）</code>线程，是与Activity不同的生命周期。所以当<code>Activity</code>的生命周期结束后，而<code>MessageQueue</code>中还存在未处理的消息，那么上面一连串的引用链就不允许<code>Activity</code>的对象被回收，就造成了内存泄漏</li>
 </ul>
+<blockquote>
+<p>即两个关键条件：</p>
+<ul>
+<li>存在<code>Activity</code>–&gt;<code>Handler</code>–&gt;<code>Message</code>–&gt;<code>MessageQueue</code>的一连串引用链</li>
+<li><code>Handler</code>的生命周期 &gt; 外部类的生命周期</li>
+</ul>
+</blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/10/154241-273934.png" alt="引用链"></p>
 <ul>
 <li><p>解决方式：</p>
@@ -687,6 +695,12 @@ mHandler<span class="token punctuation">.</span><span class="token function">sen
         mHandler<span class="token punctuation">.</span><span class="token function">removeCallbacksAndMessages</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
 <p>​    B.<strong>静态内部类+弱引用</strong></p>
+<blockquote>
+<ul>
+<li>为了保证不再持有当前<code>Activity</code>的引用，我们采用<code>静态内部类</code>的方式</li>
+<li>为了让<code>Handler</code>在处理消息时调用外部类<code>Activity</code>的方法，且能在<code>GC</code>时回收其内存（换句话说：有短暂的生命周期），所以我们这里采用<code>弱引用</code>的方式</li>
+</ul>
+</blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">AppHandler</span> <span class="token keyword">extends</span> <span class="token class-name">Handler</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">//弱引用，在垃圾回收时，被回收</span>
