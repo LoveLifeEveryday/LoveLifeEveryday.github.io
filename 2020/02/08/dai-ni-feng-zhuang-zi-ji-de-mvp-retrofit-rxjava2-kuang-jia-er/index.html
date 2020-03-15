@@ -1342,26 +1342,69 @@
  * @date 2020/2/8
  */</span>
 
-
 <span class="token keyword">class</span> <span class="token class-name">LoginPresenter</span> <span class="token keyword">extends</span> <span class="token class-name">BasePresenter</span><span class="token operator">&lt;</span>ILoginView<span class="token operator">></span> <span class="token punctuation">{</span>
 
     <span class="token function">LoginPresenter</span><span class="token punctuation">(</span>ILoginView baseView<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">super</span><span class="token punctuation">(</span>baseView<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">void</span> <span class="token function">login</span><span class="token punctuation">(</span>String username<span class="token punctuation">,</span> String password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">addDisposable</span><span class="token punctuation">(</span>apiServer<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">BaseObserver</span><span class="token operator">&lt;</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">>></span><span class="token punctuation">(</span>baseView<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onSuccess</span><span class="token punctuation">(</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">></span> bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                baseView<span class="token punctuation">.</span><span class="token function">showLoginSuccess</span><span class="token punctuation">(</span><span class="token string">"登录成功（￣▽￣）"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                baseView<span class="token punctuation">.</span><span class="token function">doSuccess</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
 
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onError</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                baseView<span class="token punctuation">.</span><span class="token function">showLoginFailed</span><span class="token punctuation">(</span>msg <span class="token operator">+</span> <span class="token string">"(°∀°)ﾉ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 登陆
+     *
+     * @param username         username
+     * @param password         password
+     * @param usernameCountMax 账号规定输入字符最大值
+     * @param passwordCountMax 密码规定输入字符最大值
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">login</span><span class="token punctuation">(</span>String username<span class="token punctuation">,</span> String password<span class="token punctuation">,</span> <span class="token keyword">int</span> usernameCountMax<span class="token punctuation">,</span> <span class="token keyword">int</span> passwordCountMax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        YUtils<span class="token punctuation">.</span><span class="token function">closeSoftKeyboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isValid</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> usernameCountMax<span class="token punctuation">,</span> passwordCountMax<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">addDisposable</span><span class="token punctuation">(</span>apiServer<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">BaseObserver</span><span class="token operator">&lt;</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">>></span><span class="token punctuation">(</span>baseView<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@Override</span>
+                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onSuccess</span><span class="token punctuation">(</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">></span> bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    baseView<span class="token punctuation">.</span><span class="token function">showLoginSuccess</span><span class="token punctuation">(</span><span class="token string">"登录成功（￣▽￣）"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment" spellcheck="true">//将登陆的账号存进sp里面</span>
+                    SpUtil<span class="token punctuation">.</span><span class="token function">setBoolean</span><span class="token punctuation">(</span>GlobalConstant<span class="token punctuation">.</span>IS_LOGIN<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    SpUtil<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span>GlobalConstant<span class="token punctuation">.</span>USERNAME<span class="token punctuation">,</span> bean<span class="token punctuation">.</span>data<span class="token punctuation">.</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    SpUtil<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span>GlobalConstant<span class="token punctuation">.</span>PASSWORD<span class="token punctuation">,</span> bean<span class="token punctuation">.</span>data<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    baseView<span class="token punctuation">.</span><span class="token function">doSuccess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token annotation punctuation">@Override</span>
+                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onError</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    baseView<span class="token punctuation">.</span><span class="token function">showLoginFailed</span><span class="token punctuation">(</span>msg <span class="token operator">+</span> <span class="token string">"(°∀°)ﾉ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            baseView<span class="token punctuation">.</span><span class="token function">showLoginFailed</span><span class="token punctuation">(</span><span class="token string">"填写错误 (°∀°)ﾉ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment" spellcheck="true">/**
+     * 判断输入的账号密码是否符合规范
+     *
+     * @param userName         username
+     * @param password         password
+     * @param usernameCountMax 账号规定输入字符最大值
+     * @param passwordCountMax 密码规定输入字符最大值
+     * @return 是否合规
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span>String userName<span class="token punctuation">,</span> String password<span class="token punctuation">,</span> <span class="token keyword">int</span> usernameCountMax<span class="token punctuation">,</span> <span class="token keyword">int</span> passwordCountMax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">check</span><span class="token punctuation">(</span>userName<span class="token punctuation">,</span> usernameCountMax<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>password<span class="token punctuation">,</span> passwordCountMax<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 判断输入是否规范
+     *
+     * @param string              输入的内容
+     * @param tilCounterMaxLength textInputLayout控件的输入字符的最大长度
+     * @return 是否合规
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span>String string<span class="token punctuation">,</span> <span class="token keyword">int</span> tilCounterMaxLength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">!</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> string<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> tilCounterMaxLength <span class="token operator">&amp;&amp;</span> tilCounterMaxLength <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">&lt;=</span> string<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -1444,8 +1487,6 @@
     <span class="token annotation punctuation">@BindView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>btn_register<span class="token punctuation">)</span>
     Button mBtnRegister<span class="token punctuation">;</span>
 
-    <span class="token keyword">private</span> String mUsername<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> String mPassword<span class="token punctuation">;</span>
 
     <span class="token annotation punctuation">@Override</span>
     <span class="token keyword">protected</span> LoginPresenter <span class="token function">createPresenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1481,47 +1522,20 @@
     <span class="token punctuation">}</span>
 
     <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doSuccess</span><span class="token punctuation">(</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">></span> user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//存进sp里面</span>
-        SpUtil<span class="token punctuation">.</span><span class="token function">setBoolean</span><span class="token punctuation">(</span>GlobalConstant<span class="token punctuation">.</span>IS_LOGIN<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        SpUtil<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span>GlobalConstant<span class="token punctuation">.</span>USERNAME<span class="token punctuation">,</span> user<span class="token punctuation">.</span>data<span class="token punctuation">.</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        SpUtil<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span>GlobalConstant<span class="token punctuation">.</span>PASSWORD<span class="token punctuation">,</span> user<span class="token punctuation">.</span>data<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doSuccess</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">startActivity</span><span class="token punctuation">(</span>MainActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 判断账号和密码输入是否正确
-     *
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mUsername <span class="token operator">=</span> mEtUsername<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mPassword <span class="token operator">=</span> mEtPassword<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token function">check</span><span class="token punctuation">(</span>mUsername<span class="token punctuation">,</span> mTilUsername<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>mPassword<span class="token punctuation">,</span> mTilPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-
-    <span class="token comment" spellcheck="true">/**
-     * 判断输入是否正确
-     *
-     * @param string          输入的内容
-     * @param textInputLayout textInputLayout控件
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span>String string<span class="token punctuation">,</span> TextInputLayout textInputLayout<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token operator">!</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> string<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> textInputLayout<span class="token punctuation">.</span><span class="token function">getCounterMaxLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> textInputLayout<span class="token punctuation">.</span><span class="token function">getCounterMaxLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">&lt;=</span> string<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
 
     <span class="token annotation punctuation">@OnClick</span><span class="token punctuation">(</span><span class="token punctuation">{</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>btn_login<span class="token punctuation">,</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>btn_register<span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onViewClicked</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">switch</span> <span class="token punctuation">(</span>view<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">case</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>btn_login<span class="token operator">:</span>
-                YUtils<span class="token punctuation">.</span><span class="token function">closeSoftKeyboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isValid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    presenter<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>mUsername<span class="token punctuation">,</span> mPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                    ToastUtil<span class="token punctuation">.</span><span class="token function">showToast</span><span class="token punctuation">(</span><span class="token string">"填写错误 (°∀°)ﾉ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
+                String username <span class="token operator">=</span> mEtUsername<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String password <span class="token operator">=</span> mEtPassword<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> tilUsernameCounterMaxLength <span class="token operator">=</span> mTilUsername<span class="token punctuation">.</span><span class="token function">getCounterMaxLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> tilPasswordCounterMaxLength <span class="token operator">=</span> mTilPassword<span class="token punctuation">.</span><span class="token function">getCounterMaxLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                presenter<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> tilUsernameCounterMaxLength<span class="token punctuation">,</span> tilPasswordCounterMaxLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
                 <span class="token keyword">break</span><span class="token punctuation">;</span>
             <span class="token keyword">case</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>btn_register<span class="token operator">:</span>
                 YUtils<span class="token punctuation">.</span><span class="token function">closeSoftKeyboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
