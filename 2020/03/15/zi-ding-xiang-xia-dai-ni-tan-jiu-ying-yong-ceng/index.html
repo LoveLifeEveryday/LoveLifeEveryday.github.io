@@ -636,8 +636,8 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <li><strong>降低网络传输：</strong>副本被重复使用，大大降低了用户的带宽使用，其实也是一种变相的省钱（如果流量要付费的话），同时保证了带宽请求在一个低水平上，更容易维护了</li>
 </ul>
 <p>2.工作过程</p>
-<p><img src="https://pic1.zhimg.com/v2-627b9b090d99ed2920c354c5c5ee4220_b.jpg" alt="Web 缓存器有缓存"></p>
-<p> <img src="https://pic2.zhimg.com/v2-89c781b103caf55dd9f5badca74a7e4d_b.jpg" alt="Web 缓存器无缓存"></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88eBJU.jpg" alt="Web 缓存器有缓存"></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88eqeI.jpg" alt="Web 缓存器无缓存"></p>
 <p>Q6:条件 <code>get</code> 方法</p>
 <p>上述实现方式还有一个问题就是无法保证本地存储器内的内容是最新的，所以需要采用一种方式——（条件性 GET 方法）来保证数据是最新版本。这个方法的基本思想就是本地代理服务器向 URL 目标服务器发送一个 GET 请求消息，这个消息里面包括了本地存储资源的更新时间，在 URL 目标服务器中，会用这个时间与最新版本的时间进行比对，<strong>如果时间一致就返回 304 Not Modified , 否则就返回 200 OK 和最新版本的资源。</strong>代理服务器接收到返回信息后会判断这个返回码，如果是 <code>304</code>，就直接返回给客户给本地代理服务器存储的资源；如果是 <code>200</code> 就把新接收到的资源返回给用户，同时更新代理服务器存储的内容。</p>
 <h2 id="三、文件传输协议-FTP"><a href="#三、文件传输协议-FTP" class="headerlink" title="三、文件传输协议 FTP"></a><strong>三、文件传输协议 FTP</strong></h2><ul>
@@ -658,7 +658,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <li>邮件服务器</li>
 <li>简单邮件传输协议<code>SMTP</code></li>
 </ul>
-<p><img src="https://pic4.zhimg.com/v2-2135965dc712266632aafc10ed98aacf_b.jpg" alt></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88mSSg.jpg" alt></p>
 <ul>
 <li><p><strong>用户代理</strong>允许用户阅读、回复、转发、保存和撰写报文</p>
 </li>
@@ -690,7 +690,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <li><strong>报文必须以 7 比特 ASCII 格式</strong>。</li>
 </ul>
 <p>为了描述 <code>SMTP</code> 的基本操作，下面来模拟一下 <code>Alice</code> 给 <code>Bob</code> 发送一封简单的 <code>ASCII</code> 报文的过程：</p>
-<p><img src="https://pic1.zhimg.com/v2-e051dee9d27a6111761e53efa8e0dd64_b.jpg" alt>)<img src="https://pic1.zhimg.com/v2-e051dee9d27a6111761e53efa8e0dd64_r.jpg" alt></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88mkT0.jpg" alt></p>
 <p>1) <code>Alice</code> 使用用户代理写作报文并向 <a href="mailto:bob@someschool.edu" target="_blank" rel="noopener">bob@someschool.edu</a> 发送</p>
 <p>2) <code>Alice</code> 的 用户代理 向其<strong>邮件服务器</strong>发送报文；报文放置在<strong>报文队列</strong>中</p>
 <p>3) <code>SMTP</code> 的客户机侧打开与 <code>Bob</code> 的邮件服务器的 <code>TCP</code> 连接</p>
@@ -756,14 +756,14 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <p><strong>2、<code>DNS</code> 的工作原理</strong></p>
 <p><code>DNS</code> 采用分布式的设计方案</p>
 <p>下面是 <code>DNS</code> 服务器的部分层次结构（由上到下，每层分别是根服务器、<code>TLD</code> 服务器、权威服务器）</p>
-<p><img src="https://pic2.zhimg.com/v2-8abb99ed9a074c4fb9bd573e930f36cd_b.jpg" alt>)<img src="https://pic2.zhimg.com/v2-8abb99ed9a074c4fb9bd573e930f36cd_r.jpg" alt></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88mtpD.jpg" alt></p>
 <p>1）分布式、层次数据库</p>
 <p>大致来说，有 3 种类型的 <code>DNS</code> 服务器：<strong>根 <code>DNS</code> 服务器</strong>、<strong>顶级域（<code>Top9 Level Domain，TLD</code>）<code>DNS</code> 服务器</strong>和<strong>权威 DNS 服务器</strong>。</p>
 <p>下面来详细介绍一下这三种类型的 <code>DNS</code> 服务器：</p>
 <ul>
 <li><strong>根 <code>DNS</code> 服务器</strong></li>
 </ul>
-<p><img src="https://pic2.zhimg.com/v2-dda6d46bb20a2a5f77840843238ec3d9_b.jpg" alt></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88mrAP.jpg" alt></p>
 <ul>
 <li><strong>顶级域（<code>TLD</code>）服务器</strong></li>
 </ul>
@@ -772,8 +772,8 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <p>组织的 <code>DNS</code> 服务器为组织的服务器 (如 <code>Web</code> 和电子邮件) 提供对<code>IP</code>映射的权威主机名。 能够由组织或服务提供商维护。</p>
 <p><strong>· 本地 <code>DNS</code> 服务器</strong></p>
 <p>本地 <code>DNS</code> 服务器严格来说并不属于 <code>DNS</code> 服务器的层次结构，但它对 <code>DNS</code> 层次结构是很重要的。</p>
-<p><img src="https://pic4.zhimg.com/v2-c2a5ab74d205fc8966f51d80fd05128b_b.jpg" alt="迭代查询"></p>
-<p><img src="https://pic4.zhimg.com/80/v2-fe6a6a67b8424bb4d1e5650efc2e0513_720w.jpg" alt="图 2、递归查询"> </p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88mfns.jpg" alt="迭代查询"></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88moNV.jpg" alt="图 2、递归查询"></p>
 <p>在图 1 的例子中用到了<strong>递归查询</strong>和<strong>迭代查询</strong></p>
 <p>从理论上，所有的 <code>DNS</code> 查询既可以是迭代的也可以是递归的。例如，图 2 显示了一条 <code>DNS</code> 查询链，其中所有查询都是递归的</p>
 <p>实际中，查询通常遵循图 1 中的模式：<strong>从请求主机到本地 DNS 服务器的查询是递归的，其余查询是迭代的</strong></p>
@@ -785,14 +785,14 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <li>原理：当一个 <code>DNS</code> 服务器接收一个 <code>DNS</code> 回答（例如，包含主机名到 <code>IP</code> 地址的映射）时，<code>DNS</code> 服务器能将回答中的信息缓存在本地存储器。由于主机与主机名的 <code>IP</code> 地址映射决不是永久的，所以 <code>DNS</code> 服务器在一段时间后（通常设置为两天）将丢弃缓存的信息。</li>
 </ul>
 <p>3）域名解析过程</p>
-<p><img src="https://pic2.zhimg.com/v2-e70d27d767c71b3bf29e32f89e394225_r.jpg" alt></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88np4K.jpg" alt></p>
 <h2 id="六、P2P-应用"><a href="#六、P2P-应用" class="headerlink" title="六、P2P 应用"></a><strong>六、<code>P2P</code> 应用</strong></h2><p><strong>问题 : 从一个服务器向 N 个节点分发一个文件需要多长时间?</strong></p>
 <p>(1)客户机 / 服务器：服务器串行地发送 N 个副本</p>
 <ul>
 <li>时间： <code>NF/us</code></li>
 <li>客户机 i 需要 F/di 时间下载</li>
 </ul>
-<p><img src="https://pic4.zhimg.com/v2-99867d9c89152e4649b207886cf00327_b.jpg" alt>)<img src="https://pic1.zhimg.com/v2-3f821866fabd4b40fe3a4c8b50ca5534_b.jpg" alt></p>
+<p><img src alt></p>
 <p>（2）<code>P2P</code>：服务器必须发送一个副本</p>
 <ul>
 <li>时间： <code>F/us</code></li>
@@ -801,8 +801,8 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <li>最快的可能上传速率： <code>us + ∑ui</code></li>
 </ul>
 <p><img src="https://pic3.zhimg.com/v2-0968282e4cf6c9a81d5ac85fb4e6d97a_b.jpg" alt></p>
-<p><img src="https://pic2.zhimg.com/v2-42335d4d455a9317d2aeb365badc1085_b.jpg" alt></p>
-<p><img src="https://pic3.zhimg.com/v2-bc08d6d5f7c57b0d1395ac58f3566e52_b.jpg" alt="C/S 模式和 P2P 模式对比"></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88neEt.jpg" alt></p>
+<p><img src="https://s1.ax1x.com/2020/03/15/88uMIx.jpg" alt="C/S 模式和 P2P 模式对比"></p>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
