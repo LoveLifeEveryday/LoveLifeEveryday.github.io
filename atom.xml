@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-03-15T17:04:07.139Z</updated>
+  <updated>2020-03-18T09:08:23.287Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>自顶向下 | 带你遨游运输层</title>
+    <link href="https://lovelifeeveryday.github.io/2020/03/18/zi-ding-xiang-xia-dai-ni-ao-you-yun-shu-ceng/"/>
+    <id>https://lovelifeeveryday.github.io/2020/03/18/zi-ding-xiang-xia-dai-ni-ao-you-yun-shu-ceng/</id>
+    <published>2020-03-18T09:00:01.000Z</published>
+    <updated>2020-03-18T09:08:23.287Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;自顶向下-带你遨游运输层&quot;&gt;&lt;a href=&quot;#自顶向下-带你遨游运输层&quot; class=&quot;headerlink&quot; title=&quot;自顶向下 | 带你遨游运输层&quot;&gt;&lt;/a&gt;自顶向下 | 带你遨游运输层&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="https://lovelifeeveryday.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="自顶向下" scheme="https://lovelifeeveryday.github.io/tags/%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/"/>
+    
+      <category term="运输层" scheme="https://lovelifeeveryday.github.io/tags/%E8%BF%90%E8%BE%93%E5%B1%82/"/>
+    
+  </entry>
+  
+  <entry>
     <title>自顶向下 | 带你遨游应用层</title>
     <link href="https://lovelifeeveryday.github.io/2020/03/15/zi-ding-xiang-xia-dai-ni-ao-you-ying-yong-ceng/"/>
     <id>https://lovelifeeveryday.github.io/2020/03/15/zi-ding-xiang-xia-dai-ni-ao-you-ying-yong-ceng/</id>
     <published>2020-03-15T12:32:01.000Z</published>
-    <updated>2020-03-15T17:04:07.139Z</updated>
+    <updated>2020-03-17T16:03:10.848Z</updated>
     
     <summary type="html">
     
@@ -50,7 +79,7 @@
     <link href="https://lovelifeeveryday.github.io/2020/03/13/zi-ding-xiang-xia-ji-wang-he-ying-te-wang/"/>
     <id>https://lovelifeeveryday.github.io/2020/03/13/zi-ding-xiang-xia-ji-wang-he-ying-te-wang/</id>
     <published>2020-03-13T13:23:01.000Z</published>
-    <updated>2020-03-14T05:20:52.257Z</updated>
+    <updated>2020-03-17T14:41:58.286Z</updated>
     
     <summary type="html">
     
@@ -536,35 +565,6 @@
       <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
     
       <category term="注解与依赖注入框架" scheme="https://lovelifeeveryday.github.io/tags/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>8.5 RxJava使用场景</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/8.5-rxjava-shi-yong-chang-jing/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/8.5-rxjava-shi-yong-chang-jing/</id>
-    <published>2019-11-21T03:20:01.000Z</published>
-    <updated>2019-11-21T03:20:46.214Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-5-RxJava使用场景&quot;&gt;&lt;a href=&quot;#8-5-RxJava使用场景&quot; class=&quot;headerlink&quot; title=&quot;8.5 RxJava使用场景&quot;&gt;&lt;/a&gt;8.5 RxJava使用场景&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="函数响应式编程" scheme="https://lovelifeeveryday.github.io/tags/%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   

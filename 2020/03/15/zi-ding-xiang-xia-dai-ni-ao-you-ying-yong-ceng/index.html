@@ -613,7 +613,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <p>重点是可以并行传输</p>
 </blockquote>
 <p>Q4:用户和服务器的交互：<code>cookie</code></p>
-<p>之前说过，<code>HTTP</code> 是无状态协议。但是 <code>Web</code> 站点为了 <strong>识别用户身份</strong> ，使用了 <code>Cookie</code> 技术。<br>Cookie 技术包含 4 个组件：</p>
+<p>之前说过，<code>HTTP</code> 是无状态协议。但是 <code>Web</code> 站点为了 <strong>识别用户身份</strong> ，使用了 <code>Cookie</code> 技术。<br><code>Cookie</code> 技术包含 4 个组件：</p>
 <ul>
 <li><code>HTTP</code> 请求报文里增加一个关于 <code>Cookie</code> 的首部行</li>
 <li><code>HTTP</code> 响应报文里增加一个关于 <code>Cookie</code> 的首部行</li>
@@ -623,30 +623,30 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <blockquote>
 <p>很好理解，自然是请求报文和相应报文都携带 <code>Cookie</code>，客户端和服务器端都存有 <code>Cookie</code> 文件。即 <strong>本地保存，访问携带</strong></p>
 </blockquote>
-<p><strong><code>Cookie</code> 和 <code>Session</code> 的区别</strong><br>简单来说，二者都是为了 <code>Web</code> 站点 <strong>识别用户身份</strong>，<code>Session</code> 译为 会话，就是保存每一次客户端和服务器端会话中的 用户信息和用户操作，是有时间限制的。<br><code>Session</code> 会在服务器端有一个 类似 <code>HashTable</code> 的数据来存放用户数据，浏览器第一次请求，生成一个 <code>HashTable</code> 和对应 的<code>SessionID</code> （用于标识这个 <code>HashTable</code>）。这个 <code>Session ID</code> 一般在 30 分钟后会自动销毁。</p>
+<p><strong><code>Cookie</code> 和 <code>Session</code> 的区别</strong><br>简单来说，二者都是为了 <code>Web</code> 站点 <strong>识别用户身份</strong>，<code>Session</code> 译为 会话，就是保存每一次客户端和服务器端会话中的 用户信息和用户操作，是有时间限制的。<br><code>Session</code> 会在<strong>服务器端</strong>有一个 类似 <code>HashTable</code> 的数据来存放用户数据，浏览器第一次请求，生成一个 <code>HashTable</code> 和对应 的<code>SessionID</code> （用于标识这个 <code>HashTable</code>）。这个 <code>Session ID</code> 一般在 30 分钟后会自动销毁。</p>
 <p>区别：</p>
 <ul>
-<li><code>Cookie</code> 在客户端，会被篡改，不安全。<code>Session</code> 在服务器端</li>
+<li><code>Cookie</code> 在<strong>客户端</strong>，会被篡改，不安全。<code>Session</code> 在<strong>服务器端</strong></li>
 <li><code>Cookie</code> 只能存 <code>String</code> 类型对象，且容量小。 <code>Session</code> 可以存 <code>java</code> 对象，容量大。</li>
 </ul>
 <p>Q5:<code>Web</code> 缓存器（代理服务器）</p>
 <p>1.使用 <code>Web</code> 缓存器的 2 个主要原因：</p>
 <ul>
 <li><strong>降低延迟：</strong>缓存离客户端更近，因此，从缓存请求内容比从源服务器所用时间更少，呈现速度更快，网站就显得更灵敏</li>
-<li><strong>降低网络传输：</strong>副本被重复使用，大大降低了用户的带宽使用，其实也是一种变相的省钱（如果流量要付费的话），同时保证了带宽请求在一个低水平上，更容易维护了</li>
+<li><strong>降低网络传输：</strong>副本被重复使用，大大<strong>降低了用户的带宽使用</strong>，其实也是一种变相的省钱（如果流量要付费的话），同时保证了带宽请求在一个低水平上，更容易维护了</li>
 </ul>
 <p>2.工作过程</p>
 <p><img src="https://s1.ax1x.com/2020/03/15/88eBJU.jpg" alt="Web 缓存器有缓存"></p>
 <p><img src="https://s1.ax1x.com/2020/03/15/88eqeI.jpg" alt="Web 缓存器无缓存"></p>
 <p>Q6:条件 <code>get</code> 方法</p>
-<p>上述实现方式还有一个问题就是无法保证本地存储器内的内容是最新的，所以需要采用一种方式（条件性 <code>GET</code> 方法）来保证数据是最新版本。这个方法的基本思想就是本地代理服务器向 <code>URL</code> 目标服务器发送一个 <code>GET</code> 请求消息，这个消息里面包括了本地存储资源的更新时间，在 <code>URL</code> 目标服务器中，会用这个时间与最新版本的时间进行比对，<strong>如果时间一致就返回 <code>304 Not Modified</code> , 否则就返回 <code>200 OK</code> 和最新版本的资源。</strong>代理服务器接收到返回信息后会判断这个返回码，如果是 <code>304</code>，就直接返回给客户给本地代理服务器存储的资源；如果是 <code>200</code> 就把新接收到的资源返回给用户，同时更新代理服务器存储的内容。</p>
+<p>上述实现方式还有一个问题就是<strong>无法保证</strong>本地存储器内的<strong>内容是最新</strong>的，所以需要采用一种方式（条件性 <code>GET</code> 方法）来保证数据是最新版本。这个方法的基本思想就是本地代理服务器向 <code>URL</code> 目标服务器发送一个 <code>GET</code> 请求消息，这个消息里面包括了本地存储资源的更新时间，在 <code>URL</code> 目标服务器中，会用这个时间与最新版本的时间进行比对，<strong>如果时间一致就返回 <code>304 Not Modified</code> , 否则就返回 <code>200 OK</code> 和最新版本的资源。</strong>代理服务器接收到返回信息后会判断这个返回码，如果是 <code>304</code>，就直接返回给客户给本地代理服务器存储的资源；如果是 <code>200</code> 就把新接收到的资源返回给用户，同时更新代理服务器存储的内容。</p>
 <h2 id="三、文件传输协议-FTP"><a href="#三、文件传输协议-FTP" class="headerlink" title="三、文件传输协议 FTP"></a><strong>三、文件传输协议 <code>FTP</code></strong></h2><ul>
-<li><code>FTP</code> 的特点：同 <code>HTTP</code> 一样，也是运行在 <code>TCP</code> 上的协议，但它采用了两个并行的 <code>TCP</code> 连接来传输文件:</li>
+<li><code>FTP</code> 的特点：同 <code>HTTP</code> 一样，也是运行在 <code>TCP</code> 上的协议，但它采用了两个<strong>并行</strong>的 <code>TCP</code> 连接来传输文件:</li>
 </ul>
 <blockquote>
 <ul>
-<li>一个用于控制连接</li>
-<li>一个用于数据连接</li>
+<li>一个用于<strong>控制连接</strong></li>
+<li>一个用于<strong>数据连接</strong></li>
 </ul>
 </blockquote>
 <ul>
@@ -675,6 +675,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 </li>
 </ul>
 </blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/18/000251-683746.png" alt="邮件服务器结构"></p>
 <p><code>SMTP</code> 是因特网电子邮件中主要的应用层协议。它使用 <code>TCP</code> 可靠数据传输服务，从发送方的邮件服务器向接收方的邮件服务器发送邮件。</p>
 <p>1、<code>SMTP</code></p>
 <ul>
@@ -739,7 +740,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <li><strong><code>IMAP</code> 整体上为用户带来更为便捷和可靠的体验。<code>POP3</code> 更易丢失邮件或多次下载相同的邮件。</strong></li>
 </ul>
 <h2 id="五、DNS：因特网的目录服务"><a href="#五、DNS：因特网的目录服务" class="headerlink" title="五、DNS：因特网的目录服务"></a><strong>五、<code>DNS</code>：因特网的目录服务</strong></h2><ul>
-<li><p><code>DNS</code> 提供的服务主要为主机名到 <code>IP</code> 地址</p>
+<li><p><code>DNS</code> 提供的服务主要为主机名到 <code>IP</code> 地址的转换</p>
 </li>
 <li><p><code>DNS</code> 采用的是 <code>UDP</code>  </p>
 </li>
@@ -1033,40 +1034,36 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/15/zi-ding-xiang-xia-dai-ni-ao-you-ying-yong-ceng/">
+                <a href="/2020/03/18/zi-ding-xiang-xia-dai-ni-ao-you-yun-shu-ceng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="自顶向下 | 带你遨游应用层">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="自顶向下 | 带你遨游运输层">
                         
-                        <span class="card-title">自顶向下 | 带你遨游应用层</span>
+                        <span class="card-title">自顶向下 | 带你遨游运输层</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            自顶向下 | 带你遨游应用层前言
+                            自顶向下 | 带你遨游运输层前言
 本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
 我的GIthub博客
 
 学习导图：
-一、应用层协议原理Q1:网络应用程序体系结构
-
-客户 - 服务器体系结构（C/S）：Web
-
-
-点对点结构（
+一.运输层概述
+运输层为运行在不同主机上的应用程序之间提供逻辑通信
+应用报文加上运输层首部形成运输层报文段，
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1079,7 +1076,6 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1087,8 +1083,8 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
                         <span class="chip bg-color">自顶向下</span>
                     </a>
                     
-                    <a href="/tags/应用层/">
-                        <span class="chip bg-color">应用层</span>
+                    <a href="/tags/运输层/">
+                        <span class="chip bg-color">运输层</span>
                     </a>
                     
                 </div>
