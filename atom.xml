@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-03-19T05:52:33.930Z</updated>
+  <updated>2020-03-19T13:00:16.365Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自顶向下 | 带你遨游网络层</title>
+    <link href="https://lovelifeeveryday.github.io/2020/03/19/zi-ding-xiang-xia-dai-ni-ao-you-wang-luo-ceng/"/>
+    <id>https://lovelifeeveryday.github.io/2020/03/19/zi-ding-xiang-xia-dai-ni-ao-you-wang-luo-ceng/</id>
+    <published>2020-03-19T13:00:01.000Z</published>
+    <updated>2020-03-19T13:00:16.365Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;自顶向下-带你遨游网络层&quot;&gt;&lt;a href=&quot;#自顶向下-带你遨游网络层&quot; class=&quot;headerlink&quot; title=&quot;自顶向下 | 带你遨游网络层&quot;&gt;&lt;/a&gt;自顶向下 | 带你遨游网络层&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="https://lovelifeeveryday.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="自顶向下" scheme="https://lovelifeeveryday.github.io/tags/%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/"/>
+    
+      <category term="网络层" scheme="https://lovelifeeveryday.github.io/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
+    
+  </entry>
   
   <entry>
     <title>自顶向下 | 带你遨游运输层</title>
@@ -291,11 +320,11 @@
   </entry>
   
   <entry>
-    <title>进阶之路 | 奇妙的 IPC 之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/</id>
+    <title>进阶之路 | 奇妙的Activity之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/</id>
     <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-03-08T06:09:32.144Z</updated>
+    <updated>2020-02-19T06:39:18.641Z</updated>
     
     <summary type="html">
     
@@ -303,7 +332,7 @@
       
         
         
-          &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 IPC 之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
+          &lt;h1 id=&quot;进阶之路-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
         
       
     
@@ -318,11 +347,11 @@
   </entry>
   
   <entry>
-    <title>进阶之路 | 奇妙的Activity之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/</id>
+    <title>进阶之路 | 奇妙的 IPC 之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/</id>
     <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-02-19T06:39:18.641Z</updated>
+    <updated>2020-03-08T06:09:32.144Z</updated>
     
     <summary type="html">
     
@@ -330,7 +359,7 @@
       
         
         
-          &lt;h1 id=&quot;进阶之路-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 IPC 之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
         
       
     
@@ -495,35 +524,6 @@
         
         
           &lt;h1 id=&quot;9-3-依赖注入框架&quot;&gt;&lt;a href=&quot;#9-3-依赖注入框架&quot; class=&quot;headerlink&quot; title=&quot;9.3 依赖注入框架&quot;&gt;&lt;/a&gt;9.3 依赖注入框架&lt;/h1&gt;&lt;h2 id=&quot;1-ButterKnife&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="注解与依赖注入框架" scheme="https://lovelifeeveryday.github.io/tags/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>9.2 依赖注入的原理</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/9.2-yi-lai-zhu-ru-de-yuan-li/</id>
-    <published>2019-11-21T03:21:01.000Z</published>
-    <updated>2019-11-21T03:22:04.624Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;9-2-依赖注入的原理&quot;&gt;&lt;a href=&quot;#9-2-依赖注入的原理&quot; class=&quot;headerlink&quot; title=&quot;9.2 依赖注入的原理&quot;&gt;&lt;/a&gt;9.2 依赖注入的原理&lt;/h1&gt;&lt;h2 id=&quot;1-控制反转和依赖注入&quot;&gt;&lt;a
         
       
     

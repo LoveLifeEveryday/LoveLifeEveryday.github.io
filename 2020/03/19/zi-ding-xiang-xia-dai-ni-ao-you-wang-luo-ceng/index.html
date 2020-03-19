@@ -4,8 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="8.2 RxJava的Subject, Sunny">
-    <meta name="description" content="8.2 RxJava的Subject1.什么是 SubjectSubject 既可以是一个 Observer 也可以是一个 Observerable，它是连接 Observer 和Observerable的桥梁。 因此，Subject可以被">
+    <meta name="keywords" content="自顶向下 | 带你遨游网络层, Sunny">
+    <meta name="description" content="自顶向下 | 带你遨游网络层前言
+
+网络层的知识点非常繁多，本文仅是基于《计算机网络 自顶向下》而总结的一些重点知识点，如果想要详细了解网络层的知识，可以看下《自顶向下》
+
+本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：我的G">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>8.2 RxJava的Subject | Sunny</title>
+    <title>自顶向下 | 带你遨游网络层 | Sunny</title>
     <link rel="icon" type="image/png" href="/blueRabbit.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -285,13 +289,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        8.2 RxJava的Subject
+                        自顶向下 | 带你遨游网络层
                     </div>
                 </div>
             </div>
@@ -403,12 +407,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/安卓进阶之光/">
-                                <span class="chip bg-color">安卓进阶之光</span>
+                            <a href="/tags/自顶向下/">
+                                <span class="chip bg-color">自顶向下</span>
                             </a>
                         
-                            <a href="/tags/函数响应式编程/">
-                                <span class="chip bg-color">函数响应式编程</span>
+                            <a href="/tags/网络层/">
+                                <span class="chip bg-color">网络层</span>
                             </a>
                         
                     </div>
@@ -419,8 +423,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/安卓/" class="post-category">
-                                安卓
+                            <a href="/categories/计算机网络/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -431,7 +435,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-21
+                    2020-03-19
                 </div>
 
                 
@@ -447,33 +451,133 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="8-2-RxJava的Subject"><a href="#8-2-RxJava的Subject" class="headerlink" title="8.2 RxJava的Subject"></a>8.2 RxJava的Subject</h1><h2 id="1-什么是-Subject"><a href="#1-什么是-Subject" class="headerlink" title="1.什么是 Subject"></a>1.什么是 Subject</h2><p>Subject 既可以是一个 <strong>Observer</strong> 也可以是一个 <strong>Observerable</strong>，它是连接 Observer 和Observerable的<strong>桥梁</strong>。 因此，Subject可以被理解为Subject=Observable+Observer</p>
-<h2 id="2-有多少种Subject"><a href="#2-有多少种Subject" class="headerlink" title="2.有多少种Subject"></a>2.有多少种Subject</h2><h3 id="2-1-PublishSubject"><a href="#2-1-PublishSubject" class="headerlink" title="2.1 PublishSubject"></a>2.1 PublishSubject</h3><p>PublishSubject把<strong>订阅</strong>发生的时间点<strong>之后</strong>来自原始Observable的数据发射给观察者。</p>
-<pre class=" language-java"><code class="language-java">        PublishSubject<span class="token operator">&lt;</span>String<span class="token operator">></span> pSubject <span class="token operator">=</span> PublishSubject<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pSubject<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Consumer</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Observer-1："</span> <span class="token operator">+</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pSubject<span class="token punctuation">.</span><span class="token function">onNext</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pSubject<span class="token punctuation">.</span><span class="token function">onNext</span><span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pSubject<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Consumer</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Observer-2："</span> <span class="token operator">+</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pSubject<span class="token punctuation">.</span><span class="token function">onNext</span><span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pSubject<span class="token punctuation">.</span><span class="token function">onNext</span><span class="token punctuation">(</span><span class="token string">"D"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<pre><code>I/System.out: Observer-1：A   //结果
-I/System.out: Observer-1：B
-I/System.out: Observer-1：C
-I/System.out: Observer-2：C
-I/System.out: Observer-1：D
-I/System.out: Observer-2：D</code></pre><h3 id="2-2-BehaviorSubject"><a href="#2-2-BehaviorSubject" class="headerlink" title="2.2 BehaviorSubject"></a>2.2 BehaviorSubject</h3><p><strong>发射</strong>原始Observable<strong>最近发射</strong>的数据，如果没有，就发送默认数据</p>
-<h3 id="2-3-ReplaySubject"><a href="#2-3-ReplaySubject" class="headerlink" title="2.3 ReplaySubject"></a>2.3 ReplaySubject</h3><p>发送<strong>所有</strong>数据，包括之前的数据</p>
-<h3 id="2-4-AsyncSubject"><a href="#2-4-AsyncSubject" class="headerlink" title="2.4 AsyncSubject"></a>2.4 AsyncSubject</h3><p>只会发送<strong>最后</strong>一个数据</p>
+                <h1 id="自顶向下-带你遨游网络层"><a href="#自顶向下-带你遨游网络层" class="headerlink" title="自顶向下 | 带你遨游网络层"></a>自顶向下 | 带你遨游网络层</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<ul>
+<li><p>网络层的知识点非常繁多，本文仅是基于《计算机网络 自顶向下》而总结的一些<strong>重点知识点</strong>，如果想要详细了解网络层的知识，可以看下《自顶向下》</p>
+</li>
+<li><p>本文已经收录到我的<code>Github</code>个人博客，欢迎大佬们光临寒舍：<a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
+</li>
+</ul>
+</blockquote>
+<p>对于互联网的网络层来说，其提供的服务非常简单，包括：</p>
+<ul>
+<li>转发</li>
+<li>路由选择</li>
+</ul>
+<h2 id="网络层可能提供的服务"><a href="#网络层可能提供的服务" class="headerlink" title="网络层可能提供的服务"></a>网络层可能提供的服务</h2><p>网络服务模型：</p>
+<ul>
+<li>确保交付</li>
+<li>保证延迟的确保交付</li>
+<li>有序交付</li>
+<li>确保最小带宽</li>
+<li>确保最大时延抖动</li>
+<li>安全性服务</li>
+</ul>
+<p>那么 <code>IP</code> 协议提供以上哪些服务呢？</p>
+<p>答案就是：<strong>一个也不提供</strong></p>
+<ul>
+<li><strong>不</strong> 确保交付</li>
+<li><strong>不</strong> 保证延迟的确保交付</li>
+<li><strong>不</strong> 有序交付</li>
+<li><strong>不</strong> 确保最小带宽</li>
+<li><strong>不</strong> 确保最大时延抖动</li>
+<li><strong>没有</strong> 安全性服务</li>
+</ul>
+<h2 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h2><p><code>IP</code> 协议构建的网络就属于<strong>数据报</strong>网络</p>
+<p>特点：</p>
+<ul>
+<li><strong>无需建立连接</strong>，维持状态信息</li>
+<li>使用<strong>转发表</strong>决定分组输出端口</li>
+<li>通过<strong>最长前缀匹配原则</strong>进行查询转发表</li>
+</ul>
+<h2 id="路由器工作原理"><a href="#路由器工作原理" class="headerlink" title="路由器工作原理"></a>路由器工作原理</h2><ul>
+<li><strong>输入</strong>端口 ：从物理层接收数据，拆封分组、查看相应协议层头部，查询转发表放进发送队列</li>
+<li><strong>交换结构</strong> ： 负责发送队列到输出队列的运输</li>
+<li><strong>输出</strong>端口 ：拿到输出队列的数据，然后封上相应协议层的头部，送给物理层</li>
+<li><strong>路由选择处理器</strong> ： 负责执行路由选择，更新转发表，以及一些控制功能</li>
+</ul>
+<h2 id="网络层的三个主要组件"><a href="#网络层的三个主要组件" class="headerlink" title="网络层的三个主要组件"></a>网络层的三个主要组件</h2><h3 id="IP-协议"><a href="#IP-协议" class="headerlink" title="IP 协议"></a><code>IP</code> 协议</h3><h4 id="IPV4-数据报格式"><a href="#IPV4-数据报格式" class="headerlink" title="IPV4 数据报格式"></a><code>IPV4</code> 数据报格式</h4><p><img src="https://s1.ax1x.com/2020/03/19/8yYKXt.jpg" alt="IPV4数据报"></p>
+<ul>
+<li>版本：规定了 <code>IP</code> 协议版本</li>
+<li>首部长度</li>
+<li>服务类型：区分不同类型的 <code>IP</code> 数据报</li>
+<li>数据报长度</li>
+<li>标识、标志、片偏移：用于 <code>IP</code> 数据报分片</li>
+<li>寿命：一个数据报可以被路由处理的次数</li>
+<li>协议：用于 <code>IP</code> 的多路复用和分解，即应将数据交付给上层的那个协议，<code>TCP</code> 还是 <code>UDP</code></li>
+<li>首部检验和</li>
+<li>源和目的 <code>IP</code> 地址</li>
+<li>选项：用于扩展 <code>IP</code> 首部</li>
+<li>数据</li>
+</ul>
+<h4 id="IPV4-编址"><a href="#IPV4-编址" class="headerlink" title="IPV4 编址"></a><code>IPV4</code> 编址</h4><ul>
+<li><p>总长度为 <code>32</code> 位</p>
+</li>
+<li><p>一般以 <code>8</code> 位一组</p>
+</li>
+<li><p>子网：具有相同的前半部分地址的一组 <code>IP</code> 地址构成的网络</p>
+</li>
+<li><p>编址方案：</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>无类别域间路由选择</li>
+<li>分类编址</li>
+</ul>
+</blockquote>
+<h4 id="IPv4-和-IPv6-的区别"><a href="#IPv4-和-IPv6-的区别" class="headerlink" title="IPv4 和 IPv6 的区别"></a><code>IPv4</code> 和 <code>IPv6</code> 的区别</h4><p><strong>1. 扩展了寻址能力。</strong><br> <code>V6</code> 有 <code>128</code>位地址，<code>v4</code>只有<code>32</code>位。相当于扩展了<strong>4倍</strong>。<br> <strong>2. 报头格式简化</strong><br> <code>V6</code> 相对于 <code>V4</code>来说，报头简化了很多<br> <strong>3. 对可选项更大的支持</strong><br> <code>V6</code> 在 <code>V4</code> 的基础上，支持更多可选项操作，比如 对 <code>IP</code>层安全支持，对<code>IP</code>层漫游支持等功能。<br> <strong>4. 支持自动配置</strong><br> <code>IPv6</code>节点通过 地址自动配置 来获得 <code>V6</code>地址 和网关地址，<br> <strong>5. 身份验证和保密</strong><br> <code>v6</code>中加入了身份验证、数据一致性等保密性内容<br> <strong>6. 允许继续扩充协议</strong><br> 新的应用扩展也是在 <code>V6</code> 中支持的。</p>
+<h4 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a><code>DHCP</code></h4><p>是一种用于自动分配 <code>IP</code> 地址且即插即用的协议，使用 <code>UDP</code> 作为运输层服务</p>
+<p>对于一个新加入网络的电脑：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/19/204632-375824.png" alt="image-20200319204628822"></p>
+<ol>
+<li><code>DHCP</code> 服务器发现。通过设置源 <code>IP</code> 地址为 <code>0.0.0.0</code>，且目的 <code>IP</code> 地址为 <code>255.255.255.255</code> 的 <code>UDP</code> 分组，在网络中广播</li>
+<li><code>DHCP</code> 服务器提供。<code>DHCP</code> 监听到广播，使用一个 <code>DHCP</code> 提供报文 向客户作出响应 (继续以广播的形式发出，因为此时客户依旧没有自己的 <code>IP</code> 地址)</li>
+<li><code>DHCP</code> 请求。客户得到响应后，发送一个 <code>DHCP</code> 请求报文，回显响应的配置参数</li>
+<li><code>DHCP ACK</code>。服务器回应一个 <code>DHCP ACK</code> 报文，响应客户的请求报文</li>
+</ol>
+<h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a><code>NAT</code></h4><p>从目的来说，<code>NAT</code> 技术使得多台电脑可以通过一个公共 <code>IP</code> 上网，且不发生冲突。</p>
+<p>其行文的核心在于，从路由器 (具备公共 <code>IP</code> 的设备) 拦截所有的分组，修改其 <code>IP</code> 地址和端口，并记录这种修改产生相应的映射，发送修改后的分组，接收时执行相反的步骤。</p>
+<h3 id="路由选择算法"><a href="#路由选择算法" class="headerlink" title="路由选择算法"></a>路由选择算法</h3><p>分类</p>
+<p>全局还是分散：</p>
+<ul>
+<li>全局式路由选择算法 (链路状态算法)<ul>
+<li>需要事先知道网络总体的分布图</li>
+</ul>
+</li>
+<li>分散式路由选择算法 (距离向量算法)：<ul>
+<li>无需知道网络总体的分布图</li>
+</ul>
+</li>
+</ul>
+<p>动态还是静态：</p>
+<ul>
+<li>静态路由选择</li>
+<li>动态路由选择</li>
+</ul>
+<p>是否负载敏感：</p>
+<ul>
+<li>负载敏感算法</li>
+<li>负载迟钝算法</li>
+</ul>
+<h3 id="因特网控制报文协议-ICMP"><a href="#因特网控制报文协议-ICMP" class="headerlink" title="因特网控制报文协议 (ICMP)"></a>因特网控制报文协议 (<code>ICMP</code>)</h3><ul>
+<li>用于主机和路由器彼此沟通信息</li>
+<li>最典型的用途是差错报告</li>
+<li>构建于 <code>IP</code> 协议之上 (因为其报文位于为 <code>IP</code> 数据报的数据字段)</li>
+</ul>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
+<p>本文参考链接：</p>
+<ul>
+<li><p>《计算机网络-自顶向下方法》</p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/63811682efb6" target="_blank" rel="noopener">《计算机网络-自顶向下方法》重点笔记</a></p>
+</li>
+<li><p><a href="https://juejin.im/post/5cf7b8835188254a6c23dadd#heading-0" target="_blank" rel="noopener">第四章-网络层-IP协议</a></p>
+</li>
+<li><p><a href="https://blog.n0texpecterr0r.cn/2019/12/15/%e3%80%90%e7%bd%91%e7%bb%9c%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%ac%94%e8%ae%b0-%e7%bd%91%e7%bb%9c%e5%b1%82%e7%ae%80%e8%a6%81%e7%ac%94%e8%ae%b0/" target="_blank" rel="noopener">计算机网络笔记——网络层简要笔记</a></p>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -634,8 +738,8 @@ I/System.out: Observer-2：D</code></pre><h3 id="2-2-BehaviorSubject"><a href="#
                 </a>
             </div>
             <br/>
-            <a  href="/2019/11/21/8.2-rxjava-de-subject/">
-                    《8.2 RxJava的Subject》
+            <a  href="/2020/03/19/zi-ding-xiang-xia-dai-ni-ao-you-wang-luo-ceng/">
+                    《自顶向下 | 带你遨游网络层》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -676,50 +780,56 @@ I/System.out: Observer-2：D</code></pre><h3 id="2-2-BehaviorSubject"><a href="#
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/21/8.5-rxjava-shi-yong-chang-jing/">
+                <a href="/2020/03/19/zi-ding-xiang-xia-dai-ni-ao-you-wang-luo-ceng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="8.5 RxJava使用场景">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="自顶向下 | 带你遨游网络层">
                         
-                        <span class="card-title">8.5 RxJava使用场景</span>
+                        <span class="card-title">自顶向下 | 带你遨游网络层</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            RxJava使用场景
+                            自顶向下 | 带你遨游网络层前言
+
+网络层的知识点非常繁多，本文仅是基于《计算机网络 自顶向下》而总结的一些重点知识点，如果想要详细了解网络层的知识，可以看下《自顶向下》
+
+本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：我的G
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/安卓/" class="post-category">
-                                    安卓
+                            <a href="/categories/计算机网络/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/安卓进阶之光/">
-                        <span class="chip bg-color">安卓进阶之光</span>
+                    <a href="/tags/自顶向下/">
+                        <span class="chip bg-color">自顶向下</span>
                     </a>
                     
-                    <a href="/tags/函数响应式编程/">
-                        <span class="chip bg-color">函数响应式编程</span>
+                    <a href="/tags/网络层/">
+                        <span class="chip bg-color">网络层</span>
                     </a>
                     
                 </div>
@@ -733,31 +843,38 @@ I/System.out: Observer-2：D</code></pre><h3 id="2-2-BehaviorSubject"><a href="#
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/21/8.1-rxjava-ji-ben-yong-fa/">
+                <a href="/2020/03/18/zi-ding-xiang-xia-dai-ni-ao-you-yun-shu-ceng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="8.1 RxJava基本用法">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="自顶向下 | 带你遨游运输层">
                         
-                        <span class="card-title">8.1 RxJava基本用法</span>
+                        <span class="card-title">自顶向下 | 带你遨游运输层</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            RxJava基本用法
+                            自顶向下 | 带你遨游运输层前言
+本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
+我的GIthub博客
+
+学习导图：
+一.运输层概述
+运输层为运行在不同主机上的应用程序之间提供逻辑通信
+应用报文加上运输层首部形成运输层报文段，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/安卓/" class="post-category">
-                                    安卓
+                            <a href="/categories/计算机网络/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
@@ -767,12 +884,12 @@ I/System.out: Observer-2：D</code></pre><h3 id="2-2-BehaviorSubject"><a href="#
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/安卓进阶之光/">
-                        <span class="chip bg-color">安卓进阶之光</span>
+                    <a href="/tags/自顶向下/">
+                        <span class="chip bg-color">自顶向下</span>
                     </a>
                     
-                    <a href="/tags/函数响应式编程/">
-                        <span class="chip bg-color">函数响应式编程</span>
+                    <a href="/tags/运输层/">
+                        <span class="chip bg-color">运输层</span>
                     </a>
                     
                 </div>
