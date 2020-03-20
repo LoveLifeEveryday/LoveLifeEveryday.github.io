@@ -704,12 +704,14 @@
 </ul>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
+
 <span class="token comment" spellcheck="true">/**
  * Description : BasePresenter
  *
  * @author XuCanyou666
  * @date 2020/2/7
  */</span>
+
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BasePresenter</span><span class="token operator">&lt;</span>V <span class="token keyword">extends</span> <span class="token class-name">BaseView</span><span class="token operator">></span> <span class="token punctuation">{</span>
 
@@ -756,7 +758,8 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4 id="2-1-4-BaseObserver"><a href="#2-1-4-BaseObserver" class="headerlink" title="2.1.4 BaseObserver"></a>2.1.4 <code>BaseObserver</code></h4><blockquote>
 <ul>
 <li><p><code>Observer</code>的基类，提供了自动显示和自动隐藏进度条的方法</p>
@@ -781,7 +784,7 @@
     <span class="token keyword">protected</span> BaseView view<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">boolean</span> isShowDialog<span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token function">BaseObserver</span><span class="token punctuation">(</span>BaseView view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token function">BaseObserver</span><span class="token punctuation">(</span>BaseView view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>view <span class="token operator">=</span> view<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -791,7 +794,7 @@
      * @param view         view
      * @param isShowDialog 是否显示进度条
      */</span>
-    <span class="token keyword">public</span> <span class="token function">BaseObserver</span><span class="token punctuation">(</span>BaseView view<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isShowDialog<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token function">BaseObserver</span><span class="token punctuation">(</span>BaseView view<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isShowDialog<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>view <span class="token operator">=</span> view<span class="token punctuation">;</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>isShowDialog <span class="token operator">=</span> isShowDialog<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -862,7 +865,8 @@
 
     <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">onError</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4 id="2-1-5-BaseException"><a href="#2-1-5-BaseException" class="headerlink" title="2.1.5 BaseException"></a>2.1.5 <code>BaseException</code></h4><blockquote>
 <p>异常的基类</p>
 </blockquote>
@@ -1014,16 +1018,20 @@
 <p>重写<code>ResponseBodyConverter</code>对<code>Json</code>预处理，这里只展示一个类的代码，详细代码请前往<a href="https://github.com/LoveLifeEveryday/RxJava2_Retrofit_MVP2/tree/master/app/src/main/java/com/users/xucanyou666/rxjava2_retrofit_mvp2/http/gson" target="_blank" rel="noopener">我的Github</a></p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
+
 <span class="token comment" spellcheck="true">/**
  * Created by yechao on 2019/11/18/018.
  * Describe : 重写ResponseBodyConverter对json预处理
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseResponseBodyConverter</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">implements</span> <span class="token class-name">Converter</span><span class="token operator">&lt;</span>ResponseBody<span class="token punctuation">,</span> T<span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">final</span> Gson gson<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">final</span> TypeAdapter<span class="token operator">&lt;</span>T<span class="token operator">></span> adapter<span class="token punctuation">;</span>
 
-    <span class="token function">BaseResponseBodyConverter</span><span class="token punctuation">(</span>Gson gson<span class="token punctuation">,</span> TypeAdapter<span class="token operator">&lt;</span>T<span class="token operator">></span> adapter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>gson <span class="token operator">=</span> gson<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 登陆失效
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> LOG_OUT_TIME <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1001</span><span class="token punctuation">;</span>
+
+    <span class="token function">BaseResponseBodyConverter</span><span class="token punctuation">(</span> TypeAdapter<span class="token operator">&lt;</span>T<span class="token operator">></span> adapter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>adapter <span class="token operator">=</span> adapter<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -1036,7 +1044,7 @@
             <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">!=</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 String data<span class="token punctuation">;</span>
                 <span class="token comment" spellcheck="true">//错误信息</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1001</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//失效</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">==</span> LOG_OUT_TIME<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     data <span class="token operator">=</span> <span class="token string">"登录失效，请重新登录"</span><span class="token punctuation">;</span>
                 <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
                     data <span class="token operator">=</span> object<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"errorMsg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1117,11 +1125,13 @@
 <p><code>Retrofit</code>的配置类，在里面初始化了<code>apiServer</code>对象，并配置了日志信息，超时时间，<code>Cookie</code>持久化，用了静态内部类的单例模式</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
- <span class="token operator">*</span> Description <span class="token operator">:</span> RetrofitService
- <span class="token operator">*</span>
- <span class="token operator">*</span> <span class="token annotation punctuation">@author</span> XuCanyou666
- <span class="token operator">*</span> <span class="token annotation punctuation">@date</span> <span class="token number">2020</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">/</span><span class="token number">8</span>
- <span class="token operator">*</span><span class="token operator">/</span>
+
+<span class="token comment" spellcheck="true">/**
+ * Description : RetrofitService
+ *
+ * @author XuCanyou666
+ * @date 2020/2/8
+ */</span>
 
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RetrofitService</span> <span class="token punctuation">{</span>
@@ -1129,8 +1139,12 @@
     <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">static</span> RetrofitService apiRetrofit<span class="token punctuation">;</span>
     <span class="token keyword">private</span> API<span class="token punctuation">.</span>WAZApi apiServer<span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true">//单例调用</span>
-    <span class="token keyword">public</span>  <span class="token keyword">static</span> RetrofitService <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 单例调用
+     *
+     * @return RetrofitService
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> RetrofitService <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>apiRetrofit <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token keyword">if</span> <span class="token punctuation">(</span>apiRetrofit <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1141,15 +1155,23 @@
         <span class="token keyword">return</span> apiRetrofit<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment" spellcheck="true">//获取api对象</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取api对象
+     *
+     * @return api对象
+     */</span>
     <span class="token keyword">public</span> API<span class="token punctuation">.</span>WAZApi <span class="token function">getApiService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> apiServer<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment" spellcheck="true">//初始化retrofit</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 初始化retrofit
+     */</span>
     <span class="token keyword">private</span> <span class="token function">RetrofitService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        <span class="token comment" spellcheck="true">//配置okhttp并设置时间、日志信息和cookies</span>
+        <span class="token comment" spellcheck="true">//配置okHttp并设置时间、日志信息和cookies</span>
         HttpLoggingInterceptor httpLoggingInterceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpLoggingInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         httpLoggingInterceptor<span class="token punctuation">.</span><span class="token function">setLevel</span><span class="token punctuation">(</span>HttpLoggingInterceptor<span class="token punctuation">.</span>Level<span class="token punctuation">.</span>BODY<span class="token punctuation">)</span><span class="token punctuation">;</span>
         OkHttpClient okHttpClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OkHttpClient<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1160,7 +1182,7 @@
                 <span class="token punctuation">.</span><span class="token function">cookieJar</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CookiesManager</span><span class="token punctuation">(</span>YUtils<span class="token punctuation">.</span><span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment" spellcheck="true">//关联okhttp并加上rxjava和gson的配置和baseurl</span>
+        <span class="token comment" spellcheck="true">//关联okHttp并加上rxJava和Gson的配置和baseUrl</span>
         Retrofit retrofit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Retrofit<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">client</span><span class="token punctuation">(</span>okHttpClient<span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">addConverterFactory</span><span class="token punctuation">(</span>BaseConverterFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -1171,7 +1193,8 @@
         apiServer <span class="token operator">=</span> retrofit<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>API<span class="token punctuation">.</span>WAZApi<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="2-3-bean"><a href="#2-3-bean" class="headerlink" title="2.3 bean"></a>2.3 <code>bean</code></h3><blockquote>
 <ul>
 <li>这里的带有嵌套的实体类看似很复杂，其实可以通过一个<a href="http://www.bejson.com/json2javapojo/new/" target="_blank" rel="noopener">在线JSON字符串转Java实体类</a>的工具进行生成</li>
@@ -1335,12 +1358,14 @@
 <p>这里因为<code>RxJava</code>经过封装后，<code>Model</code>层的代码比较精简，所以将<code>Model</code>直接写入<code>Presenter</code>中，以节省工作量</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
+
 <span class="token comment" spellcheck="true">/**
  * Description : LoginPresenter
  *
  * @author XuCanyou666
  * @date 2020/2/8
  */</span>
+
 
 <span class="token keyword">class</span> <span class="token class-name">LoginPresenter</span> <span class="token keyword">extends</span> <span class="token class-name">BasePresenter</span><span class="token operator">&lt;</span>ILoginView<span class="token operator">></span> <span class="token punctuation">{</span>
 
@@ -1359,6 +1384,7 @@
      */</span>
     <span class="token keyword">void</span> <span class="token function">login</span><span class="token punctuation">(</span>String username<span class="token punctuation">,</span> String password<span class="token punctuation">,</span> <span class="token keyword">int</span> usernameCountMax<span class="token punctuation">,</span> <span class="token keyword">int</span> passwordCountMax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         YUtils<span class="token punctuation">.</span><span class="token function">closeSoftKeyboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//判断输入的账号密码是否符合规范</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isValid</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> usernameCountMax<span class="token punctuation">,</span> passwordCountMax<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token function">addDisposable</span><span class="token punctuation">(</span>apiServer<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">BaseObserver</span><span class="token operator">&lt;</span>BaseBean<span class="token operator">&lt;</span>User<span class="token operator">>></span><span class="token punctuation">(</span>baseView<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token annotation punctuation">@Override</span>

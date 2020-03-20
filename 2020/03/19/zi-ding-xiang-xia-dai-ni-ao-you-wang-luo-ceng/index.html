@@ -527,7 +527,7 @@
 <h4 id="IPv4-和-IPv6-的区别"><a href="#IPv4-和-IPv6-的区别" class="headerlink" title="IPv4 和 IPv6 的区别"></a><code>IPv4</code> 和 <code>IPv6</code> 的区别</h4><p><strong>1. 扩展了寻址能力。</strong><br> <code>V6</code> 有 <code>128</code>位地址，<code>v4</code>只有<code>32</code>位。相当于扩展了<strong>4倍</strong>。<br> <strong>2. 报头格式简化</strong><br> <code>V6</code> 相对于 <code>V4</code>来说，报头简化了很多<br> <strong>3. 对可选项更大的支持</strong><br> <code>V6</code> 在 <code>V4</code> 的基础上，支持更多可选项操作，比如 对 <code>IP</code>层安全支持，对<code>IP</code>层漫游支持等功能。<br> <strong>4. 支持自动配置</strong><br> <code>IPv6</code>节点通过 地址自动配置 来获得 <code>V6</code>地址 和网关地址，<br> <strong>5. 身份验证和保密</strong><br> <code>v6</code>中加入了身份验证、数据一致性等保密性内容<br> <strong>6. 允许继续扩充协议</strong><br> 新的应用扩展也是在 <code>V6</code> 中支持的。</p>
 <h4 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a><code>DHCP</code></h4><p>是一种用于自动分配 <code>IP</code> 地址且即插即用的协议，使用 <code>UDP</code> 作为运输层服务</p>
 <p>对于一个新加入网络的电脑：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/19/204632-375824.png" alt="image-20200319204628822"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/19/204632-375824.png" alt="DHCP连接流程"></p>
 <ol>
 <li><code>DHCP</code> 服务器发现。通过设置源 <code>IP</code> 地址为 <code>0.0.0.0</code>，且目的 <code>IP</code> 地址为 <code>255.255.255.255</code> 的 <code>UDP</code> 分组，在网络中广播</li>
 <li><code>DHCP</code> 服务器提供。<code>DHCP</code> 监听到广播，使用一个 <code>DHCP</code> 提供报文 向客户作出响应 (继续以广播的形式发出，因为此时客户依旧没有自己的 <code>IP</code> 地址)</li>
