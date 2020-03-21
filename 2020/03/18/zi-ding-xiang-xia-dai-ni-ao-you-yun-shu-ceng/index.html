@@ -11,8 +11,8 @@
 
 学习导图：
 一.运输层概述
-运输层为运行在不同主机上的应用程序之间提供逻辑通信
-应用报文加上运输层首部形成运输层报文段，">
+我们知道运输层位于网络层之上，网络层提供了主机之间的逻辑通道。
+Q1：那既然已经把一个数据包">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -459,7 +459,14 @@
 <p><a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
 </blockquote>
 <h2 id="学习导图："><a href="#学习导图：" class="headerlink" title="学习导图："></a>学习导图：</h2><p><img src="https://s1.ax1x.com/2020/03/18/80YN5R.png" alt="学习导图"></p>
-<h2 id="一-运输层概述"><a href="#一-运输层概述" class="headerlink" title="一.运输层概述"></a>一.运输层概述</h2><ul>
+<h2 id="一-运输层概述"><a href="#一-运输层概述" class="headerlink" title="一.运输层概述"></a>一.运输层概述</h2><blockquote>
+<p>我们知道运输层位于网络层之上，网络层提供了主机之间的逻辑通道。</p>
+<p>Q1：那既然已经把一个数据包从一个主机发到另一个主机上面了,为什么还需要运输层呢？</p>
+<p>A1：这是因为运输层提供了应用进程之间的端-端连接。</p>
+<p>Q2：我们知道一个电脑可能有多个进程同时在使用网络连接，那么网络包到达主机之后，怎么区分自己属于那个进程？</p>
+<p>So,如果你对运输层感兴趣的话，可以跟笔者一起来简要了解下运输层，了解下<code>UDP</code>和<code>TCP</code>两大面试常客</p>
+</blockquote>
+<ul>
 <li>运输层为运行在<strong>不同主机</strong>上的应用程序之间提供逻辑通信</li>
 <li>应用报文加上<strong>运输层</strong>首部形成运输层<strong>报文段</strong>，报文段通过网络层被封装成<strong>网络层</strong>分组（<strong>数据报</strong>）向目的地发送</li>
 </ul>
@@ -757,6 +764,9 @@
 </blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/20/103218-797629.png" alt="两次握手弊端"></p>
 <h3 id="7-2-为啥挥手要四次？"><a href="#7-2-为啥挥手要四次？" class="headerlink" title="7.2 为啥挥手要四次？"></a>7.2 为啥挥手要四次？</h3><p>这是因为服务端在<code>LISTEN</code>状态下，收到建立连接请求的<code>SYN</code>报文后，把<code>ACK</code>和<code>SYN</code>放在一个报文里发送给客户端。而关闭连接时，当收到对方的<code>FIN</code>报文时，<strong>仅仅表示对方不再发送数据了但是还能接收数据</strong>，所以服务端可以立即<code>close</code>，也可以发送一些数据给客户端后，再发送<code>FIN</code>报文给客户端来表示同意现在关闭连接，因此，服务端<code>ACK</code>和<code>FIN</code>一般都会分开发送。</p>
+<h2 id="八-碎碎念"><a href="#八-碎碎念" class="headerlink" title="八.碎碎念"></a>八.碎碎念</h2><p>恭喜你，成功看到了这里，现在的你，想必已经对运输层有自己的体会了；其实，运输层的知识点远不止这些，限于篇幅，把所有运输层的知识全部塞进这篇文章中，也不是特别现实；我们可以尝试看多几本相关的书籍，从而丰富自己的知识体系，从而得到更深的见解。</p>
+<p>笔者也会不断学习，不断丰富自己，到时候（待老师讲解到这里了/看了别的书）如果有比较好的观点，本文也会持续改进更新，感谢您的支持。</p>
+<p>最后笔者夹带一下私货，附上比较完整的计网面试题：<a href="https://juejin.im/post/5d896cccf265da03bd055c87#comment" target="_blank" rel="noopener">计算机网络太难？了解这一篇就够了</a></p>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
@@ -769,6 +779,7 @@
 <li><a href="https://zhuanlan.zhihu.com/p/36030269" target="_blank" rel="noopener">第三章：运输层 |《计算机网络：自顶向下方法》</a></li>
 <li><a href="https://www.jianshu.com/p/62940de97ca5" target="_blank" rel="noopener">TCP的快速重传机制</a></li>
 <li><a href="https://juejin.im/post/5a1d4e546fb9a0450f21af23#heading-0" target="_blank" rel="noopener">HTTP—-HTTP缓存机制</a></li>
+<li><a href="https://juejin.im/post/5d896cccf265da03bd055c87#comment" target="_blank" rel="noopener">计算机网络太难？了解这一篇就够了</a></li>
 </ul>
 
             </div>
