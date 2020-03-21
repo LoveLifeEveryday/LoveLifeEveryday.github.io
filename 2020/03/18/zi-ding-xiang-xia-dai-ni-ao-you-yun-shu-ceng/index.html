@@ -540,7 +540,10 @@
 <li>长度：包括首部在内的报文长度</li>
 <li>检验和：用来<strong>差错检验</strong>。只发现错误不纠正，<strong>错了就扔</strong>。然后<strong>重发</strong></li>
 </ul>
-<h3 id="4-2-可靠数据传输"><a href="#4-2-可靠数据传输" class="headerlink" title="4.2 可靠数据传输"></a>4.2 可靠数据传输</h3><p>Q1:<strong>数据传输可能遇到的问题:</strong></p>
+<h3 id="4-2-可靠数据传输原理"><a href="#4-2-可靠数据传输原理" class="headerlink" title="4.2 可靠数据传输原理"></a>4.2 可靠数据传输原理</h3><blockquote>
+<p>虽然<code>UDP</code>并不可靠，但是我们要分析其为啥不可靠，从而引出可靠数据传输原理，有利于理解下文对<code>TCP</code>协议的可靠数据传输的机制</p>
+</blockquote>
+<p>Q1:<strong>数据传输可能遇到的问题:</strong></p>
 <ul>
 <li>传输中数据被损坏</li>
 <li>数据丢失</li>
@@ -552,17 +555,31 @@
 <li>序号</li>
 <li>定时器</li>
 <li>肯定和否定反馈分组</li>
+<li>重传</li>
 </ul>
 <p>Q3:<strong>如何在保证可靠性的前提下，提高其性能？</strong></p>
-<ul>
-<li>通过引入流水线 (<code>pipelining</code>) 技术</li>
-</ul>
+<p>A.通过引入流水线 (<code>pipelining</code>) 技术</p>
 <p>引入流水线导致了：</p>
 <ul>
 <li>序号范围需要增加</li>
 <li>收发双方可能需要缓存乱序到达的分组</li>
-<li>以上两个的具体实现取决于传输协议<strong>如何处理分组丢失、损坏的问题</strong> (是选择回退 N 步，还是选择重传)</li>
+<li>以上两个的具体实现取决于传输协议<strong>如何处理分组丢失、损坏的问题</strong> (是选择回退 <code>N</code> 步，还是选择重传)</li>
 </ul>
+<p>B.通过缓存处理</p>
+<blockquote>
+<p>读者如果对详细的缓存机制感兴趣的话，可以看下这篇文章：<a href="https://juejin.im/post/5a1d4e546fb9a0450f21af23#heading-0" target="_blank" rel="noopener">HTTP—-HTTP缓存机制</a></p>
+</blockquote>
+<ul>
+<li>缓存处理的规则：分为强制缓存和协商缓存</li>
+<li>缓存的优点：</li>
+</ul>
+<blockquote>
+<ul>
+<li>减少了冗余的数据传递，节省宽带流量</li>
+<li>减少了服务器的负担，大大提高了网站性能</li>
+<li>加快了客户端加载网页的速度 这也正是<code>HTTP</code>缓存属于客户端缓存的原因</li>
+</ul>
+</blockquote>
 <p>Q4:<strong>如何处理分组丢失、损坏的问题</strong></p>
 <p>A.回退 <code>N</code> 步</p>
 <ul>
@@ -751,6 +768,7 @@
 <li><a href="https://juejin.im/post/5cf51edfe51d45598611b920#heading-8" target="_blank" rel="noopener">第三章-运输层-阅读笔记</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/36030269" target="_blank" rel="noopener">第三章：运输层 |《计算机网络：自顶向下方法》</a></li>
 <li><a href="https://www.jianshu.com/p/62940de97ca5" target="_blank" rel="noopener">TCP的快速重传机制</a></li>
+<li><a href="https://juejin.im/post/5a1d4e546fb9a0450f21af23#heading-0" target="_blank" rel="noopener">HTTP—-HTTP缓存机制</a></li>
 </ul>
 
             </div>
