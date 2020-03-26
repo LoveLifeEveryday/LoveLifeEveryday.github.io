@@ -509,7 +509,7 @@ AsyncTask的基本概念及使用
 </blockquote>
 <p>A1：<strong>为啥不使用<code>stop</code>?</strong></p>
 <blockquote>
-<p>Java官方早已将它废弃，不推荐使用</p>
+<p><code>Java</code>官方早已将它废弃，不推荐使用</p>
 </blockquote>
 <ul>
 <li><code>stop</code>是通过立即抛出<code>ThreadDeath</code>异常，来达到停止线程的目的，此异常抛出有可能发生在任何一时间点，包括在<code>catch</code>、<code>finally</code>等语句块中，但是此异常并不会引起程序退出</li>
@@ -879,7 +879,7 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>Q5：<strong>实现原理：</strong></p>
 <ul>
 <li>底层利用了<code>ReentrantLock</code>&amp;<code>Condition</code>来实现自动加锁和解锁的功能</li>
-<li>如果想详细了解阻塞队列实现原理的源码，笔者推荐一篇文章：<a href="https://juejin.im/post/5b21ded3e51d4506bb3a84b6" target="_blank" rel="noopener">Android并发学习之阻塞队列</a></li>
+<li>如果想详细了解阻塞队列实现原理的源码，笔者推荐一篇文章：<a href="https://juejin.im/post/5b21ded3e51d4506bb3a84b6#heading-2" target="_blank" rel="noopener">Android并发学习之阻塞队列</a></li>
 </ul>
 <h3 id="2-4-Android中的线程形态"><a href="#2-4-Android中的线程形态" class="headerlink" title="2.4 Android中的线程形态"></a>2.4 <code>Android</code>中的线程形态</h3><h4 id="2-4-1-AsyncTask"><a href="#2-4-1-AsyncTask" class="headerlink" title="2.4.1 AsyncTask"></a>2.4.1 <code>AsyncTask</code></h4><p>Q1：<strong>定义</strong>：一种轻量级的<strong>异步</strong>任务类</p>
 <blockquote>
@@ -921,7 +921,7 @@ x <span class="token operator">=</span> a<span class="token punctuation">;</span
 <td><code>onPostExecute()</code></td>
 <td>主线程</td>
 <td>在异步任务执行完毕并通过<code>return</code>语句返回时被调用</td>
-<td>可利用方法中返回的数据来进行一些<strong>UI</strong>操作</td>
+<td>可利用方法中返回的数据来进行一些<code>UI</code>操作</td>
 </tr>
 <tr>
 <td><code>onCancelled()</code></td>
