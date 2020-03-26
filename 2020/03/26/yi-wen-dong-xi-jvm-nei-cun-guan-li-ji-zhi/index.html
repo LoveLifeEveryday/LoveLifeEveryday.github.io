@@ -462,14 +462,14 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 <p><code>Java</code>与<code>C++</code>之间有一堵由<strong>内存动态分配</strong>和<strong>垃圾回收机制</strong>所围成的高墙，墙外面的人想进去，墙里面的人出不来</p>
 </blockquote>
 <p>对于<code>Java</code>程序员来说，<code>JVM</code>给我们提供了自动内存管理机制，不需要既当“皇帝”，又当“人民”，不需要人为地给每一个<code>new</code>操作写配对的<code>delete/free</code>代码，不容易出现内存泄漏和内存溢出问题。然而一旦出现内存泄漏和溢出方面的问题，如果不清楚<code>JVM</code>内存的内存管理机制，那么将很难定位与解决问题。而且，<code>JVM</code>的内存管理机制在面试中也是非常重要的考点之一。</p>
-<p>综上，学习<code>JVM</code>内存管理相关的知识，对于想要在更加深入了解<code>JVM</code>是必不可少的！！！</p>
+<p>综上，想要更加深入了解<code>JVM</code>的奥秘，探究<code>JVM</code>内存管理机制是必不可少的！！！</p>
 <h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-JVM运行时数据区域"><a href="#2-1-JVM运行时数据区域" class="headerlink" title="2.1 JVM运行时数据区域"></a>2.1 <code>JVM</code>运行时数据区域</h3><blockquote>
 <p><code>JVM</code> 执行 <code>Java</code> 程序的过程：<code>Java</code> 源代码文件 (<code>.java</code>) 会被 <code>Java</code> 编译器编译为字节码文件(<code>.class</code>)，然后由 <code>JVM</code> 中的类加载器加载各个类的字节码文件，加载完毕之后，交由 <code>JVM</code> 执行引擎执行</p>
 </blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/26/152323-495153.png" alt="执行Java程序的过程"></p>
-<p>在上述过程中，<code>JVM</code>会用一段空间来<strong>存储执行程序</strong>期间需要用到的<strong>数据和相关信息</strong>，这段空间就是运行时数据区（<code>Runtime Data Area</code>），也就是常说的<code>JVM</code><strong>内存</strong></p>
+<p>在上述过程中，<code>JVM</code>会用一段空间来<strong>存储执行程序</strong>期间需要用到的<strong>数据和相关信息</strong>，这段空间就是运行时数据区，也就是常说的<code>JVM</code><strong>内存</strong></p>
 <p><code>JVM</code>会将它所管理的内存划分为若干个不同的数据区域，划分结果如图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/26/151354-661702.png" alt="image-20200326151354244"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/26/151354-661702.png" alt="JVM运行时数据区"></p>
 <p>可见，运行时数据区被分为<strong>线程私有数据区</strong>和<strong>线程共享数据区</strong>两大类：</p>
 <ul>
 <li>线程私有数据区包含：程序计数器、虚拟机栈、本地方法栈</li>
@@ -544,7 +544,8 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 <p><img src="https://s1.ax1x.com/2020/03/26/Gp32Kf.png" alt="方法区装了啥"></p>
 <ul>
 <li><p>人们更愿意把这个区域称为 <strong>“永久代”</strong>，它还有个别名叫做 <code>Non-Heap</code>（非堆）</p>
-<p>在 <code>JDK1.7</code> 的 <code>HotSpot</code> 中，已经把原本放在永久代的<strong>字符串常量池</strong>，<strong>静态变量</strong>移出；在<code>JDK</code>8中，废弃永久代的概念，改用<strong>元空间</strong>；</p>
+<p>在 <code>JDK7</code> 的 <code>HotSpot</code> 中，已经把原本放在永久代的<strong>字符串常量池</strong>，<strong>静态变量</strong>移出；</p>
+<p>在<code>JDK8</code>中，废弃永久代的概念，改用<strong>元空间</strong>；</p>
 </li>
 <li><p>对用元空间替换永久代的原因感兴趣的话，可以看下这篇文章：<a href="https://juejin.im/post/5df5fde36fb9a0162c486c71" target="_blank" rel="noopener">一文读懂 - 元空间和永久代</a></p>
 </li>
@@ -582,7 +583,7 @@ string str <span class="token operator">=</span> “hello world！”<span class
 <li>作用：避免了在<code>JAVA</code>堆和<code>Native</code>堆中来回复制数据，因此在一些场景下能显著提高性能</li>
 </ul>
 <blockquote>
-<p><code>JDK1.4</code>中新加入了<code>NIO</code>类，，引入了基于通道与缓冲区的IO方式，可以使用<code>Native</code>函数库直接分配<strong>堆外内存</strong>，然后通过<code>DirectByteBuffer</code>作为这块内存的引用进行操作</p>
+<p><code>JDK1.4</code>中新加入了<code>NIO</code>类，引入了基于通道与缓冲区的<code>IO</code>方式，可以使用<code>Native</code>函数库直接分配<strong>直接内存（堆外内存）</strong>，然后通过<code>DirectByteBuffer</code>作为这块内存的引用进行操作</p>
 </blockquote>
 <h3 id="2-2-HotSpot-虚拟机内存对象探秘"><a href="#2-2-HotSpot-虚拟机内存对象探秘" class="headerlink" title="2.2 HotSpot 虚拟机内存对象探秘"></a>2.2 <code>HotSpot</code> 虚拟机内存对象探秘</h3><blockquote>
 <p>在熟悉虚拟机内存划分及其具体内容之后，为详细了解虚拟机内存中数据的其他细节，以常用的虚拟机 <code>HotSpot</code> 和常用的内存区域 <code>Java</code> 堆为例，探讨 <code>HotSpot</code> 虚拟机在 <code>Java</code> 堆中对象分配、布局和访问的全过程</p>
@@ -636,7 +637,7 @@ string str <span class="token operator">=</span> “hello world！”<span class
 </ul>
 <blockquote>
 <ul>
-<li><code>Mark Word</code>：用于存储对象自身的<strong>运行时数据</strong>，如哈希码、<code>GC</code> 分代年龄、锁状态标志、线程持有的锁、偏向线程 ID、偏向时间戳等</li>
+<li><code>Mark Word</code>：用于存储对象自身的<strong>运行时数据</strong>，如哈希码、<code>GC</code> 分代年龄、锁状态标志、线程持有的锁、偏向线程 <code>ID</code>、偏向时间戳等</li>
 <li>类型指针：用于确定这个对象的<strong>所属类</strong></li>
 </ul>
 </blockquote>
