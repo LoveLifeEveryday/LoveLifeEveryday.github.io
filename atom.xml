@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-03-22T05:48:50.055Z</updated>
+  <updated>2020-03-26T11:07:09.679Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一夜搞懂JVM内存管理机制</title>
+    <link href="https://lovelifeeveryday.github.io/2020/03/26/yi-ye-gao-dong-jvm-nei-cun-guan-li-ji-zhi/"/>
+    <id>https://lovelifeeveryday.github.io/2020/03/26/yi-ye-gao-dong-jvm-nei-cun-guan-li-ji-zhi/</id>
+    <published>2020-03-26T14:04:01.000Z</published>
+    <updated>2020-03-26T11:07:09.679Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一夜搞懂JVM内存管理机制&quot;&gt;&lt;a href=&quot;#一夜搞懂JVM内存管理机制&quot; class=&quot;headerlink&quot; title=&quot;一夜搞懂JVM内存管理机制&quot;&gt;&lt;/a&gt;一夜搞懂JVM内存管理机制&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="https://lovelifeeveryday.github.io/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="https://lovelifeeveryday.github.io/tags/JVM/"/>
+    
+      <category term="内存管理" scheme="https://lovelifeeveryday.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>自顶向下 | 带你遨游网络层</title>
@@ -524,35 +553,6 @@
         
         
           &lt;h1 id=&quot;9-3-依赖注入框架&quot;&gt;&lt;a href=&quot;#9-3-依赖注入框架&quot; class=&quot;headerlink&quot; title=&quot;9.3 依赖注入框架&quot;&gt;&lt;/a&gt;9.3 依赖注入框架&lt;/h1&gt;&lt;h2 id=&quot;1-ButterKnife&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="安卓进阶之光" scheme="https://lovelifeeveryday.github.io/tags/%E5%AE%89%E5%8D%93%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89/"/>
-    
-      <category term="注解与依赖注入框架" scheme="https://lovelifeeveryday.github.io/tags/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>9.1 注解</title>
-    <link href="https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/"/>
-    <id>https://lovelifeeveryday.github.io/2019/11/21/9.1-zhu-jie/</id>
-    <published>2019-11-21T03:21:01.000Z</published>
-    <updated>2019-11-21T03:21:41.480Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;9-1-注解&quot;&gt;&lt;a href=&quot;#9-1-注解&quot; class=&quot;headerlink&quot; title=&quot;9.1 注解&quot;&gt;&lt;/a&gt;9.1 注解&lt;/h1&gt;&lt;h2 id=&quot;1-注解分类&quot;&gt;&lt;a href=&quot;#1-注解分类&quot; class=&quot;headerlink&quot;
         
       
     
