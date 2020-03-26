@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="一夜搞懂JVM内存管理机制, Sunny">
-    <meta name="description" content="一夜搞懂JVM内存管理机制前言
+    <meta name="keywords" content="一文洞悉JVM内存管理机制, Sunny">
+    <meta name="description" content="一文洞悉JVM内存管理机制前言
 本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
 我的GIthub博客
 
@@ -19,7 +19,7 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>一夜搞懂JVM内存管理机制 | Sunny</title>
+    <title>一文洞悉JVM内存管理机制 | Sunny</title>
     <link rel="icon" type="image/png" href="/blueRabbit.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -291,13 +291,13 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        一夜搞懂JVM内存管理机制
+                        一文洞悉JVM内存管理机制
                     </div>
                 </div>
             </div>
@@ -453,7 +453,7 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一夜搞懂JVM内存管理机制"><a href="#一夜搞懂JVM内存管理机制" class="headerlink" title="一夜搞懂JVM内存管理机制"></a>一夜搞懂JVM内存管理机制</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+                <h1 id="一文洞悉JVM内存管理机制"><a href="#一文洞悉JVM内存管理机制" class="headerlink" title="一文洞悉JVM内存管理机制"></a>一文洞悉JVM内存管理机制</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：</p>
 <p><a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
 </blockquote>
@@ -855,8 +855,8 @@ string str <span class="token operator">=</span> “hello world！”<span class
                 </a>
             </div>
             <br/>
-            <a  href="/2020/03/26/yi-ye-gao-dong-jvm-nei-cun-guan-li-ji-zhi/">
-                    《一夜搞懂JVM内存管理机制》
+            <a  href="/2020/03/26/yi-wen-dong-xi-jvm-nei-cun-guan-li-ji-zhi/">
+                    《一文洞悉JVM内存管理机制》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -902,19 +902,19 @@ string str <span class="token operator">=</span> “hello world！”<span class
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2020/03/26/yi-ye-gao-dong-jvm-nei-cun-guan-li-ji-zhi/">
+                <a href="/2020/03/26/yi-wen-dong-xi-jvm-nei-cun-guan-li-ji-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="一夜搞懂JVM内存管理机制">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="一文洞悉JVM内存管理机制">
                         
-                        <span class="card-title">一夜搞懂JVM内存管理机制</span>
+                        <span class="card-title">一文洞悉JVM内存管理机制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            对于Java程序员来说，JVM给我们提供了自动内存管理机制，不需要既当“皇帝”，又当“人民”，不需要人为地给每一个new操作写配对的delete/free代码，不容易出现内存泄漏和内存溢出问题。然而一旦出现内存泄漏和溢出方面的问题，如果不清楚JVM内存的内存管理机制，那么将很难定位与解决问题。而且，JVM的内存管理机制在面试中也是非常重要的考点之一。
+                            对于Java程序员来说，JVM给我们提供了自动内存管理机制，不需要既当“皇帝”，又当“人民”，不需要人为地给每一个new操作写配对的delete/free代码，不容易出现内存泄漏和内存溢出问题。然而一旦出现内存泄漏和溢出方面的问题，如果不清楚JVM内存的内存管理机制，那么将很难定位与解决问题。而且，`JVM`的内存管理机制在面试中也是非常重要的考点之一。
                         
                     </div>
                     <div class="publish-info">
