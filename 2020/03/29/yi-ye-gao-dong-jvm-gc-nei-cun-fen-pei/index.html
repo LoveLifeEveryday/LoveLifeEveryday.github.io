@@ -499,9 +499,11 @@
 </ul>
 <blockquote>
 <ul>
-<li><p>仅持有虚引用的对象，在任何时候都可能被<code>GC</code></p>
+<li><p>仅持有虚引用的对象，在任何时候都可能被<code>GC</code>（和弱引用一样）</p>
 </li>
 <li><p>主要作用是为了垃圾收集器回收时收到一个系统通知(<code>PhantomRefernece</code>类实现虚引用)</p>
+</li>
+<li><p>与弱引用的区别：不同之处在于弱引用的<code>get</code>方法，虚引用的<code>get</code>方法始终返回<code>null</code>,<strong>弱引用可以</strong>使用<code>ReferenceQueue</code>,<strong>虚引用必须</strong>配合<code>ReferenceQueue</code>使用</p>
 </li>
 <li><p>必须和<strong>引用队列</strong> （<code>ReferenceQueue</code>）联合使用，当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用<strong>加入到与之关联的引用队列</strong>中</p>
 <p>（想要了解<strong>虚引用详细用法</strong>的读者，可以看下这篇文章：<a href="https://juejin.im/post/5e65b8096fb9a07cbb6e4a43#heading-5" target="_blank" rel="noopener">强软弱虚引用，只有体会过了，才能记住</a>）</p>
@@ -577,7 +579,7 @@
 <h4 id="2-2-1-分代收集理论"><a href="#2-2-1-分代收集理论" class="headerlink" title="2.2.1 分代收集理论"></a>2.2.1 分代收集理论</h4><p>Q1：<strong>三个假说是什么？</strong></p>
 <ul>
 <li>弱分代假说：绝大多数对象都是<strong>朝生夕灭</strong>的</li>
-<li>强分代假说：熬过越多次垃圾手机过程的对象就<strong>难以消亡</strong></li>
+<li>强分代假说：熬过越多次垃圾收集过程的对象就<strong>难以消亡</strong></li>
 <li>跨代引用假说：跨代引用相对于同代来说<strong>仅占极少数</strong>（存在引用关系的对象应该倾向于同时生存或者同时消亡的，例如某个新生代被老年代所引用，该引用会使新生代对象在收集时同样存活，进而进入老年代）</li>
 </ul>
 <blockquote>
@@ -630,7 +632,7 @@
 <h3 id="2-3-HotSpot算法实现-amp-垃圾回收器"><a href="#2-3-HotSpot算法实现-amp-垃圾回收器" class="headerlink" title="2.3 HotSpot算法实现&amp;垃圾回收器"></a>2.3 <code>HotSpot</code>算法实现&amp;垃圾回收器</h3><blockquote>
 <p>接下来介绍如何在<code>HotSpot</code>虚拟机上实现对象存活判定算法和垃圾收集算法，并保证虚拟机高效运行</p>
 </blockquote>
-<h4 id="2-3-1-枚举根节点"><a href="#2-3-1-枚举根节点" class="headerlink" title="2.3.1 枚举根节点"></a>2.3.1 枚举根节点</h4><p>主流Java虚拟机使用的都是<strong>准确式<code>GC</code></strong>，在执行系统停顿之后无需检查所有执行上下文和全局的引用位置，而是通过一些办法直接获取到存放对象引用的地方，在<code>HotSpot</code>中是通过一组称为<code>OopMap</code>的数据结构来实现的，完成类加载后会计算出对象某偏移量上某类型数据、<code>JIT</code>编译时会在<strong>特定的位置</strong>记录栈和寄存器中是引用的位置。这样<code>GC</code>在扫描时就可直接得知这些信息，并快速准确地完成<code>GC Roots</code>的枚举</p>
+<h4 id="2-3-1-枚举根节点"><a href="#2-3-1-枚举根节点" class="headerlink" title="2.3.1 枚举根节点"></a>2.3.1 枚举根节点</h4><p>主流<code>JVM</code>使用的都是<strong>准确式<code>GC</code></strong>，在执行系统停顿之后无需检查所有执行上下文和全局的引用位置，而是通过一些办法直接<strong>获取到存放对象引用的地方</strong>，在<code>HotSpot</code>中是通过一组称为<code>OopMap</code>的数据结构来实现的，完成类加载后会计算出对象某偏移量上某类型数据、<code>JIT</code>编译时会在<strong>特定的位置</strong>记录栈和寄存器中是引用的位置。这样<code>GC</code>在扫描时就可直接得知这些信息，并快速准确地完成<code>GC Roots</code>的枚举</p>
 <h4 id="2-3-2-安全点"><a href="#2-3-2-安全点" class="headerlink" title="2.3.2 安全点"></a>2.3.2 安全点</h4><p>上述“特定的位置”被称为安全点，即程序执行时并非在所有地方都停顿执行<code>GC</code>，只在到达安全点时才暂停，降低<code>GC</code>的空间成本</p>
 <ul>
 <li><p>安全点的选定标准：可让程序<strong>长时间执行</strong>的地方，如方法调用、循环跳转、异常跳转等具有指令序列复用的特征</p>
@@ -648,7 +650,7 @@
 <p>安全点机制只能保证程序执行时，在不太长的时间内遇到可进入<code>GC</code>的安全点，但在程序不执行时（如线程处于<code>Sleep</code>或<code>Blocked</code>状态）线程无法响应<code>JVM</code>的中断请求，此时就需要安全区域来解决</p>
 </blockquote>
 <ul>
-<li><p>安全区域：<strong>引用关系不会发生变化的一段代码片段</strong>，在安全区域中的任意地方开始<code>GC</code>都是安全的(表示不会被<code>GC</code>)，可看做是扩展的安全点</p>
+<li><p>安全区域：<strong>引用关系不会发生变化的一段代码片段</strong>，在安全区域中的任意地方开始<code>GC</code>都是安全的（因为引用关系不变），可看做是扩展的安全点</p>
 </li>
 <li><p>执行过程：</p>
 <p>当线程执行到安全区域中的代码时就标识一下，如果这时<code>JVM</code>要发起<code>GC</code>就不用管被标识的线程；</p>
@@ -741,8 +743,9 @@
 </ul>
 </blockquote>
 <ul>
-<li><p>老年代<code>GC</code>（<code>Major GC/Full GC</code>）：发生在老年代的垃圾收集动作。出现<code>Major GC</code>经常会伴随至少一次的<code>Minor GC</code>。速度一般比<code>Minor GC</code>慢10倍以上</p>
-</li>
+<li>老年代<code>GC</code>（<code>Major GC/Full GC</code>）：发生在老年代的垃圾收集动作。出现<code>Major GC</code>经常会伴随至少一次的<code>Minor GC</code>。速度一般比<code>Minor GC</code>慢10倍以上</li>
+</ul>
+<ul>
 <li><p><strong>大对象直接进入老年代</strong>：对于需要大量连续内存空间的<code>Java</code>对象（如很长的字符串以及数组），如果大于虚拟机设定的<code>-XX：PretenureSizeThreshold</code>参数值将直接在老年代分配。这样做的目的是避免在<code>Eden</code>区及两个<code>Survivor</code>区之间发生大量的内存复制</p>
 </li>
 <li><p><strong>长期存活的对象将进入老年代</strong>：虚拟机会给每个对象定义一个年龄计数器，当对象在<code>Eden</code>出生并经过第一次<code>Minor</code> <code>GC</code>后仍存活且能被<code>Survivor</code>容纳的话，将被移动到<code>Survivor</code>空间中并将对象年龄设为1；当对象在<code>Survivor</code>区中每“熬过”一次<code>Minor GC</code>年龄就+1，直至增加到一定程度（默认为<code>15岁</code>，可通过<code>-XX： MaxTenuringThreshold</code>设置）就会被晋升到老年代中</p>
@@ -759,7 +762,7 @@
 <p>恭喜你！已经看完了前面的文章，相信你对<code>JVM GC</code>&amp;内存分配已经有一定深度的了解，下面，进行一下课堂小测试，验证一下自己的学习成果吧！</p>
 </blockquote>
 <p>Q1：垃圾回收算法你了解几种？请你简要分析一下，并说明其优缺点？</p>
-<p>Q2：<code>Java</code>的引用机制有几种？请简要分析下，并说明其在Android中的应用场景有哪些？</p>
+<p>Q2：<code>Java</code>的引用机制有几种？请简要分析下，并说明其在<code>Android</code>中的应用场景有哪些？</p>
 <p>Q3：安全点你了解过吗？安全区呢？请你介绍下安全区相对安全点的优势在哪里？</p>
 <p>Q4：怎么判断对象是否存活呢？有几种方法？</p>
 <blockquote>
@@ -777,6 +780,7 @@
 <li><a href="https://www.jianshu.com/p/b4a03b5de0d9" target="_blank" rel="noopener">JVM（HotSpot） 垃圾收集器</a></li>
 <li><a href="https://juejin.im/post/5e6cb3a051882549016083d1#heading-0" target="_blank" rel="noopener">垃圾收集器与内存分配策略</a></li>
 <li><a href="https://www.jianshu.com/p/2116fff869b6" target="_blank" rel="noopener">深入理解并发/并行，阻塞/非阻塞，同步/异步</a></li>
+<li><a href="https://www.jianshu.com/p/825cca41d962" target="_blank" rel="noopener">软引用、弱引用、虚引用-他们的特点及应用场景</a></li>
 </ul>
 
             </div>
