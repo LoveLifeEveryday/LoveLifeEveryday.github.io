@@ -5,10 +5,10 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="接口和接口回调, Sunny">
-    <meta name="description" content="接口和接口回调1.什么是接口·一种规范，一种规则，比如说，如果你是鸟，你就一定会飞，这里，鸟其实可以简单看成1个接口，会飞，可以看成接口里面的一个方法
+    <meta name="description" content="接口和接口回调1.什么是接口一种规范，一种规则，比如说，如果你是鸟，你就一定会飞，这里，鸟其实可以简单看成1个接口，会飞，可以看成接口里面的一个方法
 public interface Bird {
     void fly();
-    ">
+    /">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -454,7 +454,7 @@ public interface Bird {
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="接口和接口回调"><a href="#接口和接口回调" class="headerlink" title="接口和接口回调"></a>接口和接口回调</h1><h2 id="1-什么是接口·"><a href="#1-什么是接口·" class="headerlink" title="1.什么是接口·"></a>1.什么是接口·</h2><p>一种规范，一种规则，比如说，如果你是鸟，你就一定会飞，这里，鸟其实可以简单看成1个接口，会飞，可以看成接口里面的一个方法</p>
+                <h1 id="接口和接口回调"><a href="#接口和接口回调" class="headerlink" title="接口和接口回调"></a>接口和接口回调</h1><h2 id="1-什么是接口"><a href="#1-什么是接口" class="headerlink" title="1.什么是接口"></a>1.什么是接口</h2><p>一种规范，一种规则，比如说，如果你是鸟，你就一定会飞，这里，鸟其实可以简单看成1个接口，会飞，可以看成接口里面的一个方法</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Bird</span> <span class="token punctuation">{</span>
     <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//有两条腿</span>
@@ -498,12 +498,12 @@ public interface Bird {
 <li><p>低耦合</p>
 <p>我也不是很明白</p>
 <p>百度说的</p>
-<p>其次是接口的松耦合是我们可以编写可复性高的代码。比如Server层本来引用使用Dao层mysql数据库的实现类，现在遇到mysql解决不了的业务，需要orcale实现，难道你要为了这一个或几个的功能，把所有的引用mysql的全删掉重写？只要再写一个dao层的实现类去引用这个接口，遇到需要orcale方法使用哪个接口变量就好了，别人写的代码也无需去删改。抽象类可以再写一个子类，但子类却不受父类过多约束，随意添加方法，对于项目的协同工作不利。抽象类做不到==对修改封闭，对扩展开放==的原则。<br>————————————————<br>版权声明：本文为CSDN博主「云等风来」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_33667439/article/details/78666979" target="_blank" rel="noopener">https://blog.csdn.net/qq_33667439/article/details/78666979</a></p>
-<h2 id="3-接口的应用之一–接口回调"><a href="#3-接口的应用之一–接口回调" class="headerlink" title="3.接口的应用之一–接口回调"></a>3.接口的应用之一–接口回调</h2><h3 id="1-什么是接口回调呢"><a href="#1-什么是接口回调呢" class="headerlink" title="1.什么是接口回调呢"></a>1.什么是接口回调呢</h3><p>​    其实就是，A调用B，B再回去调用A的另一个方法，是不是很晕，晕就对了</p>
-<p>打个比方：就是A去打车，问B多少钱，B说100块，然后A给了B 100元</p>
-<p>再打个比方：小明问小花数学题，小花说我先学完java，学完后就打回给你，之后半小时，小花打电话回去给小明了</p>
+<p>其次是接口的松耦合是我们可以编写可复性高的代码。比如Server层本来引用使用Dao层mysql数据库的实现类，现在遇到mysql解决不了的业务，需要orcale实现，难道你要为了这一个或几个的功能，把所有的引用mysql的全删掉重写？只要再写一个dao层的实现类去引用这个接口，遇到需要orcale方法使用哪个接口变量就好了，别人写的代码也无需去删改。抽象类可以再写一个子类，但子类却不受父类过多约束，随意添加方法，对于项目的协同工作不利。抽象类做不到==对修改封闭，对扩展开放==的原则。</p>
 </li>
 </ul>
+<h2 id="3-接口的应用之一–接口回调"><a href="#3-接口的应用之一–接口回调" class="headerlink" title="3.接口的应用之一–接口回调"></a>3.接口的应用之一–接口回调</h2><h3 id="1-什么是接口回调呢"><a href="#1-什么是接口回调呢" class="headerlink" title="1.什么是接口回调呢"></a>1.什么是接口回调呢</h3><p>  ​    其实就是，A调用B，B再回去调用A的另一个方法，是不是很晕，晕就对了</p>
+<p>  打个比方：就是A去打车，问B多少钱，B说100块，然后A给了B 100元</p>
+<p>  再打个比方：小明问小花数学题，小花说我先学完java，学完后就打回给你，之后半小时，小花打电话回去给小明了</p>
 <h3 id="2-为什么要回调呢"><a href="#2-为什么要回调呢" class="headerlink" title="2.为什么要回调呢"></a>2.为什么要回调呢</h3><p>有人想说，直接A调用A的另一个方法就行了鸭，但是事情往往不是那么简单的，有一些事情必须要问别人，等待别人的回答，才能调用A的另一个方法，类比，总不能A自问自答吧</p>
 <h3 id="3-简单的回调示例"><a href="#3-简单的回调示例" class="headerlink" title="3.简单的回调示例"></a>3.简单的回调示例</h3><p>实现功能，小明打电话给小花，小花接到电话后，完成数学作业后，再打电话给小明</p>
 <p>//接口</p>
@@ -567,7 +567,7 @@ public interface Bird {
 <span class="token keyword">public</span> <span class="token keyword">interface</span>  <span class="token class-name">onListener</span><span class="token punctuation">{</span>
   <span class="token keyword">void</span> <span class="token function">OnListener</span><span class="token punctuation">(</span>String code<span class="token punctuation">,</span>String msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="2-在需要传递数据的地方定义一个的接口类型的变量存储数据。"><a href="#2-在需要传递数据的地方定义一个的接口类型的变量存储数据。" class="headerlink" title="2.在需要传递数据的地方定义一个的接口类型的变量存储数据。"></a>2.在需要传递数据的地方<strong>定义一个的接口类型的变量存储数据。</strong></h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<h4 id="2-在需要传递数据的地方定义一个的接口类型的变量存储数据"><a href="#2-在需要传递数据的地方定义一个的接口类型的变量存储数据" class="headerlink" title="2.在需要传递数据的地方定义一个的接口类型的变量存储数据"></a>2.在需要传递数据的地方<strong>定义一个的接口类型的变量存储数据</strong></h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  *定义一个变量储存数据
  */</span>
 <span class="token keyword">private</span> onListener listener<span class="token punctuation">;</span> </code></pre>
