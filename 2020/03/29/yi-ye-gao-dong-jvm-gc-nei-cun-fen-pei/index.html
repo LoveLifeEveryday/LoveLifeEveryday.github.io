@@ -9,7 +9,8 @@
 本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：
 我的GIthub博客
 
-一.为什么要学习GC&amp;amp;内存分配？时代发展到现在，如今的内存动态分配与内存回收技术已经相当成熟，一">
+学习导图
+一.为什么要学习GC&amp;amp;内存分配？时代发展到现在，如今的内存动态分配与内存回收技术已经相">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -459,6 +460,7 @@
 <p>本文已经收录到我的Github个人博客，欢迎大佬们光临寒舍：</p>
 <p><a href="https://lovelifeeveryday.github.io/">我的GIthub博客</a></p>
 </blockquote>
+<h2 id="学习导图"><a href="#学习导图" class="headerlink" title="学习导图"></a>学习导图</h2><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/29/220825-78346.png" alt="学习导图"></p>
 <h2 id="一-为什么要学习GC-amp-内存分配？"><a href="#一-为什么要学习GC-amp-内存分配？" class="headerlink" title="一.为什么要学习GC&amp;内存分配？"></a>一.为什么要学习<code>GC</code>&amp;内存分配？</h2><p>时代发展到现在，如今的内存动态分配与内存回收技术已经相当成熟，一切看似进入了“自动化”时代，不免发出疑问：”为啥我们还要了解垃圾收集和内存分配？”</p>
 <p>答案很简单，当需要排查各种内存溢出/泄漏问题的时候，当垃圾收集成为系统达到更高并发量的瓶颈的时候，我们必须对”自动化”技术进行必要的监控和调节。</p>
 <p>所以，我们要了解下<code>GC</code>&amp;内存分配，为工作中或者是面试中实际的需要打好基础。</p>
@@ -628,7 +630,7 @@
 <h3 id="2-3-HotSpot算法实现-amp-垃圾回收器"><a href="#2-3-HotSpot算法实现-amp-垃圾回收器" class="headerlink" title="2.3 HotSpot算法实现&amp;垃圾回收器"></a>2.3 <code>HotSpot</code>算法实现&amp;垃圾回收器</h3><blockquote>
 <p>接下来介绍如何在<code>HotSpot</code>虚拟机上实现对象存活判定算法和垃圾收集算法，并保证虚拟机高效运行</p>
 </blockquote>
-<h4 id="2-3-1-枚举根节点"><a href="#2-3-1-枚举根节点" class="headerlink" title="2.3.1 枚举根节点"></a>2.3.1 <strong>枚举根节点</strong></h4><p>主流Java虚拟机使用的都是<strong>准确式<code>GC</code></strong>，在执行系统停顿之后无需检查所有执行上下文和全局的引用位置，而是通过一些办法直接获取到存放对象引用的地方，在<code>HotSpot</code>中是通过一组称为<code>OopMap</code>的数据结构来实现的，完成类加载后会计算出对象某偏移量上某类型数据、<code>JIT</code>编译时会在<strong>特定的位置</strong>记录栈和寄存器中是引用的位置。这样<code>GC</code>在扫描时就可直接得知这些信息，并快速准确地完成<code>GC Roots</code>的枚举</p>
+<h4 id="2-3-1-枚举根节点"><a href="#2-3-1-枚举根节点" class="headerlink" title="2.3.1 枚举根节点"></a>2.3.1 枚举根节点</h4><p>主流Java虚拟机使用的都是<strong>准确式<code>GC</code></strong>，在执行系统停顿之后无需检查所有执行上下文和全局的引用位置，而是通过一些办法直接获取到存放对象引用的地方，在<code>HotSpot</code>中是通过一组称为<code>OopMap</code>的数据结构来实现的，完成类加载后会计算出对象某偏移量上某类型数据、<code>JIT</code>编译时会在<strong>特定的位置</strong>记录栈和寄存器中是引用的位置。这样<code>GC</code>在扫描时就可直接得知这些信息，并快速准确地完成<code>GC Roots</code>的枚举</p>
 <h4 id="2-3-2-安全点"><a href="#2-3-2-安全点" class="headerlink" title="2.3.2 安全点"></a>2.3.2 安全点</h4><p>上述“特定的位置”被称为安全点，即程序执行时并非在所有地方都停顿执行<code>GC</code>，只在到达安全点时才暂停，降低<code>GC</code>的空间成本</p>
 <ul>
 <li><p>安全点的选定标准：可让程序<strong>长时间执行</strong>的地方，如方法调用、循环跳转、异常跳转等具有指令序列复用的特征</p>
