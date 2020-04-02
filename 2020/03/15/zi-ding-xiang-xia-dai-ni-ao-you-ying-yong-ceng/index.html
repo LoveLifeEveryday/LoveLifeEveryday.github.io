@@ -519,7 +519,7 @@
 </li>
 <li><p><strong>默认</strong>情况下使用<strong>持续连接</strong></p>
 </li>
-<li><p>非持续连接<code>HTTP</code>：每个<code>TCP</code>连接 只传送一个请求报文和相应报文</p>
+<li><p>非持续连接<code>HTTP</code>：每个<code>TCP</code>连接 只传送一个请求报文和响应报文</p>
 </li>
 </ul>
 <blockquote>
@@ -623,11 +623,11 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 <blockquote>
 <p>很好理解，自然是请求报文和相应报文都携带 <code>Cookie</code>，客户端和服务器端都存有 <code>Cookie</code> 文件。即 <strong>本地保存，访问携带</strong></p>
 </blockquote>
-<p><strong><code>Cookie</code> 和 <code>Session</code> 的区别</strong><br>简单来说，二者都是为了 <code>Web</code> 站点 <strong>识别用户身份</strong>，<code>Session</code> 译为 会话，就是保存每一次客户端和服务器端会话中的 用户信息和用户操作，是有时间限制的。<br><code>Session</code> 会在<strong>服务器端</strong>有一个 类似 <code>HashTable</code> 的数据来存放用户数据，浏览器第一次请求，生成一个 <code>HashTable</code> 和对应 的<code>SessionID</code> （用于标识这个 <code>HashTable</code>）。这个 <code>Session ID</code> 一般在 30 分钟后会自动销毁。</p>
+<p><strong><code>Cookie</code> 和 <code>Session</code> 的区别</strong><br>简单来说，二者都是为了 <code>Web</code> 站点 <strong>识别用户身份</strong>，<code>Session</code> 译为 会话，就是保存每一次客户端和服务器端会话中的 用户信息和用户操作，是有时间限制的。<br><code>Session</code> 会在<strong>服务器端</strong>有一个 类似 <code>HashTable</code> 的数据来存放用户数据，浏览器第一次请求，生成一个 <code>HashTable</code> 和对应 的<code>SessionID</code> （用于标识这个 <code>HashTable</code>）。这个 <code>Session ID</code> 一般在 30 分钟后会自动销毁</p>
 <p>区别：</p>
 <ul>
 <li><code>Cookie</code> 在<strong>客户端</strong>，会被篡改，不安全。<code>Session</code> 在<strong>服务器端</strong></li>
-<li><code>Cookie</code> 只能存 <code>String</code> 类型对象，且容量小。 <code>Session</code> 可以存 <code>java</code> 对象，容量大。</li>
+<li><code>Cookie</code> 只能存 <code>String</code> 类型对象，且容量小。 <code>Session</code> 可以存 <code>java</code> 对象，容量大</li>
 </ul>
 <p>Q5:<code>Web</code> 缓存器（代理服务器）</p>
 <p>1.使用 <code>Web</code> 缓存器的 2 个主要原因：</p>
@@ -671,7 +671,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 </li>
 <li><p><strong>邮箱</strong>包含用户的<strong>到达报文</strong>、离开 (<strong>将发送</strong>) 邮件报文的<strong>报文队列</strong></p>
 </li>
-<li><p>在发送电子邮件报文的<strong>邮件服务器之间</strong>采用 <code>SMTP</code> 协议。</p>
+<li><p>在发送电子邮件报文的<strong>邮件服务器之间</strong>采用 <code>SMTP</code> 协议</p>
 </li>
 </ul>
 </blockquote>
@@ -1056,7 +1056,7 @@ Content<span class="token operator">-</span>Type<span class="token operator">:</
 
 学习导图：
 一.运输层概述
-我们知道运输层位于网络层之上，网络层提供了主机之间的逻辑通道。
+我们知道运输层位于网络层之上，网络层提供了主机之间的逻辑通信。
 Q1：那既然已经把一个数据包
                         
                     </div>
