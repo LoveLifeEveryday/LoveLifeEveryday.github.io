@@ -593,12 +593,16 @@ string str <span class="token operator">=</span> “hello world！”<span class
 </blockquote>
 <p>1.<strong>类加载检查</strong></p>
 <p>检查 <code>new</code> 指令的参数<strong>是否</strong>能在常量池中<strong>定位到一个类的符号引用</strong>且该符号引用代表的类<strong>是否已被加载、解析和初始化</strong>，若没有则需先执行相应的类加载，反之下一步</p>
+<blockquote>
+<p>想详细了解类加载的知识的话，可以看下笔者的一篇文章：<a href="https://juejin.im/post/5e86a5b86fb9a03c451bbdd5" target="_blank" rel="noopener">一夜搞懂 | JVM 类加载机制</a></p>
+</blockquote>
 <p>2.<strong>分配内存</strong></p>
 <blockquote>
 <ul>
 <li>由 <strong><code>Java</code> 堆中的内存</strong>是否<strong>规整</strong>决定如何给新生对象分配可用空间</li>
 <li>由堆所采用的<strong>垃圾收集器是否带有空间压缩整理的能力</strong>决定<code>Java</code> 堆中的内存是否规整</li>
 </ul>
+<p>PS：想详细了解<code>GC</code>或者内存分配的话，可以看下笔者的这篇文章：<a href="https://juejin.im/post/5e815d2451882573c66ceec8" target="_blank" rel="noopener">一夜搞懂 | JVM GC&amp;内存分配</a></p>
 </blockquote>
 <ul>
 <li>若规整，采用 “指针碰撞” 分配方式：</li>
