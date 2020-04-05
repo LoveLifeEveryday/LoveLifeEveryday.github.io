@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-04-03T17:03:44.771Z</updated>
+  <updated>2020-04-05T14:38:57.473Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>一夜搞懂 | JVM 字节码执行引擎</title>
+    <link href="https://lovelifeeveryday.github.io/2020/04/05/yi-ye-gao-dong-jvm-zi-jie-ma-zhi-xing-yin-qing/"/>
+    <id>https://lovelifeeveryday.github.io/2020/04/05/yi-ye-gao-dong-jvm-zi-jie-ma-zhi-xing-yin-qing/</id>
+    <published>2020-04-05T14:35:01.000Z</published>
+    <updated>2020-04-05T14:38:57.473Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一夜搞懂-JVM-字节码执行引擎&quot;&gt;&lt;a href=&quot;#一夜搞懂-JVM-字节码执行引擎&quot; class=&quot;headerlink&quot; title=&quot;一夜搞懂 | JVM 字节码执行引擎&quot;&gt;&lt;/a&gt;一夜搞懂 | JVM 字节码执行引擎&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="https://lovelifeeveryday.github.io/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="https://lovelifeeveryday.github.io/tags/JVM/"/>
+    
+      <category term="双亲委派" scheme="https://lovelifeeveryday.github.io/tags/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE/"/>
+    
+      <category term="字节码执行引擎" scheme="https://lovelifeeveryday.github.io/tags/%E5%AD%97%E8%8A%82%E7%A0%81%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一夜搞懂 | JVM 类加载机制</title>
     <link href="https://lovelifeeveryday.github.io/2020/04/03/yi-ye-gao-dong-jvm-lei-jia-zai-ji-zhi/"/>
     <id>https://lovelifeeveryday.github.io/2020/04/03/yi-ye-gao-dong-jvm-lei-jia-zai-ji-zhi/</id>
     <published>2020-04-03T02:47:01.000Z</published>
-    <updated>2020-04-03T17:03:44.771Z</updated>
+    <updated>2020-04-05T09:29:38.120Z</updated>
     
     <summary type="html">
     
@@ -411,11 +442,11 @@
   </entry>
   
   <entry>
-    <title>进阶之路 | 奇妙的Activity之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/</id>
+    <title>进阶之路 | 奇妙的 IPC 之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/</id>
     <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-02-19T06:39:18.641Z</updated>
+    <updated>2020-03-08T06:09:32.144Z</updated>
     
     <summary type="html">
     
@@ -423,7 +454,7 @@
       
         
         
-          &lt;h1 id=&quot;进阶之路-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 IPC 之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
         
       
     
@@ -438,11 +469,11 @@
   </entry>
   
   <entry>
-    <title>进阶之路 | 奇妙的 IPC 之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/</id>
+    <title>进阶之路 | 奇妙的Activity之旅</title>
+    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/"/>
+    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/</id>
     <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-03-08T06:09:32.144Z</updated>
+    <updated>2020-02-19T06:39:18.641Z</updated>
     
     <summary type="html">
     
@@ -450,7 +481,7 @@
       
         
         
-          &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 IPC 之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
+          &lt;h1 id=&quot;进阶之路-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
         
       
     
@@ -542,33 +573,6 @@
     
     
       <category term="英语相关" scheme="https://lovelifeeveryday.github.io/tags/%E8%8B%B1%E8%AF%AD%E7%9B%B8%E5%85%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写博客没头绪？我手把手教你！</title>
-    <link href="https://lovelifeeveryday.github.io/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/"/>
-    <id>https://lovelifeeveryday.github.io/2020/01/11/xie-bo-ke-mei-tou-xu-wo-shou-ba-shou-jiao-ni/</id>
-    <published>2020-01-11T03:07:01.000Z</published>
-    <updated>2020-02-12T05:21:01.300Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;写博客没头绪？我手把手教你！&quot;&gt;&lt;a href=&quot;#写博客没头绪？我手把手教你！&quot; class=&quot;headerlink&quot; title=&quot;写博客没头绪？我手把手教你！&quot;&gt;&lt;/a&gt;写博客没头绪？我手把手教你！&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="杂七杂八" scheme="https://lovelifeeveryday.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-    
-      <category term="博客相关" scheme="https://lovelifeeveryday.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
