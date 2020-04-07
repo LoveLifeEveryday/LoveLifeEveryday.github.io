@@ -512,7 +512,10 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 <li>为什么必须是私有：<strong>为了线程切换后能恢复到正确的执行位置</strong>，每条线程都需要有一个<strong>独立</strong>的程序计数器，各条线程之间计数器互不影响，独立存储，因此它是线程<strong>私有</strong>的内存</li>
 <li>在《 <code>Java</code> 虚拟机规范》中，是<strong>唯一一个没有</strong>规定任何 <code>OutOfMemoryError</code> 情况的区域</li>
 </ul>
-<h4 id="2-1-2-Java-虚拟机栈"><a href="#2-1-2-Java-虚拟机栈" class="headerlink" title="2.1.2 Java 虚拟机栈"></a>2.1.2 <code>Java</code> 虚拟机栈</h4><ul>
+<h4 id="2-1-2-Java-虚拟机栈"><a href="#2-1-2-Java-虚拟机栈" class="headerlink" title="2.1.2 Java 虚拟机栈"></a>2.1.2 <code>Java</code> 虚拟机栈</h4><blockquote>
+<p>想更加详细了解 <code>JVM</code> 栈的读者，可以看下笔者写的这篇文章：<a href="https://juejin.im/post/5e8aaabd6fb9a03c546c2dab#heading-5" target="_blank" rel="noopener">运行时栈帧结构</a></p>
+</blockquote>
+<ul>
 <li>定义： <code>Java</code> <strong>方法执行的内存模型</strong></li>
 </ul>
 <blockquote>

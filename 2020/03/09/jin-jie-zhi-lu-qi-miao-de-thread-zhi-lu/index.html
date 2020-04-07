@@ -496,7 +496,7 @@ AsyncTask的基本概念及使用
 <blockquote>
 <ul>
 <li><strong>Q</strong>：如何避免频繁创建和销毁线程所带来的系统开销？</li>
-<li><strong>A</strong>：采用<strong>线程池</strong>，池中会缓存一定数量的线程，进而达到效果</li>
+<li><strong>A</strong>：采用<strong>线程池</strong>，池中会缓存一定数量的线程，进而达到效果（PS：下文将为您详细讲解）</li>
 </ul>
 </blockquote>
 <p>Q3:<strong>分类</strong></p>
@@ -522,7 +522,9 @@ AsyncTask的基本概念及使用
 </ul>
 </blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/09/191501-976047.png" alt="关系图"></p>
-<p>PS：想详细了解<code>Handler</code>机制的读者，推荐一篇笔者的文章：<a href="https://juejin.im/post/5e61bf2de51d4526ea7f00bd" target="_blank" rel="noopener">进阶之路 | 奇妙的Handler之旅</a></p>
+<blockquote>
+<p>想详细了解<code>Handler</code>机制的读者，推荐一篇笔者的文章：<a href="https://juejin.im/post/5e61bf2de51d4526ea7f00bd" target="_blank" rel="noopener">进阶之路 | 奇妙的Handler之旅</a></p>
+</blockquote>
 <p>Q4：<strong>如何安全地终止线程？</strong></p>
 <blockquote>
 <p>对于有多线程开发经验的开发者，应该大多数在开发过程中都遇到过这样的需求，就是在某种情况下，希望立即停止一个线程</p>
@@ -534,29 +536,29 @@ AsyncTask的基本概念及使用
 <p><code>Java</code>官方早已将它废弃，不推荐使用</p>
 </blockquote>
 <ul>
-<li><code>stop</code>是通过立即抛出<code>ThreadDeath</code>异常，来达到停止线程的目的，此异常抛出有可能发生在任何一时间点，包括在<code>catch</code>、<code>finally</code>等语句块中，但是此异常并不会引起程序退出</li>
+<li><code>stop</code>是通过立即抛出<code>ThreadDeath</code>异常，来达到停止线程的目的，此异常抛出<strong>有可能发生在任何一时间点</strong>，包括在<code>catch</code>、<code>finally</code>等语句块中，但是此<strong>异常并不会引起程序退出</strong></li>
 <li>异常抛出，导致线程会<strong>释放</strong>全部所持有的<strong>锁</strong>，极可能引起<strong>线程安全</strong>问题</li>
 </ul>
 <p>A2：<strong>提供单独的取消方法来终止线程</strong></p>
 <p>示例<code>DEMO</code>：</p>
-<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MoonRunner</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">long</span> i<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//注意的是这里的变量是用volatile修饰</span>
-        <span class="token keyword">volatile</span> <span class="token keyword">boolean</span> on <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MoonRunner</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> i<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//注意的是这里的变量是用volatile修饰</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">boolean</span> on <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>on<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                i<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"sTop"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>on<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            i<span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"sTop"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-        <span class="token comment" spellcheck="true">//设置一个取消的方法</span>
-        <span class="token keyword">void</span> <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            on <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span></code></pre>
+<span class="token comment" spellcheck="true">//设置一个取消的方法</span>
+    <span class="token keyword">void</span> <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        on <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <blockquote>
 <p>注意：这里的变量是用<code>volatile</code>修饰，以保证<strong>可见性</strong>，关于<code>volatile</code>的知识，笔者将在下文为您详细解析</p>
 </blockquote>
@@ -567,7 +569,7 @@ AsyncTask的基本概念及使用
 <ul>
 <li><p>调用<code>Thread</code>对象的<code>interrupt</code>函数并不是立即中断线程，只是将线程<strong>中断</strong>状态<strong>标志</strong>设置为<code>true</code></p>
 </li>
-<li><p>当线程运行中有调用其阻塞的函数时，阻塞函数调用之后，会不断地轮询检测中断状态标志是否为<code>true</code>，如果为<code>true</code>，则停止阻塞并抛出<code>InterruptedException</code>异常，同时还会重置中断状态标志，因此需要在<code>catch</code>代码块中需调用<code>interrupt</code>函数，使线程再次处于中断状态</p>
+<li><p>当线程运行中有调用其阻塞的函数时，阻塞函数调用之后，会不断地轮询检测中断状态标志是否为<code>true</code>，如果为<code>true</code>，则<strong>停止阻塞并抛出<code>InterruptedException</code>异常，同时还会重置中断状态标志</strong>，<strong>因此需要在<code>catch</code>代码块中需调用<code>interrupt</code>函数，</strong>使线程再次处于中断状态</p>
 </li>
 <li><p>如果中断状态标志为<code>false</code>，则继续阻塞，直到阻塞正常结束</p>
 </li>

@@ -526,8 +526,8 @@
 <li><p>主要作用是为了垃圾收集器回收时收到一个系统通知(<code>PhantomRefernece</code>类实现虚引用)</p>
 </li>
 <li><p>与弱引用的区别：</p>
-<p>a.<code>get</code>方法：若弱引用<code>get</code>方法能正常返回对象，而虚引用只能返回<code>null</code></p>
-<p>b.<code>ReferenceQueue</code>的必要性：<strong>弱引用可以</strong>使用<code>ReferenceQueue</code>,<strong>虚引用必须</strong>配合<code>ReferenceQueue</code>使用</p>
+<p>a.<code>get</code>方法：若弱引用 <code>get</code> 方法能正常返回对象，而虚引用只能返回 <code>null</code></p>
+<p>b.<code>ReferenceQueue</code>的必要性：<strong>弱引用可以</strong>配合 <code>ReferenceQueue</code> 使用,<strong>虚引用必须</strong>配合 <code>ReferenceQueue</code> 使用</p>
 </li>
 <li><p>必须和<strong>引用队列</strong> （<code>ReferenceQueue</code>）联合使用，当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用<strong>加入到与之关联的引用队列</strong>中</p>
 <p>（想要了解<strong>虚引用详细用法</strong>的读者，可以看下这篇文章：<a href="https://juejin.im/post/5e65b8096fb9a07cbb6e4a43#heading-5" target="_blank" rel="noopener">强软弱虚引用，只有体会过了，才能记住</a>）</p>
