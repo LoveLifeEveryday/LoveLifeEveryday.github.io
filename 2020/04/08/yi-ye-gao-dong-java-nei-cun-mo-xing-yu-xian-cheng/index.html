@@ -9,8 +9,9 @@
 本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：
 我的 GIthub 博客
 
-学习导图一.为什么要学习内存模型与线程？
-并发处理的广泛应用是 Amdah1 定律代替摩尔定律成为计算">
+学习导图
+一.为什么要学习内存模型与线程？
+并发处理的广泛应用是 Amdah1 定律代替摩尔定律成为计">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -486,7 +487,8 @@
 <p>本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：</p>
 <p><a href="https://lovelifeeveryday.github.io/">我的 GIthub 博客</a></p>
 </blockquote>
-<h2 id="学习导图"><a href="#学习导图" class="headerlink" title="学习导图"></a>学习导图</h2><h2 id="一-为什么要学习内存模型与线程？"><a href="#一-为什么要学习内存模型与线程？" class="headerlink" title="一.为什么要学习内存模型与线程？"></a>一.为什么要学习内存模型与线程？</h2><blockquote>
+<h2 id="学习导图"><a href="#学习导图" class="headerlink" title="学习导图"></a>学习导图</h2><p><img src="https://imgkr.cn-bj.ufileos.com/03cf885d-bda5-4901-86eb-90b9ffd6a472.png" alt="学习导图"></p>
+<h2 id="一-为什么要学习内存模型与线程？"><a href="#一-为什么要学习内存模型与线程？" class="headerlink" title="一.为什么要学习内存模型与线程？"></a>一.为什么要学习内存模型与线程？</h2><blockquote>
 <p>并发处理的广泛应用是 <code>Amdah1</code> 定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类压制计算机运算能力的最有力武器</p>
 </blockquote>
 <p>线程通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种：<strong>共享内存和消息传递</strong>。</p>
@@ -573,7 +575,7 @@
 <li>如果要把变量从主内存<strong>复制</strong>到工作内存，那就要<strong>顺序</strong>地执行 <code>read</code> 和 <code>load</code></li>
 <li>如果要把变量从工作内存<strong>同步</strong>回主内存，就要<strong>顺序</strong>地执行 <code>store</code> 和 <code>write</code></li>
 </ul>
-<h4 id="2-2-4-确保并发操作安全的原则"><a href="#2-2-4-确保并发操作安全的原则" class="headerlink" title="2.2.4 确保并发操作安全的原则"></a>2.2.4 <strong>确保并发操作安全的原则</strong></h4><p>A1：执行八种基本操作的时候，必须满足如下规则：</p>
+<h4 id="2-2-4-确保并发操作安全的原则"><a href="#2-2-4-确保并发操作安全的原则" class="headerlink" title="2.2.4 确保并发操作安全的原则"></a>2.2.4 确保并发操作安全的原则</h4><p>A1：执行八种基本操作的时候，必须满足如下规则：</p>
 <ul>
 <li>不允许 <code>read</code> 和 <code>load</code>、<code>store</code> 和 <code>write</code> 操作之一单独出现，即不允许一个变量从主内存读取了但工作内存不接受，或者从工作内存发起回写了但主内存不接受的情况出现</li>
 </ul>
@@ -611,7 +613,7 @@
 <li><strong>传递性</strong>：如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 一定先行发生于操作 C</li>
 </ul>
 </blockquote>
-<h4 id="2-2-5-保证原子性、可见性和有序性的措施："><a href="#2-2-5-保证原子性、可见性和有序性的措施：" class="headerlink" title="2.2.5 保证原子性、可见性和有序性的措施："></a>2.2.5 保证原子性、可见性和有序性的措施：</h4><ul>
+<h4 id="2-2-5-保证原子性、可见性和有序性的措施"><a href="#2-2-5-保证原子性、可见性和有序性的措施" class="headerlink" title="2.2.5 保证原子性、可见性和有序性的措施"></a>2.2.5 保证原子性、可见性和有序性的措施</h4><ul>
 <li><strong>原子性</strong>：一个操作要么都执行要么都不执行</li>
 </ul>
 <blockquote>
@@ -735,7 +737,8 @@
 <blockquote>
 <p>但是线程优先级并不是太靠谱，一方面因为 <code>Java</code> 的线程是通过<strong>映射</strong>到系统的<strong>原生线程</strong>上来实现的，所以线程调度<strong>最终还是取决于操作系统</strong>，在一些平台上不同的优先级实际会变得相同；另一方面<strong>优先级可能会被系统自行改变。</strong></p>
 </blockquote>
-<h4 id="2-3-3-线程的六种状态"><a href="#2-3-3-线程的六种状态" class="headerlink" title="2.3.3 线程的六种状态"></a>2.3.3 线程的六种状态</h4><p>在任意一个时间点，一个线程只能有且只有其中的一种状态：</p>
+<h4 id="2-3-3-线程的六种状态"><a href="#2-3-3-线程的六种状态" class="headerlink" title="2.3.3 线程的六种状态"></a>2.3.3 线程的六种状态</h4><p><img src="https://imgkr.cn-bj.ufileos.com/1691c2f2-0b33-4445-ae59-e2da06ae1505.png" alt="线程状态"></p>
+<p>在任意一个时间点，一个线程只能有且只有其中的一种状态：</p>
 <ul>
 <li><p><strong>新建</strong> <code>New</code> ：线程创建后尚未启动</p>
 </li>
@@ -747,9 +750,13 @@
 </ul>
 <blockquote>
 <ul>
-<li>没有设置 <code>Timeout</code> 参数的 <code>Object.wait()</code></li>
-<li>没有设置 <code>Timeout</code> 参数的 <code>Thread.join()</code></li>
-<li><code>LockSupport.park()</code> (PS：想详细了解它的可以看下这篇文章：<a href="https://juejin.im/post/5e771bdd51882549575fb2fb" target="_blank" rel="noopener">Java 多线程学习（7）聊聊 LockSupport.park () 和 LockSupport.unpark ()</a>)</li>
+<li><p>没有设置 <code>Timeout</code> 参数的 <code>Object.wait()</code></p>
+</li>
+<li><p>没有设置 <code>Timeout</code> 参数的 <code>Thread.join()</code></p>
+</li>
+<li><p><code>LockSupport.park()</code> </p>
+<p>(PS：想详细了解它的可以看下这篇文章：<a href="https://juejin.im/post/5e771bdd51882549575fb2fb" target="_blank" rel="noopener">Java 多线程学习（7）聊聊 LockSupport.park () 和 LockSupport.unpark ()</a>)</p>
+</li>
 </ul>
 </blockquote>
 <ul>
@@ -777,7 +784,6 @@
 <ul>
 <li><strong>结束</strong> <code>Terminated</code>：线程已经结束执行</li>
 </ul>
-<p><img src="https://imgkr.cn-bj.ufileos.com/1691c2f2-0b33-4445-ae59-e2da06ae1505.png" alt="线程状态"></p>
 <h2 id="三-碎碎念"><a href="#三-碎碎念" class="headerlink" title="三.碎碎念"></a>三.碎碎念</h2><blockquote>
 <p>恭喜你！已经看完了前面的文章，相信你对 <code>Java</code> 内存模型与线程已经有一定深度的了解！你可以稍微放松奖励自己一下，可以睡一个美美的觉，明天起来继续冲冲冲！！！</p>
 <p>PS：原本《深入理解Java虚拟机》第3版中还提及了协程，但是我还没学过协程的基本用法，这时候给大家讲解感觉有点打肿脸充胖子的感觉 hhh，明天《第一行代码-第三版》也要到了，待我看完《第一行代码》再补充协程的内容吧 hhhh</p>
