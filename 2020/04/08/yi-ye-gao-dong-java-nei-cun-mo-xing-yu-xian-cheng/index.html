@@ -1,0 +1,1427 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="一夜搞懂 | Java 内存模型与线程, Sunny">
+    <meta name="description" content="一夜搞懂 | Java 内存模型与线程前言
+本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：
+我的 GIthub 博客
+
+学习导图一.为什么要学习内存模型与线程？
+并发处理的广泛应用是 Amdah1 定律代替摩尔定律成为计算">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>一夜搞懂 | Java 内存模型与线程 | Sunny</title>
+    <link rel="icon" type="image/png" href="/blueRabbit.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/rabbit.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sunny</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="https://juejin.im/user/5e429bbc5188254967066d1b" class="waves-effect waves-light">
+      
+      <i class="fas fa-blog" style="zoom: 0.6;"></i>
+      
+      <span>博客</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/rabbit.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sunny</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="https://juejin.im/user/5e429bbc5188254967066d1b" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-blog"></i>
+			
+			Blog
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveLifeEveryday" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveLifeEveryday" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        一夜搞懂 | Java 内存模型与线程
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
+                            </a>
+                        
+                            <a href="/tags/内存模型/">
+                                <span class="chip bg-color">内存模型</span>
+                            </a>
+                        
+                            <a href="/tags/线程/">
+                                <span class="chip bg-color">线程</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JVM/" class="post-category">
+                                JVM
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-08
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一夜搞懂-Java-内存模型与线程"><a href="#一夜搞懂-Java-内存模型与线程" class="headerlink" title="一夜搞懂 | Java 内存模型与线程"></a>一夜搞懂 | Java 内存模型与线程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：</p>
+<p><a href="https://lovelifeeveryday.github.io/">我的 GIthub 博客</a></p>
+</blockquote>
+<h2 id="学习导图"><a href="#学习导图" class="headerlink" title="学习导图"></a>学习导图</h2><h2 id="一-为什么要学习内存模型与线程？"><a href="#一-为什么要学习内存模型与线程？" class="headerlink" title="一.为什么要学习内存模型与线程？"></a>一.为什么要学习内存模型与线程？</h2><blockquote>
+<p>并发处理的广泛应用是 <code>Amdah1</code> 定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类压制计算机运算能力的最有力武器</p>
+</blockquote>
+<p>线程通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种：<strong>共享内存和消息传递</strong>。</p>
+<p>线程同步是指程序用于控制不同线程之间操作发生相对顺序的机制。</p>
+<p><strong><code>Java</code> 的并发采用的是共享内存模型，<code>Java</code> 线程之间的通信总是隐式进行，整个通信过程对程序员完全透明</strong>。如果你想设计表现良好的并发程序，<strong>理解 <code>Java</code> 内存模型是非常重要的</strong>。<code>Java</code> 内存模型规定了<strong>如何和何时</strong>可以看到由其他线程修改过后的共享变量的值，以及在必须时<strong>如何同步</strong>的访问共享变量。</p>
+<h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>Q1：<strong>多任务处理的必要性</strong></p>
+<ul>
+<li>充分利用计算机处理器的能力，避免处理器在磁盘 <code>I/O</code>、网络通信或数据库访问时总是处于等待其他资源的状态</li>
+<li>便于一个服务端同时对多个客户端提供服务</li>
+</ul>
+<blockquote>
+<p>通过指标 <code>TPS</code>（<code>Transactions Per Second</code>）可衡量一个服务性能的高低好坏，它表示每秒服务端平均能响应的请求总数，进而体现出程序的并发能力</p>
+</blockquote>
+<p>Q2：<strong>硬件的效率与一致性</strong></p>
+<blockquote>
+<p>为了更好的理解 <code>Java</code> 内存模型，先理解<strong>物理计算机中的并发问题</strong>，两者有很高的可比性</p>
+</blockquote>
+<p>为了平衡内存交互速度与处理器的运算速度之间几个数量级的差距，引入一层<strong>高速缓存</strong>（<code>Cache</code>）来作为内存与处理器之间的缓冲：</p>
+<ul>
+<li>将运算需要使用到的数据复制到缓存中，让运算能快速进行</li>
+<li>当运算结束后再从缓存同步回内存之中，而无须让处理器等待缓慢的内存读写</li>
+</ul>
+<blockquote>
+<ul>
+<li>出现问题：引入高速缓存虽解决了处理器与内存速度之间的矛盾，但是其引入了一个新的问题——<strong>缓存一致性</strong></li>
+<li>解决办法：需要各个处理器访问缓存时都遵循一些协议，在读写时要根据<strong>协议</strong>来进行操作</li>
+</ul>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/04/08/G2bDI0.png" alt="缓存与协议的结构图"></p>
+<p><strong>内存模型</strong>可以理解为：在特定的操作协议下，对特定的内存或高速缓存进行读写访问的过程抽象</p>
+<h3 id="2-2-Java-内存模型"><a href="#2-2-Java-内存模型" class="headerlink" title="2.2 Java 内存模型"></a>2.2 <code>Java</code> 内存模型</h3><blockquote>
+<p>之前笔者在 <a href="https://juejin.im/post/5e6712356fb9a07cd323e7a2#heading-7" target="_blank" rel="noopener">进阶之路 | 奇妙的Thread之旅</a>中简要介绍过 <code>Java</code> 内存模型，相信看过的读者都有一些印象</p>
+</blockquote>
+<h4 id="2-2-1-设计目的"><a href="#2-2-1-设计目的" class="headerlink" title="2.2.1 设计目的"></a>2.2.1 设计目的</h4><p><strong>屏蔽掉各种硬件和操作系统的内存访问差异</strong>，实现 <code>Java</code> 程序在各种平台下都能达到<strong>一致的内存访问效果</strong></p>
+<h4 id="2-2-2-设计方法"><a href="#2-2-2-设计方法" class="headerlink" title="2.2.2 设计方法"></a>2.2.2 设计方法</h4><p>通过定义程序中各个<strong>变量</strong>的<strong>访问规则</strong>，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节</p>
+<blockquote>
+<p><strong>注意</strong>：这里的变量与 <code>Java</code> 中说的变量不同，而指的是<strong>实例字段、静态字段和构成数组对象的元素</strong>，但<strong>不包括局部变量与方法参数</strong>（其存放于局部变量表中，而局部变量表在 <code>JVM</code> 栈中），因为后者是线程私有的，不会被共享，自然就不会存在竞争问题。</p>
+</blockquote>
+<h4 id="2-2-3-模型结构"><a href="#2-2-3-模型结构" class="headerlink" title="2.2.3 模型结构"></a>2.2.3 模型结构</h4><p><img src="https://imgkr.cn-bj.ufileos.com/d5f3d955-be42-4c64-b766-ed92d08a10ea.png" alt="内存模型"></p>
+<ul>
+<li>主内存：所有变量的存储位置。直接对应于物理硬件的内存</li>
+</ul>
+<blockquote>
+<p>注意：这里的主内存、工作内存与 <a href="https://juejin.im/post/5e7d62f1e51d4546df7375dd#heading-4" target="_blank" rel="noopener">一文洞悉JVM内存管理机制</a> 说的 <code>Java</code> 内存区域中的 <code>Java</code> 堆、栈、方法区等并不是同一个层次的内存划分</p>
+</blockquote>
+<ul>
+<li>工作内存：每条线程还有自己的<strong>工作内存</strong>，用于保存被该线程使用到的变量的<strong>主内存副本拷贝</strong>。为了获取更好的运行速度，虚拟机可能会让<strong>工作内存优先存储于寄存器和高速缓存中</strong></li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>线程<strong>对变量的所有操作都必须在工作内存中进行</strong>，而不能直接读写主内存中的变量</li>
+<li>不同的线程之间也无法直接访问对方工作内存中的变量，线程间<strong>变量值的传递必须通过主内存</strong>来完成</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>交互协议：用于规定一个变量<strong>如何从主内存拷贝到工作内存、如何从工作内存同步回主内存</strong>之类的实现细节。</p>
+<p>共有 <code>8</code> 种操作：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/08/170030-938914.png" alt="交互协议"></p>
+<ol>
+<li>作用于<strong>主内存</strong>变量：</li>
+</ol>
+<blockquote>
+<ul>
+<li><strong>锁定</strong> <code>lock</code> ：把变量标识为一条线程独占的状态</li>
+<li><strong>解锁</strong> <code>unlock</code> ：把处于锁定状态的变量释放出来</li>
+<li><strong>写入</strong> <code>write</code> ：把 <code>store</code> 操作从工作内存中得到的变量的值放入主内存的变量中</li>
+<li><strong>读取</strong> <code>read</code> ：把变量的值从主内存传输到线程的工作内存中，以便随后的 <code>load</code> 动作使用</li>
+</ul>
+</blockquote>
+<p>​    2.用于<strong>工作内存</strong>变量：</p>
+<blockquote>
+<ul>
+<li><strong>赋值</strong> <code>assign</code> ：把从执行引擎接收到的值赋给工作内存的变量</li>
+<li><strong>使用</strong> <code>use</code> ：把工作内存中一个变量的值传递给执行引擎</li>
+<li><strong>存储</strong> <code>store</code> ：把工作内存中变量的值传送到主内存中，以便随后的 <code>write</code> 操作使用</li>
+<li><strong>写入</strong> <code>write</code> ：把 <code>store</code> 操作从工作内存中得到的变量的值放入主内存的变量中</li>
+</ul>
+</blockquote>
+<p><strong>结论</strong>：注意是<strong>顺序非连续</strong></p>
+<ul>
+<li>如果要把变量从主内存<strong>复制</strong>到工作内存，那就要<strong>顺序</strong>地执行 <code>read</code> 和 <code>load</code></li>
+<li>如果要把变量从工作内存<strong>同步</strong>回主内存，就要<strong>顺序</strong>地执行 <code>store</code> 和 <code>write</code></li>
+</ul>
+<h4 id="2-2-4-确保并发操作安全的原则"><a href="#2-2-4-确保并发操作安全的原则" class="headerlink" title="2.2.4 确保并发操作安全的原则"></a>2.2.4 <strong>确保并发操作安全的原则</strong></h4><p>A1：执行八种基本操作的时候，必须满足如下规则：</p>
+<ul>
+<li>不允许 <code>read</code> 和 <code>load</code>、<code>store</code> 和 <code>write</code> 操作之一单独出现，即不允许一个变量从主内存读取了但工作内存不接受，或者从工作内存发起回写了但主内存不接受的情况出现</li>
+</ul>
+<blockquote>
+<p>可以简单理解为不能拒绝别人给的东西</p>
+</blockquote>
+<ul>
+<li>不允许一个线程丢弃它的最近的 <code>assign</code> 操作，即变量在工作内存中改变了之后必须把该变化同步回主内存</li>
+<li>不允许一个线程无原因地，即没有发生过任何 <code>assign</code> 操作，就把数据从线程的工作内存同步回主内存中</li>
+<li>一个新的变量只能在主内存中 “诞生”，不允许在工作内存中直接使用一个未被初始化（<code>load</code> 或 <code>assign</code>）的变量，即对一个变量实施 <code>use</code>、<code>store</code> 操作之前必须先执行过了 <code>assign</code> 和 <code>load</code> 操作</li>
+<li>如果对一个变量执行 <code>lock</code> 操作，那将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行 <code>load</code> 或 <code>assign</code> 操作初始化变量的值</li>
+</ul>
+<blockquote>
+<p>下文的 <code>volatile</code>底层就是用到了 <code>lock</code> 来实现可见性</p>
+</blockquote>
+<ul>
+<li>如果一个变量事先没有被 <code>lock</code> 操作锁定，那就不允许对它执行 <code>unlock</code> 操作，也不允许去 <code>unlock</code> 一个被其他线程锁定住的变量</li>
+<li>对一个变量执行 <code>unlock</code> 操作之前，必须先把此变量同步回主内存中</li>
+</ul>
+<blockquote>
+<p>可见这么多规则非常繁琐，实践也麻烦，下面再介绍一个等效判断原则 – 先行发生原则</p>
+</blockquote>
+<p>A2：先行发生原则：</p>
+<p>是 <code>Java</code> 内存模型中定义的两项操作之间的偏序关系。</p>
+<p>下面例举一些 “天然的” 先行发生关系，无须任何同步器协助就已经存在，可以在编码中直接使用</p>
+<blockquote>
+<ul>
+<li><strong>程序次序规则</strong>：在<strong>一个线程内</strong>，按照控制流顺序，书写在前面的操作先行发生于书写在后面的操作</li>
+<li><strong>管程锁定规则</strong>：一个 <code>unlock</code> 操作先行发生于后面对<strong>同一个</strong>锁的 <code>lock</code> 操作</li>
+<li><strong><code>volatile</code> 变量规则</strong>：对一个 <code>volatile</code> 变量的<strong>写</strong>操作先行发生于后面对这个变量的<strong>读</strong>操作</li>
+<li><strong>线程启动规则</strong>：<code>Thread</code> 的 <code>start()</code> 先行发生于此线程的每一个动作</li>
+<li><strong>线程终止规则</strong>：线程中的所有操作都先行发生于对此线程的终止检测。可通过 <code>Thread.join()</code> 结束、<code>Thread.isAlive()</code> 的返回值等手段检测到线程已经终止执行</li>
+<li><strong>线程中断规则</strong>：对线程 <code>interrupt()</code> 的调用先行发生于被中断线程的代码检测到中断事件的发生。可通过 <code>Thread.isInterrupted()</code> 检测到是否有中断发生</li>
+<li><strong>对象终结规则</strong>：一个对象的初始化完成先行发生于它的 <code>finalize()</code> 的开始</li>
+<li><strong>传递性</strong>：如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 一定先行发生于操作 C</li>
+</ul>
+</blockquote>
+<h4 id="2-2-5-保证原子性、可见性和有序性的措施："><a href="#2-2-5-保证原子性、可见性和有序性的措施：" class="headerlink" title="2.2.5 保证原子性、可见性和有序性的措施："></a>2.2.5 保证原子性、可见性和有序性的措施：</h4><ul>
+<li><strong>原子性</strong>：一个操作要么都执行要么都不执行</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>可直接保证的原子性变量操作有：<code>read</code>、<code>load</code>、<code>assign</code>、<code>use</code>、<code>store</code> 和 <code>write</code>，因此可认为<strong>基本数据类型的访问读写是具备原子性的</strong></p>
+</li>
+<li><p>若需要保证更大范围的原子性，可通过更高层次的字节码指令 <code>monitorenter</code> 和 <code>monitorexit</code> 来隐式地使用 <code>lock</code> 和 <code>unlock</code> 这两个操作，反映到 <code>Java</code> 代码中就是同步代码块 <code>synchronized</code> 关键字</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>可见性</strong>：当一个线程修改了共享变量的值，其他线程能够立即得知这个修改</li>
+</ul>
+<blockquote>
+<ul>
+<li>通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值这种依赖主内存作为传递媒介的方式来实现</li>
+<li>提供三个关键字保证可见性：<ol>
+<li><code>volatile</code> 能保证新值能<strong>立即</strong>同步到主内存，且<strong>每次使用前立即从主内存刷新</strong></li>
+<li><code>synchronized</code> 对一个变量执行 <code>unlock</code> 操作<strong>之前可以先把此变量同步回主内存中</strong></li>
+<li>被 <code>final</code> 修饰的字段在构造器中一旦初始化完成且构造器没有把 <code>this</code> 的引用传递出去，就可以在其他线程中就能看见 <code>final</code> 字段的值</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>有序性</strong>：程序代码按照指令顺序执行</li>
+</ul>
+<blockquote>
+<ul>
+<li>如果在<strong>本线程内观察，所有的操作都是有序的</strong>，指 “线程内表现为串行的语义”；</li>
+<li>如果在<strong>一个线程中观察另一个线程，所有的操作都是无序的</strong>，指 “指令重排序” 现象和 “工作内存与主内存同步延迟” 现象</li>
+<li>提供两个关键字保证有序性：<ol>
+<li><code>volatile</code> 本身就包含了禁止指令重排序的语义</li>
+<li><code>synchronized</code> 保证一个变量在同一个时刻只允许一条线程对其进行 <code>lock</code> 操作，使得持有同一个锁的两个同步块只能串行地进入</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>想详细了解 <code>volatile</code> 的读者，可以看下笔者之前写的文章：<a href="https://juejin.im/post/5e6712356fb9a07cd323e7a2#heading-7" target="_blank" rel="noopener">进阶之路 | 奇妙的 Thread 之旅</a></p>
+<h3 id="2-3-Java-与线程"><a href="#2-3-Java-与线程" class="headerlink" title="2.3  Java 与线程"></a>2.3  <code>Java</code> 与线程</h3><h4 id="2-3-1-线程实现的三种方式"><a href="#2-3-1-线程实现的三种方式" class="headerlink" title="2.3.1 线程实现的三种方式"></a>2.3.1 线程实现的三种方式</h4><h5 id="1-使用内核线程"><a href="#1-使用内核线程" class="headerlink" title="1.使用内核线程"></a>1.使用内核线程</h5><blockquote>
+<p>英文： <code>Kernel-Level Thread</code> ，简称：<code>KLT</code></p>
+</blockquote>
+<ul>
+<li>定义：由操作系统内核支持的线程</li>
+<li>原理：由内核来完成线程切换，内核通过操纵调度器（<code>Scheduler</code>）对线程进行调度，并负责将线程的任务映射到各个处理器上。每个内核线程可以视为内核的一个分身， 这样操作系统就有能力同时处理多件事情</li>
+<li>多线程内核：支持多线程的内核</li>
+<li><strong>轻量级进程</strong>（<code>Light Weight Process</code>,简称：<code>LWP</code>）：内核线程的一种高级接口</li>
+</ul>
+<blockquote>
+<ul>
+<li>优点：每个轻量级进程都由一个内核线程支持，因此每个都成为一个独立的调度单元，即使有一个轻量级进程在系统调用中阻塞，也不会影响整个进程继续工作</li>
+<li>缺点：<ol>
+<li>由于基于内核线程实现，所以各种线程操作（创建、析构及同步）都需要进行系统调用，代价相对较高，需要在<strong>用户态</strong>和<strong>内核态</strong>中来回切换</li>
+<li>一个系统支持轻量级进程的数量是有限的</li>
+</ol>
+</li>
+<li>一对一线程模型：轻量级进程与内核线程之间 <code>1：1</code> 的关系，如图所示</li>
+</ul>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/08/180651-884555.png" alt="内核线程模型"></p>
+<h5 id="2-使用用户线程"><a href="#2-使用用户线程" class="headerlink" title="2.使用用户线程"></a>2.使用用户线程</h5><blockquote>
+<p>英文： <code>User Thread</code> ，简称：<code>UT</code></p>
+</blockquote>
+<ul>
+<li>定义：</li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>广义</strong>上认为一个线程<strong>不是内核线程就是用户线程</strong></li>
+<li><strong>狭义</strong>上认为用户线程指的是完全建立在<strong>用户空间的线程库</strong>上，而系统内核<strong>不能感知线程存在</strong>的实现</li>
+</ul>
+</blockquote>
+<ul>
+<li>优点：由于用户线程的建立、同步、销毁和调度完全在用户态中完成，不需要内核的帮助，甚至可以不需要切换到内核态，所以<strong>操作非常快速且低消耗的，且可以支持规模更大的线程数量</strong></li>
+<li><strong>缺点</strong>：由于没有系统内核的支援，所有的线程操作都需要用户程序自己处理，线程的创建、切换和调度都是需要考虑的问题，实现较复杂</li>
+<li><strong>一对多的线程模型进程</strong>：进程与用户线程之间 <code>1：N</code> 的关系，如图所示</li>
+</ul>
+<p><img src="https://imgkr.cn-bj.ufileos.com/4c7c9d76-201d-4b2b-b669-e348614cfe73.png" alt="用户线程模型"></p>
+<h5 id="3-混合"><a href="#3-混合" class="headerlink" title="3.混合"></a>3.混合</h5><ul>
+<li><p>定义：既存在用户线程，也存在轻量级进程</p>
+</li>
+<li><p>优点：</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>用户线程完全建立在用户空间中，因此用户线程的创建、切换、析构等<strong>操作依然廉价</strong>，并且可以支持大规模的用户线程并发</li>
+<li>操作系统提供支持的轻量级进程作为用户线程和内核线程之间的桥梁，可以使用内核提供的线程调度功能及处理器映射，且用户线程的系统调用要通过轻量级线程来完成，大大<strong>降低了整个进程被完全阻塞的风险</strong></li>
+</ul>
+</blockquote>
+<ul>
+<li>多对多的线程模型：用户线程与轻量级进程的数量比不定，即用户线程与轻量级进程之间 <code>N：M</code> 的关系，如图所示</li>
+</ul>
+<p><img src="https://imgkr.cn-bj.ufileos.com/2c1cd163-317e-4b23-ad3b-bd8b83db3a46.png" alt="混合模型"></p>
+<blockquote>
+<p>Q： <code>Java</code> 线程的实现是选择哪一种呢？</p>
+<p>A：答案是<strong>不确定</strong>的。操作系统支持怎样的线程模型，在很大程度上决定了 <code>JVM</code> 的线程是怎样映射的。线程模型只对线程的并发规模和操作成本产生影响，而对 <code>Java</code> 程序的编码和运行过程来说，这些差异都是透明的。</p>
+</blockquote>
+<h4 id="2-3-2-线程调度的两种方式"><a href="#2-3-2-线程调度的两种方式" class="headerlink" title="2.3.2 线程调度的两种方式"></a>2.3.2 线程调度的两种方式</h4><blockquote>
+<p>线程调度：指系统为线程分配处理器使用权的过程</p>
+</blockquote>
+<h5 id="1-协同式线程调度"><a href="#1-协同式线程调度" class="headerlink" title="1.协同式线程调度"></a>1.协同式线程调度</h5><ul>
+<li><p>由<strong>线程本身</strong>来控制线程的执行时间。线程把自己的工作执行完后，要主动通知系统切换到另外一个线程上</p>
+</li>
+<li><p>好处：</p>
+<blockquote>
+<ul>
+<li>实现简单</li>
+<li>切换操作自己可知，不存在线程同步的问题</li>
+</ul>
+</blockquote>
+</li>
+<li><p>坏处：线程<strong>执行时间不可控</strong>，假如一个线程编写有问题一直不告知系统进行线程切换，那么程序就会一直被阻塞</p>
+</li>
+</ul>
+<h5 id="2-抢占式线程调度"><a href="#2-抢占式线程调度" class="headerlink" title="2.抢占式线程调度"></a>2.抢占式线程调度</h5><ul>
+<li>由<strong>系统</strong>来分配每个线程的执行时间</li>
+<li><strong>好处</strong>：线程<strong>执行时间是系统可控</strong>的，不存在一个线程导致整个进程阻塞的问题</li>
+<li>可以通过设置线程<strong>优先级</strong>，优先级越高的线程越容易被系统选择执行</li>
+</ul>
+<blockquote>
+<p>但是线程优先级并不是太靠谱，一方面因为 <code>Java</code> 的线程是通过<strong>映射</strong>到系统的<strong>原生线程</strong>上来实现的，所以线程调度<strong>最终还是取决于操作系统</strong>，在一些平台上不同的优先级实际会变得相同；另一方面<strong>优先级可能会被系统自行改变。</strong></p>
+</blockquote>
+<h4 id="2-3-3-线程的六种状态"><a href="#2-3-3-线程的六种状态" class="headerlink" title="2.3.3 线程的六种状态"></a>2.3.3 线程的六种状态</h4><p>在任意一个时间点，一个线程只能有且只有其中的一种状态：</p>
+<ul>
+<li><p><strong>新建</strong> <code>New</code> ：线程创建后尚未启动</p>
+</li>
+<li><p><strong>运行</strong> <code>Runable</code>：包括正在执行（<code>Running</code>）和等待着 CPU 为它分配执行时间（<code>Ready</code>）两种</p>
+</li>
+<li><p><strong>无限期等待</strong> <code>Waiting</code>：该线程不会被分配 <code>CPU</code> 执行时间，要等待被其他线程显式地唤醒。</p>
+<p>以下方法会让线程陷入<strong>无限期等待</strong>状态：</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>没有设置 <code>Timeout</code> 参数的 <code>Object.wait()</code></li>
+<li>没有设置 <code>Timeout</code> 参数的 <code>Thread.join()</code></li>
+<li><code>LockSupport.park()</code> (PS：想详细了解它的可以看下这篇文章：<a href="https://juejin.im/post/5e771bdd51882549575fb2fb" target="_blank" rel="noopener">Java 多线程学习（7）聊聊 LockSupport.park () 和 LockSupport.unpark ()</a>)</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>限期等待</strong> <code>Timed Waiting</code>：该线程不会被分配 <code>CPU</code> 执行时间，但在一定时间后会被系统自动唤醒。以下方法会让线程进入限期等待状态：</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>Thread.sleep()</code></li>
+<li>设置了 <code>Timeout</code> 参数的 <code>Object.wait()</code></li>
+<li>设置了 <code>Timeout</code> 参数的 <code>Thread.join()</code></li>
+<li><code>LockSupport.parkNanos()</code></li>
+<li><code>LockSupport.parkUntil()</code></li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>阻塞</strong> <code>Blocked</code>：线程被阻塞</li>
+</ul>
+<blockquote>
+<p>注意区别阻塞和等待：</p>
+<ul>
+<li>阻塞状态：在等待获取到一个<strong>排他锁</strong>，在另外一个线程放弃这个锁的时候发生；</li>
+<li>等待状态：在等待一段<strong>时间</strong>或者<strong>唤醒动作</strong>的发生，在程序等待进入同步区域的时候发生。</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>结束</strong> <code>Terminated</code>：线程已经结束执行</li>
+</ul>
+<p><img src="https://imgkr.cn-bj.ufileos.com/1691c2f2-0b33-4445-ae59-e2da06ae1505.png" alt="线程状态"></p>
+<h2 id="三-碎碎念"><a href="#三-碎碎念" class="headerlink" title="三.碎碎念"></a>三.碎碎念</h2><blockquote>
+<p>恭喜你！已经看完了前面的文章，相信你对 <code>Java</code> 内存模型与线程已经有一定深度的了解！你可以稍微放松奖励自己一下，可以睡一个美美的觉，明天起来继续冲冲冲！！！</p>
+<p>PS：原本《深入理解Java虚拟机》第3版中还提及了协程，但是我还没学过协程的基本用法，这时候给大家讲解感觉有点打肿脸充胖子的感觉 hhh，明天《第一行代码-第三版》也要到了，待我看完《第一行代码》再补充协程的内容吧 hhhh</p>
+</blockquote>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
+<p>本文参考链接：</p>
+<ul>
+<li>《深入理解Java虚拟机》第3版</li>
+<li><a href="https://juejin.im/post/5bf2977751882505d840321d#heading-18" target="_blank" rel="noopener">理解Java内存模型</a></li>
+<li><a href="https://juejin.im/post/5e771bdd51882549575fb2fb" target="_blank" rel="noopener">Java 多线程学习（7）聊聊 LockSupport.park () 和 LockSupport.unpark ()</a></li>
+<li><a href="https://www.jianshu.com/p/90a036212cb4" target="_blank" rel="noopener">要点提炼 | 理解 JVM 之内存模型 &amp; 线程</a></li>
+<li><a href="https://juejin.im/post/5b87ad31e51d4538e41066e9#comment" target="_blank" rel="noopener">啃碎并发（九）：内存模型之基础概述</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <a  href="/2020/04/08/yi-ye-gao-dong-java-nei-cun-mo-xing-yu-xian-cheng/">
+                    《一夜搞懂 | Java 内存模型与线程》
+            </a> 由
+            <a href="https://lovelifeeveryday.github.io">
+                Xu Canyou
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/04/08/yi-ye-gao-dong-java-nei-cun-mo-xing-yu-xian-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="一夜搞懂 | Java 内存模型与线程">
+                        
+                        <span class="card-title">一夜搞懂 | Java 内存模型与线程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Java 的并发采用的是共享内存模型，Java 线程之间的通信总是隐式进行，整个通信过程对程序员完全透明。如果你想设计表现良好的并发程序，理解 Java 内存模型是非常重要的。Java 内存模型规定了如何和何时可以看到由其他线程修改过后的共享变量的值，以及在必须时如何同步的访问共享变量。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                    <a href="/tags/内存模型/">
+                        <span class="chip bg-color">内存模型</span>
+                    </a>
+                    
+                    <a href="/tags/线程/">
+                        <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/05/yi-ye-gao-dong-jvm-zi-jie-ma-zhi-xing-yin-qing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="一夜搞懂 | JVM 字节码执行引擎">
+                        
+                        <span class="card-title">一夜搞懂 | JVM 字节码执行引擎</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                    <a href="/tags/双亲委派/">
+                        <span class="chip bg-color">双亲委派</span>
+                    </a>
+                    
+                    <a href="/tags/字节码执行引擎/">
+                        <span class="chip bg-color">字节码执行引擎</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://lovelifeeveryday.github.io" target="_blank">Xu Canyou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:913710642@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=913710642" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 913710642" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+
+</body>
+
+</html>
