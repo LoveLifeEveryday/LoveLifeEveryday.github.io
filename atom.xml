@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-04-08T13:53:30.338Z</updated>
+  <updated>2020-04-10T09:43:07.755Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一夜搞懂 | JVM 线程安全与锁优化</title>
+    <link href="https://lovelifeeveryday.github.io/2020/04/10/yi-ye-gao-dong-jvm-xian-cheng-an-quan-yu-suo-you-hua/"/>
+    <id>https://lovelifeeveryday.github.io/2020/04/10/yi-ye-gao-dong-jvm-xian-cheng-an-quan-yu-suo-you-hua/</id>
+    <published>2020-04-10T09:38:01.000Z</published>
+    <updated>2020-04-10T09:43:07.755Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一夜搞懂-JVM-线程安全与锁优化&quot;&gt;&lt;a href=&quot;#一夜搞懂-JVM-线程安全与锁优化&quot; class=&quot;headerlink&quot; title=&quot;一夜搞懂 | JVM 线程安全与锁优化&quot;&gt;&lt;/a&gt;一夜搞懂 | JVM 线程安全与锁优化&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="https://lovelifeeveryday.github.io/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="https://lovelifeeveryday.github.io/tags/JVM/"/>
+    
+      <category term="线程" scheme="https://lovelifeeveryday.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="线程安全" scheme="https://lovelifeeveryday.github.io/tags/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="锁优化" scheme="https://lovelifeeveryday.github.io/tags/%E9%94%81%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>一夜搞懂 | Java 内存模型与线程</title>
@@ -542,33 +575,6 @@
         
         
           &lt;h1 id=&quot;带你封装自己的MVP-Retrofit-RxJava2框架（二）&quot;&gt;&lt;a href=&quot;#带你封装自己的MVP-Retrofit-RxJava2框架（二）&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="框架系列" scheme="https://lovelifeeveryday.github.io/tags/%E6%A1%86%E6%9E%B6%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>带你封装自己的MVP+Retrofit+RxJava2框架（一）</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/03/dai-ni-feng-zhuang-zi-ji-de-mvp-retrofit-rxjava2-kuang-jia-yi/</id>
-    <published>2020-02-03T09:47:01.000Z</published>
-    <updated>2020-03-03T11:12:00.932Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;带你封装自己的MVP-Retrofit-RxJava2框架（一）&quot;&gt;&lt;a href=&quot;#带你封装自己的MVP-Retrofit-RxJava2框架（一）&quot; class=&quot;headerlink&quot;
         
       
     

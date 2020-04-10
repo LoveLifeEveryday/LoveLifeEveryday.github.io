@@ -4,14 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="一夜搞懂 | Java 内存模型与线程, Sunny">
-    <meta name="description" content="一夜搞懂 | Java 内存模型与线程前言
+    <meta name="keywords" content="一夜搞懂 | JVM 线程安全与锁优化, Sunny">
+    <meta name="description" content="一夜搞懂 | JVM 线程安全与锁优化前言
 本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：
 我的 GIthub 博客
 
 学习导图
 一.为什么要学习内存模型与线程？
-并发处理的广泛应用是 Amdah1 定律代替摩尔定律成为计">
+之前我们学习了内存模型和线程，了解了 JMM 和线程，初步">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>一夜搞懂 | Java 内存模型与线程 | Sunny</title>
+    <title>一夜搞懂 | JVM 线程安全与锁优化 | Sunny</title>
     <link rel="icon" type="image/png" href="/blueRabbit.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,13 +313,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        一夜搞懂 | Java 内存模型与线程
+                        一夜搞懂 | JVM 线程安全与锁优化
                     </div>
                 </div>
             </div>
@@ -435,16 +435,16 @@
                                 <span class="chip bg-color">JVM</span>
                             </a>
                         
-                            <a href="/tags/内存模型/">
-                                <span class="chip bg-color">内存模型</span>
-                            </a>
-                        
                             <a href="/tags/线程/">
                                 <span class="chip bg-color">线程</span>
                             </a>
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/线程安全/">
+                                <span class="chip bg-color">线程安全</span>
+                            </a>
+                        
+                            <a href="/tags/锁优化/">
+                                <span class="chip bg-color">锁优化</span>
                             </a>
                         
                     </div>
@@ -467,7 +467,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-08
+                    2020-04-10
                 </div>
 
                 
@@ -483,320 +483,254 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一夜搞懂-Java-内存模型与线程"><a href="#一夜搞懂-Java-内存模型与线程" class="headerlink" title="一夜搞懂 | Java 内存模型与线程"></a>一夜搞懂 | Java 内存模型与线程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+                <h1 id="一夜搞懂-JVM-线程安全与锁优化"><a href="#一夜搞懂-JVM-线程安全与锁优化" class="headerlink" title="一夜搞懂 | JVM 线程安全与锁优化"></a>一夜搞懂 | JVM 线程安全与锁优化</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：</p>
 <p><a href="https://lovelifeeveryday.github.io/">我的 GIthub 博客</a></p>
 </blockquote>
-<h2 id="学习导图"><a href="#学习导图" class="headerlink" title="学习导图"></a>学习导图</h2><p><img src="https://imgkr.cn-bj.ufileos.com/03cf885d-bda5-4901-86eb-90b9ffd6a472.png" alt="学习导图"></p>
+<h2 id="学习导图"><a href="#学习导图" class="headerlink" title="学习导图"></a>学习导图</h2><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/10/174247-439541.png" alt="学习导图"></p>
 <h2 id="一-为什么要学习内存模型与线程？"><a href="#一-为什么要学习内存模型与线程？" class="headerlink" title="一.为什么要学习内存模型与线程？"></a>一.为什么要学习内存模型与线程？</h2><blockquote>
-<p>并发处理的广泛应用是 <code>Amdah1</code> 定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类压制计算机运算能力的最有力武器</p>
+<p>之前我们学习了<a href="https://juejin.im/post/5e8e84abf265da47e1593e5d" target="_blank" rel="noopener">内存模型和线程</a>，了解了 <code>JMM</code> 和线程，初步探究了 <code>JVM</code> 怎么实现并发，而本篇文章，我们的关注点是 <code>JVM</code> 如何实现高效</p>
 </blockquote>
-<p>线程通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种：<strong>共享内存和消息传递</strong>。</p>
-<p>线程同步是指程序用于控制不同线程之间操作发生相对顺序的机制。</p>
-<p><strong><code>Java</code> 的并发采用的是共享内存模型，<code>Java</code> 线程之间的通信总是隐式进行，整个通信过程对程序员完全透明</strong>。如果你想设计表现良好的并发程序，<strong>理解 <code>Java</code> 内存模型是非常重要的</strong>。<code>Java</code> 内存模型规定了<strong>如何和何时</strong>可以看到由其他线程修改过后的共享变量的值，以及在必须时<strong>如何同步</strong>的访问共享变量。</p>
-<h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>Q1：<strong>多任务处理的必要性</strong></p>
-<ul>
-<li>充分利用计算机处理器的能力，避免处理器在磁盘 <code>I/O</code>、网络通信或数据库访问时总是处于等待其他资源的状态</li>
-<li>便于一个服务端同时对多个客户端提供服务</li>
-</ul>
+<p>并发编程的目的是为了让程序运行得更快，提高程序的响应速度，虽然我们希望通过多线程执行任务让程序运行得更快，但是同时也会面临非常多的挑战，比如像线程安全问题、线程上下文切换的问题、硬件和软件资源限制等问题，这些都是并发编程给我们带来的难题。</p>
+<p>其中线程安全问题是我们最关心的问题之一，我们接下来主要就围绕着线程安全的问题来展开。</p>
+<h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-线程安全"><a href="#2-1-线程安全" class="headerlink" title="2.1 线程安全"></a>2.1 线程安全</h3><h4 id="2-1-1-定义"><a href="#2-1-1-定义" class="headerlink" title="2.1.1 定义"></a>2.1.1 定义</h4><p>当多个线程访问一个对象时，如果<strong>不用考虑</strong>这些线程在运行时环境下的<strong>调度和交替执行</strong>，也<strong>不需要进行额外的同步</strong>，或者在调用方进行任何其他的协调操作，调用这个对象的行为都可以获得正确的结果，那这个对象是线程安全的</p>
 <blockquote>
-<p>通过指标 <code>TPS</code>（<code>Transactions Per Second</code>）可衡量一个服务性能的高低好坏，它表示每秒服务端平均能响应的请求总数，进而体现出程序的并发能力</p>
+<p><strong>要求线程安全的代码都必须具备一个特征</strong>：<br>代码本身<strong>封装了所有必要的正确性保障手段</strong>（如互斥同步等），令调用者无须关心多线程的问题，更无须自己采取任何措施来保证多线程的正确调用。</p>
 </blockquote>
-<p>Q2：<strong>硬件的效率与一致性</strong></p>
-<blockquote>
-<p>为了更好的理解 <code>Java</code> 内存模型，先理解<strong>物理计算机中的并发问题</strong>，两者有很高的可比性</p>
+<h4 id="2-1-2-分类"><a href="#2-1-2-分类" class="headerlink" title="2.1.2 分类"></a>2.1.2 分类</h4><blockquote>
+<p>下面将按照线程安全的程度由强至弱分成五类</p>
 </blockquote>
-<p>为了平衡内存交互速度与处理器的运算速度之间几个数量级的差距，引入一层<strong>高速缓存</strong>（<code>Cache</code>）来作为内存与处理器之间的缓冲：</p>
 <ul>
-<li>将运算需要使用到的数据复制到缓存中，让运算能快速进行</li>
-<li>当运算结束后再从缓存同步回内存之中，而无须让处理器等待缓慢的内存读写</li>
+<li>不可变：外部的可见状态永远不会改变，在多个线程之中永远是一致的状态</li>
 </ul>
 <blockquote>
 <ul>
-<li>出现问题：引入高速缓存虽解决了处理器与内存速度之间的矛盾，但是其引入了一个新的问题——<strong>缓存一致性</strong></li>
-<li>解决办法：需要各个处理器访问缓存时都遵循一些协议，在读写时要根据<strong>协议</strong>来进行操作</li>
+<li><p><strong>一定</strong>是线程安全的</p>
+</li>
+<li><p><strong>如何实现</strong>：</p>
+<p>1.如果共享数据是一个<strong>基本数据类型</strong>，只要在定义时用 <code>final</code> 关键字修饰</p>
+<p>2.如果共享数据是一个<strong>对象</strong>，最简单的方法是把<strong>对象中带有状态的变量</strong>都声明为 <code>final</code>(例如 <code>String</code> 类)</p>
+</li>
 </ul>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2020/04/08/G2bDI0.png" alt="缓存与协议的结构图"></p>
-<p><strong>内存模型</strong>可以理解为：在特定的操作协议下，对特定的内存或高速缓存进行读写访问的过程抽象</p>
-<h3 id="2-2-Java-内存模型"><a href="#2-2-Java-内存模型" class="headerlink" title="2.2 Java 内存模型"></a>2.2 <code>Java</code> 内存模型</h3><blockquote>
-<p>之前笔者在 <a href="https://juejin.im/post/5e6712356fb9a07cd323e7a2#heading-7" target="_blank" rel="noopener">进阶之路 | 奇妙的Thread之旅</a>中简要介绍过 <code>Java</code> 内存模型，相信看过的读者都有一些印象</p>
-</blockquote>
-<h4 id="2-2-1-设计目的"><a href="#2-2-1-设计目的" class="headerlink" title="2.2.1 设计目的"></a>2.2.1 设计目的</h4><p><strong>屏蔽掉各种硬件和操作系统的内存访问差异</strong>，实现 <code>Java</code> 程序在各种平台下都能达到<strong>一致的内存访问效果</strong></p>
-<h4 id="2-2-2-设计方法"><a href="#2-2-2-设计方法" class="headerlink" title="2.2.2 设计方法"></a>2.2.2 设计方法</h4><p>通过定义程序中各个<strong>变量</strong>的<strong>访问规则</strong>，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节</p>
-<blockquote>
-<p><strong>注意</strong>：这里的变量与 <code>Java</code> 中说的变量不同，而指的是<strong>实例字段、静态字段和构成数组对象的元素</strong>，但<strong>不包括局部变量与方法参数</strong>（其存放于局部变量表中，而局部变量表在 <code>JVM</code> 栈中），因为后者是线程私有的，不会被共享，自然就不会存在竞争问题。</p>
-</blockquote>
-<h4 id="2-2-3-模型结构"><a href="#2-2-3-模型结构" class="headerlink" title="2.2.3 模型结构"></a>2.2.3 模型结构</h4><p><img src="https://imgkr.cn-bj.ufileos.com/d5f3d955-be42-4c64-b766-ed92d08a10ea.png" alt="内存模型"></p>
-<ul>
-<li>主内存：所有变量的存储位置。直接对应于物理硬件的内存</li>
-</ul>
-<blockquote>
-<p>注意：这里的主内存、工作内存与 <a href="https://juejin.im/post/5e7d62f1e51d4546df7375dd#heading-4" target="_blank" rel="noopener">一文洞悉JVM内存管理机制</a> 说的 <code>Java</code> 内存区域中的 <code>Java</code> 堆、栈、方法区等并不是同一个层次的内存划分</p>
 </blockquote>
 <ul>
-<li>工作内存：每条线程还有自己的<strong>工作内存</strong>，用于保存被该线程使用到的变量的<strong>主内存副本拷贝</strong>。为了获取更好的运行速度，虚拟机可能会让<strong>工作内存优先存储于寄存器和高速缓存中</strong></li>
+<li>绝对线程安全：完全满足之前给出的线程安全的定义，即达到 “不管运行时环境如何，调用者都不需要任何额外的同步措施”</li>
+<li>相对线程安全：能保证对该对象<strong>单独的操作是线程安全</strong>的，在调用时无需做额外保障措施，但对于一些特定顺序的连续调用，可能需要在调用端使用额外的同步措施来保证调用的正确性</li>
 </ul>
 <blockquote>
+<ul>
+<li>是<strong>通常意义上所讲的线程安全</strong></li>
+<li>大部分的线程安全类都属于这种类型，如 <code>Vector</code>、<code>HashTable</code>、<code>Collections#synchronizedCollection()</code> 包装的集合等</li>
+</ul>
+</blockquote>
+<ul>
+<li>线程兼容：对象本身非线程安全的，但可以通过在调用端正确地使用同步手段来保证对象在并发环境中可以安全地使用</li>
+</ul>
+<blockquote>
+<ul>
+<li>是通常意义上所讲的非线程安全</li>
+<li><code>Java API</code> 中大部分类都是属于线程兼容的，如 <code>ArrayList</code> 和 <code>HashMap</code>等</li>
+</ul>
+</blockquote>
+<ul>
+<li>线程对立：无论调用端是否采取了同步措施，都无法在多线程环境中并发使用的代码</li>
+</ul>
+<blockquote>
+<p>例子：<code>Thread</code> 类的 <code>suspend()</code> 和 <code>resume()</code> ，一个尝试中断线程，一个尝试恢复线程，在并发条件下，有可能会造成<a href="https://www.sxt.cn/Java_jQuery_in_action/eleven-deadlock.html" target="_blank" rel="noopener">死锁</a></p>
+</blockquote>
+<h4 id="2-1-3-实现"><a href="#2-1-3-实现" class="headerlink" title="2.1.3 实现"></a>2.1.3 实现</h4><blockquote>
+<p>可分成两大手段，本篇重点在虚拟机本身</p>
+<ul>
+<li>通过代码编写实现线程安全</li>
+<li>通过虚拟机本身实现同步与锁</li>
+</ul>
+</blockquote>
+<h5 id="1-互斥同步"><a href="#1-互斥同步" class="headerlink" title="1.互斥同步"></a>1.互斥同步</h5><ul>
+<li>含义：</li>
+</ul>
+<blockquote>
+<ul>
+<li><p><strong>同步</strong>：在多个线程并发访问共享数据时，保证共享数据在同一个时刻只被一个线程使用</p>
+</li>
+<li><p><strong>互斥</strong>：是实现同步的一种<strong>手段</strong>，临界区、互斥量和信号量都是主要的互斥实现方式</p>
+</li>
+<li><p>两者关系：互斥是因，同步是果；互斥是方法，同步是目的</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>属于<strong>悲观并发策略</strong>（<strong>悲观锁</strong>），即认为只要不做正确的同步措施就肯定会出现问题，因此无论共享数据是否真的会出现竞争，都要加锁</p>
+</li>
+<li><p>最大的<strong>问题</strong>是进行线程阻塞和唤醒所带来的性能问题，也称为<strong>阻塞同步</strong></p>
+</li>
+<li><p>使用方式：</p>
+<p>A.使用 <code>synchronized</code> 关键字：</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>原理：编译后会在同步块的<strong>前后</strong>分别形成 <code>monitorenter</code> 和 <code>monitorexit</code> 这两个字节码指令，并通过一个 <code>reference</code> 类型的参数来指明要锁定和解锁的对象</p>
 <p>注意：</p>
-<ul>
-<li>线程<strong>对变量的所有操作都必须在工作内存中进行</strong>，而不能直接读写主内存中的变量</li>
-<li>不同的线程之间也无法直接访问对方工作内存中的变量，线程间<strong>变量值的传递必须通过主内存</strong>来完成</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>交互协议：用于规定一个变量<strong>如何从主内存拷贝到工作内存、如何从工作内存同步回主内存</strong>之类的实现细节。</p>
-<p>共有 <code>8</code> 种操作：</p>
+<p>​    1.若明确指定了对象参数，则取该对象的 <code>reference</code></p>
+<p>​    2.否则，会根据 <code>synchronized</code> 修饰的是实例方法还是类方法去取对应的对象实例或 <code>Class</code> 对象来作为锁对象</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/2385211e-124f-49cf-8ddd-44e0a1eba0fc.png" alt="synchronized 处理逻辑"></p>
+</li>
+<li><p><strong>过程</strong>：执行 <code>monitorenter</code> 指令时先要尝试获取对象的锁。若该对象没被锁定或者已被当前线程获取，那么锁计数器 <code>+ 1</code>；而在执行 <code>monitorexit</code> 指令时，锁计数器 <code>- 1</code>；当锁计数器 = <code>0</code> 时，锁就被释放；若获取对象锁失败，那当前线程会一直被阻塞等待，直到对象锁被另外一个线程释放为止</p>
+</li>
+<li><p><strong>特别注意</strong>： </p>
+<p>1.<code>synchronized</code> 同步块对同一条线程来说是<strong>可重入</strong>的，不会出现自我锁死的问题</p>
+<p>2.还有，同步块在已进入的线程执行完之前，会<strong>阻塞后面其他线程</strong>的进入</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/08/170030-938914.png" alt="交互协议"></p>
-<ol>
-<li>作用于<strong>主内存</strong>变量：</li>
-</ol>
-<blockquote>
-<ul>
-<li><strong>锁定</strong> <code>lock</code> ：把变量标识为一条线程独占的状态</li>
-<li><strong>解锁</strong> <code>unlock</code> ：把处于锁定状态的变量释放出来</li>
-<li><strong>写入</strong> <code>write</code> ：把 <code>store</code> 操作从工作内存中得到的变量的值放入主内存的变量中</li>
-<li><strong>读取</strong> <code>read</code> ：把变量的值从主内存传输到线程的工作内存中，以便随后的 <code>load</code> 动作使用</li>
-</ul>
 </blockquote>
-<p>​    2.用于<strong>工作内存</strong>变量：</p>
+<p>​        B.使用重入锁 <code>ReentrantLock</code>：</p>
+<p>​        之前在 <a href="https://juejin.im/post/5e6712356fb9a07cd323e7a2#heading-8" target="_blank" rel="noopener">进阶之路 | 奇妙的 Thread 之旅</a>中也提到过重入锁的使用，相信看过的读者还有一些印象</p>
 <blockquote>
 <ul>
-<li><strong>赋值</strong> <code>assign</code> ：把从执行引擎接收到的值赋给工作内存的变量</li>
-<li><strong>使用</strong> <code>use</code> ：把工作内存中一个变量的值传递给执行引擎</li>
-<li><strong>存储</strong> <code>store</code> ：把工作内存中变量的值传送到主内存中，以便随后的 <code>write</code> 操作使用</li>
-<li><strong>写入</strong> <code>write</code> ：把 <code>store</code> 操作从工作内存中得到的变量的值放入主内存的变量中</li>
-</ul>
-</blockquote>
-<p><strong>结论</strong>：注意是<strong>顺序非连续</strong></p>
-<ul>
-<li>如果要把变量从主内存<strong>复制</strong>到工作内存，那就要<strong>顺序</strong>地执行 <code>read</code> 和 <code>load</code></li>
-<li>如果要把变量从工作内存<strong>同步</strong>回主内存，就要<strong>顺序</strong>地执行 <code>store</code> 和 <code>write</code></li>
-</ul>
-<h4 id="2-2-4-确保并发操作安全的原则"><a href="#2-2-4-确保并发操作安全的原则" class="headerlink" title="2.2.4 确保并发操作安全的原则"></a>2.2.4 确保并发操作安全的原则</h4><p>A1：执行八种基本操作的时候，必须满足如下规则：</p>
-<ul>
-<li>不允许 <code>read</code> 和 <code>load</code>、<code>store</code> 和 <code>write</code> 操作之一单独出现，即不允许一个变量从主内存读取了但工作内存不接受，或者从工作内存发起回写了但主内存不接受的情况出现</li>
-</ul>
-<blockquote>
-<p>可以简单理解为不能拒绝别人给的东西</p>
-</blockquote>
-<ul>
-<li>不允许一个线程丢弃它的最近的 <code>assign</code> 操作，即变量在工作内存中改变了之后必须把该变化同步回主内存</li>
-<li>不允许一个线程无原因地，即没有发生过任何 <code>assign</code> 操作，就把数据从线程的工作内存同步回主内存中</li>
-<li>一个新的变量只能在主内存中 “诞生”，不允许在工作内存中直接使用一个未被初始化（<code>load</code> 或 <code>assign</code>）的变量，即对一个变量实施 <code>use</code>、<code>store</code> 操作之前必须先执行过了 <code>assign</code> 和 <code>load</code> 操作</li>
-<li>如果对一个变量执行 <code>lock</code> 操作，那将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行 <code>load</code> 或 <code>assign</code> 操作初始化变量的值</li>
-</ul>
-<blockquote>
-<p>下文的 <code>volatile</code>底层就是用到了 <code>lock</code> 来实现可见性</p>
-</blockquote>
-<ul>
-<li>如果一个变量事先没有被 <code>lock</code> 操作锁定，那就不允许对它执行 <code>unlock</code> 操作，也不允许去 <code>unlock</code> 一个被其他线程锁定住的变量</li>
-<li>对一个变量执行 <code>unlock</code> 操作之前，必须先把此变量同步回主内存中</li>
-</ul>
-<blockquote>
-<p>可见这么多规则非常繁琐，实践也麻烦，下面再介绍一个等效判断原则 – 先行发生原则</p>
-</blockquote>
-<p>A2：先行发生原则：</p>
-<p>是 <code>Java</code> 内存模型中定义的两项操作之间的偏序关系。</p>
-<p>下面例举一些 “天然的” 先行发生关系，无须任何同步器协助就已经存在，可以在编码中直接使用</p>
-<blockquote>
-<ul>
-<li><strong>程序次序规则</strong>：在<strong>一个线程内</strong>，按照控制流顺序，书写在前面的操作先行发生于书写在后面的操作</li>
-<li><strong>管程锁定规则</strong>：一个 <code>unlock</code> 操作先行发生于后面对<strong>同一个</strong>锁的 <code>lock</code> 操作</li>
-<li><strong><code>volatile</code> 变量规则</strong>：对一个 <code>volatile</code> 变量的<strong>写</strong>操作先行发生于后面对这个变量的<strong>读</strong>操作</li>
-<li><strong>线程启动规则</strong>：<code>Thread</code> 的 <code>start()</code> 先行发生于此线程的每一个动作</li>
-<li><strong>线程终止规则</strong>：线程中的所有操作都先行发生于对此线程的终止检测。可通过 <code>Thread.join()</code> 结束、<code>Thread.isAlive()</code> 的返回值等手段检测到线程已经终止执行</li>
-<li><strong>线程中断规则</strong>：对线程 <code>interrupt()</code> 的调用先行发生于被中断线程的代码检测到中断事件的发生。可通过 <code>Thread.isInterrupted()</code> 检测到是否有中断发生</li>
-<li><strong>对象终结规则</strong>：一个对象的初始化完成先行发生于它的 <code>finalize()</code> 的开始</li>
-<li><strong>传递性</strong>：如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 一定先行发生于操作 C</li>
-</ul>
-</blockquote>
-<h4 id="2-2-5-保证原子性、可见性和有序性的措施"><a href="#2-2-5-保证原子性、可见性和有序性的措施" class="headerlink" title="2.2.5 保证原子性、可见性和有序性的措施"></a>2.2.5 保证原子性、可见性和有序性的措施</h4><ul>
-<li><strong>原子性</strong>：一个操作要么都执行要么都不执行</li>
-</ul>
-<blockquote>
-<ul>
-<li><p>可直接保证的原子性变量操作有：<code>read</code>、<code>load</code>、<code>assign</code>、<code>use</code>、<code>store</code> 和 <code>write</code>，因此可认为<strong>基本数据类型的访问读写是具备原子性的</strong></p>
+<li><p>与 <code>synchronized</code> 的相同：用法与 <code>synchronized</code> 很相似，且都可重入</p>
 </li>
-<li><p>若需要保证更大范围的原子性，可通过更高层次的字节码指令 <code>monitorenter</code> 和 <code>monitorexit</code> 来隐式地使用 <code>lock</code> 和 <code>unlock</code> 这两个操作，反映到 <code>Java</code> 代码中就是同步代码块 <code>synchronized</code> 关键字</p>
+<li><p>与 <code>synchronized</code> 的<strong>不同</strong>：</p>
+<p>1.<strong>等待可中断</strong>：当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情</p>
+<p>2.<strong>公平锁</strong>：多个线程在等待同一个锁时，必须<strong>按照申请锁的时间顺序来依次获得锁</strong>。而 <code>synchronized</code> 是非公平的，即在锁被释放时，任何一个等待锁的线程都有机会获得锁。<code>ReentrantLock</code> 默认情况下也是非公平的，但可以通过带布尔值的构造函数改用公平锁</p>
+<p>3.<strong>锁绑定多个条件</strong>：一个 <code>ReentrantLock</code> 对象可以通过多次调用 <code>newCondition()</code> 同时绑定多个 <code>Condition</code> 对象。而在 <code>synchronized</code> 中，锁对象的 <code>wait()</code> 和 <code>notify()</code> 或 <code>notifyAl()</code> 只能实现一个隐含的条件，若要和多于一个的条件关联不得不额外地添加一个锁</p>
 </li>
 </ul>
 </blockquote>
 <ul>
-<li><strong>可见性</strong>：当一个线程修改了共享变量的值，其他线程能够立即得知这个修改</li>
+<li>选择：在 <code>synchronized</code> 能实现需求的情况下，优先考虑使用它来进行同步。理由如下：</li>
 </ul>
 <blockquote>
 <ul>
-<li>通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值这种依赖主内存作为传递媒介的方式来实现</li>
-<li>提供三个关键字保证可见性：<ol>
-<li><code>volatile</code> 能保证新值能<strong>立即</strong>同步到主内存，且<strong>每次使用前立即从主内存刷新</strong></li>
-<li><code>synchronized</code> 对一个变量执行 <code>unlock</code> 操作<strong>之前可以先把此变量同步回主内存中</strong></li>
-<li>被 <code>final</code> 修饰的字段在构造器中一旦初始化完成且构造器没有把 <code>this</code> 的引用传递出去，就可以在其他线程中就能看见 <code>final</code> 字段的值</li>
-</ol>
-</li>
+<li><code>synchronized</code> 是 <code>Java</code>语法层面的同步，足够清晰简单</li>
+<li><code>Lock</code> 必须由程序员确保在 <code>finally</code> 块中释放锁，而 <code>synchronized</code> 可以由 <code>JVM</code> 确保锁的自动释放</li>
 </ul>
 </blockquote>
-<ul>
-<li><strong>有序性</strong>：程序代码按照指令顺序执行</li>
+<h5 id="2-非阻塞同步"><a href="#2-非阻塞同步" class="headerlink" title="2.非阻塞同步"></a>2.非阻塞同步</h5><ul>
+<li>定义：基于冲突检测的<strong>乐观</strong>并发策略（乐观锁），即先进行操作，若无其他线程争用共享数据，操作成功；反之产生了冲突再去采取其他的补偿措施</li>
+<li>为了保证<strong>操作</strong>和<strong>冲突检测</strong>这两步具备原子性，需要用到硬件指令集，比如：</li>
 </ul>
 <blockquote>
 <ul>
-<li>如果在<strong>本线程内观察，所有的操作都是有序的</strong>，指 “线程内表现为串行的语义”；</li>
-<li>如果在<strong>一个线程中观察另一个线程，所有的操作都是无序的</strong>，指 “指令重排序” 现象和 “工作内存与主内存同步延迟” 现象</li>
-<li>提供两个关键字保证有序性：<ol>
-<li><code>volatile</code> 本身就包含了禁止指令重排序的语义</li>
-<li><code>synchronized</code> 保证一个变量在同一个时刻只允许一条线程对其进行 <code>lock</code> 操作，使得持有同一个锁的两个同步块只能串行地进入</li>
-</ol>
-</li>
+<li><strong>测试并设置</strong></li>
+<li><strong>获取并增加</strong></li>
+<li><strong>交换</strong></li>
+<li><strong>比较并交换</strong>（<code>CAS</code>）</li>
+<li><strong>加载链接 / 条件存储</strong></li>
 </ul>
 </blockquote>
-<p>想详细了解 <code>volatile</code> 的读者，可以看下笔者之前写的文章：<a href="https://juejin.im/post/5e6712356fb9a07cd323e7a2#heading-7" target="_blank" rel="noopener">进阶之路 | 奇妙的 Thread 之旅</a></p>
-<h3 id="2-3-Java-与线程"><a href="#2-3-Java-与线程" class="headerlink" title="2.3  Java 与线程"></a>2.3  <code>Java</code> 与线程</h3><h4 id="2-3-1-线程实现的三种方式"><a href="#2-3-1-线程实现的三种方式" class="headerlink" title="2.3.1 线程实现的三种方式"></a>2.3.1 线程实现的三种方式</h4><h5 id="1-使用内核线程"><a href="#1-使用内核线程" class="headerlink" title="1.使用内核线程"></a>1.使用内核线程</h5><blockquote>
-<p>英文： <code>Kernel-Level Thread</code> ，简称：<code>KLT</code></p>
+<h5 id="3-无同步方案"><a href="#3-无同步方案" class="headerlink" title="3.无同步方案"></a>3.无同步方案</h5><ul>
+<li>定义：不用同步的方式保证线程安全，因为有些代码天生就是线程安全的。</li>
+<li>例子：</li>
+</ul>
+<blockquote>
+<p>A.<strong>可重入代码</strong>/ <strong>纯代码</strong></p>
+<ul>
+<li>含义：可在代码执行的<strong>任何时刻中断它去执行另外一段代码</strong>，当控制权返回后原来的程序并不会出现任何错误</li>
+<li>共同特征：<strong>不依赖存储在堆</strong>上的数据和<strong>公用</strong>的系统资源、用到的状态量<strong>都由参数中传入</strong>、不调用非可重入的方法</li>
+<li>判定依据：如果一个方法，它的返回<strong>结果是可预测</strong>的，只要输入相同的数据就都能返回相同的结果，就满足可重入性</li>
+<li>注意：满足可重入性的代码<strong>一定</strong>是线程安全的，反之，满足线程安全的代码<strong>不一定</strong>是可重入的</li>
+</ul>
+<p>B.<strong>线程本地存储</strong></p>
+<ul>
+<li><strong>含义</strong>：把共享数据的可见范围限制在同一个线程之内，无须同步就能保证线程之间不出现数据争用的问题</li>
+<li>想详细了解 <code>ThreadLocal</code> 的读者，可以看下笔者之前写的一篇文章：<a href="https://juejin.im/post/5e61bf2de51d4526ea7f00bd#heading-7" target="_blank" rel="noopener">进阶之路 | 奇妙的 Handler 之旅</a></li>
+</ul>
+</blockquote>
+<h3 id="2-2-锁优化"><a href="#2-2-锁优化" class="headerlink" title="2.2 锁优化"></a>2.2 锁优化</h3><blockquote>
+<p>解决并发的正确性之后，为了能在线程之间更『高效』地共享数据、解决竞争问题、提高程序的执行效率，下面介绍五种锁优化技术</p>
+</blockquote>
+<h4 id="2-2-1-适应性自旋"><a href="#2-2-1-适应性自旋" class="headerlink" title="2.2.1 适应性自旋"></a>2.2.1 适应性自旋</h4><ul>
+<li>背景：互斥同步在实现阻塞和唤醒时需要<strong>挂起线程和恢复线程的操作，都需要转入内核态</strong>中完成，很<strong>影响系统的并发性能</strong>；同时，在许多应用上共享数据的<strong>锁定状态只是暂时，没必要去挂起和恢复线程</strong></li>
+<li>自旋锁：当物理机器有多个处理器使得多个线程同时并行执行时，先让后请求锁的线程<strong>等待</strong>，但不放弃处理器的执行时间，看看持有锁的线程是否很快就会释放锁，这时<strong>只需让线程执行一个忙循环，即自旋</strong></li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：自旋等待<strong>不能</strong>代替阻塞，它虽然能避免线程切换的开销，但会占用处理器时间，因此<strong>自旋等待的时间必须要有一定的限度</strong>，如果自旋超过了限定的次数(默认<code>10</code>次)仍未成功获锁，就需要挂线程了</p>
 </blockquote>
 <ul>
-<li>定义：由操作系统内核支持的线程</li>
-<li>原理：由内核来完成线程切换，内核通过操纵调度器（<code>Scheduler</code>）对线程进行调度，并负责将线程的任务映射到各个处理器上。每个内核线程可以视为内核的一个分身， 这样操作系统就有能力同时处理多件事情</li>
-<li>多线程内核：支持多线程的内核</li>
-<li><strong>轻量级进程</strong>（<code>Light Weight Process</code>,简称：<code>LWP</code>）：内核线程的一种高级接口</li>
+<li><strong>自适应自旋锁</strong>：自旋的<strong>时间不再固定</strong>，而是由该锁上的<strong>上次自旋时间及锁的拥有者的状态</strong>共同决定。具体表现是：</li>
 </ul>
 <blockquote>
 <ul>
-<li>优点：每个轻量级进程都由一个内核线程支持，因此每个都成为一个独立的调度单元，即使有一个轻量级进程在系统调用中阻塞，也不会影响整个进程继续工作</li>
-<li>缺点：<ol>
-<li>由于基于内核线程实现，所以各种线程操作（创建、析构及同步）都需要进行系统调用，代价相对较高，需要在<strong>用户态</strong>和<strong>内核态</strong>中来回切换</li>
-<li>一个系统支持轻量级进程的数量是有限的</li>
-</ol>
-</li>
-<li>一对一线程模型：轻量级进程与内核线程之间 <code>1：1</code> 的关系，如图所示</li>
+<li>如果对于某个锁，自旋等待刚刚成功获得，且持有锁的线程正在运行中，那么虚拟机很可能允许自旋等待的时间更久点</li>
+<li>如果对于某个锁，自旋很少成功获得过，那么很可能以后将省略自旋等待这个锁，避免浪费处理器资源</li>
 </ul>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/08/180651-884555.png" alt="内核线程模型"></p>
-<h5 id="2-使用用户线程"><a href="#2-使用用户线程" class="headerlink" title="2.使用用户线程"></a>2.使用用户线程</h5><blockquote>
-<p>英文： <code>User Thread</code> ，简称：<code>UT</code></p>
-</blockquote>
-<ul>
-<li>定义：</li>
+<h4 id="2-2-2-锁消除"><a href="#2-2-2-锁消除" class="headerlink" title="2.2.2 锁消除"></a>2.2.2 锁消除</h4><ul>
+<li>定义：指虚拟机即时编译器在运行时，对一些代码上要求同步，但是被检测到<strong>不可能存在共享数据竞争</strong>的锁进行消除</li>
+<li>判定依据：如果一段代码中<strong>堆</strong>上的所有数据都<strong>不会逃逸出去</strong>被其他线程访问到，可把它们当做<strong>栈</strong>上数据对待，即线程私有的，无须同步加锁</li>
+</ul>
+<h4 id="2-2-3-锁粗化"><a href="#2-2-3-锁粗化" class="headerlink" title="2.2.3 锁粗化"></a>2.2.3 锁粗化</h4><ul>
+<li><strong>一般情况下</strong>，会将同步块的作用范围限制到只在共享数据的实际作用域中才进行同步，使得需要同步的操作数量<strong>尽可能变小</strong>，保证就算存在锁竞争，等待锁的线程也能尽快拿到锁</li>
+<li>但如果<strong>反复操作对同一个对象进行加锁和解锁</strong>，即使没有线程竞争，频繁地进行互斥同步操作也会导致不必要的性能损耗，此时，虚拟机将会把加锁同步的范围粗化到整个操作序列的外部，这样只需加一次锁</li>
+</ul>
+<h4 id="2-2-4-轻量级锁"><a href="#2-2-4-轻量级锁" class="headerlink" title="2.2.4 轻量级锁"></a>2.2.4 轻量级锁</h4><ul>
+<li><strong>目的</strong>：在<strong>没有多线程竞争的前提下</strong>，<strong>减少传统的重量级锁使用操作系统互斥量产生的性能消耗</strong>，注意不是用来代替重量级锁的</li>
 </ul>
 <blockquote>
+<p>首先先理解 <code>HotSpot</code> 虚拟机的<a href="https://juejin.im/post/5e7d62f1e51d4546df7375dd#heading-14" target="_blank" rel="noopener">对象头</a>的内存布局：分为两部分</p>
 <ul>
-<li><strong>广义</strong>上认为一个线程<strong>不是内核线程就是用户线程</strong></li>
-<li><strong>狭义</strong>上认为用户线程指的是完全建立在<strong>用户空间的线程库</strong>上，而系统内核<strong>不能感知线程存在</strong>的实现</li>
+<li>第一部分用于存储对象自身的<strong>运行时数据</strong>，这部分被称为 <code>Mark Word</code>，是实现轻量级锁和偏向锁的关键。如哈希码、<code>GC</code> 分代年龄等</li>
+<li>另外一部分用于存储指向<strong>方法区对象类型数据的指针</strong>，如果是数组对象还会有一个额外的部分用于存储数组长度</li>
 </ul>
 </blockquote>
+<p><img src="https://imgkr.cn-bj.ufileos.com/9566936c-5da2-4bcb-b1dd-915db2c571a4.png" alt="Mark Word 结构"></p>
 <ul>
-<li>优点：由于用户线程的建立、同步、销毁和调度完全在用户态中完成，不需要内核的帮助，甚至可以不需要切换到内核态，所以<strong>操作非常快速且低消耗的，且可以支持规模更大的线程数量</strong></li>
-<li><strong>缺点</strong>：由于没有系统内核的支援，所有的线程操作都需要用户程序自己处理，线程的创建、切换和调度都是需要考虑的问题，实现较复杂</li>
-<li><strong>一对多的线程模型进程</strong>：进程与用户线程之间 <code>1：N</code> 的关系，如图所示</li>
-</ul>
-<p><img src="https://imgkr.cn-bj.ufileos.com/4c7c9d76-201d-4b2b-b669-e348614cfe73.png" alt="用户线程模型"></p>
-<h5 id="3-混合"><a href="#3-混合" class="headerlink" title="3.混合"></a>3.混合</h5><ul>
-<li><p>定义：既存在用户线程，也存在轻量级进程</p>
-</li>
-<li><p>优点：</p>
+<li><p>加锁过程：</p>
+<p>1.代码进入同步块时，如果同步对象未被锁定（锁标志位为 <code>01</code>），虚拟机会在当前线程的<strong>栈帧中建立一个名为 <code>Lock Record</code> 的空间</strong>，用于存储锁对象 <code>Mark Word</code> 的拷贝。如下图</p>
 </li>
 </ul>
+<p><img src="https://imgkr.cn-bj.ufileos.com/2a5b0dca-305d-4022-b1ea-e9e6f8ebbc57.png" alt></p>
+<p>2.之后虚拟机会尝试用 <code>CAS</code> 操作将对象的 <code>Mark Word</code> 更新为指向 <code>Lock Record</code> 的指针。若更新动作成功，那么当前线程就拥有了该对象的锁，且对象 <code>Mark Word</code> 的锁标志位变为 <code>00</code>，即处于轻量级锁定状态；反之，虚拟机会先检查对象的 <code>Mark Word</code> 是否指向当前线程的栈帧，若是，则当前线程已有该对象的锁，可直接进入同步块继续执行，否则说明改对象已被其他线程抢占。如下图：</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/a7b39aaa-9c8a-4182-b34f-57951cd60a4f.png" alt="CAS后堆栈与对象的状态"></p>
 <blockquote>
+<p>另外，如果有<strong>两条以上的线程争用同一个锁</strong>，那轻量级锁就不再有效，要<strong>膨胀为重量级锁</strong>，锁标志位变为 <code>10</code>，<strong>Mark Word</strong> 中存储的就是指向重量级锁的指针，后面等待锁的线程也要进入阻塞状态</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/10/171141-629261.png" alt="加锁流程"></p>
 <ul>
-<li>用户线程完全建立在用户空间中，因此用户线程的创建、切换、析构等<strong>操作依然廉价</strong>，并且可以支持大规模的用户线程并发</li>
-<li>操作系统提供支持的轻量级进程作为用户线程和内核线程之间的桥梁，可以使用内核提供的线程调度功能及处理器映射，且用户线程的系统调用要通过轻量级线程来完成，大大<strong>降低了整个进程被完全阻塞的风险</strong></li>
-</ul>
-</blockquote>
-<ul>
-<li>多对多的线程模型：用户线程与轻量级进程的数量比不定，即用户线程与轻量级进程之间 <code>N：M</code> 的关系，如图所示</li>
-</ul>
-<p><img src="https://imgkr.cn-bj.ufileos.com/2c1cd163-317e-4b23-ad3b-bd8b83db3a46.png" alt="混合模型"></p>
-<blockquote>
-<p>Q： <code>Java</code> 线程的实现是选择哪一种呢？</p>
-<p>A：答案是<strong>不确定</strong>的。操作系统支持怎样的线程模型，在很大程度上决定了 <code>JVM</code> 的线程是怎样映射的。线程模型只对线程的并发规模和操作成本产生影响，而对 <code>Java</code> 程序的编码和运行过程来说，这些差异都是透明的。</p>
-</blockquote>
-<h4 id="2-3-2-线程调度的两种方式"><a href="#2-3-2-线程调度的两种方式" class="headerlink" title="2.3.2 线程调度的两种方式"></a>2.3.2 线程调度的两种方式</h4><blockquote>
-<p>线程调度：指系统为线程分配处理器使用权的过程</p>
-</blockquote>
-<h5 id="1-协同式线程调度"><a href="#1-协同式线程调度" class="headerlink" title="1.协同式线程调度"></a>1.协同式线程调度</h5><ul>
-<li><p>由<strong>线程本身</strong>来控制线程的执行时间。线程把自己的工作执行完后，要主动通知系统切换到另外一个线程上</p>
+<li><p><strong>解锁过程</strong>：若对象的 <code>Mark Word</code> 仍指向着线程的 <code>Lock Record</code>，就用 <code>CAS</code> 操作把对象当前的 <code>Mark Word</code> 和线程中复制的 <code>Displaced Mark Word</code> 替换回来。若替换成功，那么就完成了整个同步过程；反之，说明有其他线程尝试获取该锁，那么就要在释放锁的同时唤醒被挂起的线程</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/10/171913-572450.png" alt="解锁过程"></p>
 </li>
-<li><p>好处：</p>
-<blockquote>
-<ul>
-<li>实现简单</li>
-<li>切换操作自己可知，不存在线程同步的问题</li>
-</ul>
-</blockquote>
+<li><p>优点：因为对于绝大部分的锁，在整个同步周期内都是不存在竞争的，所以轻量级锁通过使用 <code>CAS</code> 操作<strong>消除同步使用的互斥量</strong></p>
 </li>
-<li><p>坏处：线程<strong>执行时间不可控</strong>，假如一个线程编写有问题一直不告知系统进行线程切换，那么程序就会一直被阻塞</p>
-</li>
-</ul>
-<h5 id="2-抢占式线程调度"><a href="#2-抢占式线程调度" class="headerlink" title="2.抢占式线程调度"></a>2.抢占式线程调度</h5><ul>
-<li>由<strong>系统</strong>来分配每个线程的执行时间</li>
-<li><strong>好处</strong>：线程<strong>执行时间是系统可控</strong>的，不存在一个线程导致整个进程阻塞的问题</li>
-<li>可以通过设置线程<strong>优先级</strong>，优先级越高的线程越容易被系统选择执行</li>
-</ul>
-<blockquote>
-<p>但是线程优先级并不是太靠谱，一方面因为 <code>Java</code> 的线程是通过<strong>映射</strong>到系统的<strong>原生线程</strong>上来实现的，所以线程调度<strong>最终还是取决于操作系统</strong>，在一些平台上不同的优先级实际会变得相同；另一方面<strong>优先级可能会被系统自行改变。</strong></p>
-</blockquote>
-<h4 id="2-3-3-线程的六种状态"><a href="#2-3-3-线程的六种状态" class="headerlink" title="2.3.3 线程的六种状态"></a>2.3.3 线程的六种状态</h4><p><img src="https://imgkr.cn-bj.ufileos.com/1691c2f2-0b33-4445-ae59-e2da06ae1505.png" alt="线程状态"></p>
-<p>在任意一个时间点，一个线程只能有且只有其中的一种状态：</p>
-<ul>
-<li><p><strong>新建</strong> <code>New</code> ：线程创建后尚未启动</p>
-</li>
-<li><p><strong>运行</strong> <code>Runable</code>：包括正在执行（<code>Running</code>）和等待着 CPU 为它分配执行时间（<code>Ready</code>）两种</p>
-</li>
-<li><p><strong>无限期等待</strong> <code>Waiting</code>：该线程不会被分配 <code>CPU</code> 执行时间，要等待被其他线程显式地唤醒。</p>
-<p>以下方法会让线程陷入<strong>无限期等待</strong>状态：</p>
+<li><p>自旋锁和轻量级锁的关系：</p>
 </li>
 </ul>
 <blockquote>
 <ul>
-<li><p>没有设置 <code>Timeout</code> 参数的 <code>Object.wait()</code></p>
-</li>
-<li><p>没有设置 <code>Timeout</code> 参数的 <code>Thread.join()</code></p>
-</li>
-<li><p><code>LockSupport.park()</code> </p>
-<p>(PS：想详细了解它的可以看下这篇文章：<a href="https://juejin.im/post/5e771bdd51882549575fb2fb" target="_blank" rel="noopener">Java 多线程学习（7）聊聊 LockSupport.park () 和 LockSupport.unpark ()</a>)</p>
-</li>
+<li><strong>锁自旋是一种锁竞争机制</strong>，假设在一段时间内比如一个时钟周期内能获得锁，因此虚拟机会进行一次赌博，在这段时间类一直尝试加锁</li>
+<li>而<strong>轻量级锁是一种状态</strong></li>
 </ul>
 </blockquote>
-<ul>
-<li><strong>限期等待</strong> <code>Timed Waiting</code>：该线程不会被分配 <code>CPU</code> 执行时间，但在一定时间后会被系统自动唤醒。以下方法会让线程进入限期等待状态：</li>
+<h4 id="2-2-5-偏向锁"><a href="#2-2-5-偏向锁" class="headerlink" title="2.2.5 偏向锁"></a>2.2.5 偏向锁</h4><ul>
+<li><strong>目的</strong>：消除数据在无竞争情况下的同步原语，进一步提高程序的运行性能</li>
 </ul>
 <blockquote>
-<ul>
-<li><code>Thread.sleep()</code></li>
-<li>设置了 <code>Timeout</code> 参数的 <code>Object.wait()</code></li>
-<li>设置了 <code>Timeout</code> 参数的 <code>Thread.join()</code></li>
-<li><code>LockSupport.parkNanos()</code></li>
-<li><code>LockSupport.parkUntil()</code></li>
-</ul>
+<p>如果说<strong>轻量级锁</strong>是在无竞争的情况下使用 <code>CAS</code> 去<strong>消除同步使用的互斥量</strong></p>
+<p>那<strong>偏向锁</strong>就是在无竞争情况下<strong>把整个同步都消除掉</strong></p>
 </blockquote>
 <ul>
-<li><strong>阻塞</strong> <code>Blocked</code>：线程被阻塞</li>
-</ul>
-<blockquote>
-<p>注意区别阻塞和等待：</p>
-<ul>
-<li>阻塞状态：在等待获取到一个<strong>排他锁</strong>，在另外一个线程放弃这个锁的时候发生；</li>
-<li>等待状态：在等待一段<strong>时间</strong>或者<strong>唤醒动作</strong>的发生，在程序等待进入同步区域的时候发生。</li>
-</ul>
-</blockquote>
-<ul>
-<li><strong>结束</strong> <code>Terminated</code>：线程已经结束执行</li>
+<li><p><strong>含义</strong>：偏向锁会<strong>偏向于第一个获得它的线程</strong>，如果在后面的执行中该锁没有被其他的线程获取，则持有偏向锁的线程将永远不需要再进行同步</p>
+</li>
+<li><p><strong>加锁过程</strong>：启用偏向锁的锁对象在第一次被线程获取时，<code>Mark Word</code> 的锁标志位会被设置为 <code>01</code>，即偏向模式，同时使用 <code>CAS</code> 操作把获取到这个<strong>锁的线程 <code>ID</code></strong> 记录在对象的 <code>Mark Word</code> 中。若操作成功，持有偏向锁的线程以后每次进入这个锁相关的同步块时都可不再进行任何同步操作</p>
+</li>
+<li><p>解锁过程：当有另外的线程去尝试获取这个锁时，根据锁对象目前是否处于被锁定的状态，撤销偏向后恢复到未锁定 <code>01</code> 或轻量级锁定 <code>00</code> 的状态，后续的同步操作就如<strong>轻量级锁执行过程</strong>。如下图：</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/83f2e210-44f0-46ea-a6e5-44ad76256283.png" alt></p>
+</li>
+<li><p><strong>优点</strong>：可提高带有<strong>同步但无竞争</strong>的程序性能，但若程序中大多数锁总被多个线程访问，此模式就没必要了</p>
+</li>
 </ul>
 <h2 id="三-碎碎念"><a href="#三-碎碎念" class="headerlink" title="三.碎碎念"></a>三.碎碎念</h2><blockquote>
-<p>恭喜你！已经看完了前面的文章，相信你对 <code>Java</code> 内存模型与线程已经有一定深度的了解！你可以稍微放松奖励自己一下，可以睡一个美美的觉，明天起来继续冲冲冲！！！</p>
-<p>PS：原本《深入理解Java虚拟机》第3版中还提及了协程，但是我还没学过协程的基本用法，这时候给大家讲解感觉有点打肿脸充胖子的感觉 hhh，明天《第一行代码-第三版》也要到了，待我看完《第一行代码》再补充协程的内容吧 hhhh</p>
+<p>能够写出高性能、高伸缩性的并发程序是一门艺术，而了解并发在底层是如何实现的，则是掌握这门艺术的前提，也是成长为高级程序员的必备知识！</p>
+<p>加油吧！骚年！以梦为马，不负韶华！</p>
 </blockquote>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
 <ul>
 <li>《深入理解Java虚拟机》第3版</li>
-<li><a href="https://juejin.im/post/5bf2977751882505d840321d#heading-18" target="_blank" rel="noopener">理解Java内存模型</a></li>
-<li><a href="https://juejin.im/post/5e771bdd51882549575fb2fb" target="_blank" rel="noopener">Java 多线程学习（7）聊聊 LockSupport.park () 和 LockSupport.unpark ()</a></li>
-<li><a href="https://www.jianshu.com/p/90a036212cb4" target="_blank" rel="noopener">要点提炼 | 理解 JVM 之内存模型 &amp; 线程</a></li>
-<li><a href="https://juejin.im/post/5b87ad31e51d4538e41066e9#comment" target="_blank" rel="noopener">啃碎并发（九）：内存模型之基础概述</a></li>
+<li><a href="https://juejin.im/post/5e6dec87518825493d6aa78f#heading-0" target="_blank" rel="noopener">一、聊聊并发—线程安全到底在说什么</a></li>
+<li><a href="https://www.jianshu.com/p/ca8801044352" target="_blank" rel="noopener">要点提炼 | 理解 JVM 之线程安全 &amp; 锁优化</a></li>
+<li><a href="https://www.zhihu.com/question/270564693" target="_blank" rel="noopener">自旋锁跟轻量级锁的关系是什么？</a></li>
 </ul>
 
             </div>
@@ -958,8 +892,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2020/04/08/yi-ye-gao-dong-java-nei-cun-mo-xing-yu-xian-cheng/">
-                    《一夜搞懂 | Java 内存模型与线程》
+            <a  href="/2020/04/10/yi-ye-gao-dong-jvm-xian-cheng-an-quan-yu-suo-you-hua/">
+                    《一夜搞懂 | JVM 线程安全与锁优化》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -1000,9 +934,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/04/10/yi-ye-gao-dong-jvm-xian-cheng-an-quan-yu-suo-you-hua/">
                     <div class="card-image">
@@ -1020,9 +955,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1035,6 +970,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1065,24 +1001,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/05/yi-ye-gao-dong-jvm-zi-jie-ma-zhi-xing-yin-qing/">
+                <a href="/2020/04/08/yi-ye-gao-dong-java-nei-cun-mo-xing-yu-xian-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="一夜搞懂 | JVM 字节码执行引擎">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="一夜搞懂 | Java 内存模型与线程">
                         
-                        <span class="card-title">一夜搞懂 | JVM 字节码执行引擎</span>
+                        <span class="card-title">一夜搞懂 | Java 内存模型与线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步
+                            Java 的并发采用的是共享内存模型，Java 线程之间的通信总是隐式进行，整个通信过程对程序员完全透明。如果你想设计表现良好的并发程序，理解 Java 内存模型是非常重要的。Java 内存模型规定了如何和何时可以看到由其他线程修改过后的共享变量的值，以及在必须时如何同步的访问共享变量。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-08
                             </span>
                         <span class="publish-author">
                             
@@ -1103,12 +1039,16 @@
                         <span class="chip bg-color">JVM</span>
                     </a>
                     
-                    <a href="/tags/双亲委派/">
-                        <span class="chip bg-color">双亲委派</span>
+                    <a href="/tags/内存模型/">
+                        <span class="chip bg-color">内存模型</span>
                     </a>
                     
-                    <a href="/tags/字节码执行引擎/">
-                        <span class="chip bg-color">字节码执行引擎</span>
+                    <a href="/tags/线程/">
+                        <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
