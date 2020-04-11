@@ -520,7 +520,7 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 </ul>
 <blockquote>
 <ul>
-<li><p>每个方法在执行的同时都会创建一个栈帧，用于存储<strong>局部变量表</strong>、操作数栈、动态链接、方法出口等信息</p>
+<li><p>每个方法在执行的同时都会创建一个栈帧，用于存储<strong>局部变量表</strong>、操作数栈、动态链接、方法出口等方法信息</p>
 </li>
 <li><p>每个方法从调用直至执行完成的过程，就对应着一个栈帧在<strong>虚拟机栈中入栈到出栈</strong>的过程</p>
 </li>
@@ -552,15 +552,18 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 <li>作用：用于存放几乎所有的<strong>对象实例和数组</strong></li>
 </ul>
 <blockquote>
-<p>在 <code>Java</code> 堆中，可能划分出多个<strong>线程私有</strong>的分配缓冲区（<code>Thread Local Allocation Buffer，TLAB</code>），但无论哪个区域，存储的都仍然是对象实例，进一步划分的目的是为了更好地回收内存，或者更快地分配内存</p>
+<p>在 <code>Java</code> 堆中，可能划分出多个<strong>线程私有</strong>的分配缓冲区（<code>Thread Local Allocation Buffer，TLAB</code>），但无论哪个区域，存储的都仍然是对象实例，进一步划分的目的是<strong>为了更好地回收内存，或者更快地分配内存</strong></p>
 </blockquote>
 <ul>
-<li>是垃圾收集器管理的主要区域，也被称做 “<code>GC 堆</code>”(可别叫做垃圾堆orz)</li>
-<li>是 <code>Java</code> 虚拟机所管理的内存中最大的一块</li>
+<li>是垃圾收集器管理的主要区域，也被称做 “ <code>GC 堆</code>”(可别叫做垃圾堆orz)</li>
+<li>是  <code>JVM</code> 所管理的内存中最大的一块</li>
 <li>可处于物理上不连续的内存空间中，只要逻辑上是连续的即可</li>
-<li>在 <code>Java</code> 虚拟机规范中，如果在堆中没有内存完成实例分配，且堆也无法再扩展时，将会抛出 <code>OutOfMemoryError</code> 异常</li>
+<li>在  <code>Java</code> 虚拟机规范中，如果在堆中没有内存完成实例分配，且堆也无法再扩展时，将会抛出 <code>OutOfMemoryError</code> 异常</li>
 </ul>
-<h4 id="2-1-5-方法区"><a href="#2-1-5-方法区" class="headerlink" title="2.1.5 方法区"></a>2.1.5 方法区</h4><ul>
+<h4 id="2-1-5-方法区"><a href="#2-1-5-方法区" class="headerlink" title="2.1.5 方法区"></a>2.1.5 方法区</h4><blockquote>
+<p>注意：方法区必须和虚拟机栈区分开，<strong>方法区不存方法</strong>，虚拟机栈存 <code>Java</code> 方法 </p>
+</blockquote>
+<ul>
 <li><p>定义：与 <code>Java</code> 堆一样，是各个线程共享的内存区域</p>
 </li>
 <li><p>作用：用于存储已被虚拟机加载的<strong>类信息、常量、静态变量</strong>、即时编译器编译后的代码等数据</p>
@@ -572,7 +575,7 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 <p>在 <code>JDK7</code> 的 <code>HotSpot</code> 中，已经把原本放在永久代的<strong>字符串常量池</strong>，<strong>静态变量</strong>移出；</p>
 <p>在<code>JDK8</code>中，废弃永久代的概念，改用<strong>元空间</strong>；</p>
 </li>
-<li><p>对用元空间替换永久代的原因感兴趣的话，可以看下这篇文章：<a href="https://juejin.im/post/5df5fde36fb9a0162c486c71" target="_blank" rel="noopener">一文读懂 - 元空间和永久代</a></p>
+<li><p>对用元空间替换永久代的原因感兴趣的话，可以看下这篇文章：<a href="https://juejin.im/post/5df5fde36fb9a0162c486c71#heading-3" target="_blank" rel="noopener">一文读懂 - 元空间和永久代</a></p>
 </li>
 </ul>
 <blockquote>
@@ -586,26 +589,26 @@ Java与C++之间有一堵由内存动态分配和垃圾回收机制所围成的�
 <li>在 <code>Java</code> 虚拟机规范中，当方法区无法满足内存分配需求时，将抛出 <code>OutOfMemoryError</code> 异常</li>
 </ul>
 <h4 id="2-1-6-运行时常量池"><a href="#2-1-6-运行时常量池" class="headerlink" title="2.1.6 运行时常量池"></a>2.1.6 运行时常量池</h4><blockquote>
-<p><code>Class</code> 文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是<strong>常量池表</strong>，用于存放编译期生成的各种字面量和符号引用，这部分内容将在类加载后进入方法区的运行时常量池中存放</p>
+<p><code>Class</code> 文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是<strong>常量池表</strong>，用于存放编译期生成的各种<strong>字面量和符号引用</strong>，这部分内容将在类加载后进入方法区的运行时常量池中存放</p>
 </blockquote>
 <p>Q1：<strong>字面量是什么</strong></p>
 <p>可以理解为字面意思的常量。</p>
 <pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> a<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//变量</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//b为常量，10为字面量</span>
 string str <span class="token operator">=</span> “hello world！”<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// str 为变量，hello world！为字面量</span></code></pre>
-<p>由例子可知，字面量就是如此容易理解</p>
+<p>由上述代码可知，字面量就是如此朴实无华</p>
 <p>Q2：<strong>符号引用是什么</strong></p>
 <p>可以是任意类型的字面量。只要能无歧义的定位到目标。在编译期间由于暂时不知道类的直接引用，因此先使用符号引用代替。最终还是会转换为直接引用访问目标</p>
 <p>比如：<code>java/lang/StringBuilder</code></p>
 <p>Q3：<strong>运行时常量池是什么</strong></p>
 <ul>
-<li>相对于 <code>Class</code> 文件常量池的一个重要特征是具备<strong>动态性</strong>，体现在并非只有预置入 <code>Class</code> 文件中常量池的内容才能进入方法区运行时常量池，运行期间也可能将新的常量放入池中</li>
+<li>相对于 <code>Class</code> 文件常量池的一个重要特征是具备<strong>动态性</strong>，体现在<strong>并非只有预置入 <code>Class</code> 文件中常量池的内容</strong>才能进入方法区运行时常量池，<strong>运行期间也可能</strong>将新的常量放入池中</li>
 <li>是<strong>方法区</strong>的一部分，会受到方法区内存的限制</li>
 <li>在 <code>Java</code> 虚拟机规范中，当常量池无法再申请到内存时会抛出 <code>OutOfMemoryError</code> 异常</li>
 </ul>
 <h4 id="2-1-7-直接内存"><a href="#2-1-7-直接内存" class="headerlink" title="2.1.7 直接内存"></a>2.1.7 直接内存</h4><ul>
 <li>它并<strong>不是虚拟机运行时数据区的一部分</strong>，也不是《<code>Java</code>虚拟机规范》中定义的内存区域，但是这部分内存也被频繁地调用</li>
-<li>作用：避免了在<code>JAVA</code>堆和<code>Native</code>堆中来回复制数据，因此在一些场景下能显著提高性能</li>
+<li>作用：<strong>避免了在<code>JAVA</code>堆和<code>Native</code>堆中来回复制数据</strong>，因此在一些场景下能显著提高性能</li>
 </ul>
 <blockquote>
 <p><code>JDK1.4</code>中新加入了<code>NIO</code>类，引入了基于通道与缓冲区的<code>IO</code>方式，可以使用<code>Native</code>函数库直接分配<strong>直接内存（堆外内存）</strong>，然后通过<code>DirectByteBuffer</code>作为这块内存的引用进行操作</p>
@@ -679,7 +682,7 @@ string str <span class="token operator">=</span> “hello world！”<span class
 </blockquote>
 <ul>
 <li><p>通过句柄访问对象</p>
-<p>在 <code>Java</code> 堆中划分出一块内存来作为句柄池，<code>reference</code> 存储的是对象的句柄地址，在句柄中包含了对象实例数据与类型数据各自的具体地址信息</p>
+<p>在 <code>Java</code> <strong>堆</strong>中划分出一块内存来作为<strong>句柄池</strong>，<code>reference</code> 存储的是对象的句柄地址，在句柄中包含了对象实例数据与类型数据（方法区中的类信息）各自的具体地址信息</p>
 <p>好处：<code>reference</code> 中存储的是稳定的句柄地址，在对象被移动时只会改变句柄中的实例数据指针，而 <code>reference</code> 本身不需要修改</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202003/26/182731-866743.png" alt="通过句柄访问对象"></p>
 </li>
@@ -697,18 +700,18 @@ string str <span class="token operator">=</span> “hello world！”<span class
 </blockquote>
 <p>Q1:<strong>在<code>JVM</code>中，为什么要把堆与栈分离？栈不是也可以存储数据吗？</strong></p>
 <ul>
-<li><p>从软件设计的角度看，栈代表了处理逻辑，而堆代表了数据，分工明确，处理逻辑更为清晰体现了“分而治之”以及“隔离”的思想。</p>
+<li><p>从<strong>软件设计</strong>的角度看，<strong>栈代表了处理逻辑</strong>，而<strong>堆代表了数据</strong>，分工明确，处理逻辑更为清晰体现了“<strong>分而治之”以及“隔离”的思想。</strong></p>
 </li>
-<li><p>堆与栈的分离，使得堆中的内容可以被多个栈共享（也可以理解为多个线程访问同一个对象）。这样共享的方式有很多收益：提供了一种有效的数据交互方式(如：共享内存)；堆中的共享常量和缓存可以被所有栈访问，节省了空间。</p>
+<li><p>堆与栈的分离，使得<strong>堆中的内容可以被多个栈共享</strong>（也可以理解为<strong>多个线程访问同一个对象</strong>）。这样共享的方式有很多收益：提供了一种有效的数据交互方式(如：<strong>共享内存</strong>)；堆中的共享常量和缓存可以被所有栈访问，节省了空间。</p>
 </li>
 <li><p>栈因为运行时的需要，比如保存系统运行的上下文，需要进行地址段的划分。由于栈只能向上增长，因此就会限制住栈存储内容的能力。而堆不同，堆中的对象是可以根据需要动态增长的，因此栈和堆的拆分，使得动态增长成为可能，相应栈中只需记录堆中的一个地址即可。</p>
 </li>
-<li><p>堆和栈的结合完美体现了面向对象的设计。当我们将对象拆开，你会发现，对象的属性即是数据，存放在堆中；而对象的行为（方法）即是运行逻辑，放在栈中。因此编写对象的时候，其实即编写了数据结构，也编写的处理数据的逻辑。</p>
+<li><p>堆和栈的结合完美<strong>体现了面向对象的设计</strong>。当我们将对象拆开，你会发现，<strong>对象的属性即是数据，存放在堆中</strong>；而对象的<strong>行为（方法）即是运行逻辑，放在栈中</strong>。因此编写对象的时候，其实即编写了数据结构，也编写的处理数据的逻辑。</p>
 </li>
 </ul>
 <p>Q2:<strong>为啥说堆和<code>JVM</code>栈是程序运行的关键</strong></p>
 <ul>
-<li>栈是运行时的单位（解决程序的运行问题，即程序如何执行，或者说如何处理数据），而堆是存储的单位（解决的是数据存储的问题，即数据怎么放、放在哪儿）</li>
+<li><strong>栈是运行时的单位</strong>（解决程序的运行问题，即程序如何执行，或者说如何处理数据），<strong>而堆是存储的单位</strong>（解决的是数据存储的问题，即数据怎么放、放在哪儿）</li>
 <li>堆存储的是对象。栈存储的是基本数据类型和堆中对象的引用；（参数传递的值传递和引用传递）</li>
 </ul>
 <hr>
