@@ -585,7 +585,7 @@
 <ul>
 <li>不允许一个线程丢弃它的最近的 <code>assign</code> 操作，即变量在工作内存中改变了之后必须把该变化同步回主内存</li>
 <li>不允许一个线程无原因地，即没有发生过任何 <code>assign</code> 操作，就把数据从线程的工作内存同步回主内存中</li>
-<li>一个新的变量只能在主内存中 “诞生”，不允许在工作内存中直接使用一个未被初始化（<code>load</code> 或 <code>assign</code>）的变量，即对一个变量实施 <code>use</code>、<code>store</code> 操作之前必须先执行过了 <code>assign</code> 和 <code>load</code> 操作</li>
+<li>一个新的变量只能在主内存中『诞生』 ，不允许在工作内存中直接使用一个未被初始化（<code>load</code> 或 <code>assign</code>）的变量，即对一个变量实施 <code>use</code>、<code>store</code> 操作之前必须先执行过了 <code>assign</code> 和 <code>load</code> 操作</li>
 <li>如果对一个变量执行 <code>lock</code> 操作，那将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行 <code>load</code> 或 <code>assign</code> 操作初始化变量的值</li>
 </ul>
 <blockquote>
@@ -596,11 +596,11 @@
 <li>对一个变量执行 <code>unlock</code> 操作之前，必须先把此变量同步回主内存中</li>
 </ul>
 <blockquote>
-<p>可见这么多规则非常繁琐，实践也麻烦，下面再介绍一个等效判断原则 – 先行发生原则</p>
+<p>可见这么多规则非常繁琐，实践也麻烦，下面再介绍一个等效判断原则 – 『先行发生原则』</p>
 </blockquote>
 <p>A2：先行发生原则：</p>
 <p>是 <code>Java</code> 内存模型中定义的两项操作之间的偏序关系。</p>
-<p>下面例举一些 “天然的” 先行发生关系，无须任何同步器协助就已经存在，可以在编码中直接使用</p>
+<p>下面例举一些 『天然的』先行发生关系，无须任何同步器协助就已经存在，可以在编码中直接使用</p>
 <blockquote>
 <ul>
 <li><strong>程序次序规则</strong>：在<strong>一个线程内</strong>，按照控制流顺序，书写在前面的操作先行发生于书写在后面的操作</li>
@@ -618,7 +618,7 @@
 </ul>
 <blockquote>
 <ul>
-<li><p>可直接保证的原子性变量操作有：<code>read</code>、<code>load</code>、<code>assign</code>、<code>use</code>、<code>store</code> 和 <code>write</code>，因此可认为<strong>基本数据类型的访问读写是具备原子性的</strong></p>
+<li><p>可直接保证的原子性变量操作有：<code>read</code>、<code>load</code>、<code>assign</code>、<code>use</code>、<code>store</code> 和 <code>write</code>，因此可认为<strong>基本数据类型的访问读写具备原子性的特征</strong></p>
 </li>
 <li><p>若需要保证更大范围的原子性，可通过更高层次的字节码指令 <code>monitorenter</code> 和 <code>monitorexit</code> 来隐式地使用 <code>lock</code> 和 <code>unlock</code> 这两个操作，反映到 <code>Java</code> 代码中就是同步代码块 <code>synchronized</code> 关键字</p>
 </li>

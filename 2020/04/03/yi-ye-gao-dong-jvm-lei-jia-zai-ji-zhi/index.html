@@ -488,13 +488,18 @@
 <p>如今，类加载机制也在各个领域大放异彩，在面试中，由类加载机制所衍生出来各类面试题也层出不穷。</p>
 <p>所以，我们要了解下类加载机制，为工作中或者是面试中实际的需要打好良好的基础。</p>
 <h2 id="二-核心知识点归纳"><a href="#二-核心知识点归纳" class="headerlink" title="二.核心知识点归纳"></a>二.核心知识点归纳</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>Q1:<strong><code>JVM</code>类加载机制定义</strong>：</p>
-<p>虚拟机把描述类的数据从<code>Class</code>文件<strong>加载</strong>到内存，并对数据进行<strong>校验</strong>、<strong>转换解析</strong>和<strong>初始化</strong>，最终形成可被虚拟机直接使用的<code>Java</code>类型的过程</p>
+<p>虚拟机把描述类的数据从<code>Class</code>文件<strong>加载</strong>到内存，并对数据进行<strong>校验</strong>、<strong>转换解析</strong>和<strong>初始化</strong>，最终形成可被<strong>虚拟机</strong>直接使用的<code>Java</code>类型的过程</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/ecbc8c95-cd33-44bd-a295-8aa7a80f2756.png" alt="类加载流程"></p>
+<blockquote>
+<p>类加载过程在 <code>Java</code> 执行流程中的位置如下(红框的部分是类加载过程)</p>
+</blockquote>
+<p><img src="https://imgkr.cn-bj.ufileos.com/d741179b-4c68-41c2-9bff-b578036bbc77.png" alt="Java 执行流程"></p>
 <p>Q2：<strong>特性</strong></p>
 <p>运行期类加载。即在<code>Java</code>语言里面，类型的加载、连接和初始化过程都是在程序<strong>运行期</strong>完成的，从而通过牺牲一些性能开销来换取<code>Java</code>程序的高度灵活性</p>
 <blockquote>
 <p>什么是运行期，什么是编译期？</p>
 <ul>
-<li><strong>编译期</strong>是指编译器将<strong>源代码翻译</strong>为<strong>机器能识别的代码</strong>，<code>Java</code>被编译为<code>Jvm</code>认识的<strong>字节码文件</strong></li>
+<li><strong>编译期</strong>是指编译器将<strong>源代码翻译</strong>为<strong>机器能识别的代码</strong>，<code>Java</code>被编译为<code>JVM</code>认识的<strong>字节码文件</strong></li>
 <li><strong>运行期</strong>则是指<code>Java</code>代码的<strong>运行</strong>过程</li>
 </ul>
 </blockquote>
@@ -516,7 +521,7 @@
 <li><p><strong>卸载</strong></p>
 </li>
 </ul>
-<p>其中，验证、准备、解析这3个部分统称为<strong>连接</strong>，流程如下图：</p>
+<p>其中，验证、准备、解析这三个部分统称为<strong>连接</strong>，流程如下图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/02/185624-434838.png" alt="类加载过程"></p>
 <p>  注意：</p>
 <blockquote>
@@ -551,7 +556,7 @@
 <ul>
 <li><p>内容：验证<strong>字节流是否符合<code>Class</code>文件格式的规范</strong>、以及是否能被<strong>当前版本的虚拟机处理</strong></p>
 </li>
-<li><p>目的：保证输入的<strong>字节流</strong>能正确地解析并存储于<strong>方法区</strong>之内，且格式上符合描述一个<code>Java</code>类型信息的要求。只有保证二进制字节流通过了该验证后，它才会进入内存的方法区中进行存储，所以<strong>后续3个验证阶段全部是基于方法区</strong>而不是字节流了</p>
+<li><p>目的：保证输入的<strong>字节流</strong>能正确地解析并存储于<strong>方法区</strong>之内，且格式上符合描述一个<code>Java</code>类型信息的要求。只有保证二进制字节流通过了该验证后，它才会进入内存的方法区中进行存储，所以<strong>后续三个验证阶段全部是基于方法区</strong>而不是字节流了</p>
 </li>
 <li><p>例子：</p>
 <ol>
@@ -688,7 +693,7 @@
 <blockquote>
 <ul>
 <li>准备阶段：变量赋初始零值</li>
-<li>初始化阶段：根据Java程序的设定去初始化类变量和其他资源，或者说是执行类构造器<code>clinit</code>的过程</li>
+<li>初始化阶段：根据 <code>Java</code> 程序的设定去初始化类变量和其他资源，或者说是执行类构造器<code>clinit</code>的过程</li>
 </ul>
 </blockquote>
 <p><code>clinit</code>：由编译器自动收集类中的所有<strong>类变量（静态变量）的赋值动作</strong>和静态语句块<code>static{}</code>中的语句合并产生</p>
