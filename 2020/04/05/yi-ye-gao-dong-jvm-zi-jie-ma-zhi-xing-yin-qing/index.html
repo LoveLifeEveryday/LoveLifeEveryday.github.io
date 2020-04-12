@@ -641,7 +641,7 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h4 id="1-静态分派"><a href="#1-静态分派" class="headerlink" title="1.静态分派"></a>1.静态分派</h4><blockquote>
+<h5 id="1-静态分派"><a href="#1-静态分派" class="headerlink" title="1.静态分派"></a>1.静态分派</h5><blockquote>
 <ul>
 <li>依赖<strong>静态类型</strong>来定位方法的执行版本</li>
 <li>典型应用是<strong>方法重载</strong></li>
@@ -680,7 +680,7 @@
 </blockquote>
 <p>我们的编译器在生成字节码指令的时候会根据变量的<strong>静态类型</strong>选择调用合适的方法。就我们上述的例子而言：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/05/213526-351046.png" alt="字节码指令调用情况"></p>
-<h4 id="2-动态分派"><a href="#2-动态分派" class="headerlink" title="2.动态分派"></a>2.动态分派</h4><blockquote>
+<h5 id="2-动态分派"><a href="#2-动态分派" class="headerlink" title="2.动态分派"></a>2.动态分派</h5><blockquote>
 <ul>
 <li><p>依赖动态类型来定位方法的执行版本</p>
 </li>
@@ -722,11 +722,12 @@
 </blockquote>
 <p>当我们将要调用某个类型实例的具体方法时，会首先将当前实例压入操作数栈，然后我们的 <code>invokevirtual</code> 指令需要完成以下几个步骤才能实现对一个方法的调用：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/05/214835-315188.png" alt></p>
-<p>因此，疑惑自然解决了</p>
-<h4 id="3-单分派"><a href="#3-单分派" class="headerlink" title="3.单分派"></a>3.单分派</h4><ul>
-<li>含义：根据一个宗量对目标方法进行选择（方法的接受者与方法的参数统称为方法的宗量）</li>
+<p>因此，疑惑释然</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/13/001626-835502.png" alt="正解"></p>
+<h5 id="3-单分派"><a href="#3-单分派" class="headerlink" title="3.单分派"></a>3.单分派</h5><ul>
+<li>含义：根据一个宗量对目标方法进行选择（方法的<strong>接受者</strong>与方法的<strong>参数</strong>统称为方法的宗量）</li>
 </ul>
-<h4 id="4-多分派"><a href="#4-多分派" class="headerlink" title="4.多分派"></a>4.多分派</h4><ul>
+<h5 id="4-多分派"><a href="#4-多分派" class="headerlink" title="4.多分派"></a>4.多分派</h5><ul>
 <li>含义：根据多于一个宗量对目标方法进行选择</li>
 </ul>
 <blockquote>
@@ -735,6 +736,7 @@
 <h2 id="三-碎碎念"><a href="#三-碎碎念" class="headerlink" title="三.碎碎念"></a>三.碎碎念</h2><blockquote>
 <p>恭喜你！已经看完了前面的文章，相信你对<code>JVM</code>字节码执行引擎已经有一定深度的了解！你可以稍微放松奖励自己一下，可以睡一个美美的觉，明天起来继续冲冲冲！！！</p>
 </blockquote>
+<p><img src="https://s1.ax1x.com/2020/04/13/GXPkO1.gif" alt="睡觉不香吗"></p>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>
