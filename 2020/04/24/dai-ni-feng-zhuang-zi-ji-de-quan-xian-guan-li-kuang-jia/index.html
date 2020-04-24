@@ -1,0 +1,1458 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="带你封装自己的『权限管理』框架, Sunny">
+    <meta name="description" content="带你封装自己的『权限管理』框架前言
+本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：
+我的 Github 博客
+
+本篇文章需要已经具备的知识：
+Git 与 Github 的基本使用
+Kotlin 语法基础
+Android 开">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>带你封装自己的『权限管理』框架 | Sunny</title>
+    <link rel="icon" type="image/png" href="/blueRabbit.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/rabbit.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sunny</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="https://juejin.im/user/5e429bbc5188254967066d1b/posts" class="waves-effect waves-light">
+      
+      <i class="fas fa-blog" style="zoom: 0.6;"></i>
+      
+      <span>博客</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/rabbit.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sunny</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="https://juejin.im/user/5e429bbc5188254967066d1b/posts" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-blog"></i>
+			
+			Blog
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveLifeEveryday" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveLifeEveryday" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        带你封装自己的『权限管理』框架
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/框架系列/">
+                                <span class="chip bg-color">框架系列</span>
+                            </a>
+                        
+                            <a href="/tags/权限管理/">
+                                <span class="chip bg-color">权限管理</span>
+                            </a>
+                        
+                            <a href="/tags/jitpack/">
+                                <span class="chip bg-color">jitpack</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/框架/" class="post-category">
+                                框架
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-24
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="带你封装自己的『权限管理』框架"><a href="#带你封装自己的『权限管理』框架" class="headerlink" title="带你封装自己的『权限管理』框架"></a>带你封装自己的『权限管理』框架</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：</p>
+<p><a href="https://lovelifeeveryday.github.io/">我的 Github 博客</a></p>
+</blockquote>
+<h2 id="本篇文章需要已经具备的知识："><a href="#本篇文章需要已经具备的知识：" class="headerlink" title="本篇文章需要已经具备的知识："></a>本篇文章需要已经具备的知识：</h2><ul>
+<li><code>Git</code> 与 <code>Github</code> 的基本使用</li>
+<li><code>Kotlin</code> 语法基础</li>
+<li><code>Android</code> 开发基础</li>
+</ul>
+<h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><ul>
+<li>如何封装自己的权限框架</li>
+<li>将开源库发布到 <code>JitPack</code> 仓库的一整套流程</li>
+</ul>
+<h2 id="一-为什么要封装这套框架"><a href="#一-为什么要封装这套框架" class="headerlink" title="一.为什么要封装这套框架"></a>一.为什么要封装这套框架</h2><p>我们在日常开发中，经常需要用到申请运行时权限的知识，于是，经常就写了下面的一大串代码</p>
+<pre class=" language-kotlin"><code class="language-kotlin">
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span>
+    <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span>
+
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    <span class="token comment" spellcheck="true">//申请 CALL_PHONE 权限</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ContextCompat<span class="token punctuation">.</span><span class="token function">checkSelfPermission</span><span class="token punctuation">(</span>
+            <span class="token keyword">this</span><span class="token punctuation">,</span>
+            Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CALL_PHONE
+        <span class="token punctuation">)</span> <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ActivityCompat<span class="token punctuation">.</span><span class="token function">requestPermissions</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span>Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CALL_PHONE<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>
+    requestCode<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    permissions<span class="token operator">:</span> Array<span class="token operator">&lt;</span><span class="token keyword">out</span> String<span class="token operator">></span><span class="token punctuation">,</span>
+    grantResults<span class="token operator">:</span> IntArray
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>requestCode<span class="token punctuation">,</span> permissions<span class="token punctuation">,</span> grantResults<span class="token punctuation">)</span>
+    <span class="token keyword">when</span> <span class="token punctuation">(</span>requestCode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token number">1</span> <span class="token operator">-></span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>grantResults<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> grantResults<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"You denied the permission"</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>麻鸭，头疼，这么多代码，不仅写着难受，看着更是头疼</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JD3EDK.gif" alt="头疼"></p>
+<p>这时候，如果世界简单点，纯粹的，就好了</p>
+<pre class=" language-kotlin"><code class="language-kotlin">XPermission<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>
+    <span class="token keyword">this</span><span class="token punctuation">,</span>
+    Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CALL_PHONE
+<span class="token punctuation">)</span> <span class="token punctuation">{</span> allGranted<span class="token punctuation">,</span> deniedList <span class="token operator">-></span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>allGranted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"You denied <span class="token interpolation variable">$deniedList</span>"</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>是不是感觉世界又友好了很多呢？这段代码比之前的代码量少了很多不说，逻辑更是清晰了很多鸭！</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JD3OGd.gif" alt="滚来了"></p>
+<p>很显然，上面用到了自己封装的框架，有可能你会一脸不屑：『这算啥？<code>Github</code> 上一堆权限申请框架，他们写的这个简洁又漂亮，功能又多又全，超帅的』</p>
+<p> 我想说：『是的，你说的对，虽然 <code>Github</code> 上有这么多，跑得又快又棒的轮子，但是，别人做的菜总归没有自己的香鸭！我们可以通过自己封装一个简单的权限申请框架开始，<strong>学习发布开源库到 <code>Jitpack</code> / <code>Jcenter</code> 的一整套流程</strong>，从而激发自己的学习兴趣，以后自己也多多造轮子（xia zhe teng）！成为 <code>Android</code> 界的轮子哥』</p>
+<p>先为大佬送上笔者已经封装好的轮子：<a href="https://github.com/LoveLifeEveryday/XPermissions" target="_blank" rel="noopener">https://github.com/LoveLifeEveryday/XPermissions</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/172241-501809.png" alt="XPermission"></p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JDJaPe.gif" alt="上车"></p>
+<h2 id="二-入坑之路"><a href="#二-入坑之路" class="headerlink" title="二.入坑之路"></a>二.入坑之路</h2><h3 id="2-1-创建-Android-项目"><a href="#2-1-创建-Android-项目" class="headerlink" title="2.1 创建 Android 项目"></a>2.1 创建 <code>Android</code> 项目</h3><p>新建一个空的 <code>Android</code> 项目</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/173259-26480.png" alt="image-20200424173216404"></p>
+<h3 id="2-2-创建-Github-项目"><a href="#2-2-创建-Github-项目" class="headerlink" title="2.2 创建 Github 项目"></a>2.2 创建 <code>Github</code> 项目</h3><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/172732-65864.png" alt="建库"></p>
+<blockquote>
+<ul>
+<li><p>然后，把该项目 <code>clone</code> 到一个上面已经创建的 <code>Android</code> 项目的位置</p>
+</li>
+<li><p>将克隆下来的所有文件全部复制到上一层目录（注意：复制的时候不要忘记复制 <code>.git</code> 文件）</p>
+</li>
+<li><p>将克隆的 <code>XPermission</code> 目录删除</p>
+</li>
+<li><p>执行一系列的 <code>git add .</code>   <code>git commit -m &quot;First commit&quot;</code>   <code>git push origin master</code>  操作 </p>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-3-实现-XPermission"><a href="#2-3-实现-XPermission" class="headerlink" title="2.3 实现 XPermission"></a>2.3 实现 <code>XPermission</code></h3><ol>
+<li>对着最顶层的 <code>XPermission</code> ，新建一个 <code>module</code> ，选择 <code>Android Library</code></li>
+</ol>
+<p><img src="https://imgkr.cn-bj.ufileos.com/879dcb72-d4e4-4089-8322-7445edfdc316.png" alt="新建 module"></p>
+<p>看到 <code>library</code> 就行，如下</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/2072871a-6285-4b68-94af-80cc9d277ad6.png" alt="新建 library 成功"></p>
+<p>然后，我们思考下，运行时权限的实现思路，有以下三种：</p>
+<ul>
+<li>将运行时权限的操作封装到 <code>BaseActivity</code> 中</li>
+<li>提供一个透明的 <code>Activity</code> 来处理</li>
+<li>提供一个隐藏的 <code>Fragment</code> 来处理</li>
+</ul>
+<p>本文，将根据最后一个思路进行实现</p>
+<h4 id="2-3-1-创建-InvisibleFragment"><a href="#2-3-1-创建-InvisibleFragment" class="headerlink" title="2.3.1 创建 InvisibleFragment"></a>2.3.1 创建 <code>InvisibleFragment</code></h4><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//给  (Boolean, List&lt;String>) -> Unit 指定一个别名</span>
+typealias PermissionCallback <span class="token operator">=</span> <span class="token punctuation">(</span>Boolean<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+
+<span class="token keyword">class</span> InvisibleFragment <span class="token operator">:</span> <span class="token function">Fragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//定义一个 callback 作为运行时权限申请结果的回调通知方式</span>
+    <span class="token keyword">private</span> <span class="token keyword">var</span> callback<span class="token operator">:</span> PermissionCallback<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token comment" spellcheck="true">//定义申请权限的方法,vararg 表示可变长度的 permissions 参数列表</span>
+    <span class="token keyword">fun</span> <span class="token function">requestNow</span><span class="token punctuation">(</span>cb<span class="token operator">:</span> PermissionCallback<span class="token punctuation">,</span> vararg permission<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        callback <span class="token operator">=</span> cb
+        <span class="token function">requestPermissions</span><span class="token punctuation">(</span>permission<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 请求返回结果
+     * @param requestCode Int 请求码
+     * @param permissions Array&lt;String> 权限
+     * @param grantResults IntArray 请求结果
+     */</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>
+        requestCode<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+        permissions<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">,</span>
+        grantResults<span class="token operator">:</span> IntArray
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>requestCode <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// deniedList 用来记录被用户拒绝的权限</span>
+            <span class="token keyword">val</span> deniedList <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> result<span class="token punctuation">)</span> <span class="token keyword">in</span> grantResults<span class="token punctuation">.</span><span class="token function">withIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    deniedList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>permissions<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// allGranted 用来标识是否所有申请的权限都已经授权</span>
+            <span class="token keyword">val</span> allGranted <span class="token operator">=</span> deniedList<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true">//对申请权限的结果进行回调</span>
+            callback<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">{</span> <span class="token function">it</span><span class="token punctuation">(</span>allGranted<span class="token punctuation">,</span> deniedList<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>首先，我们定义一个 <code>callback</code> 作为运行时权限申请结果的回调通知方式</li>
+<li>然后，定义一个 <code>requestNow</code> 方法</li>
+<li>最后重写 <code>onRequestPermissionsResult</code> 方法</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/175734-108221.png" alt="第一大步"></p>
+<h4 id="2-3-2-创建-XPermission"><a href="#2-3-2-创建-XPermission" class="headerlink" title="2.3.2 创建 XPermission"></a>2.3.2 创建 <code>XPermission</code></h4><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">object</span> XPermission <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">const</span> <span class="token keyword">val</span> TAG <span class="token operator">=</span> <span class="token string">"InvisibleFragment"</span>
+    <span class="token keyword">fun</span> <span class="token function">request</span><span class="token punctuation">(</span>
+        activity<span class="token operator">:</span> FragmentActivity<span class="token punctuation">,</span>
+        vararg permission<span class="token operator">:</span> String<span class="token punctuation">,</span>
+        callback<span class="token operator">:</span> PermissionCallback
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> fragmentManager <span class="token operator">=</span> activity<span class="token punctuation">.</span>supportFragmentManager
+        <span class="token keyword">val</span> existedFragment <span class="token operator">=</span> fragmentManager<span class="token punctuation">.</span><span class="token function">findFragmentByTag</span><span class="token punctuation">(</span>TAG<span class="token punctuation">)</span>
+        <span class="token keyword">val</span> fragment <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>existedFragment <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            existedFragment <span class="token keyword">as</span> InvisibleFragment
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">val</span> invisibleFragment <span class="token operator">=</span> <span class="token function">InvisibleFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            fragmentManager<span class="token punctuation">.</span><span class="token function">beginTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>invisibleFragment<span class="token punctuation">,</span> TAG<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">commitNow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            invisibleFragment
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//这里在 permission 前面加个星号的意思是：将数组转化为可变长度参数传递过去</span>
+        fragment<span class="token punctuation">.</span><span class="token function">requestNow</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> <span class="token operator">*</span>permission<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>相信代码大家都看得懂，所以笔者就不写很多注释了（其实是因为懒..）</p>
+</blockquote>
+<h3 id="2-4-测试"><a href="#2-4-测试" class="headerlink" title="2.4 测试"></a>2.4 测试</h3><blockquote>
+<p>在 <code>app\build.gradle</code> 中引入 <code>library</code> </p>
+</blockquote>
+<pre class=" language-groovy"><code class="language-groovy">dependencies <span class="token punctuation">{</span>
+    implementation <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'libs'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'*.jar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    implementation<span class="token string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"</span>
+    implementation <span class="token string">'androidx.appcompat:appcompat:1.1.0'</span>
+    implementation <span class="token string">'androidx.core:core-ktx:1.2.0'</span>
+    implementation <span class="token string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+    testImplementation <span class="token string">'junit:junit:4.12'</span>
+    androidTestImplementation <span class="token string">'androidx.test.ext:junit:1.1.1'</span>
+    androidTestImplementation <span class="token string">'androidx.test.espresso:espresso-core:3.2.0'</span>
+    <span class="token comment" spellcheck="true">//添加这行就行</span>
+    implementation <span class="token function">project</span><span class="token punctuation">(</span><span class="token string">':library'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>然后进行你喜欢的权限申请</p>
+</blockquote>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> MainActivity <span class="token operator">:</span> <span class="token function">AppCompatActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span>
+        makeCallBtn<span class="token punctuation">.</span><span class="token function">setOnClickListener</span> <span class="token punctuation">{</span>
+            XPermission<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CALL_PHONE<span class="token punctuation">)</span> <span class="token punctuation">{</span> allGranted<span class="token punctuation">,</span> deniedList <span class="token operator">-></span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>allGranted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"You  Denied <span class="token interpolation variable">$deniedList</span>"</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> intent <span class="token operator">=</span> <span class="token function">Intent</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CALL<span class="token punctuation">)</span>
+        intent<span class="token punctuation">.</span>data <span class="token operator">=</span> Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"tel:10086"</span><span class="token punctuation">)</span>
+        <span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>如果可以的话，恭喜你，你已经成功一大步了</p>
+<h3 id="2-5-发布到-JitPack"><a href="#2-5-发布到-JitPack" class="headerlink" title="2.5 发布到 JitPack"></a>2.5 发布到 <code>JitPack</code></h3><h4 id="2-5-1-JitPack-简介"><a href="#2-5-1-JitPack-简介" class="headerlink" title="2.5.1 JitPack 简介"></a>2.5.1 <code>JitPack</code> 简介</h4><p><a href="https://jitpack.io/" target="_blank" rel="noopener">JitPack </a>是一个网站，它允许你把 <code>git</code> 托管的 <code>java</code> 或 <code>android</code> 项目（貌似目前仅支持<code>github</code>和码云），轻松发布到 <code>jitpack</code> 的 <code>maven</code> 仓库上，它所有内容都通过内容分发网络（<code>CDN</code>）使用加密 <code>https</code> 连接获取</p>
+<h4 id="2-5-2-为什么用-JitPack"><a href="#2-5-2-为什么用-JitPack" class="headerlink" title="2.5.2 为什么用 JitPack"></a>2.5.2 为什么用 <code>JitPack</code></h4><p>优点：打包比较简单，省时间，背靠 <code>Github</code> 这座大山</p>
+<p>缺点：每次导入库的时候，都要先在根的 <code>build.gradle</code> 文件中添加 <code>maven</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/181324-665069.png" alt="添加 maven"></p>
+<h4 id="2-5-3-步骤"><a href="#2-5-3-步骤" class="headerlink" title="2.5.3 步骤"></a>2.5.3 步骤</h4><ul>
+<li>在根的 <code>build.gradle</code> 中添加 <code>maven</code> 插件</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/dcendents/android-maven-gradle-plugin" target="_blank" rel="noopener">点击查看最新版本</a></p>
+</blockquote>
+<pre class=" language-groovy"><code class="language-groovy">buildscript <span class="token punctuation">{</span>
+    ext<span class="token operator">.</span>kotlin_version <span class="token operator">=</span> <span class="token string">'1.3.71'</span>
+    repositories <span class="token punctuation">{</span>
+        <span class="token function">google</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+    dependencies <span class="token punctuation">{</span>
+        classpath <span class="token string">'com.android.tools.build:gradle:3.5.3'</span>
+        classpath <span class="token string">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span>
+        <span class="token comment" spellcheck="true">//添加 maven 插件</span>
+        classpath <span class="token string">'com.github.dcendents:android-maven-gradle-plugin:2.1'</span>
+        <span class="token comment" spellcheck="true">// NOTE: Do not place your application dependencies here; they belong</span>
+        <span class="token comment" spellcheck="true">// in the individual module build.gradle files</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>在 <code>library</code>目录的 <code>build.gradle</code>下 <code>apply</code> 插件和添加 <code>group</code></li>
+</ul>
+<pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'com.android.library'</span>
+apply plugin<span class="token punctuation">:</span> <span class="token string">'kotlin-android'</span>
+apply plugin<span class="token punctuation">:</span> <span class="token string">'kotlin-android-extensions'</span>
+<span class="token comment" spellcheck="true">//添加下面两行</span>
+apply plugin<span class="token punctuation">:</span> <span class="token string">'com.github.dcendents.android-maven'</span>
+<span class="token comment" spellcheck="true">//这里 LoveLifeEveryday 改为你的 github 账号名，我的是：LoveLifeEveryday</span>
+group<span class="token operator">=</span><span class="token string">'com.github.LoveLifeEveryday'</span>
+android <span class="token punctuation">{</span>
+<span class="token punctuation">...</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>同步一下</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/182025-245388.png" alt="同步"></p>
+<ul>
+<li>在命令行中输入 <code>gradlew install</code> ，从而构建你的 <code>library</code> 到你的本地 <code>maven</code> 仓库</li>
+</ul>
+<p><img src="C:%5CUsers%5Cxucanyou666%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200424182232769.png" alt="image-20200424182232769"></p>
+<blockquote>
+<p>等待 <code>BUILD SUCCESSFUL，</code>若 <code>BUILD FAIL</code>，说明构建失败，这时候你就要按照失败提示去排错，排错完后在执行一遍 <code>gradlew install</code> 命令，直到出现 <code>BUILD SUCCESS</code></p>
+</blockquote>
+<ul>
+<li>把代码提交到本地 <code>git</code> 仓库</li>
+</ul>
+<blockquote>
+<p><code>git add .</code> 和<code>git commit -m “XX”</code></p>
+</blockquote>
+<ul>
+<li>在本地 <code>git</code> 仓库打 <code>tag</code></li>
+</ul>
+<pre class=" language-nginx"><code class="language-nginx">git tag <span class="token operator">-</span>a <span class="token number">1.0</span><span class="token punctuation">.</span><span class="token number">0</span> <span class="token operator">-</span>m <span class="token string">"第一版"</span>
+git push origin <span class="token number">1.0</span><span class="token punctuation">.</span><span class="token number">0</span></code></pre>
+<ul>
+<li>打开你的 <code>libary</code> 的 <code>github</code> 界面，点击 <code>release</code>，如下：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/182841-621904.png" alt="release"></p>
+<ul>
+<li>点击 <code>Draft a new release</code>，新建一个 <code>release</code>，如下：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183001-207910.png" alt="image-20200424182958983"></p>
+<ul>
+<li>然后填信息，如下：</li>
+</ul>
+<p><img src="C:%5CUsers%5Cxucanyou666%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200424183142607.png" alt="image-20200424183142607"></p>
+<ul>
+<li>填好信息后，点击<code>publich release</code>，如下：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183240-37654.png" alt="image-20200424183240337"></p>
+<ul>
+<li>用 <code>GitHub</code> 账号登陆、注册 <a href="https://jitpack.io/" target="_blank" rel="noopener"><code>jitpack</code></a></li>
+<li>登陆后，在地址栏中输入你的 <code>library</code> 的 <code>github</code> 项目地址，然后点击 <code>Look Up</code> ，如下：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183622-320775.png" alt></p>
+<ul>
+<li>然后点击 <code>Get it</code>，它会滚到下面去，你要滚回上面去，先等一会，等 <code>jitpack</code> 那里构建完，会出现一个绿色的 <code>log</code>，则构建成功，如下：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183801-256881.png" alt></p>
+<blockquote>
+<p>然后你就可以愉快的在项目中<strong>按照它的提示</strong>引用你的开源库</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183914-906906.png" alt></p>
+<ul>
+<li>点击那个 <code>jitpack</code> ，把它的链接复制到你的 <code>Readme</code> 中去，如下:</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/184028-195937.png" alt="jitpack"></p>
+<h3 id="2-6-尝试使用你的框架"><a href="#2-6-尝试使用你的框架" class="headerlink" title="2.6 尝试使用你的框架"></a>2.6 尝试使用你的框架</h3><p>当然是在 <code>app\build.gradle</code> 中</p>
+<pre><code>//引用自己的开源库
+implementation &#39;com.github.LoveLifeEveryday:XPermissions:1.0.0&#39;</code></pre><p>然后尝试使用吧</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JDg9eO.gif" alt="完成"></p>
+<h3 id="2-7-美化你的项目"><a href="#2-7-美化你的项目" class="headerlink" title="2.7 美化你的项目"></a>2.7 美化你的项目</h3><p>一个优秀的开源项目，<code>readme</code> 一定不会差</p>
+<p>鲁迅说：『虽然这些工作不会让你的项目变得牛逼，但会让你的项目变得漂亮，方便了其他人去了解你这个项目』</p>
+<blockquote>
+<p>详细的美化操作，可以参考这篇文章：<a href="https://juejin.im/post/5d312fb6f265da1b60293c51" target="_blank" rel="noopener">如何让你的 GitHub 项目表面上更专业</a></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/04/24/JDg1Yj.gif" alt="JDg1Yj.gif"></p>
+<h2 id="三-我在使用中遇到的问题"><a href="#三-我在使用中遇到的问题" class="headerlink" title="三.我在使用中遇到的问题"></a>三.我在使用中遇到的问题</h2><h3 id="3-1-在模拟器上-Call-权限申请无反应"><a href="#3-1-在模拟器上-Call-权限申请无反应" class="headerlink" title="3.1 在模拟器上 Call 权限申请无反应"></a>3.1 在模拟器上 <code>Call</code> 权限申请无反应</h3><ul>
+<li>发生情景：在<strong>逍遥模拟器</strong>上测试 <code>Call</code> 权限</li>
+</ul>
+<blockquote>
+<p>至于我为什么要使用逍遥模拟器，这又是另一个故事了</p>
+</blockquote>
+<ul>
+<li>解决：真机测试正常申请权限，于是百度了一波，发现很多模拟器没有 <code>Call</code> 这个权限（such as 夜神模拟器），我觉得原装的模拟器应该是可以正常的</li>
+<li>结论：模拟器的锅</li>
+</ul>
+<h3 id="3-2-上传到-Jcenter-时-Failed"><a href="#3-2-上传到-Jcenter-时-Failed" class="headerlink" title="3.2 上传到 Jcenter 时 Failed"></a>3.2 上传到 <code>Jcenter</code> 时 <code>Failed</code></h3><ul>
+<li>发生情景：执行上传命令的时候，运行到最后发生错误</li>
+<li>错误：</li>
+</ul>
+<pre><code>* What went wrong:
+Execution failed for task &#39;:utils:bintrayUpload&#39;.
+&gt; org.apache.http.NoHttpResponseException: The target server failed to respond</code></pre><ul>
+<li>过程：<code>Google</code>  &amp;&amp; <code>Baidu</code></li>
+<li>结论：网络问题</li>
+<li>结果：尝试了普通网络和 Ke Xue 上网，还是无法解决，转为使用 <code>JitPack</code></li>
+</ul>
+<blockquote>
+<p>如果想了解，怎么上传到 <code>Jcenter</code> 的话，可以看下这篇文章：<a href="https://segmentfault.com/a/1190000012263759" target="_blank" rel="noopener">AS上传Library到JCenter 教程+踩坑记录</a></p>
+</blockquote>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
+<p>本文参考链接：</p>
+<ul>
+<li>『Android 第一行代码 - 第三版』</li>
+<li><a href="https://segmentfault.com/a/1190000012263759" target="_blank" rel="noopener">AS上传Library到JCenter 教程+踩坑记录</a></li>
+<li><a href="https://juejin.im/post/5d312fb6f265da1b60293c51" target="_blank" rel="noopener">如何让你的 GitHub 项目表面上更专业</a></li>
+<li><a href="https://blog.csdn.net/Rain_9155/article/details/90516026" target="_blank" rel="noopener">快速发布开源库到jitpack</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <a  href="/2020/04/24/dai-ni-feng-zhuang-zi-ji-de-quan-xian-guan-li-kuang-jia/">
+                    《带你封装自己的『权限管理』框架》
+            </a> 由
+            <a href="https://lovelifeeveryday.github.io">
+                Xu Canyou
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/04/24/dai-ni-feng-zhuang-zi-ji-de-quan-xian-guan-li-kuang-jia/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="带你封装自己的『权限管理』框架">
+                        
+                        <span class="card-title">带你封装自己的『权限管理』框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            我们在日常开发中，经常需要用到申请运行时权限的知识，我们可以通过自己封装一个简单的权限申请框架开始，学习发布开源库到 Jitpack / Jcenter 的一整套流程，从而激发自己的学习兴趣，以后自己也多多造轮子！成为 Android 界的轮子哥
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/框架/" class="post-category">
+                                    框架
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/框架系列/">
+                        <span class="chip bg-color">框架系列</span>
+                    </a>
+                    
+                    <a href="/tags/权限管理/">
+                        <span class="chip bg-color">权限管理</span>
+                    </a>
+                    
+                    <a href="/tags/jitpack/">
+                        <span class="chip bg-color">jitpack</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/10/yi-ye-gao-dong-jvm-xian-cheng-an-quan-yu-suo-you-hua/">
+                    <div class="card-image">
+                        
+                        <img src="https://imgkr.cn-bj.ufileos.com/24c49703-86ce-4c51-be3c-10f32db03a61.png" class="responsive-img" alt="一夜搞懂 | JVM 线程安全与锁优化">
+                        
+                        <span class="card-title">一夜搞懂 | JVM 线程安全与锁优化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            并发编程的目的是为了让程序运行得更快，提高程序的响应速度，虽然我们希望通过多线程执行任务让程序运行得更快，但是同时也会面临非常多的挑战，比如像线程安全问题、线程上下文切换的问题、硬件和软件资源限制等问题，这些都是并发编程给我们带来的难题。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                    <a href="/tags/线程/">
+                        <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                    <a href="/tags/线程安全/">
+                        <span class="chip bg-color">线程安全</span>
+                    </a>
+                    
+                    <a href="/tags/锁优化/">
+                        <span class="chip bg-color">锁优化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://lovelifeeveryday.github.io" target="_blank">Xu Canyou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:913710642@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=913710642" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 913710642" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+
+</body>
+
+</html>

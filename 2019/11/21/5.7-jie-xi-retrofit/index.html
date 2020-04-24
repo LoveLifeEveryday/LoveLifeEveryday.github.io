@@ -478,7 +478,7 @@
 </blockquote>
 <h2 id="1-什么是Retrofit？"><a href="#1-什么是Retrofit？" class="headerlink" title="1.什么是Retrofit？"></a>1.什么是Retrofit？</h2><p>Retrofit是<strong>基于OkHttp</strong>实现的，使用<strong>运行时注解</strong>的方式提供功能</p>
 <h2 id="2-基本用法"><a href="#2-基本用法" class="headerlink" title="2.基本用法"></a>2.基本用法</h2><h3 id="2-1-导入框架"><a href="#2-1-导入框架" class="headerlink" title="2.1 导入框架"></a>2.1 导入框架</h3><pre class=" language-xml"><code class="language-xml">implementation 'com.squareup.retrofit2:retrofit:2.0.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.4.1'  
+implementation 'com.squareup.okhttp3:okhttp:3.4.1'  
  implementation 'com.squareup.retrofit2:converter-gson:2.0.2'  //返回值为gson数据
  implementation 'com.google.code.gson:gson:2.8.5'   //gson
 implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'  //rxjava</code></pre>
@@ -573,6 +573,22 @@ File file<span class="token operator">=</span><span class="token keyword">new</s
         <span class="token annotation punctuation">@GET</span><span class="token punctuation">(</span><span class="token string">"some/endpoint"</span><span class="token punctuation">)</span>
         Call<span class="token operator">&lt;</span>RequestBody<span class="token operator">></span> <span class="token function">getCarType</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Header</span><span class="token punctuation">(</span><span class="token string">"Location"</span><span class="token punctuation">)</span> String location<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
+<h3 id="5-Retrofit-构建器的最佳写法"><a href="#5-Retrofit-构建器的最佳写法" class="headerlink" title="5. Retrofit 构建器的最佳写法"></a>5. <code>Retrofit</code> 构建器的最佳写法</h3><ul>
+<li><code>ServiceCreator</code>单例类</li>
+</ul>
+<pre class=" language-kotlin"><code class="language-kotlin">    <span class="token keyword">object</span> ServiceCreator <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">const</span> <span class="token keyword">val</span> BASE_URL <span class="token operator">=</span> <span class="token string">"http://www.xcynice.xyz/"</span>
+        <span class="token keyword">private</span> <span class="token keyword">val</span> retrofit <span class="token operator">=</span> Retrofit<span class="token punctuation">.</span><span class="token function">Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">baseUrl</span><span class="token punctuation">(</span>BASE_URL<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">addConverterFactory</span><span class="token punctuation">(</span>GsonConverterFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">create</span><span class="token punctuation">(</span>serviceClass<span class="token operator">:</span> Class<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> retrofit<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>serviceClass<span class="token punctuation">)</span>
+
+        <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token keyword">reified</span> T<span class="token operator">></span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span>T<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span></code></pre>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//调用</span>
+<span class="token keyword">val</span> appService<span class="token operator">=</span>ServiceCreator<span class="token punctuation">.</span>create<span class="token operator">&lt;</span>AppService<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -779,19 +795,19 @@ File file<span class="token operator">=</span><span class="token keyword">new</s
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/21/6.4-jie-gou-xing-she-ji-mo-shi/">
+                <a href="/2019/11/21/6.1-she-ji-mo-shi-liu-da-yuan-ze/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="6.4 结构型设计模式">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="6.1 设计模式六大原则">
                         
-                        <span class="card-title">6.4 结构型设计模式</span>
+                        <span class="card-title">6.1 设计模式六大原则</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是结构型设计模式？其实结构型设计模式是为了解决模块间的**耦合**问题
+                            单一职责原则
                         
                     </div>
                     <div class="publish-info">
