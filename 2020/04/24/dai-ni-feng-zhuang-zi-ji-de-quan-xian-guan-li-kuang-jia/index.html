@@ -550,7 +550,7 @@ Android 开">
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/172241-501809.png" alt="XPermission"></p>
 <p><img src="https://s1.ax1x.com/2020/04/24/JDJaPe.gif" alt="上车"></p>
 <h2 id="二-入坑之路"><a href="#二-入坑之路" class="headerlink" title="二.入坑之路"></a>二.入坑之路</h2><h3 id="2-1-创建-Android-项目"><a href="#2-1-创建-Android-项目" class="headerlink" title="2.1 创建 Android 项目"></a>2.1 创建 <code>Android</code> 项目</h3><p>新建一个空的 <code>Android</code> 项目</p>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/173259-26480.png" alt="image-20200424173216404"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/173259-26480.png" alt="创建项目"></p>
 <h3 id="2-2-创建-Github-项目"><a href="#2-2-创建-Github-项目" class="headerlink" title="2.2 创建 Github 项目"></a>2.2 创建 <code>Github</code> 项目</h3><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/172732-65864.png" alt="建库"></p>
 <blockquote>
 <ul>
@@ -733,7 +733,7 @@ android <span class="token punctuation">{</span>
 <ul>
 <li>在命令行中输入 <code>gradlew install</code> ，从而构建你的 <code>library</code> 到你的本地 <code>maven</code> 仓库</li>
 </ul>
-<p><img src="C:%5CUsers%5Cxucanyou666%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200424182232769.png" alt="image-20200424182232769"></p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/10591d8b-bf7f-4ff1-b306-e69985e7e665.png" alt="gradlew install"></p>
 <blockquote>
 <p>等待 <code>BUILD SUCCESSFUL，</code>若 <code>BUILD FAIL</code>，说明构建失败，这时候你就要按照失败提示去排错，排错完后在执行一遍 <code>gradlew install</code> 命令，直到出现 <code>BUILD SUCCESS</code></p>
 </blockquote>
@@ -759,11 +759,11 @@ git push origin <span class="token number">1.0</span><span class="token punctuat
 <ul>
 <li>然后填信息，如下：</li>
 </ul>
-<p><img src="C:%5CUsers%5Cxucanyou666%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200424183142607.png" alt="image-20200424183142607"></p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/a9d1e993-bbd6-467b-85b6-2a9ae17a73ad.png" alt="填信息"></p>
 <ul>
 <li>填好信息后，点击<code>publich release</code>，如下：</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183240-37654.png" alt="image-20200424183240337"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/24/183240-37654.png" alt></p>
 <ul>
 <li>用 <code>GitHub</code> 账号登陆、注册 <a href="https://jitpack.io/" target="_blank" rel="noopener"><code>jitpack</code></a></li>
 <li>登陆后，在地址栏中输入你的 <code>library</code> 的 <code>github</code> 项目地址，然后点击 <code>Look Up</code> ，如下：</li>
@@ -790,7 +790,7 @@ implementation &#39;com.github.LoveLifeEveryday:XPermissions:1.0.0&#39;</code></
 <blockquote>
 <p>详细的美化操作，可以参考这篇文章：<a href="https://juejin.im/post/5d312fb6f265da1b60293c51" target="_blank" rel="noopener">如何让你的 GitHub 项目表面上更专业</a></p>
 </blockquote>
-<p><img src="https://s1.ax1x.com/2020/04/24/JDg1Yj.gif" alt="JDg1Yj.gif"></p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JDg1Yj.gif" alt="好看"></p>
 <h2 id="三-我在使用中遇到的问题"><a href="#三-我在使用中遇到的问题" class="headerlink" title="三.我在使用中遇到的问题"></a>三.我在使用中遇到的问题</h2><h3 id="3-1-在模拟器上-Call-权限申请无反应"><a href="#3-1-在模拟器上-Call-权限申请无反应" class="headerlink" title="3.1 在模拟器上 Call 权限申请无反应"></a>3.1 在模拟器上 <code>Call</code> 权限申请无反应</h3><ul>
 <li>发生情景：在<strong>逍遥模拟器</strong>上测试 <code>Call</code> 权限</li>
 </ul>
@@ -798,7 +798,7 @@ implementation &#39;com.github.LoveLifeEveryday:XPermissions:1.0.0&#39;</code></
 <p>至于我为什么要使用逍遥模拟器，这又是另一个故事了</p>
 </blockquote>
 <ul>
-<li>解决：真机测试正常申请权限，于是百度了一波，发现很多模拟器没有 <code>Call</code> 这个权限（such as 夜神模拟器），我觉得原装的模拟器应该是可以正常的</li>
+<li>解决：真机测试正常申请权限，于是百度了一波，发现很多模拟器没有 <code>Call</code> 这个权限（such as 夜神模拟器），我觉得原装的模拟器应该是可以正常运行的</li>
 <li>结论：模拟器的锅</li>
 </ul>
 <h3 id="3-2-上传到-Jcenter-时-Failed"><a href="#3-2-上传到-Jcenter-时-Failed" class="headerlink" title="3.2 上传到 Jcenter 时 Failed"></a>3.2 上传到 <code>Jcenter</code> 时 <code>Failed</code></h3><ul>
