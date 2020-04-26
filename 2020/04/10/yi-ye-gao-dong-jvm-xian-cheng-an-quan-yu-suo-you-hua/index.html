@@ -688,7 +688,7 @@
 <blockquote>
 <p>另外，如果有<strong>两条以上的线程争用同一个锁</strong>，那轻量级锁就不再有效，要<strong>膨胀为重量级锁</strong>，锁标志位变为 <code>10</code>，<code>Mark Word</code> 中存储的就是指向重量级锁的指针，后面等待锁的线程也要进入阻塞状态</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/10/171141-629261.png" alt="加锁流程"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/26/091431-315359.png" alt="加锁流程"></p>
 <ul>
 <li><p><strong>解锁过程</strong>：若对象的 <code>Mark Word</code> 仍指向着线程的 <code>Lock Record</code>，就用 <code>CAS</code> 操作把对象当前的 <code>Mark Word</code> 和线程中复制的 <code>Displaced Mark Word</code> 替换回来。若替换成功，那么就完成了整个同步过程；反之，说明有其他线程尝试获取该锁，那么就要在释放锁的同时唤醒被挂起的线程</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202004/10/171913-572450.png" alt="解锁过程"></p>
