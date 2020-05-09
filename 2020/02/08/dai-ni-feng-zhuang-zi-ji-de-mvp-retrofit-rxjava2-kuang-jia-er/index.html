@@ -535,6 +535,7 @@
     implementation <span class="token string">'com.squareup.retrofit2:converter-gson:2.4.0'</span>
     implementation <span class="token string">'io.reactivex.rxjava2:rxandroid:2.0.2'</span>
     implementation <span class="token string">'com.squareup.okhttp3:logging-interceptor:3.4.1'</span>
+    implementation <span class="token string">'com.squareup.okhttp3:logging-interceptor:3.4.1'</span>
 
     <span class="token comment" spellcheck="true">/*glide*/</span>
     implementation <span class="token string">'com.github.bumptech.glide:glide:4.10.0'</span>
@@ -969,15 +970,18 @@
      * errorCode : 0
      * errorMsg :
      */</span>
-    <span class="token keyword">public</span> T data<span class="token punctuation">;</span>
+
     <span class="token keyword">public</span> <span class="token keyword">int</span> errorCode<span class="token punctuation">;</span>
     <span class="token keyword">public</span> String errorMsg<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> T data<span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token function">BaseBean</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">,</span> String data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>errorCode <span class="token operator">=</span> code<span class="token punctuation">;</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> data<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+
+<span class="token punctuation">}</span>
+</code></pre>
 <h4 id="2-1-7-BaseView"><a href="#2-1-7-BaseView" class="headerlink" title="2.1.7 BaseView"></a>2.1.7 <code>BaseView</code></h4><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * Description : BaseView
@@ -1147,7 +1151,6 @@
 <p><code>Retrofit</code>的配置类，在里面初始化了<code>apiServer</code>对象，并配置了日志信息，超时时间，<code>Cookie</code>持久化，用了静态内部类的单例模式</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
-
 <span class="token comment" spellcheck="true">/**
  * Description : RetrofitService
  *
@@ -1201,12 +1204,13 @@
                 <span class="token comment" spellcheck="true">//设置超时时间</span>
                 <span class="token punctuation">.</span><span class="token function">connectTimeout</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span>
                 <span class="token comment" spellcheck="true">//设置Cookie持久化</span>
-                <span class="token punctuation">.</span><span class="token function">cookieJar</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CookiesManager</span><span class="token punctuation">(</span>YUtils<span class="token punctuation">.</span><span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">cookieJar</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CookiesManager</span><span class="token punctuation">(</span>XUtil<span class="token punctuation">.</span><span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token comment" spellcheck="true">//关联okHttp并加上rxJava和Gson的配置和baseUrl</span>
         Retrofit retrofit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Retrofit<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">client</span><span class="token punctuation">(</span>okHttpClient<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">addConverterFactory</span><span class="token punctuation">(</span>ScalarsConverterFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">addConverterFactory</span><span class="token punctuation">(</span>BaseConverterFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">addCallAdapterFactory</span><span class="token punctuation">(</span>RxJava2CallAdapterFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">baseUrl</span><span class="token punctuation">(</span>API<span class="token punctuation">.</span>BASE_URL<span class="token punctuation">)</span>
@@ -1616,6 +1620,8 @@
 <p>发生问题的场景：笔者在<code>Presenter</code>中请求文章列表的数据的时候，会自动显示和隐藏进度条，但请求完文章列表后，不能自动隐藏</p>
 </blockquote>
 <p>经过浏览代码，发现，我的请求文章列表的方法写多了一次，解决方法：只保存<code>onResume</code>里面的一次</p>
+<h2 id="四-快捷体验"><a href="#四-快捷体验" class="headerlink" title="四.快捷体验"></a>四.快捷体验</h2><p>如果你想更加简单地使用这套框架，笔者特地为您准备了我已经封装好的 <code>MVP</code> 框架，你只需要导入依赖即可享受如上的快捷的开发体验，详情请见 <code>github</code></p>
+<p><code>github</code> 地址：<a href="https://github.com/LoveLifeEveryday/XMvp" target="_blank" rel="noopener">https://github.com/LoveLifeEveryday/XMvp</a></p>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
 <p>本文参考链接：</p>

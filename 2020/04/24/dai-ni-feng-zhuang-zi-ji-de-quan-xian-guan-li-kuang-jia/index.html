@@ -577,15 +577,19 @@ Android 开">
 <li>提供一个隐藏的 <code>Fragment</code> 来处理</li>
 </ul>
 <p>本文，将根据最后一个思路进行实现</p>
-<h4 id="2-3-1-创建-InvisibleFragment"><a href="#2-3-1-创建-InvisibleFragment" class="headerlink" title="2.3.1 创建 InvisibleFragment"></a>2.3.1 创建 <code>InvisibleFragment</code></h4><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//给  (Boolean, List&lt;String>) -> Unit 指定一个别名</span>
+<h4 id="2-3-1-创建-InvisibleFragment"><a href="#2-3-1-创建-InvisibleFragment" class="headerlink" title="2.3.1 创建 InvisibleFragment"></a>2.3.1 创建 <code>InvisibleFragment</code></h4><pre class=" language-kotlin"><code class="language-kotlin">
+<span class="token comment" spellcheck="true">/**
+ * created by xucanyou666
+ * on 2020/4/23 19:21
+ * email：913710642@qq.com
+ */</span>
+
 typealias PermissionCallback <span class="token operator">=</span> <span class="token punctuation">(</span>Boolean<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
 
 <span class="token keyword">class</span> InvisibleFragment <span class="token operator">:</span> <span class="token function">Fragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    <span class="token comment" spellcheck="true">//定义一个 callback 作为运行时权限申请结果的回调通知方式</span>
     <span class="token keyword">private</span> <span class="token keyword">var</span> callback<span class="token operator">:</span> PermissionCallback<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
 
-    <span class="token comment" spellcheck="true">//定义申请权限的方法,vararg 表示可变长度的 permissions 参数列表</span>
     <span class="token keyword">fun</span> <span class="token function">requestNow</span><span class="token punctuation">(</span>cb<span class="token operator">:</span> PermissionCallback<span class="token punctuation">,</span> vararg permission<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         callback <span class="token operator">=</span> cb
         <span class="token function">requestPermissions</span><span class="token punctuation">(</span>permission<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -603,14 +607,12 @@ typealias PermissionCallback <span class="token operator">=</span> <span class="
         grantResults<span class="token operator">:</span> IntArray
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>requestCode <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// deniedList 用来记录被用户拒绝的权限</span>
             <span class="token keyword">val</span> deniedList <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
             <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> result<span class="token punctuation">)</span> <span class="token keyword">in</span> grantResults<span class="token punctuation">.</span><span class="token function">withIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     deniedList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>permissions<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
                 <span class="token punctuation">}</span>
             <span class="token punctuation">}</span>
-            <span class="token comment" spellcheck="true">// allGranted 用来标识是否所有申请的权限都已经授权</span>
             <span class="token keyword">val</span> allGranted <span class="token operator">=</span> deniedList<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
             <span class="token comment" spellcheck="true">//对申请权限的结果进行回调</span>
             callback<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">{</span> <span class="token function">it</span><span class="token punctuation">(</span>allGranted<span class="token punctuation">,</span> deniedList<span class="token punctuation">)</span> <span class="token punctuation">}</span>
