@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-06-24T10:00:28.789Z</updated>
+  <updated>2020-06-24T10:07:50.445Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>练手项目 | 玩 Android</title>
     <link href="https://lovelifeeveryday.github.io/2020/06/24/wan-android-ruan-jian-she-ji-zong-jie/"/>
     <id>https://lovelifeeveryday.github.io/2020/06/24/wan-android-ruan-jian-she-ji-zong-jie/</id>
-    <published>2020-06-24T09:52:17.929Z</published>
-    <updated>2020-06-24T10:00:28.789Z</updated>
+    <published>2020-06-24T10:04:01.000Z</published>
+    <updated>2020-06-24T10:07:50.445Z</updated>
     
     <summary type="html">
     
@@ -36,6 +36,10 @@
     </summary>
     
     
+      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
+    
+    
+      <category term="练手项目" scheme="https://lovelifeeveryday.github.io/tags/%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
