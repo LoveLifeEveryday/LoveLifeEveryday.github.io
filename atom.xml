@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-05-09T06:18:59.584Z</updated>
+  <updated>2020-06-24T10:00:28.789Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://lovelifeeveryday.github.io/2020/06/24/wan-android-ruan-jian-she-ji-zong-jie/"/>
+    <id>https://lovelifeeveryday.github.io/2020/06/24/wan-android-ruan-jian-she-ji-zong-jie/</id>
+    <published>2020-06-24T09:52:17.929Z</published>
+    <updated>2020-06-24T10:00:28.789Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;玩-Android-软件设计总结&quot;&gt;&lt;a href=&quot;#玩-Android-软件设计总结&quot; class=&quot;headerlink&quot; title=&quot;玩 Android 软件设计总结&quot;&gt;&lt;/a&gt;玩 Android
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>带你封装自己的『权限管理』框架</title>
@@ -298,7 +321,7 @@
     <link href="https://lovelifeeveryday.github.io/2020/03/15/zi-ding-xiang-xia-dai-ni-ao-you-ying-yong-ceng/"/>
     <id>https://lovelifeeveryday.github.io/2020/03/15/zi-ding-xiang-xia-dai-ni-ao-you-ying-yong-ceng/</id>
     <published>2020-03-15T12:32:01.000Z</published>
-    <updated>2020-05-14T06:12:25.668Z</updated>
+    <updated>2020-05-21T03:39:06.853Z</updated>
     
     <summary type="html">
     
@@ -327,7 +350,7 @@
     <link href="https://lovelifeeveryday.github.io/2020/03/13/zi-ding-xiang-xia-ji-wang-he-ying-te-wang/"/>
     <id>https://lovelifeeveryday.github.io/2020/03/13/zi-ding-xiang-xia-ji-wang-he-ying-te-wang/</id>
     <published>2020-03-13T13:23:01.000Z</published>
-    <updated>2020-04-14T10:53:59.544Z</updated>
+    <updated>2020-05-21T03:39:06.331Z</updated>
     
     <summary type="html">
     
@@ -552,33 +575,6 @@
         
         
           &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 IPC 之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="开发艺术探索" scheme="https://lovelifeeveryday.github.io/tags/%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进阶之路 | 奇妙的Activity之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-activity-zhi-lu/</id>
-    <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-02-19T06:39:18.641Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;进阶之路-奇妙的Activity之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Activity之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Activity之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Activity之旅&lt;/h1&gt;&lt;h2
         
       
     
