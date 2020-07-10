@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-06-24T10:07:50.445Z</updated>
+  <updated>2020-07-10T07:32:18.187Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计网 | post 和 get 的兄弟情深</title>
+    <link href="https://lovelifeeveryday.github.io/2020/07/10/ji-wang-post-he-get-de-xiong-di-qing-shen/"/>
+    <id>https://lovelifeeveryday.github.io/2020/07/10/ji-wang-post-he-get-de-xiong-di-qing-shen/</id>
+    <published>2020-07-10T07:30:01.000Z</published>
+    <updated>2020-07-10T07:32:18.187Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;计网-post-和-get-的兄弟情深&quot;&gt;&lt;a href=&quot;#计网-post-和-get-的兄弟情深&quot; class=&quot;headerlink&quot; title=&quot;计网 | post 和 get 的兄弟情深&quot;&gt;&lt;/a&gt;计网 | post 和 get
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="https://lovelifeeveryday.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="应用层" scheme="https://lovelifeeveryday.github.io/tags/%E5%BA%94%E7%94%A8%E5%B1%82/"/>
+    
+      <category term="图解HTTP" scheme="https://lovelifeeveryday.github.io/tags/%E5%9B%BE%E8%A7%A3HTTP/"/>
+    
+      <category term="http" scheme="https://lovelifeeveryday.github.io/tags/http/"/>
+    
+  </entry>
   
   <entry>
     <title>练手项目 | 玩 Android</title>
@@ -552,33 +583,6 @@
         
         
           &lt;h1 id=&quot;进阶之路-奇妙的View之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的View之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的View之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的View之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="开发艺术探索" scheme="https://lovelifeeveryday.github.io/tags/%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进阶之路 | 奇妙的 IPC 之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/12/jin-jie-zhi-lu-qi-miao-de-ipc-zhi-lu/</id>
-    <published>2020-02-12T10:06:01.000Z</published>
-    <updated>2020-03-08T06:09:32.144Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;进阶之路-奇妙的-IPC-之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的-IPC-之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的 IPC 之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的 IPC 之旅&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a
         
       
     
