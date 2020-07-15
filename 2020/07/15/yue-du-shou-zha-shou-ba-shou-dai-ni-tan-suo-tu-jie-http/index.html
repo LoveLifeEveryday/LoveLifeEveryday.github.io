@@ -1,0 +1,1638 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="阅读手札 | 手把手带你探索『图解 HTTP』, Sunny">
+    <meta name="description" content="阅读手札 | 手把手带你探索『图解 HTTP』前言
+本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：
+我的 Github 博客
+
+学习清单：
+一、网络基础 TCP/IP通常使用的网络（包括互联网）是在 TCP/IP 协议族的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>阅读手札 | 手把手带你探索『图解 HTTP』 | Sunny</title>
+    <link rel="icon" type="image/png" href="/blueRabbit.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/rabbit.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sunny</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="https://juejin.im/user/5e429bbc5188254967066d1b/posts" class="waves-effect waves-light">
+      
+      <i class="fas fa-blog" style="zoom: 0.6;"></i>
+      
+      <span>博客</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/rabbit.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sunny</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="https://juejin.im/user/5e429bbc5188254967066d1b/posts" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-blog"></i>
+			
+			Blog
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LoveLifeEveryday" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LoveLifeEveryday" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        阅读手札 | 手把手带你探索『图解 HTTP』
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/图解-HTTP/">
+                                <span class="chip bg-color">图解 HTTP</span>
+                            </a>
+                        
+                            <a href="/tags/TCP-IP/">
+                                <span class="chip bg-color">TCP/IP</span>
+                            </a>
+                        
+                            <a href="/tags/HTTP/">
+                                <span class="chip bg-color">HTTP</span>
+                            </a>
+                        
+                            <a href="/tags/阅读笔记/">
+                                <span class="chip bg-color">阅读笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/计算机网络/" class="post-category">
+                                计算机网络
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-07-15
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="阅读手札-手把手带你探索『图解-HTTP』"><a href="#阅读手札-手把手带你探索『图解-HTTP』" class="headerlink" title="阅读手札 | 手把手带你探索『图解 HTTP』"></a>阅读手札 | 手把手带你探索『图解 HTTP』</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文已经收录到我的 <code>Github</code> 个人博客，欢迎大佬们光临寒舍：</p>
+<p><a href="https://lovelifeeveryday.github.io/">我的 Github 博客</a></p>
+</blockquote>
+<h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><p><img src="https://imgkr.cn-bj.ufileos.com/0fb7a392-71c6-48df-9150-85670e3d4dea.png" alt></p>
+<h2 id="一、网络基础-TCP-IP"><a href="#一、网络基础-TCP-IP" class="headerlink" title="一、网络基础 TCP/IP"></a>一、网络基础 <code>TCP/IP</code></h2><p>通常使用的网络（包括互联网）是在 <code>TCP/IP</code> 协议族的基础上运作，而 <code>HTTP</code> 属于它内部的一个<strong>子集</strong></p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/3764a1be-a503-4057-9745-82a010940638.png" alt></p>
+<h3 id="1-1-层次划分"><a href="#1-1-层次划分" class="headerlink" title="1.1 层次划分"></a>1.1 层次划分</h3><ul>
+<li><strong>应用层：</strong> 决定了<strong>向用户提供应用服务时通信</strong>的活动，比如 <code>FTP</code>、<code>DNS</code>、<code>HTTP</code></li>
+</ul>
+<blockquote>
+<p>易记：应用层，顾名思义，是提供给应用服务的活动，然后现在最火的应用是微信（通信功能），所以就是：向用户提供<strong>应用</strong>服务时<strong>通信</strong></p>
+</blockquote>
+<ul>
+<li><strong>传输层：</strong> <strong>对上层应用层</strong>，<strong>提供</strong>处于网络连接中的两台<strong>计算机之间的数据传输</strong>，比如 <code>TCP</code>、<code>UDP</code></li>
+</ul>
+<blockquote>
+<p>易记：传输层，顾名思义，提供计算机之间的数据传输</p>
+</blockquote>
+<ul>
+<li><strong>网络层：</strong> 用来<strong>处理在网络上流动的数据包</strong>，该层规定了通过怎样的<strong>路径</strong>到达对方计算机，并把数据包传送给对方；与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线</li>
+</ul>
+<blockquote>
+<p>易记：网络层，顾名思义，处理在网络上流动的数据包，规定通过什么路径</p>
+</blockquote>
+<ul>
+<li><strong>数据链路层：</strong> 用来<strong>处理连接网络的硬件</strong>部分</li>
+</ul>
+<blockquote>
+<p>易记：数据链路层，顾名思义，链路偏硬件的东西，而数据是偏软件层面的东西，自然可以想到是起到连接作用</p>
+</blockquote>
+<h3 id="1-2-通信的过程"><a href="#1-2-通信的过程" class="headerlink" title="1.2 通信的过程"></a>1.2 通信的过程</h3><ol>
+<li>首先作为发送端的客户端在<strong>应用层</strong>（<code>HTTP</code> 协议）发出获取 <code>Web</code> 页面的 <code>HTTP</code> 请求</li>
+<li>接着，为了传输方便，在<strong>传输层</strong>（<code>TCP</code> 协议）把从应用层处收到的数据（<code>HTTP</code> 请求报文）进行<strong>分割</strong>，并在各个报文上<strong>打上标记序号及端口号</strong>后转发给网络层</li>
+<li>在<strong>网络层</strong>（<code>IP</code> 协议），增加作为<strong>通信目的地</strong>的 <code>MAC</code> 地址后转发给链路层。这样一来，发往网络的通信请求就准备齐全了</li>
+<li>接收端的服务器在<strong>链路层</strong>接收到数据，<strong>按序往上层发送</strong>，一直到应用层。当传输到应用层，才能算真正接收到由客户端发送过来的 <code>HTTP</code> 请求</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/07/164155-310814.png" alt="image-20200707164153058"></p>
+<h3 id="1-3-三次握手"><a href="#1-3-三次握手" class="headerlink" title="1.3 三次握手"></a>1.3 三次握手</h3><blockquote>
+<p>之前已经笔者已经写了，因此在这里就不再赘述，点击链接即可跳转：<a href="https://juejin.im/post/5e742c4b51882549746817a2#heading-12" target="_blank" rel="noopener"><code>TCP</code> 连接管理</a></p>
+</blockquote>
+<h3 id="1-4-各协议与-HTTP-协议的关系"><a href="#1-4-各协议与-HTTP-协议的关系" class="headerlink" title="1.4 各协议与 HTTP 协议的关系"></a>1.4 各协议与 <code>HTTP</code> 协议的关系</h3><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/07/173710-724833.png" alt="image-20200707164806629"></p>
+<h3 id="1-5-URI-和-URL"><a href="#1-5-URI-和-URL" class="headerlink" title="1.5 URI 和 URL"></a>1.5 URI 和 URL</h3><p>Q1：<code>URL</code> 和 <code>URI</code> 的区别</p>
+<ul>
+<li><code>URI</code> 用字符串标识某一互联网资源</li>
+<li><code>URL</code> 表示资源的地点</li>
+</ul>
+<blockquote>
+<p>由此可见， <code>URL</code> 是 <code>URI</code> 的子集</p>
+</blockquote>
+<p>Q2：<code>URI</code> 的各部分结构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/07/181243-115407.png" alt="image-20200707181219904"></p>
+<h2 id="二、简单的-HTTP-协议"><a href="#二、简单的-HTTP-协议" class="headerlink" title="二、简单的 HTTP 协议"></a>二、简单的 <code>HTTP</code> 协议</h2><h3 id="2-1-HTTP-方法"><a href="#2-1-HTTP-方法" class="headerlink" title="2.1  HTTP 方法"></a>2.1  <code>HTTP</code> 方法</h3><ul>
+<li><strong><code>GET</code> 获取资源：</strong> 用来请求访问<strong>已被 <code>URI</code> 识别的资源</strong>，指定的资源经服务器端解析后返回响应内容</li>
+<li><strong><code>POST</code> 传输实体主体：</strong> 用来传输实体的主体 虽然用 <code>GET</code> 方法也可以<strong>传输实体的主体</strong>，但一般不用 <code>GET</code> 方法进行传输，而是用 <code>POST</code> 方法</li>
+<li><strong><code>PUT</code> 传输文件：</strong> 在请求报文的主体中包含文件内容，然后保存到请求 <code>URI</code> 指定的位置 鉴于 <code>HTTP1.1</code> 的 <code>PUT</code> 方法自身不带验证机制，<strong>任何人都可以上传文件</strong>，存在<strong>安全性问题</strong>，因此一般不使用该方法</li>
+<li><strong><code>HEAD</code> 获得报文首部：</strong> 和 <code>GET</code> 方法一样，只是<strong>不返回报文主体部分</strong>。 用于确认 <strong><code>URI</code> 的有效性及资源更新的日期</strong>时间等</li>
+<li><strong><code>DELETE</code> 删除文件：</strong> 用来删除文件，是与 <code>PUT</code> 相反的方法。<code>DELETE</code> 方法按请求 URI 删除指定的资源。 不带验证机制，所以一般不使用 <code>DELETE</code> 方法</li>
+</ul>
+<blockquote>
+<p>和 <code>put</code> 相对应，两者都不具备验证机制 </p>
+</blockquote>
+<ul>
+<li><strong><code>OPTIONS</code> 询问支持的方法：</strong> 用来查询针对请求 <code>URI</code> 指定的资源支持的方法（了解即可）</li>
+<li><strong><code>TRACE</code> 追踪路径：</strong> 让 <code>Web</code> 服务器端将之前的请求通信返回给客户端的方法。 但 <code>TRACE</code> 方法本来就不怎么常用，再加上它容易引发 <code>XST</code>攻击，通常就更不会用到了（了解即可）</li>
+<li><strong><code>CONNECT</code> 要求用隧道协议连接代理：</strong> 要求在与代理服务器通信时建立隧道，实现用隧道协议进行 <code>TCP</code> 通信。 主要使用 <code>SSL</code>（Secure Sockets Layer，安全套接层）和 <code>TLS</code>（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</li>
+</ul>
+<h3 id="2-2-持久连接节省通信量"><a href="#2-2-持久连接节省通信量" class="headerlink" title="2.2 持久连接节省通信量"></a>2.2 持久连接节省通信量</h3><h4 id="2-2-1-持久链接"><a href="#2-2-1-持久链接" class="headerlink" title="2.2.1 持久链接"></a>2.2.1 持久链接</h4><p>持久连接的特点是，只要任意一端没有明确提出断开连接，则保持 <code>TCP</code> 连接状态</p>
+<p>持久连接的好处：</p>
+<ul>
+<li>减少了 <code>TCP</code> 连接的<strong>重复建立和断开</strong>所造成的额外开销，<strong>减轻了服务器端的负载</strong></li>
+</ul>
+<blockquote>
+<p>感觉有点类似于连接池的作用</p>
+</blockquote>
+<ul>
+<li>减少开销的那部分时间，使 <code>HTTP</code> 请求和响应能够更早地结束，这样 <code>Web</code> 页面的显示速度也就相应提高了</li>
+</ul>
+<h4 id="2-2-2-管线化"><a href="#2-2-2-管线化" class="headerlink" title="2.2.2 管线化"></a>2.2.2 管线化</h4><p>管线化技术出现后，<strong>不用等待响应亦可直接发送下一个请求</strong></p>
+<p>这样就能够做到同时<strong>并行发送</strong>多个请求，而不需要一个接一个地等待响应了</p>
+<p>用持久连接可以让请求更快结束。而管线化技术则比持久连接还要快。请求数越多，时间差就越明显。</p>
+<h3 id="2-4-使用-Cookie-的状态管理"><a href="#2-4-使用-Cookie-的状态管理" class="headerlink" title="2.4 使用 Cookie 的状态管理"></a>2.4 使用 <code>Cookie</code> 的状态管理</h3><blockquote>
+<p>状态管理其实还有很多种，比如 <code>Session</code> ,<code>token</code>  ，这里仅介绍 <code>cookie</code></p>
+</blockquote>
+<p><code>HTTP</code> 是无状态协议，它不对之前发生过的请求和响应的状态进行管理。</p>
+<p><code>Cookie</code> 技术通过在请求和响应报文中写入 <code>Cookie</code> 信息来控制客户端的状态。<code>Cookie</code> 会根据从服务器端发送的响应报文内的一个叫做 <code>Set-Cookie</code> 的首部字段信息，通知客户端保存 <code>Cookie</code>。当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入 <code>Cookie</code> 值后发送出去</p>
+<h2 id="三、HTTP-报文内的-HTTP-信息"><a href="#三、HTTP-报文内的-HTTP-信息" class="headerlink" title="三、HTTP 报文内的 HTTP 信息"></a>三、HTTP 报文内的 HTTP 信息</h2><h3 id="3-1-压缩传输的内容编码"><a href="#3-1-压缩传输的内容编码" class="headerlink" title="3.1 压缩传输的内容编码"></a>3.1 压缩传输的内容编码</h3><p>内容编码指明应用在实体内容上的<strong>编码格式</strong>，并保持实体信息原样压缩</p>
+<p>常用的内容编码有：</p>
+<ul>
+<li><code>gzip</code></li>
+<li><code>compress</code></li>
+<li><code>deflate</code></li>
+<li><code>identity</code></li>
+</ul>
+<h2 id="四、返回结果的-HTTP-状态码"><a href="#四、返回结果的-HTTP-状态码" class="headerlink" title="四、返回结果的 HTTP 状态码"></a>四、返回结果的 HTTP 状态码</h2><h3 id="4-1-状态码告知从服务器端返回的请求结果"><a href="#4-1-状态码告知从服务器端返回的请求结果" class="headerlink" title="4.1 状态码告知从服务器端返回的请求结果"></a>4.1 状态码告知从服务器端返回的请求结果</h3><p>数字中的<strong>第一位指定了响应类别</strong>，后两位无分类</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>类别</th>
+<th>原因短语</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1XX</td>
+<td>Informational</td>
+<td>接收的请求正在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td>Success</td>
+<td>请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td>Redirection</td>
+<td>需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td>Client Error</td>
+<td>客户端无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td>Server Error</td>
+<td>服务器处理请求出错</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-2xx-成功"><a href="#4-2-2xx-成功" class="headerlink" title="4.2 2xx 成功"></a>4.2 2xx 成功</h3><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/11/223656-894674.png" alt="2xx 成功"></p>
+<h3 id="4-3-3xx-重定向"><a href="#4-3-3xx-重定向" class="headerlink" title="4.3 3xx 重定向"></a>4.3 3xx 重定向</h3><p><img src="https://imgkr.cn-bj.ufileos.com/f76205e5-3560-41b3-889d-4f4238d00e97.png" alt></p>
+<h3 id="4-4-4XX-客户端错误"><a href="#4-4-4XX-客户端错误" class="headerlink" title="4.4 4XX 客户端错误"></a>4.4 4XX 客户端错误</h3><p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/11/225018-953119.png" alt="image-20200711224935405"></p>
+<p>PS:注意区分 403 和 404，一个是被拒绝（一般是权限问题），另一个是无法找到</p>
+<h3 id="4-5-5XX-服务器错误"><a href="#4-5-5XX-服务器错误" class="headerlink" title="4.5 5XX 服务器错误"></a>4.5 5XX 服务器错误</h3><p><img src="https://imgkr.cn-bj.ufileos.com/b75df92b-d718-49fc-a1ab-99ce77151a99.png" alt></p>
+<h2 id="五、Web-服务器"><a href="#五、Web-服务器" class="headerlink" title="五、Web 服务器"></a>五、Web 服务器</h2><h3 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h3><p><code>HTTP1.1</code> 规范允许一个服务器搭建多个 <code>Web</code> 站点，这是虚拟主机功能。</p>
+<p>Q1：为啥 <code>Host</code> 首部内完整<strong>指定主机名或域名</strong>的 <code>URI</code>？</p>
+<p>因为虚拟主机可以寄存多个<strong>不同主机名和域名</strong>的 <code>Web</code> 网站</p>
+<h3 id="5-2-通信数据转发程序"><a href="#5-2-通信数据转发程序" class="headerlink" title="5.2 通信数据转发程序"></a>5.2 通信数据转发程序</h3><p>这些应用程序和服务器可以将请求转发给通信线路上的下一站服务器，并且能接收从那台服务器发送的响应再转发给客户端。</p>
+<ol>
+<li>代理：接收客户端发送的请求后<strong>转发给其他服务器</strong>；代理<strong>不改变请求 <code>URI</code></strong>，会直接发送给前方持有资源的目标服务器。</li>
+</ol>
+<blockquote>
+<ul>
+<li>缓存代理：预先将资源<strong>缓存</strong>保存在代理服务器上，当代理再次接收到对相同资源的请求时，就可以直接将之前缓存的资源作为响应返回</li>
+<li>透明代理：转发请求或响应时，<strong>不对报文做任何加工</strong>被称为透明代理，对报文内容进行加工的称为非透明代理。</li>
+</ul>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/12/195434-126846.png" alt="image-20200712195432972"></p>
+<p>2.<strong>网关</strong>:<strong>转发其他服务器通信数据的服务器</strong>，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/12/195500-49027.png" alt="image-20200712195459045"></p>
+<p>3.<strong>隧道：</strong> 按要求建立起一条与其他服务器的通信线路，届时使用 <code>SSL</code> 等加密手段进行通信，在通信双方断开连接时结束。隧道的目的是确保客户端能与服务器进行安全的通信。</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/d2c412b7-1865-445f-b6ed-12311cffb792.png" alt></p>
+<h3 id="5-3-保存资源的缓存"><a href="#5-3-保存资源的缓存" class="headerlink" title="5.3 保存资源的缓存"></a>5.3 保存资源的缓存</h3><p><strong>客户端的缓存：</strong> 浏览器缓存如果有效，不必再向服务器请求，而直接从本地读取。当判定缓存过期后，会向源服务器确认资源的有效性。若判断浏览器缓存失效，浏览器会再次请求新资源。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/12/172524-808070.png" alt="image-20200712172523006"></p>
+<h2 id="六、HTTP-首部"><a href="#六、HTTP-首部" class="headerlink" title="六、HTTP 首部"></a>六、HTTP 首部</h2><p><code>HTTP</code> 协议的请求和响应报文中必定包含 <code>HTTP</code> 首部，请求报文和响应报文结构如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/13/143254-166120.png" alt="image-20200713143253306"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/15/193833-705059.png" alt="image-20200713143234364"></p>
+<h3 id="6-1-HTTP-首部字段"><a href="#6-1-HTTP-首部字段" class="headerlink" title="6.1 HTTP 首部字段"></a>6.1 HTTP 首部字段</h3><p><code>HTTP</code> 首部字段将定义成<strong>缓存代理</strong>和<strong>非缓存代理</strong>的行为，分成 2 种类型。</p>
+<ol>
+<li><strong>端到端首部：</strong> 分在此类别中的首部会转发给请求 / 响应对应的最终接收目标，且<strong>必须保存在由缓存生成的响应</strong>中，另外规定它<strong>必须被转发</strong>。</li>
+<li><strong>逐跳首部：</strong> 分在此类别中的首部<strong>只对单次转发有效</strong>，会因通过缓存或代理而不再转发。<code>HTTP1.1</code> 和之后版本中，如果要使用 <code>hop-by-hop</code> 首部，需提供 <code>Connection</code> 首部字段。</li>
+</ol>
+<h4 id="6-1-1-通用首部字段"><a href="#6-1-1-通用首部字段" class="headerlink" title="6.1.1 通用首部字段"></a>6.1.1 通用首部字段</h4><p>请求报文和响应报文两方都会使用的首部。</p>
+<table>
+<thead>
+<tr>
+<th><strong>首部字段名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Cache-Control</code></td>
+<td>控制缓存的行为</td>
+</tr>
+<tr>
+<td><code>Connection</code></td>
+<td>逐跳首部、连接的管理</td>
+</tr>
+<tr>
+<td><code>Date</code></td>
+<td>创建报文的日期时间</td>
+</tr>
+<tr>
+<td><code>Pragma</code></td>
+<td>报文指令</td>
+</tr>
+<tr>
+<td><code>Trailer</code></td>
+<td>报文末端的首部一览</td>
+</tr>
+<tr>
+<td><code>Transfer-Encoding</code></td>
+<td>指定报文主体的传输编码方式</td>
+</tr>
+<tr>
+<td><code>Upgrade</code></td>
+<td>升级为其他协议</td>
+</tr>
+<tr>
+<td><code>Via</code></td>
+<td>代理服务器的相关信息</td>
+</tr>
+<tr>
+<td><code>Warning</code></td>
+<td>错误通知</td>
+</tr>
+</tbody></table>
+<h4 id="6-1-2-请求首部字段"><a href="#6-1-2-请求首部字段" class="headerlink" title="6.1.2 请求首部字段"></a>6.1.2 请求首部字段</h4><p>从客户端向服务器端发送请求报文时使用的首部。<strong>补充了请求的附加内容、客户端信息、响应内容相关优先级</strong>等信息。</p>
+<table>
+<thead>
+<tr>
+<th><strong>首部字段名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accept</td>
+<td>用户代理可处理的媒体类型</td>
+</tr>
+<tr>
+<td>Accept-Charset</td>
+<td>优先的字符集</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>优先的内容编码</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>优先的语言（自然语言）</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Web认证信息</td>
+</tr>
+<tr>
+<td>Expect</td>
+<td>期待服务器的特定行为</td>
+</tr>
+<tr>
+<td>From</td>
+<td>用户的电子邮箱地址</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>请求资源所在服务器</td>
+</tr>
+<tr>
+<td>If-Match</td>
+<td>比较实体标记（ETag）</td>
+</tr>
+<tr>
+<td>If-Modified-Since</td>
+<td>比较资源的更新时间</td>
+</tr>
+<tr>
+<td>If-None-Match</td>
+<td>比较实体标记（与 If-Match 相反）</td>
+</tr>
+<tr>
+<td>If-Range</td>
+<td>资源未更新时发送实体 Byte 的范围请求</td>
+</tr>
+<tr>
+<td>If-Unmodified-Since</td>
+<td>比较资源的更新时间（与If-Modified-Since相反）</td>
+</tr>
+<tr>
+<td>Max-Forwards</td>
+<td>最大传输逐跳数</td>
+</tr>
+<tr>
+<td>Proxy-Authorization</td>
+<td>代理服务器要求客户端的认证信息</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>实体的字节范围请求</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td>对请求中 URI 的原始获取方</td>
+</tr>
+<tr>
+<td>TE</td>
+<td>传输编码的优先级</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>HTTP 客户端程序的信息</td>
+</tr>
+</tbody></table>
+<h4 id="6-1-3-响应首部字段"><a href="#6-1-3-响应首部字段" class="headerlink" title="6.1.3 响应首部字段"></a>6.1.3 响应首部字段</h4><p>从服务器端向客户端返回响应报文时使用的首部。<strong>补充了响应的附加内容</strong>，也会要求客户端附加额外的内容信息。</p>
+<table>
+<thead>
+<tr>
+<th><strong>首部字段名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accept-Ranges</td>
+<td>是否接受字节范围请求</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>推算资源创建经过时间</td>
+</tr>
+<tr>
+<td>ETag</td>
+<td>资源的匹配信息</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>令客户端重定向至指定URI</td>
+</tr>
+<tr>
+<td>Proxy-Authenticate</td>
+<td>代理服务器对客户端的认证信息</td>
+</tr>
+<tr>
+<td>Retry-After</td>
+<td>对再次发起请求的时机要求</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>HTTP服务器的安装信息</td>
+</tr>
+<tr>
+<td>Vary</td>
+<td>代理服务器缓存的管理信息</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>服务器对客户端的认证信息</td>
+</tr>
+</tbody></table>
+<h4 id="6-1-4-实体首部字段"><a href="#6-1-4-实体首部字段" class="headerlink" title="6.1.4 实体首部字段"></a>6.1.4 实体首部字段</h4><p>针对请求报文和响应报文的实体部分使用的首部。补充了资源内容<strong>更新时间</strong>等与实体有关的信息。</p>
+<table>
+<thead>
+<tr>
+<th><strong>首部字段名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Allow</td>
+<td>资源可支持的HTTP方法</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>实体主体适用的编码方式</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>实体主体的自然语言</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>实体主体的大小（单位：字节）</td>
+</tr>
+<tr>
+<td>Content-Location</td>
+<td>替代对应资源的URI</td>
+</tr>
+<tr>
+<td>Content-MD5</td>
+<td>实体主体的报文摘要</td>
+</tr>
+<tr>
+<td>Content-Range</td>
+<td>实体主体的位置范围</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>实体主体的媒体类型</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>实体主体过期的日期时间</td>
+</tr>
+<tr>
+<td>Last-Modified</td>
+<td>资源的最后修改日期时间</td>
+</tr>
+</tbody></table>
+<h3 id="6-2-HTTP1-1-通用首部字段"><a href="#6-2-HTTP1-1-通用首部字段" class="headerlink" title="6.2 HTTP1.1 通用首部字段"></a>6.2 HTTP1.1 通用首部字段</h3><p>通用首部字段是指请求报文和响应报文都会使用的首部。</p>
+<h4 id="6-2-1-Cache-Control"><a href="#6-2-1-Cache-Control" class="headerlink" title="6.2.1 Cache-Control"></a>6.2.1 Cache-Control</h4><ol>
+<li><strong>no-cache：</strong> 防止从缓存中返回<strong>过期</strong>的资源。客户端请求如果包含 <code>no-cache</code>，表示客户端将不会接收缓存过的响应，缓存服务器必须把客户端请求转发给源服务器。服务器响应中包含 <code>no-cache</code>，那么缓存服务器不能对资源进行缓存，源服务器以后也将不再对缓存服务器请求中提出的资源有效性进行确认，且禁止其对响应资源进行缓存操作。</li>
+<li><strong>no-store：</strong> 缓存不能在本地存储请求或响应的任一部分。</li>
+</ol>
+<p>从字面意思上很容易把 <code>no-cache</code> 误解成为不缓存，但 <strong><code>no-cache</code> 代表不缓存过期的资源</strong>，缓存会向源服务器进行有效期确认后处理资源，<strong><code>no-store</code> 才是真正地不进行缓存</strong>。</p>
+<h4 id="6-2-2-Connection"><a href="#6-2-2-Connection" class="headerlink" title="6.2.2 Connection"></a>6.2.2 Connection</h4><p>1.<strong>控制不再转发给代理的首部字段：</strong> 在客户端发送请求和服务器返回响应内，使用 <code>Connection</code> 首部字段，可控制不再转发给代理的首部字段（即 <code>Hop-by-hop</code> 逐跳首部）。</p>
+<p>2.<strong>管理持久连接：</strong> <code>HTTP1.1</code> 默认<strong>持久</strong>连接，客户端会在持久连接上连续发送请求。服务器端想断开连接时，则设置 <code>Connection</code> 首部字段为 <code>Close</code>。<code>HTTP1.1</code> 之前默认都是非持久连接。为此，如果想在旧版本 HTTP 协议上持续连接，则需设置 <code>Connection</code> 首部字段为 <code>Keep-Alive</code>。</p>
+<h4 id="6-2-3-Date"><a href="#6-2-3-Date" class="headerlink" title="6.2.3 Date"></a>6.2.3 Date</h4><p>表明创建 <code>HTTP</code> 报文的日期和时间。</p>
+<h4 id="6-2-4-Upgrade"><a href="#6-2-4-Upgrade" class="headerlink" title="6.2.4 Upgrade"></a>6.2.4 Upgrade</h4><p>用于检测 <code>HTTP</code> 协议及其他协议是否可使用更高的版本进行通信，其参数值可以用来指定一个完全不同的通信协议。</p>
+<h3 id="6-3-请求首部字段"><a href="#6-3-请求首部字段" class="headerlink" title="6.3 请求首部字段"></a>6.3 请求首部字段</h3><p>从客户端往服务器端发送请求报文中所使用的字段，用于补充<strong>请求的附加信息、客户端信息、对响应内容相关的优先级</strong>等内容。</p>
+<h4 id="6-3-1-Accept"><a href="#6-3-1-Accept" class="headerlink" title="6.3.1 Accept"></a>6.3.1 Accept</h4><p>通知服务器，用户代理能够处理的<strong>媒体类型</strong>及<strong>媒体类型的相对优先级</strong>。可使用 <code>type/subtype</code> 这种形式，一次指定多种媒体类型。</p>
+<pre><code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</code></pre><h4 id="6-3-2-Host"><a href="#6-3-2-Host" class="headerlink" title="6.3.2 Host"></a>6.3.2 Host</h4><p>告知服务器，请求的资源所处的互联网主机名和端口号。Host 首部字段在 <code>HTTP1.1</code> 规范内是唯一一个<strong>必须</strong>被包含在请求内的首部字段。</p>
+<h4 id="6-3-3-If-Match"><a href="#6-3-3-If-Match" class="headerlink" title="6.3.3 If-Match"></a>6.3.3 If-Match</h4><p>形如 <code>If-xxx</code> 这种，都可称为条件请求。服务器接收到后，<strong>只有判断指定条件为真时，才会执行请求</strong>。</p>
+<h4 id="6-3-4-If-None-Match"><a href="#6-3-4-If-None-Match" class="headerlink" title="6.3.4 If-None-Match"></a>6.3.4 If-None-Match</h4><p>和 <code>If-Match</code> 相反</p>
+<h4 id="6-3-5-If-Modified-Since"><a href="#6-3-5-If-Modified-Since" class="headerlink" title="6.3.5 If-Modified-Since"></a>6.3.5 If-Modified-Since</h4><p>如果在 <code>If-Modified-Since</code> 字段<strong>指定的日期时间后资源发生了更新</strong>，服务器会接受请求。</p>
+<h4 id="6-3-6-If-Unmodified-Since"><a href="#6-3-6-If-Unmodified-Since" class="headerlink" title="6.3.6 If-Unmodified-Since"></a>6.3.6 If-Unmodified-Since</h4><p>和 <code>If-Modified-Since</code> 的作用相反</p>
+<h4 id="6-3-7-If-Range"><a href="#6-3-7-If-Range" class="headerlink" title="6.3.7 If-Range"></a>6.3.7 If-Range</h4><p>字段如果跟 <code>ETag</code> 值或更新的日期时间一致，那么就作为<strong>范围请求</strong>处理。反之，则返回全体资源。</p>
+<h3 id="6-4-响应首部字段"><a href="#6-4-响应首部字段" class="headerlink" title="6.4 响应首部字段"></a>6.4 响应首部字段</h3><p>由服务器端向客户端<strong>返回响应报文中所使用的字段</strong>，用于<strong>补充响应的附加信息</strong>、<strong>服务器信息</strong>，以及对客户端的附加要求等信息。</p>
+<h4 id="6-4-1-ETag"><a href="#6-4-1-ETag" class="headerlink" title="6.4.1 ETag"></a>6.4.1 ETag</h4><p>实体标识，将资源以字符串形式做唯一性标识的方式。服务器会为每份资源分配对应的 <code>ETag</code> 值。当资源更新时，<code>ETag</code> 值也需要更新。</p>
+<p>若在下载过程中出现连接中断、再连接的情况，都会依照 <code>ETag</code> 值来指定资源。</p>
+<h3 id="6-5-实体首部字段"><a href="#6-5-实体首部字段" class="headerlink" title="6.5 实体首部字段"></a>6.5 实体首部字段</h3><p>包含在请求报文和响应报文中的<strong>实体部分所使用的首部</strong>，用于补充内容的更新时间等与实体相关的信息。</p>
+<h4 id="6-5-1-Allow"><a href="#6-5-1-Allow" class="headerlink" title="6.5.1 Allow"></a>6.5.1 Allow</h4><p>通知客户端能够支持的所有 <code>HTTP</code> 方法。当服务器接收到不支持的 <code>HTTP</code> 方法时，会以状态码 <code>405 Method Not Allowed</code> 作为响应返回。与此同时，还会把所有能支持的 <code>HTTP</code> 方法写入首部字段 <code>Allow</code> 后返回。</p>
+<h4 id="6-5-2-Content-Encoding"><a href="#6-5-2-Content-Encoding" class="headerlink" title="6.5.2 Content-Encoding"></a>6.5.2 Content-Encoding</h4><p>告知客户端服务器对实体的主体部分选用的<strong>内容编码</strong>方式。内容编码是指在不丢失实体信息的前提下所进行的压缩。</p>
+<p>主要有：<code>gzip</code>、<code>compress</code>、<code>deflate</code>、<code>identity</code></p>
+<h4 id="6-5-3-Content-Type"><a href="#6-5-3-Content-Type" class="headerlink" title="6.5.3 Content-Type"></a>6.5.3 Content-Type</h4><p>说明了实体主体内对象的<strong>媒体类型</strong>，用 type/subtype 形式赋值。</p>
+<h4 id="6-5-4-Expires"><a href="#6-5-4-Expires" class="headerlink" title="6.5.4 Expires"></a>6.5.4 Expires</h4><p><code>Expires</code> 会将<strong>资源失效的日期告知客户端</strong>。缓存服务器在收到有 <code>Expires</code> 的响应后，会以缓存来应答请求，在 <code>Expires</code> 字段值指定的时间之前，响应的副本会一直被保存。当超过指定的时间后，缓存服务器在请求发送过来时，会转向源服务器请求资源。</p>
+<h4 id="6-5-5-Last-Modified"><a href="#6-5-5-Last-Modified" class="headerlink" title="6.5.5 Last-Modified"></a>6.5.5 Last-Modified</h4><p>包含源头服务器认定的<strong>资源做出修改的日期及时间</strong>。</p>
+<h3 id="6-6-为-Cookie-服务的首部字段"><a href="#6-6-为-Cookie-服务的首部字段" class="headerlink" title="6.6 为 Cookie 服务的首部字段"></a>6.6 为 Cookie 服务的首部字段</h3><table>
+<thead>
+<tr>
+<th><strong>首部字段名</strong></th>
+<th><strong>说明</strong></th>
+<th><strong>首部类型</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Set-Cookie</td>
+<td><strong>开始状态管理</strong>所使用的Cookie信息</td>
+<td>响应首部字段</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td><strong>服务器接收到</strong>的Cookie信息</td>
+<td>请求首部字段</td>
+</tr>
+</tbody></table>
+<h3 id="6-7-其他首部字段"><a href="#6-7-其他首部字段" class="headerlink" title="6.7 其他首部字段"></a>6.7 其他首部字段</h3><h4 id="6-7-1-X-XSS-Protection"><a href="#6-7-1-X-XSS-Protection" class="headerlink" title="6.7.1 X-XSS-Protection"></a>6.7.1 X-XSS-Protection</h4><p>是针对跨站脚本攻击（XSS）的一种对策，用于控制浏览器 <strong>XSS 防护机制</strong>的开关，可指定的字段值如下</p>
+<ul>
+<li>0：将 <code>XSS</code> 过滤设置成无效状态</li>
+<li>1：将 <code>XSS</code> 过滤设置成有效状态</li>
+</ul>
+<h2 id="七、-HTTPS"><a href="#七、-HTTPS" class="headerlink" title="七、  HTTPS"></a>七、  HTTPS</h2><blockquote>
+<p><code>HTTP</code> 协议中有可能存在信息窃听或身份伪装等安全问题，怎么解决呢？<code>HTTPS</code> 了解一下</p>
+</blockquote>
+<h3 id="7-1-HTTP-的缺点是啥？"><a href="#7-1-HTTP-的缺点是啥？" class="headerlink" title="7.1 HTTP 的缺点是啥？"></a>7.1 HTTP 的缺点是啥？</h3><ul>
+<li>通信使用<strong>明文</strong>（不加密），内容可能会被<strong>窃听</strong></li>
+<li><strong>不验证通信方的身份</strong>，因此有可能遭遇<strong>伪装</strong></li>
+<li>无法证明报文的<strong>完整性</strong>，所以有可能已遭<strong>篡改</strong></li>
+</ul>
+<h3 id="7-2-HTTPS-是啥-？"><a href="#7-2-HTTPS-是啥-？" class="headerlink" title="7.2 HTTPS 是啥 ？"></a>7.2 HTTPS 是啥 ？</h3><blockquote>
+<p>简单来说，就是：HTTP+ 加密 + 认证 + 完整性保护</p>
+</blockquote>
+<p>把添加了加密及认证机制的 <code>HTTP</code> 称为 <code>HTTPS</code></p>
+<p><code>HTTPS</code> <strong>并非</strong>是应用层的一种<strong>新协议</strong>，只是 <code>HTTP</code> 通信接口部分用 <code>SSL</code>（Secure Socket Layer）和 <code>TLS</code>（Transport Layer Security）协议代替而已。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/14/132749-422573.png" alt="image-20200714132749462"></p>
+<p><code>HTTPS</code> 采用<strong>共享密钥加密和公开密钥加密两者并用的混合</strong>加密机制。若密钥能够实现安全交换，那么有可能会考虑仅使用公开密钥加密来通信。但是公开密钥加密与共享密钥加密相比，其处理速度要慢。</p>
+<p>所以取长补短，在<strong>交换密钥环节</strong>使用<strong>公开密钥</strong>加密方式，之后的<strong>建立通信交换</strong>报文阶段则使用<strong>共享密钥</strong>加密方式。</p>
+<p>数字证书认证机构（CA，Certificate Authority）和其相关机关颁发的<strong>公开密钥证书</strong>就是认证的可以信赖的公开密钥，服务器会将这份由数字证书认证机构颁发的公钥证书发送给客户端，以进行公开密钥加密方式通信。公钥证书也可叫做数字证书或直接称为证书。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/14/133636-831186.png" alt="image-20200714133015217"></p>
+<h4 id="7-2-1-SSL-速度慢吗"><a href="#7-2-1-SSL-速度慢吗" class="headerlink" title="7.2.1 SSL 速度慢吗"></a>7.2.1 <code>SSL</code> 速度慢吗</h4><p>当使用 <code>SSL</code> 时，它的处理速度会变慢。它慢分两种：</p>
+<ul>
+<li>一种是指<strong>通信慢</strong></li>
+</ul>
+<blockquote>
+<p>还必须进行 <code>SSL</code> 通信,所以慢</p>
+</blockquote>
+<ul>
+<li>另一种是指由于<strong>大量消耗 <code>CPU</code> 及内存等资源</strong>，导致<strong>处理速度变慢</strong>。</li>
+</ul>
+<blockquote>
+<p>服务器和客户端都需要进行加解密处理</p>
+</blockquote>
+<p>针对速度变慢这一问题，并没有根本性的解决方案，一般会使用 <code>SSL</code> 加速器这种（专用服务器）硬件。</p>
+<h4 id="7-2-2-为啥没使用-HTTPS-？"><a href="#7-2-2-为啥没使用-HTTPS-？" class="headerlink" title="7.2.2 为啥没使用 HTTPS ？"></a>7.2.2 为啥没使用 HTTPS ？</h4><ul>
+<li>加密通信会消耗更多的 <code>CPU</code> 及内存资源</li>
+<li>如果是非敏感信息则使用 <code>HTTP</code> 通信，只有在包含个人信息等敏感数据时，才利用 <code>HTTPS</code> 加密通信。可以仅在那些需要信息隐藏时才加密，以<strong>节约资源</strong>。</li>
+<li>节约购买证书的开销</li>
+</ul>
+<h2 id="八、确认访问用户身份的认证"><a href="#八、确认访问用户身份的认证" class="headerlink" title="八、确认访问用户身份的认证"></a>八、确认访问用户身份的认证</h2><p>一些页面只想让特定的人浏览，这就引入了认证功能。</p>
+<p><code>HTTP1.1</code> 常用的认证方式：</p>
+<ol>
+<li><code>BASIC</code> 认证（基本认证）</li>
+<li><code>DIGEST</code> 认证（摘要认证）</li>
+<li><code>SSL</code> 客户端认证</li>
+<li><code>FormBase</code> 认证（基于表单认证）</li>
+</ol>
+<h2 id="九、基于-HTTP-的功能追加协议"><a href="#九、基于-HTTP-的功能追加协议" class="headerlink" title="九、基于 HTTP 的功能追加协议"></a>九、基于 HTTP 的功能追加协议</h2><h3 id="9-1-WebSocket"><a href="#9-1-WebSocket" class="headerlink" title="9.1 WebSocket"></a>9.1 WebSocket</h3><p>连接的发起方仍是客户端，一旦确立 <code>WebSocket</code> 通信连接，<strong>服务器与客户端任意一方都可向对方发送报文</strong>。</p>
+<ol>
+<li><strong>推送功能：</strong> 支持由服务器向客户端推送数据的推送功能。这样，服务器可直接发送数据，而不必等待客户端的请求。</li>
+<li><strong>减少通信量：</strong> 和 <code>HTTP</code> 相比，不但每次连接时的开销减少，且由于<strong>首部信息很小</strong>，通信量也减少了。</li>
+</ol>
+<p>通信的建立：</p>
+<p>1.首先使用 <code>HTTP</code> 的 <code>Upgrade</code> 首部字段，告知服务器通信协议发生改变，进行握手。</p>
+<pre><code>GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+</code></pre><p><code>Sec-WebSocket-Key</code> 字段内记录着握手过程中必不可少的键值。<code>Sec-WebSocket-Protocol</code> 字段内记录使用的子协议。</p>
+<p>2.之前的请求将会被返回 101 Switching Protocols 响应</p>
+<pre><code>HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat
+</code></pre><p>成功握手建立 <code>WebSocket</code> 连接之后，通信时<strong>不再使用 <code>HTTP</code> 的数据帧</strong>，而<strong>采用 <code>WebSocket</code> 独立的数据帧</strong>。</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/78827d8a-2ae5-438d-a6cd-618309321d2c.png" alt></p>
+<h3 id="9-2-HTTP-2-0"><a href="#9-2-HTTP-2-0" class="headerlink" title="9.2 HTTP/2.0"></a>9.2 HTTP/2.0</h3><p>HTTP/2.0 的目标是改善用户在使用 Web 时的<strong>速度体验</strong>。特点：</p>
+<ol>
+<li>HTTP/2.0 采用<strong>二进制格式</strong>而非文本格式</li>
+<li>HTTP/2.0 是完全<strong>多路复用</strong>的，而非有序并阻塞的——只需一个连接即可实现并行</li>
+<li>使用<strong>报头压缩</strong>，HTTP/2.0 降低了开销</li>
+<li>HTTP/2.0 让服务器可以将响应<strong>主动“推送”</strong>到客户端缓存中</li>
+</ol>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
+<p>本文参考链接：</p>
+<ul>
+<li>『图解 HTTP』</li>
+<li><a href="https://juejin.im/post/5c938812e51d4539fc2d61a5" target="_blank" rel="noopener">《图解 HTTP》 阅读摘要</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <a  href="/2020/07/15/yue-du-shou-zha-shou-ba-shou-dai-ni-tan-suo-tu-jie-http/">
+                    《阅读手札 | 手把手带你探索『图解 HTTP』》
+            </a> 由
+            <a href="https://lovelifeeveryday.github.io">
+                Xu Canyou
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/07/15/yue-du-shou-zha-shou-ba-shou-dai-ni-tan-suo-tu-jie-http/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="阅读手札 | 手把手带你探索『图解 HTTP』">
+                        
+                        <span class="card-title">阅读手札 | 手把手带你探索『图解 HTTP』</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            手把手带你探索『图解 HTTP』
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机网络/" class="post-category">
+                                    计算机网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/图解-HTTP/">
+                        <span class="chip bg-color">图解 HTTP</span>
+                    </a>
+                    
+                    <a href="/tags/TCP-IP/">
+                        <span class="chip bg-color">TCP/IP</span>
+                    </a>
+                    
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
+                    </a>
+                    
+                    <a href="/tags/阅读笔记/">
+                        <span class="chip bg-color">阅读笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/10/wu-jian-xie-hou-post-he-get-de-xiong-di-qing-shen/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="午间邂逅 | post 和 get 的兄弟情深">
+                        
+                        <span class="card-title">午间邂逅 | post 和 get 的兄弟情深</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            面试官：『请你说下 post 和 get 的区别！』看到这里，很多人禁不住内心的喜悦，嘴角微微上扬，然后强装镇定，拿出背好的拿手绝活，轻轻松松给出了「标准答案」
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机网络/" class="post-category">
+                                    计算机网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/应用层/">
+                        <span class="chip bg-color">应用层</span>
+                    </a>
+                    
+                    <a href="/tags/图解HTTP/">
+                        <span class="chip bg-color">图解HTTP</span>
+                    </a>
+                    
+                    <a href="/tags/http/">
+                        <span class="chip bg-color">http</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://lovelifeeveryday.github.io" target="_blank">Xu Canyou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:913710642@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=913710642" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 913710642" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+
+</body>
+
+</html>
