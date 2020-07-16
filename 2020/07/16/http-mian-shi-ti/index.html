@@ -4,10 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="4.5 AsyncTask的原理, Sunny">
-    <meta name="description" content="4.5 AsyncTask的原理1.AsyncTask源码分析AsyncTask在3.0版本之前和3.0及以后版本有着较大的改动
-3.0版本前是并行的，有可能会执行饱和策略，当任务数大于138
-1.1 Android 7.0版本的Async">
+    <meta name="keywords" content="面试锦囊 | HTTP 面试门路, Sunny">
+    <meta name="description" content="面试锦囊 | HTTP 面试门路前言
+本文已经收录到我的 Github 个人博客，欢迎大佬们光临寒舍：
+我的 Github 博客
+
+学习清单：
+零、前置知识幂等的概念是指同一个请求方法执行多次和仅执行一次的效果完全相同
+一、PUT 和 PO">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>4.5 AsyncTask的原理 | Sunny</title>
+    <title>面试锦囊 | HTTP 面试门路 | Sunny</title>
     <link rel="icon" type="image/png" href="/blueRabbit.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,13 +313,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        4.5 AsyncTask的原理
+                        面试锦囊 | HTTP 面试门路
                     </div>
                 </div>
             </div>
@@ -427,12 +431,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/安卓进阶之光/">
-                                <span class="chip bg-color">安卓进阶之光</span>
+                            <a href="/tags/TCP-IP/">
+                                <span class="chip bg-color">TCP/IP</span>
                             </a>
                         
-                            <a href="/tags/多线程编程/">
-                                <span class="chip bg-color">多线程编程</span>
+                            <a href="/tags/HTTP/">
+                                <span class="chip bg-color">HTTP</span>
+                            </a>
+                        
+                            <a href="/tags/面试/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -443,8 +451,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/安卓/" class="post-category">
-                                安卓
+                            <a href="/categories/计算机网络/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -455,7 +463,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-21
+                    2020-07-16
                 </div>
 
                 
@@ -471,13 +479,37 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="4-5-AsyncTask的原理"><a href="#4-5-AsyncTask的原理" class="headerlink" title="4.5 AsyncTask的原理"></a>4.5 AsyncTask的原理</h1><h2 id="1-AsyncTask源码分析"><a href="#1-AsyncTask源码分析" class="headerlink" title="1.AsyncTask源码分析"></a>1.AsyncTask源码分析</h2><p>AsyncTask在3.0版本之前和3.0及以后版本有着较大的改动</p>
-<p>3.0版本前是并行的，有可能会执行饱和策略，当任务数大于138</p>
-<h3 id="1-1-Android-7-0版本的AsyncTask"><a href="#1-1-Android-7-0版本的AsyncTask" class="headerlink" title="1.1 Android 7.0版本的AsyncTask"></a>1.1 Android 7.0版本的AsyncTask</h3><p><img src="https://ftp.bmp.ovh/imgs/2019/11/d869cabc46b4c2d0.jpg" alt></p>
-<p>其实就是AsyncTask里面有个<strong>线程池串行</strong>（之前是并行），线程池里面有<strong>阻塞队列</strong>，用<strong>InternalHandler</strong>传递信息</p>
-<p>不会出现执行饱和策略</p>
-<p>如果想并行就</p>
-<pre class=" language-java"><code class="language-java">asyncTask<span class="token punctuation">.</span><span class="token function">executeOnExecutor</span><span class="token punctuation">(</span>AsyncTask<span class="token punctuation">.</span>THREAD_POOL_EXECUTOR<span class="token punctuation">,</span>＂＂<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+                <h1 id="面试锦囊-HTTP-面试门路"><a href="#面试锦囊-HTTP-面试门路" class="headerlink" title="面试锦囊 | HTTP 面试门路"></a>面试锦囊 | HTTP 面试门路</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文已经收录到我的 <code>Github</code> 个人博客，欢迎大佬们光临寒舍：</p>
+<p><a href="https://lovelifeeveryday.github.io/">我的 Github 博客</a></p>
+</blockquote>
+<h2 id="学习清单："><a href="#学习清单：" class="headerlink" title="学习清单："></a>学习清单：</h2><p><img src="https://imgkr.cn-bj.ufileos.com/2a5c5aed-16a2-4735-aed2-362efd63897c.png" alt></p>
+<h2 id="零、前置知识"><a href="#零、前置知识" class="headerlink" title="零、前置知识"></a>零、前置知识</h2><p>幂等的概念是指同一个请求方法<strong>执行多次和仅执行一次的效果完全相同</strong></p>
+<h2 id="一、PUT-和-POST-都是给服务器发送新增资源，有什么区别？"><a href="#一、PUT-和-POST-都是给服务器发送新增资源，有什么区别？" class="headerlink" title="一、PUT 和 POST 都是给服务器发送新增资源，有什么区别？"></a>一、PUT 和 POST 都是给服务器发送新增资源，有什么区别？</h2><ul>
+<li><code>PUT</code> 和 <code>POST</code> 方法的区别是,<code>PUT</code> 方法是幂等的，<code>POST</code> 反之</li>
+<li><code>PUT</code> 的 <code>URI</code> 指向是具体<strong>单一资源</strong>，而 <code>POST</code> 可以指向<strong>资源集合</strong></li>
+</ul>
+<blockquote>
+<p>例子：</p>
+<p>举个例子，我们在开发一个博客系统，当我们要创建一篇文章的时候往往用<code>POST https://www.jianshu.com/articles</code>，这个请求的语义是，在 <code>articles</code> 的<strong>资源集合</strong>下创建一篇新的文章，如果我们多次提交这个请求会创建多个文章，这是非幂等的。</p>
+<p>而<code>PUT https://www.jianshu.com/articles/820357430</code>的语义是更新<strong>对应文章</strong>下的资源（比如修改作者名称等），这个 <code>URI</code> 指向的就是单一资源，而且是幂等的，比如你把『刘德华』修改成『蔡徐坤』，提交多少次都是修改成『蔡徐坤』</p>
+</blockquote>
+<h2 id="二、PUT-和-PATCH-都是给服务器发送修改资源，有什么区别？"><a href="#二、PUT-和-PATCH-都是给服务器发送修改资源，有什么区别？" class="headerlink" title="二、PUT 和 PATCH 都是给服务器发送修改资源，有什么区别？"></a>二、PUT 和 PATCH 都是给服务器发送修改资源，有什么区别？</h2><ul>
+<li><code>PUT</code> 和 <code>PATCH</code> 都是更新资源，而 <code>PATCH</code> 用来对已知资源进行<strong>局部更新</strong></li>
+</ul>
+<h2 id="三、重定向307，303，302的区别？"><a href="#三、重定向307，303，302的区别？" class="headerlink" title="三、重定向307，303，302的区别？"></a>三、重定向307，303，302的区别？</h2><p>302是 <code>http1.0</code> 的协议状态码，在 <code>http1.1</code> 版本的时候为了细化302状态码又出来了两个303和307。</p>
+<p>303明确表示客户端应当采用 <code>get</code> 方法获取资源，他会把 <code>POST</code> 请求变为 <code>GET</code> 请求进行重定向。 307会遵照浏览器标准，不会从 <code>post</code> 变为 <code>get</code> 。</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/f76205e5-3560-41b3-889d-4f4238d00e97.png" alt></p>
+<h2 id="四、了解过缓存机制吗？对比下强缓存和协商缓存可以吗？"><a href="#四、了解过缓存机制吗？对比下强缓存和协商缓存可以吗？" class="headerlink" title="四、了解过缓存机制吗？对比下强缓存和协商缓存可以吗？"></a>四、了解过缓存机制吗？对比下强缓存和协商缓存可以吗？</h2><p><img src="https://imgkr.cn-bj.ufileos.com/fe4ed8ce-a819-4048-b574-6d3e942786ec.png" alt></p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/9d584539-e0aa-434b-872b-9fdcc42b0116.png" alt></p>
+<hr>
+<p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
+<p>本文参考链接：</p>
+<ul>
+<li><a href="https://juejin.im/post/5b3e318f6fb9a04f89781048" target="_blank" rel="noopener">HTTP深入之缓存机制</a></li>
+<li><a href="https://juejin.im/post/5d032b77e51d45777a126183" target="_blank" rel="noopener">面试官（9）：可能是全网最全的http面试答案</a></li>
+<li><a href="https://juejin.im/post/5c0ce870f265da61171c8c66#comment" target="_blank" rel="noopener">面试官问：你了解HTTP2.0吗？</a></li>
+</ul>
 
             </div>
             <hr/>
@@ -638,8 +670,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/11/21/4.5-asynctask-de-yuan-li/">
-                    《4.5 AsyncTask的原理》
+            <a  href="/2020/07/16/http-mian-shi-ti/">
+                    《面试锦囊 | HTTP 面试门路》
             </a> 由
             <a href="https://lovelifeeveryday.github.io">
                 Xu Canyou
@@ -680,50 +712,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/21/5.1-wang-luo-fen-ceng/">
+                <a href="/2020/07/16/http-mian-shi-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="5.1 网络分层">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="面试锦囊 | HTTP 面试门路">
                         
-                        <span class="card-title">5.1 网络分层</span>
+                        <span class="card-title">面试锦囊 | HTTP 面试门路</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是网络分层什么是网络分层
+                            本文将通过几个问题和角度，带你从面试官的角度思考问题，锻炼思维的深度和广度，你想要的有可能就在这里！
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/安卓/" class="post-category">
-                                    安卓
+                            <a href="/categories/计算机网络/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/安卓进阶之光/">
-                        <span class="chip bg-color">安卓进阶之光</span>
+                    <a href="/tags/TCP-IP/">
+                        <span class="chip bg-color">TCP/IP</span>
                     </a>
                     
-                    <a href="/tags/网络编程与网络框架/">
-                        <span class="chip bg-color">网络编程与网络框架</span>
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
+                    </a>
+                    
+                    <a href="/tags/面试/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>
@@ -737,31 +775,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/21/4.4-xian-cheng-chi/">
+                <a href="/2020/07/15/yue-du-shou-zha-shou-ba-shou-dai-ni-tan-suo-tu-jie-http/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="4.4 线程池">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="阅读手札 | 手把手带你探索『图解 HTTP』">
                         
-                        <span class="card-title">4.4 线程池</span>
+                        <span class="card-title">阅读手札 | 手把手带你探索『图解 HTTP』</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ThreadPoolExecutor
+                            手把手带你探索『图解 HTTP』
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/安卓/" class="post-category">
-                                    安卓
+                            <a href="/categories/计算机网络/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
@@ -771,12 +809,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/安卓进阶之光/">
-                        <span class="chip bg-color">安卓进阶之光</span>
+                    <a href="/tags/图解-HTTP/">
+                        <span class="chip bg-color">图解 HTTP</span>
                     </a>
                     
-                    <a href="/tags/多线程编程/">
-                        <span class="chip bg-color">多线程编程</span>
+                    <a href="/tags/TCP-IP/">
+                        <span class="chip bg-color">TCP/IP</span>
+                    </a>
+                    
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
+                    </a>
+                    
+                    <a href="/tags/阅读笔记/">
+                        <span class="chip bg-color">阅读笔记</span>
                     </a>
                     
                 </div>

@@ -934,7 +934,7 @@
 <p>把添加了加密及认证机制的 <code>HTTP</code> 称为 <code>HTTPS</code></p>
 <p><code>HTTPS</code> <strong>并非</strong>是应用层的一种<strong>新协议</strong>，只是 <code>HTTP</code> 通信接口部分用 <code>SSL</code>（Secure Socket Layer）和 <code>TLS</code>（Transport Layer Security）协议代替而已。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/14/132749-422573.png" alt="image-20200714132749462"></p>
-<p><code>HTTPS</code> 采用<strong>共享密钥加密和公开密钥加密两者并用的混合</strong>加密机制。若密钥能够实现安全交换，那么有可能会考虑仅使用公开密钥加密来通信。但是公开密钥加密与共享密钥加密相比，其处理速度要慢。</p>
+<p><code>HTTPS</code> 采用<strong>共享密钥加密（对称加密）和公开密钥加密（非对称加密）两者并用的混合</strong>加密机制。若密钥能够实现安全交换，那么有可能会考虑仅使用公开密钥加密来通信。但是公开密钥加密与共享密钥加密相比，其处理速度要慢。</p>
 <p>所以取长补短，在<strong>交换密钥环节</strong>使用<strong>公开密钥</strong>加密方式，之后的<strong>建立通信交换</strong>报文阶段则使用<strong>共享密钥</strong>加密方式。</p>
 <p>数字证书认证机构（CA，Certificate Authority）和其相关机关颁发的<strong>公开密钥证书</strong>就是认证的可以信赖的公开密钥，服务器会将这份由数字证书认证机构颁发的公钥证书发送给客户端，以进行公开密钥加密方式通信。公钥证书也可叫做数字证书或直接称为证书。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LoveLifeEveryday/FigureBed@master/typora202007/14/133636-831186.png" alt="image-20200714133015217"></p>
@@ -991,10 +991,17 @@ Sec-WebSocket-Protocol: chat
 <p><img src="https://imgkr.cn-bj.ufileos.com/78827d8a-2ae5-438d-a6cd-618309321d2c.png" alt></p>
 <h3 id="9-2-HTTP-2-0"><a href="#9-2-HTTP-2-0" class="headerlink" title="9.2 HTTP/2.0"></a>9.2 HTTP/2.0</h3><p>HTTP/2.0 的目标是改善用户在使用 Web 时的<strong>速度体验</strong>。特点：</p>
 <ol>
-<li>HTTP/2.0 采用<strong>二进制格式</strong>而非文本格式</li>
+<li>HTTP/2.0 采用<strong>二进制格式</strong>而非文本格式（<strong>二进制分帧</strong>）</li>
 <li>HTTP/2.0 是完全<strong>多路复用</strong>的，而非有序并阻塞的——只需一个连接即可实现并行</li>
-<li>使用<strong>报头压缩</strong>，HTTP/2.0 降低了开销</li>
-<li>HTTP/2.0 让服务器可以将响应<strong>主动“推送”</strong>到客户端缓存中</li>
+</ol>
+<blockquote>
+<p>问题又来了，HTTP 1.1 不是通过管线化可以实现并发吗？为啥要用2.0？</p>
+<p>答案：</p>
+<p>虽然 <code>HTTP/1.1</code> 管线化可以支持请求并发，但是<strong>浏览器很难实现</strong>，<code>chrome</code>、<code>firefox</code> 等都禁用了管线化。所以1.1版本请求<strong>并发依赖于多个 <code>TCP</code> 连接</strong>，建立 <code>TCP</code> 连接成本很高，还会存在慢启动的问题。</p>
+</blockquote>
+<ol>
+<li>使用<strong>报头压缩</strong>，HTTP/2.0 降低了开销（<strong>头部压缩</strong>）</li>
+<li>HTTP/2.0 让<strong>服务器</strong>可以将响应<strong>主动“推送”</strong>到客户端缓存中</li>
 </ol>
 <hr>
 <p>如果文章对您有一点帮助的话，希望您能点一下赞，您的点赞，是我前进的动力</p>
@@ -1205,30 +1212,29 @@ Sec-WebSocket-Protocol: chat
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/07/15/yue-du-shou-zha-shou-ba-shou-dai-ni-tan-suo-tu-jie-http/">
+                <a href="/2020/07/16/http-mian-shi-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="阅读手札 | 手把手带你探索『图解 HTTP』">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="面试锦囊 | HTTP 面试门路">
                         
-                        <span class="card-title">阅读手札 | 手把手带你探索『图解 HTTP』</span>
+                        <span class="card-title">面试锦囊 | HTTP 面试门路</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            手把手带你探索『图解 HTTP』
+                            本文将通过几个问题和角度，带你从面试官的角度思考问题，锻炼思维的深度和广度，你想要的有可能就在这里！
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1241,13 +1247,8 @@ Sec-WebSocket-Protocol: chat
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/图解-HTTP/">
-                        <span class="chip bg-color">图解 HTTP</span>
-                    </a>
                     
                     <a href="/tags/TCP-IP/">
                         <span class="chip bg-color">TCP/IP</span>
@@ -1257,8 +1258,8 @@ Sec-WebSocket-Protocol: chat
                         <span class="chip bg-color">HTTP</span>
                     </a>
                     
-                    <a href="/tags/阅读笔记/">
-                        <span class="chip bg-color">阅读笔记</span>
+                    <a href="/tags/面试/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>
