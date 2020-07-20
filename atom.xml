@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-07-17T02:56:05.677Z</updated>
+  <updated>2020-07-20T05:46:28.552Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>手把手带你玩转 DialogFragment</title>
+    <link href="https://lovelifeeveryday.github.io/2020/07/20/shou-ba-shou-dai-ni-wan-zhuan-dialogfragment/"/>
+    <id>https://lovelifeeveryday.github.io/2020/07/20/shou-ba-shou-dai-ni-wan-zhuan-dialogfragment/</id>
+    <published>2020-07-20T05:45:01.000Z</published>
+    <updated>2020-07-20T05:46:28.552Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;手把手带你玩转-DialogFragment&quot;&gt;&lt;a href=&quot;#手把手带你玩转-DialogFragment&quot; class=&quot;headerlink&quot; title=&quot;手把手带你玩转 DialogFragment&quot;&gt;&lt;/a&gt;手把手带你玩转
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://lovelifeeveryday.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://lovelifeeveryday.github.io/tags/Android/"/>
+    
+      <category term="DialogFragment" scheme="https://lovelifeeveryday.github.io/tags/DialogFragment/"/>
+    
+      <category term="控件" scheme="https://lovelifeeveryday.github.io/tags/%E6%8E%A7%E4%BB%B6/"/>
+    
+      <category term="Fragment" scheme="https://lovelifeeveryday.github.io/tags/Fragment/"/>
+    
+  </entry>
   
   <entry>
     <title>面试锦囊 | HTTP 面试门路</title>
@@ -566,33 +599,6 @@
         
         
           &lt;h1 id=&quot;进阶之路-奇妙的Window之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Window之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Window之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Window之旅&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="开发艺术探索" scheme="https://lovelifeeveryday.github.io/tags/%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进阶之路 | 奇妙的Animation之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/02/24/jin-jie-zhi-lu-qi-miao-de-animation-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/02/24/jin-jie-zhi-lu-qi-miao-de-animation-zhi-lu/</id>
-    <published>2020-02-24T07:01:01.000Z</published>
-    <updated>2020-03-01T13:39:54.209Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;进阶之路-奇妙的Animation之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Animation之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Animation之旅&quot;&gt;&lt;/a&gt;进阶之路 |
         
       
     
