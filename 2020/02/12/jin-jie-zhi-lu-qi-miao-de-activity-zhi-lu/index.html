@@ -566,9 +566,9 @@ AndroidManifest.xml的基本概念
        <span class="token punctuation">}</span></code></pre>
 <h5 id="2-1-2-2-系统配置变化导致的异常"><a href="#2-1-2-2-系统配置变化导致的异常" class="headerlink" title="2.1.2.2 系统配置变化导致的异常"></a>2.1.2.2 系统配置变化导致的异常</h5><p>Q1:<strong>发生改变的系统配置通常有哪些？</strong></p>
 <ul>
-<li>locale:一般指切换了系统语言</li>
-<li>orientation：旋转屏幕</li>
-<li>keyboardHidden：键盘的可访问性发生变化，比如：调出键盘</li>
+<li><code>locale</code>:一般指切换了<strong>系统语言</strong></li>
+<li><code>orientation</code>：旋转屏幕</li>
+<li><code>keyboardHidden</code>：键盘的可访问性发生变化，比如：调出键盘</li>
 </ul>
 <p>Q2：<strong>想系统配置改变后，activity不被重新创建，应该怎么办？</strong></p>
 <blockquote>
@@ -605,11 +605,11 @@ AndroidManifest.xml的基本概念
 <h3 id="2-2-Activity启动模式"><a href="#2-2-Activity启动模式" class="headerlink" title="2.2 Activity启动模式"></a>2.2 <code>Activity</code>启动模式</h3><h4 id="2-2-1-Activity的四种启动模式"><a href="#2-2-1-Activity的四种启动模式" class="headerlink" title="2.2.1 Activity的四种启动模式"></a>2.2.1 <code>Activity</code>的四种启动模式</h4><p>a:<code>standard</code>:标准模式</p>
 <ul>
 <li>含义：每次启动一个Activity就会创建一个新的实例，而不管实例存在与否。</li>
-<li>注意：使用<code>ApplicationContext</code>去启动<code>standard</code>模式<code>Activity</code>就会报错。因为<strong>standard模式的Activity会默认进入启动它所属的任务栈</strong>，但是由于非Activity的Context没有所谓的任务栈，所以就会报错。</li>
+<li>注意：使用 <code>ApplicationContext</code> 去启动 <code>standard</code> 模式 <code>Activity</code> 就会报错。因为 <strong>standard 模式的 Activity 会默认进入启动它所属的任务栈</strong>，但是由于非 <code>Activity</code>的 <code>Context</code> 没有所谓的任务栈，所以就会报错。</li>
 </ul>
 <p>b:<code>singleTop</code>：栈顶复用模式</p>
 <ul>
-<li>含义：如果新Activity已经位于任务栈的栈顶，就不会重新创建，并回调<strong>onNewIntent(intent)</strong>方法。</li>
+<li>含义：如果新 <code>Activity</code> 已经位于任务栈的栈顶，就不会重新创建，并回调 <code>onNewIntent(intent)</code> 方法。</li>
 </ul>
 <p>c:<code>singleTask</code>：栈内复用模式</p>
 <ul>
@@ -639,14 +639,14 @@ AndroidManifest.xml的基本概念
 </blockquote>
 <p>Q1:<strong><code>action</code>的匹配规则</strong></p>
 <ul>
-<li>只要Intent中的<strong>存在</strong>一个action且能够和任何<strong>一个 intent-filter中的action相同</strong>即可成功匹配</li>
+<li>只要Intent中的<strong>存在一个</strong> <code>action</code> 且能够和任何<strong>一个 intent-filter中的action相同</strong>即可成功匹配</li>
 <li>区分<strong>大小写</strong> </li>
 <li>必须存在</li>
 </ul>
 <p>Q2:<strong><code>category</code>的匹配规则</strong></p>
 <ul>
 <li>有其他<code>category</code>，则要求intent中的<code>category</code>和intent-filter中的<strong>所有</strong><code>category</code> 相同。</li>
-<li>非必须，这是因为此时系统给该Activity <strong>默认</strong>加上了<code>&lt; category  android:name=&quot;android.intent.category.DEAFAULT&quot; /&gt;</code>属性值。</li>
+<li>非必须，这是因为此时系统给该<code>Activity</code> <strong>默认</strong>加上了<code>&lt; category  android:name=&quot;android.intent.category.DEAFAULT&quot; /&gt;</code>属性值。</li>
 </ul>
 <p>Q3:<strong><code>data</code>匹配规则</strong></p>
 <ul>
@@ -658,7 +658,7 @@ AndroidManifest.xml的基本概念
 </blockquote>
 <pre class=" language-java"><code class="language-java">intent<span class="token punctuation">.</span><span class="token function">setDataAndType</span><span class="token punctuation">(</span>Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"file://abc"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"video/png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <blockquote>
-<p>采用隐式方式启动Activity时，可以用<code>PackageManager</code>的<code>resolveActivity(Intent)</code>方法或者<code>Intent</code>的<code>resolveActivity(Intent)</code>方法，来判断是否有Activity匹配该隐式Intent,如果匹配不到，会返回NULL</p>
+<p>采用隐式方式启动 <code>Activity</code> 时，可以用<code>PackageManager</code>的<code>resolveActivity(Intent)</code>方法或者<code>Intent</code>的<code>resolveActivity(Intent)</code>方法，来判断是否有Activity匹配该隐式Intent,如果匹配不到，会返回NULL</p>
 </blockquote>
 <h2 id="三-课堂小测试"><a href="#三-课堂小测试" class="headerlink" title="三.课堂小测试"></a>三.课堂小测试</h2><blockquote>
 <p>恭喜你，已经看完了前面的文章，相信你对<code>Activity</code>已经有一定深度的了解，下面，进行一下课堂小测试，验证一下自己的学习成果吧！</p>
