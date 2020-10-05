@@ -490,91 +490,91 @@
 <p>现有数组<code>int[] a = {1, 10, 9, 2, 3, 8, 7, 4, 5, 6};</code>我们要将其变为一棵红黑树。</p>
 <p>首先插入1，此时树是空的，1就是根结点，根结点是黑色的：</p>
 <p>首先插入 1，此时树是空的，1 就是根结点，根结点是黑色的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-35a1bbe604cb8c41.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tKYPf.png" alt="0tKYPf.png"></p>
 <p>插入 1</p>
 <p>然后插入元素 10，此时依然符合规则，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-ff8c5a919580f81e.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tKNRS.png" alt="0tKNRS.png"></p>
 <p>插入 10</p>
 <p>当插入元素 9 时，这时是需要调整的第一种情况，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-9ba8b4702a5ccb43.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tKDZn.png" alt="0tKDZn.png"></p>
 <p>插入 9</p>
 <p>红黑树规则 4 中强调不能有两个相邻的红色结点，所以此时我们需要对其进行调整。调整的原则有多个相关因素，这里的情况是，父结点 <strong>10</strong> 是其祖父结点 <strong>1</strong>（父结点的父结点）的右孩子，当前结点 <strong>9</strong> 是其父结点 <strong>10</strong> 的左孩子，且没有叔叔结点（父结点的兄弟结点），此时需要进行两次旋转，第一次，以父结点 <strong>10</strong> 右旋：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-d0a0094712f3f636.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tK6iV.png" alt="0tK6iV.png"></p>
 <p>右旋</p>
 <p>然后将父结点<strong>（此时是 9）</strong>染为黑色，祖父结点 <strong>1</strong> 染为红色，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-5ec451ae4be9fade.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tK7i6.png" alt="0tK7i6.png"></p>
 <p>染色</p>
 <p>然后以祖父结点 <strong>1</strong> 左旋：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-535e491db3892667.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tKHJK.png" alt="0tKHJK.png"></p>
 <p>左旋</p>
 <p>下一步，插入元素 2，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-c18a66f11e31be0f.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tKqzD.png" alt="0tKqzD.png"></p>
 <p>插入 2</p>
 <p>此时情况与上一步类似，区别在于父结点 <strong>1</strong> 是祖父结点 <strong>9</strong> 的左孩子，当前结点 <strong>2</strong> 是父结点的右孩子，且叔叔结点 <strong>10</strong> 是红色的。这时需要先将叔叔结点 <strong>10</strong> 染为黑色，再进行下一步操作，具体做法是将父结点 <strong>1</strong> 和叔叔结点 <strong>10</strong> 染为黑色，祖父结点 <strong>9</strong> 染为红色，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-69b50e3c6241ab62.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tKxeA.png" alt="0tKxeA.png"></p>
 <p>染色</p>
 <p>由于结点 <strong>9</strong> 是根节点，必须为黑色，将它染为黑色即可：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-34e3a7b1afb16d80.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tM9FP.png" alt="0tM9FP.png"></p>
 <p>染色</p>
 <p>下一步，插入元素 3，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-d3d694d87d7c1d13.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tMCJf.png" alt="0tMCJf.png"></p>
 <p>插入 3</p>
 <p>这和我们之前插入元素 10 的情况一模一样，需要将父结点 <strong>2</strong> 染为黑色，祖父结点 <strong>1</strong> 染为红色，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-8d108c4affa887d2.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tMPW8.png" alt="0tMPW8.png"></p>
 <p>染色</p>
 <p>然后左旋：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-909caf30d48238a1.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tMymd.png" alt="0tMymd.png"></p>
 <p>左旋</p>
 <p>下一步，插入元素 8，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-17b865fc276fe39c.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tM70s.png" alt="0tM70s.png"></p>
 <p>插入 8</p>
 <p>此时和插入元素 <strong>2</strong> 有些类似，区别在于父结点 <strong>3</strong> 是右孩子，当前结点 <strong>8</strong> 也是右孩子，这时也需要先将叔叔结点 <strong>1</strong> 染为黑色，具体操作是先将 <strong>1</strong> 和 <strong>3</strong> 染为黑色，再将祖父结点 <strong>2</strong> 染为红色，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-61a7d217f606e28c.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tMv1U.png" alt="0tMv1U.png"></p>
 <p>染色</p>
 <p>此时树已经平衡了，不需要再进行其他操作了，现在插入元素 7，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-0d78f35604abc594.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQpnJ.png" alt="0tQpnJ.png"></p>
 <p>插入 7</p>
 <p>这时和之前插入元素 <strong>9</strong> 时一模一样了，先将 <strong>7</strong> 和 <strong>8</strong> 右旋，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-a1f934e4c694ba19.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQ9B9.png" alt="0tQ9B9.png"></p>
 <p>右旋</p>
 <p>然后将 <strong>7</strong> 染为黑色，<strong>3</strong> 染为红色，再进行左旋，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-c5f6e64b47891e41.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQC7R.png" alt="0tQC7R.png"></p>
 <p>左旋</p>
 <p>下一步要插入的元素是 4，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-2fb2e858239c5a0b.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQZcD.png" alt="0tQZcD.png"></p>
 <p>插入 4</p>
 <p>这里和插入元素 2 是类似的，先将 <strong>3</strong> 和 <strong>8</strong> 染为黑色，<strong>7</strong> 染为红色，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-2d9a16d1c42b6656.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQnnH.png" alt="0tQnnH.png"></p>
 <p>染色</p>
 <p>但此时 <strong>2</strong> 和 <strong>7</strong> 相邻且颜色均为红色，我们需要对它们继续进行调整。这时情况变为了父结点 <strong>2</strong> 为红色，叔叔结点 <strong>10</strong> 为黑色，且 <strong>2</strong> 为左孩子，<strong>7</strong> 为右孩子，这时需要以 <strong>2</strong> 左旋。这时左旋与之前不同的地方在于结点 <strong>7</strong> 旋转完成后将有三个孩子，结果类似于下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-a4a09d6cf4573d73.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQlNt.png" alt="0tQlNt.png"></p>
 <p>错误示意图</p>
 <p>这种情况处理起来也很简单，只需要把 <strong>7</strong> 原来的左孩子 <strong>3</strong>，变成 <strong>2</strong> 的右孩子即可，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-f85544254fa720cb.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQJgS.png" alt="0tQJgS.png"></p>
 <p>调整</p>
 <p>然后再把 <strong>2</strong> 的父结点 <strong>7</strong> 染为黑色，祖父结点 <strong>9</strong> 染为红色。结果如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-ecbd91f1666f68fc.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQYjg.png" alt="0tQYjg.png"></p>
 <p>染色</p>
 <p>此时又需要右旋了，我们要以 <strong>9</strong> 右旋，右旋完成后 <strong>7</strong> 又有三个孩子，这种情况和上述是对称的，我们把 <strong>7</strong> 原有的右孩子 <strong>8</strong>，变成 <strong>9</strong> 的左孩子即可，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-e58aa96c8a51937f.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQ2DJ.png" alt="0tQ2DJ.png"></p>
 <p>右旋</p>
 <p>下一个要插入的元素是 5，插入后如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-b7156fb8bd565f3f.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQRb9.png" alt="0tQRb9.png"></p>
 <p>插入 5</p>
 <p>有了上述一些操作，处理 5 变得十分简单，将 <strong>3</strong> 染为红色，<strong>4</strong> 染为黑色，然后左旋，结果如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-c25e4072e38d251d.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQ44x.png" alt="0tQ44x.png"></p>
 <p>左旋</p>
 <p>最后插入元素 6，如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-a2ac80fe41126b77.png" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/10/05/0tQTgO.png" alt="0tQTgO.png"></p>
 <p>插入 6</p>
 <p>又是叔叔结点 <strong>3</strong> 为红色的情况，这种情况我们处理过多次了，首先将 <strong>3</strong> 和 <strong>5</strong> 染为黑色，<strong>4</strong> 染为红色，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-cacb2a4186cdd86e.png" alt="img"></p>
+<p><img src="https://s3.jpg.cm/2020/10/05/JMMaf.png" alt="JMMaf.png"></p>
 <p>染色</p>
 <p>此时问题向上传递到了元素 4，我们看 <strong>2</strong>、<strong>4</strong>、<strong>7</strong>、<strong>9</strong> 的颜色和位置关系，这种情况我们也处理过，先将 <strong>2</strong> 和 <strong>9</strong> 染为黑色，<strong>7</strong> 染为红色，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-316fe05167eef9f3.png" alt="img"></p>
+<p><img src="https://s3.jpg.cm/2020/10/05/JMZeU.png" alt="JMZeU.png"></p>
 <p>染色</p>
 <p>最后 7 是根结点，染为黑色即可，最终结果如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-83a06b538b720acc.png" alt="img"></p>
+<p><img src="https://s3.jpg.cm/2020/10/05/JOGrO.png" alt="JOGrO.png"></p>
 <h3 id="2-4-删除操作"><a href="#2-4-删除操作" class="headerlink" title="2.4 删除操作"></a>2.4 删除操作</h3><p>删除的规则如下：</p>
 <p><img src="https://s1.ax1x.com/2020/10/05/0tmMKs.png" alt="0tmMKs.png"></p>
 <p>要从一棵红黑树中删除一个元素，主要分为三种情况。</p>
@@ -587,10 +587,10 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/1696815-f737fd511ace7c59.png" alt="img"></p>
 <p>染色</p>
 <p>然后以 <strong>2</strong> 左旋，结果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-397740fe3c66a61b.png" alt="img"></p>
+<p><img src="https://s3.jpg.cm/2020/10/05/JOnGe.png" alt="JOnGe.png"></p>
 <p>左旋</p>
 <p>此时兄弟结点为 <strong>3</strong>，且它没有红色的孩子，这时只需要把它染为红色，父结点 <strong>2</strong> 染为黑色即可。结果如下所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1696815-3d11a41c472be825.png" alt="img"></p>
+<p><img src="https://s3.jpg.cm/2020/10/05/JO5Xy.png" alt="JO5Xy.png"></p>
 <p>调整完毕</p>
 <h4 id="情况-2：待删除元素有一个孩子"><a href="#情况-2：待删除元素有一个孩子" class="headerlink" title="情况 2：待删除元素有一个孩子"></a>情况 2：待删除元素有一个孩子</h4><p>这应该是删除操作中最简单的一种情况了，根据红黑树的定义，我们可以推测，如果一个元素仅有一个孩子，那么这个元素一定是黑色的，而且其孩子是红色的。</p>
 <p>假设我们有一个红色节点，它是树中的某一个节点，且仅有一个孩子，那么根据红色节点不能相邻的条件，它的孩子一定是黑色的，如下所示：</p>
