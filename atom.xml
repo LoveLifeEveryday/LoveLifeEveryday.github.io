@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lovelifeeveryday.github.io/"/>
-  <updated>2020-10-05T14:00:47.251Z</updated>
+  <updated>2020-11-27T07:49:29.265Z</updated>
   <id>https://lovelifeeveryday.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IPC知识点补充</title>
+    <link href="https://lovelifeeveryday.github.io/2020/11/27/ipc-zhi-shi-dian-bu-chong/"/>
+    <id>https://lovelifeeveryday.github.io/2020/11/27/ipc-zhi-shi-dian-bu-chong/</id>
+    <published>2020-11-27T07:23:01.000Z</published>
+    <updated>2020-11-27T07:49:29.265Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;IPC知识点补充&quot;&gt;&lt;a href=&quot;#IPC知识点补充&quot; class=&quot;headerlink&quot; title=&quot;IPC知识点补充&quot;&gt;&lt;/a&gt;IPC知识点补充&lt;/h1&gt;&lt;h2 id=&quot;为何需要-IPC？&quot;&gt;&lt;a href=&quot;#为何需要-IPC？&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安卓基础" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="IPC" scheme="https://lovelifeeveryday.github.io/tags/IPC/"/>
+    
+      <category term="Binder" scheme="https://lovelifeeveryday.github.io/tags/Binder/"/>
+    
+      <category term="Framework" scheme="https://lovelifeeveryday.github.io/tags/Framework/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 集合 | 红黑树 | 前置知识</title>
@@ -578,33 +609,6 @@
         
         
           &lt;h1 id=&quot;进阶之路-奇妙的Thread之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Thread之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Thread之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Thread之旅&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="安卓" scheme="https://lovelifeeveryday.github.io/categories/%E5%AE%89%E5%8D%93/"/>
-    
-    
-      <category term="开发艺术探索" scheme="https://lovelifeeveryday.github.io/tags/%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进阶之路 | 奇妙的Handler之旅</title>
-    <link href="https://lovelifeeveryday.github.io/2020/03/06/jin-jie-zhi-lu-qi-miao-de-handler-zhi-lu/"/>
-    <id>https://lovelifeeveryday.github.io/2020/03/06/jin-jie-zhi-lu-qi-miao-de-handler-zhi-lu/</id>
-    <published>2020-03-05T16:20:01.000Z</published>
-    <updated>2020-03-18T15:35:47.124Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;进阶之路-奇妙的Handler之旅&quot;&gt;&lt;a href=&quot;#进阶之路-奇妙的Handler之旅&quot; class=&quot;headerlink&quot; title=&quot;进阶之路 | 奇妙的Handler之旅&quot;&gt;&lt;/a&gt;进阶之路 | 奇妙的Handler之旅&lt;/h1&gt;&lt;h2
         
       
     
